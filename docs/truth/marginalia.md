@@ -24,9 +24,11 @@ The owner must supply the confirmed URL from the Vercel dashboard. Until then st
 
 ## Repository visibility
 
-**Private, and confirmed as such.** The GitHub API returns HTTP 404 for `https://api.github.com/repos/Olamilekan-oluwayomi/Marginalia`, which is what GitHub returns for a private repository to an unauthenticated caller. A repository that did not exist, or one owned by a different account, would produce the same 404, so this is strong but not absolute evidence. Combined with `remote.origin.url` resolving to that path and the local clone having `origin/main`, treat "private" as verified enough to plan around, and confirm it from the GitHub UI before it is published.
+**Private at audit time.** The GitHub API returns HTTP 404 for `https://api.github.com/repos/Olamilekan-oluwayomi/Marginalia`, which is what GitHub returns for a private repository to an unauthenticated caller. A repository that did not exist, or one owned by a different account, would produce the same 404, so this is strong but not absolute evidence. Combined with `remote.origin.url` resolving to that path and the local clone having `origin/main`, treat "private" as verified enough to plan around, and confirm it from the GitHub UI before it is published.
 
-This clears the `[CONFIRM repo visibility]` marker at PRD line 1212 and line 494. PRD line 1313 allows "the repository (or a written reason it is private)", so a private repo is workable, but the project page cannot carry a Source link to a repo no visitor can open. The decision on what the Source affordance becomes is the owner's.
+**Amendment (2026-10-02): superseded.** The owner states the repository is public as of this date. The 404 above is left in place as the dated record of what the API returned during the audit. The change was not independently re-checked, because the review tooling could not reach the GitHub API at the time of this note. Re-confirm from the GitHub UI or the API before publishing, and plan for a Source link now that a visitor can open the repository.
+
+This clears the `[CONFIRM repo visibility]` marker at PRD line 1212 and line 494. PRD line 1313 allows "the repository (or a written reason it is private)". On the amendment above the repository is public, so the project page carries a Source link like the other four projects and the question of what replaces that affordance no longer applies.
 
 ## Stack with versions
 

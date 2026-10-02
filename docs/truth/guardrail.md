@@ -100,6 +100,6 @@ These states are source-backed, not captured browser evidence.
 
 - No test script or tracked automated test suite was found (`package.json:5`, tracked tree at `1e6f005`). Build, lint, browser interaction, wallet signing, contract reads and transactions were not run; outcomes are unverified.
 - No dashboard, configuration or error-state captures were produced by this audit. The figure requirements remain open (portfolio `PRD.md:1284`, `PRD.md:1299`, §38).
-- Owner to supply: the contract source/repository, deployment-to-source evidence, token details and actual revert/test evidence before any enforced-rule simulation is authored (portfolio `PRD.md:1311`, §38).
-- Owner to supply: public year/origin/contribution wording, source visibility or private-source explanation, and rationale/trade-offs for the seeds in portfolio `docs/truth/guardrail-decisions.md:1`.
+- Deferred with the project (portfolio owner, 2026-10-02; `docs/phase-1-exit.md:85`). The contract source is unrecoverable (`docs/truth/guardrail.md:61`), so no enforced-rule simulation is authored and no page publishes an enforcement claim (portfolio `PRD.md:1278`, §38). The two items this sheet previously listed as owner-supplied are therefore not gating anything: the contract source and deployment-to-source evidence, and the public year/origin/contribution wording with the seed rationale.
+- Repository visibility is resolved as public at line 5. The repository stays public, but the deferral means no Source link appears on the site.
 - Publication readiness remains unverified. These notes do not satisfy the approved decisions, figures, stack rationale, copy and fallback requirements in portfolio `PRD.md:1280` (§38), or the Phase 1 owner-review exit in `PRD.md:1327` (§39).

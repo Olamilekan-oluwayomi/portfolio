@@ -4,6 +4,8 @@ Five candidates from source HEAD `1e6f005c6e44596338b3d4d7cc16319b8356487f`, com
 
 **These are not finished decision records.** A previous implementation is an evidenced alternative, not proof of every option the owner considered. Reasons come from source comments where stated; otherwise `reason: owner to supply`. Status describes the observed implementation/history, pending owner review. All seeds remain `verified: false` (portfolio `AGENTS.md:5`). Publication requires the anatomy, specificity and count rules in portfolio `PRD.md:430` (§16.2), not just enough draft bullets.
 
+**Deferred with the project (owner, 2026-10-02).** Guardrail is deferred because the contract source is unrecoverable, so no enforcement rule can be evidenced (`docs/truth/guardrail.md:61`, portfolio `PRD.md:1278`, §38; `docs/phase-1-exit.md:85`). These five seeds are neither promotable nor needed, and they count toward no minimum. They are kept as evidence in case the source is ever recovered. Nothing below has been withdrawn.
+
 ## 1. Read the guardrail through the wallet, one getter at a time
 
 - Commit: `1e6f005`.

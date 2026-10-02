@@ -25,6 +25,8 @@ Three verdicts:
 
 Nothing is cut on specificity grounds. Both seeds that cannot pass fail on missing rationale, not on being generic, and that is the same owner-input gap already recorded in `docs/phase-1-exit.md:241`. So this review changes no counts by itself. It does change where the margin is.
 
+Since this review ran, the owner deferred Guardrail (2026-10-02; `docs/phase-1-exit.md:85`). Its five seeds count toward no minimum, so the Guardrail verdicts below are a record rather than a pending requirement. The total row still describes all 32 seeds as reviewed; 27 of them belong to shipped projects.
+
 ## RentIt (`docs/truth/rentit-decisions.md`)
 
 Seven of eight are specific as recorded. The seed file's own note, that seeds 1, 3, 4, 7 and 8 pass the test hardest (`docs/truth/rentit-decisions.md:7`), holds up.
@@ -48,11 +50,11 @@ Seven of eight are specific as recorded. The seed file's own note, that seeds 1,
 - **4. Configure vendor chunks and Terser. Specific only if the detail is carried.** "Configure the production build" is generic. The specific parts are console and debugger removal, two named manual chunks (Framer Motion, React Router), and the honest limit that separate chunks do not prove on-demand loading. It must not claim size savings, which are unverified.
 - **5. Defer crew and planet images but prioritize technology imagery. Specific only if the detail is carried.** Deferring images is generic; the asymmetry is not. The record must carry that crew and planet images are lazy with async decoding while Technology is eager with high fetch priority, and that no measured LCP effect follows from the attributes.
 
-Consequence: Space Tourism can reach 3 only if seeds 1, 4 and 5 each carry their repository detail, and it cannot reach 3 at all if seed 2 is relied on. With Guardrail possibly deferring, this is the second project whose page count is in question.
+Consequence: Space Tourism can reach 3 only if seeds 1, 4 and 5 each carry their repository detail, and it cannot reach 3 at all if seed 2 is relied on. With Guardrail deferred (owner, 2026-10-02), Space Tourism is one of the four projects that must reach 3, so this is now a requirement rather than a question, and it is the tightest of the four.
 
 ## Guardrail (`docs/truth/guardrail-decisions.md`)
 
-All five specific as recorded, and all five blocked behind item 5 rather than by anything in this review.
+All five specific as recorded. The project is deferred (owner, 2026-10-02), so these seeds count toward no minimum and the specificity question is moot for them. The verdicts are kept in case the contract source is ever recovered.
 
 - **1. Read through the wallet, one getter at a time. Specific as recorded.** Names seven sequential getters with 300 ms gaps, against `af86fa2`'s separate `JsonRpcProvider` and `Promise.all`, and states the code-derived cost of 1.8 seconds.
 - **2. Retry ambiguous read failures. Specific as recorded.** Names exponential delays starting at 500 ms, the three-retry bound, and the specific confusion being defended against, which is that throttling resembles missing revert data.

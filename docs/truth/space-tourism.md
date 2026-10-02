@@ -99,6 +99,6 @@ These are contradictions in the source project's documentation. This audit recor
 ## 8. Tests, publication gaps and owner follow-up
 
 - No test script, tracked automated suite or Lighthouse report was found (`space-tourism/package.json:6`, tracked tree at `90f8926`). No build, lint, browser interaction or accessibility/performance audit was run; pass/fail results are unverified.
-- Owner to supply: project year, contribution/design attribution, repository visibility and deployment revision (portfolio `PRD.md:1342`, §39; source `README.md:210`).
+- Owner to supply: project year, contribution/design attribution and deployment revision (portfolio `PRD.md:1342`, §39; source `README.md:210`). Repository visibility is resolved as public at line 5.
 - Owner to resolve: the lazy/direct-routing narrative and any claimed before/after results. Supply actual audit artifacts if performance improvements are to be stated; otherwise omit the numbers (`space-tourism/PERFORMANCE_OPTIMIZATIONS.md:246`, portfolio `docs/truth/space-tourism-decisions.md:1`).
 - Figures, truthful project copy, stack rationale, approved decisions, static fallback and iframe testing remain open. The truth sheet and seeds do not complete Phase 1 or qualify the project page for publication (portfolio `PRD.md:1280`, `PRD.md:1298`, §38; `PRD.md:1327`, §39).

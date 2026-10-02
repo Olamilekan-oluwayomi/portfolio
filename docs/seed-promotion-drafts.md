@@ -64,9 +64,9 @@ Three items remain open across the eleven, each named where it sits: whether Mar
 
 ### 4. Read profiles with maybeSingle, and make every migration idempotent
 
-**BLOCKED. Do not promote.** The idempotency half rests on `CREATE POLICY IF NOT EXISTS` at `20260731000000_profiles_schema_and_rls.sql:40`, `:44` and `:48`, while the `push_subscriptions` migration states that Postgres does not support that clause and uses DROP then CREATE instead (`docs/truth/rentit.md:198`). Both cannot be right. If the clause is unsupported the migration errors rather than skipping, which changes the reason and makes a silently-skipped policy impossible as a cost. Settle it against a live database first. See open uncertainty 7 in `docs/truth/rentit.md`.
+**Fact check settled (2026-10-02). Rewrite before promoting; the title and the second half must go.** `CREATE POLICY IF NOT EXISTS` is not valid PostgreSQL: the `CREATE POLICY` grammar has no such clause (PostgreSQL 18 manual), and the `push_subscriptions` migration was right to avoid it by using DROP then CREATE (`docs/truth/rentit.md:198`). So the three statements at `20260731000000_profiles_schema_and_rls.sql:40`, `:44` and `:48` raise a syntax error, and the header's idempotency claim at lines 10 to 11 fails. Record this as a defect in the truth sheet, not as a decision. See open uncertainty 7 in `docs/truth/rentit.md`, now resolved.
 
-The `maybeSingle` half is sound and could be split out as its own record if the migration half cannot be resolved.
+The `maybeSingle` half stands on its own and is specific: `.single()` returns 406 when no profile row exists, which is the normal state for a new user, and 400 came from unknown upsert columns or an RLS mismatch. A record retitled around that, for example "Read a possibly-absent own row with maybeSingle", passes `PRD.md:434`. Its options are `.single()` and `.maybeSingle()`, both visible in the diff. It still needs the same two things as the others: owner confirmation that the alternative was actually weighed, and the accepted cost.
 
 ### 7. Replace the Database Webhooks UI with Postgres triggers and pg_net
 
@@ -284,5 +284,5 @@ The `maybeSingle` half is sound and could be split out as its own record if the 
 
 - **The twenty undrafted seeds.** Seven have a partly stated reason (RentIt 3; Space Tourism 3, 4, 5; Marginalia 3, 6) and nine have none (RentIt 5, 6, 8; Space Tourism 2; FX Checker 1, 2, 3, 5, 6). Those need owner testimony before drafting is useful.
 - **RentIt seed 4**, blocked on the `CREATE POLICY IF NOT EXISTS` fact check.
-- **The five Guardrail seeds**, blocked behind item 5 of `docs/phase-1-exit.md`.
+- **The five Guardrail seeds**, deferred with the project (item 5 of `docs/phase-1-exit.md`, owner 2026-10-02). They are not promotable and not needed; they stay in their seed file as evidence in case the contract source is ever recovered.
 - **Counts.** Tracked in section B of `docs/phase-1-exit.md`. The thinnest requirement is still the second portfolio-wide `reversed` or `open` record. Marginalia seed 8 above is one. The cheapest second is RentIt seed 8, where both reverts are already identified by commit (`b15e4f9` reverting `2735700`, `25ed7b4` reverting `ec51a62`, surviving approach `3ebe655`) and only the reason is missing.

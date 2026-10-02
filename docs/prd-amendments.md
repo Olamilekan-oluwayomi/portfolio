@@ -2,20 +2,23 @@
 
 Appendix B rule 10 requires two things whenever the PRD and reality disagree: a recorded decision, and a PRD adjustment (`PRD.md:1507`). Phase 1 has produced the decisions. This file holds the adjustments as exact before-and-after text so they can be reviewed in one pass and applied.
 
-Nothing here is applied. `PRD.md` is unchanged. Every amendment below cites the decision that forces it, and every replacement line that is not yet owner-approved is marked as a proposal. No line here may be guessed into the PRD (`docs/phase-1-exit.md:39`).
+**Applied to `PRD.md` on 2026-10-02** for groups A, B, C, D, E and G, on the owner's instruction. Group F stays undrafted because its decision is open.
 
-Amendment F is not drafted, because the decision it depends on is still open. It is recorded at the end rather than invented.
+Every replacement swapped one line for one line, so no line number in `PRD.md` moved and every existing citation to `PRD.md` remains valid. What follows is now the record of what changed and why. Wording that was marked as a proposal was applied as such and remains open to owner editing: the decisions are settled, the phrasing is not.
+
+Amendment F is not drafted, because the decision it depends on is still open. It is recorded at the end rather than invented. Amendment G was added on 2026-10-02, when the owner deferred Guardrail. Amendment E was revised the same day, when the owner approved publishing the employer name, and that revision also closed Amendment A's 2026 cell.
 
 ## Summary
 
 | # | Amendment | PRD sites | Decision it implements | State |
 | --- | --- | --- | --- | --- |
-| A | About timeline, the 2025 and 2026 rows | `PRD.md:510`, `PRD.md:511` | `docs/phase-1-exit.md:74`, `:158` (items 4 and 14) | 2025 row drafted; 2026 artifact cell needs a decision |
-| B | RentIt example project year | `PRD.md:1165` | `docs/phase-1-exit.md:74` (item 4) | Drafted |
-| C | Space Tourism, the accessible-tabs claim | `PRD.md:454`, `PRD.md:459` | `docs/phase-1-exit.md:89`, `:91` (item 5) | Drafted |
-| D | FX Checker, the stale and offline states | `PRD.md:479`, `PRD.md:1300` | `docs/phase-1-exit.md:87`, `:91` (item 5) | Drafted |
-| E | Employer and current work across seven sites | `PRD.md:73`, `:384`, `:511`, `:527`, `:1268`, `:1415`, `:1441` | `docs/phase-1-exit.md:53` (item 2) | Drafted, except anything naming the employer |
+| A | About timeline, the 2025 row | `PRD.md:510`, `PRD.md:511` | `docs/phase-1-exit.md:74`, `:158` (items 4 and 14) | Applied; the 2025 row wording is still open to owner edits, and the 2026 cell is resolved by E |
+| B | RentIt example project year | `PRD.md:1165` | `docs/phase-1-exit.md:74` (item 4) | Applied |
+| C | Space Tourism, the accessible-tabs claim | `PRD.md:454`, `PRD.md:459` | `docs/phase-1-exit.md:89`, `:91` (item 5) | Applied |
+| D | FX Checker, the stale and offline states | `PRD.md:479`, `PRD.md:1300` | `docs/phase-1-exit.md:87`, `:91` (item 5) | Applied |
+| E | Employer name published, product name withheld | `PRD.md:384`, `:511`, `:527`, `:1268`, `:1415` (no change at `:73`, `:1441`) | `docs/phase-1-exit.md:53` (item 2, revised) | Applied; `currentWork` stays empty |
 | F | Site source repository and its affordances | `PRD.md:1456`, `:387`, `:128`, `:572` | `docs/phase-1-exit.md:119`, `:121` (item 7) | Blocked, decision open |
+| G | The Guardrail deferral across eleven sites | `PRD.md:31`, `:283`, `:310`, `:311`, `:386`, `:461`, `:463` to `:472`, `:661`, `:908`, `:1023`, `:1299`, `:1311` | `docs/phase-1-exit.md:85` (item 5) | Drafted |
 
 Two citation corrections to `docs/phase-1-exit.md` are also owed, because the worksheet points at the wrong lines for two of these. They are listed at the end.
 
@@ -45,12 +48,7 @@ Two parts of that line are drafts, not decisions. The row text "In service. Kept
 | 2026 | Building professionally. | PitchMatter, DealBridge CRM `[CONFIRM public wording]` |
 ```
 
-This row needs a decision rather than an edit, because two open questions meet in it. Moving RentIt and Marginalia to 2026 makes the 2026 artifact cell the natural home for the five projects, but naming PitchMatter at all depends on whether the NDA permits naming the employer, which item 2 leaves open (`docs/phase-1-exit.md:53`). Options, none chosen:
-
-- The five projects, since all five carry `year: 2026` (item 4).
-- The employer and role only, with no product, matching the Log wording item 3 settles (`docs/phase-1-exit.md:59`).
-- Both, employer line then projects.
-- Leave the row as drafted but drop `DealBridge CRM`, leaving `PitchMatter [CONFIRM]`.
+Resolved by Amendment E, not here. The row needed a decision because two open questions met in it: whether the NDA permits naming the employer, and what the artifact should be. The owner approved the employer name on 2026-10-02, so the artifact cell becomes `PitchMatter` and the product name drops. Amendment E carries the exact before-and-after. The alternatives this section previously listed (the five projects, employer and role only, both, or a bare `PitchMatter [CONFIRM]`) are superseded; the chosen value is the employer name alone.
 
 No change to `PRD.md:1126`. The `TimelineYear` union still includes 2025, because the 2025 row still exists.
 
@@ -140,37 +138,15 @@ Two notes. The word "five" goes, because the count is now whatever the states ar
 
 ## E. Employer and current work
 
-**Decision.** The owner reports an NDA covering the PitchMatter employment, so no public wording is sought. `employer` and `currentWork` stay empty, no page, tag or structured data mentions them, and G1 must be adjusted (`docs/phase-1-exit.md:53`; `PRD.md:1151`).
+**Decision (owner, 2026-10-02, revised).** The PitchMatter employer name may be published. The product name and any description of the work remain unpublished: the NDA note covers the product, and the owner's approval named the employer only. So `employer` is set to `PitchMatter`, `currentWork` stays empty, and no page, tag or structured data names the product or describes the work (`PRD.md:1151`).
 
-This is the widest amendment: seven sites carry wording that assumes an employer line will exist. Each is listed with its exact text.
+This supersedes the earlier deferral recorded at `docs/phase-1-exit.md:53`, and it means G1 no longer needs adjusting: the employer line it requires can now exist (`PRD.md:73`).
 
-**Site `PRD.md:73`, the G1 goal table.**
+Five sites need an edit. Each is listed with its exact text.
 
-Before:
+**Site `PRD.md:73`, the G1 goal table. No change.** An earlier draft of this file removed `employer` from G1. With the name approved, the line stands as written: on `/`, "name, role, employer, stack line and a contact link are visible with zero interaction". The employer is `PitchMatter`.
 
-```text
-| G1 | A visitor identifies role, stack, employer and contact route quickly | On `/`, name, role, employer, stack line and a contact link are visible with zero interaction on a 390x844 and a 1440x900 viewport. `/brief` holds the full fast path within a 1440x900 viewport, no scrolling |
-```
-
-After:
-
-```text
-| G1 | A visitor identifies role, stack and contact route quickly | On `/`, name, role, stack line and a contact link are visible with zero interaction on a 390x844 and a 1440x900 viewport. `/brief` holds the full fast path within a 1440x900 viewport, no scrolling |
-```
-
-**Site `PRD.md:1441`, the same goal restated in section 43.**
-
-Before:
-
-```text
-1. **Product.** The recruiter fast path works: role, stack, employer (approved wording) and a contact route are visible on `/` with zero interaction, `/brief` exists and fits a 1440x900 viewport, and contact is two interactions or fewer from anywhere.
-```
-
-After:
-
-```text
-1. **Product.** The recruiter fast path works: role, stack and a contact route are visible on `/` with zero interaction, `/brief` exists and fits a 1440x900 viewport, and contact is two interactions or fewer from anywhere.
-```
+**Site `PRD.md:1441`, the same goal restated in section 43. No change.** "role, stack, employer (approved wording) and a contact route" is now satisfiable, because the approved wording is the employer name.
 
 **Site `PRD.md:384`, the homepage meta line.**
 
@@ -183,10 +159,26 @@ Before:
 After:
 
 ```text
-- **Meta line (mono):** `siteIdentity.stackLine` (draft: `React · Next.js · TypeScript · Supabase`).
+- **Meta line (mono):** `siteIdentity.stackLine` (draft: `React · Next.js · TypeScript · Supabase`), then on a second line the employer line built from `employer` (draft: `Currently at PitchMatter`).
 ```
 
-The second line is removed rather than left conditional, because the deferral is a decision not to seek wording, not a pending approval.
+The employer half survives and the product half is dropped. `currentWork` stays empty (`PRD.md:1151`), and the `[CONFIRM public wording]` marker drops because the wording is now approved.
+
+**Site `PRD.md:511`, the About timeline 2026 row.**
+
+Before:
+
+```text
+| 2026 | Building professionally. | PitchMatter, DealBridge CRM `[CONFIRM public wording]` |
+```
+
+After (proposal):
+
+```text
+| 2026 | Building professionally. | PitchMatter |
+```
+
+Only the artifact cell changes. The line text "Building professionally." is draft copy the owner edits for truth (`PRD.md:506`), and the marker drops because the employer name is approved. This is also the 2026 cell Amendment A was waiting on, so that open item closes here rather than in A.
 
 **Site `PRD.md:527`, the Log row.**
 
@@ -196,13 +188,13 @@ Before:
 | Frontend Developer Intern, PitchMatter (UAE-based, remote) | August 2026 to present | Frontend work on the DealBridge CRM product `[CONFIRM what can be public]` | Linked decisions or none if covered by confidentiality |
 ```
 
-After (proposal):
+After:
 
 ```text
 | Frontend Developer Intern, PitchMatter (UAE-based, remote) | August 2026 to present | Company, role and dates only. No product and no description of the work | None |
 ```
 
-Item 3 settles the summary wording: "the PitchMatter row names the company, role and dates only, with no product and no description of the work" (`docs/phase-1-exit.md:59`). That row assumes the NDA permits naming the employer at all, which item 2 leaves open (`docs/phase-1-exit.md:53`), so even this version cannot be applied until that is answered. If the employer cannot be named, the row becomes a role, a date range and a remote location with no organisation.
+Item 3 already settles the wording: "the PitchMatter row names the company, role and dates only, with no product and no description of the work" (`docs/phase-1-exit.md:59`). The condition that blocked it is now resolved, because the row names the employer, which the owner permits (`docs/phase-1-exit.md:53`). The entry can be `public: true` (`PRD.md:1123`): company, role and dates are publishable and the description cell carries no product.
 
 **Site `PRD.md:1268`, the Brief spec.**
 
@@ -215,7 +207,7 @@ Before:
 After:
 
 ```text
-2. Current work is not shown. `employer` and `currentWork` stay empty by owner decision (Appendix A item 2).
+2. Employer from `siteIdentity` (draft: PitchMatter, August 2026 to present). No product name and no description of the work.
 ```
 
 **Site `PRD.md:1415`, the launch checklist.**
@@ -226,17 +218,19 @@ Before:
 - [ ] No proprietary PitchMatter material. Employer wording approved.
 ```
 
-After:
+After (proposal):
 
 ```text
-- [ ] No proprietary PitchMatter material. No employer wording is published, by owner decision (Appendix A item 2).
+- [ ] No proprietary PitchMatter material. Employer name approved; no product name and no work description is published.
 ```
 
-The old line could never be ticked once wording is refused. The replacement is checkable.
+The original line became checkable once the employer name was approved. The replacement makes the boundary explicit so the product stays out.
 
-**Site `PRD.md:1432`, the risks table.** No change. The mitigation already reads "`public: false` default on entries", which is the state the deferral produces. `PRD.md:1123` and `PRD.md:1124` define that flag and need no edit.
+**Site `PRD.md:1432`, the risks table. No change.** The mitigation already reads "`public: false` default on entries". The PitchMatter Log entry is the one exception the owner has now approved, and `PRD.md:1123` and `PRD.md:1124` define that flag without needing an edit.
 
-**Site `PRD.md:1473`, Future Enhancements.** Not drafted. It lists "PitchMatter work (pattern level, with approval), DealBridge CRM case study, Branch Watch tracker story". With wording refused, "with approval" no longer holds, but this is a post-launch wish list and the deferred fact rule (`docs/phase-1-exit.md:7`) is satisfied by leaving the PRD unchanged there. Flagged so it is not forgotten.
+**Site `PRD.md:1473`, Future Enhancements. Not drafted.** It lists "PitchMatter work (pattern level, with approval), DealBridge CRM case study, Branch Watch tracker story". The employer name is approved but the product is not, so "with approval" covers only the employer half and the DealBridge CRM case study is still unreachable. This is a post-launch wish list, and leaving it unchanged satisfies the deferred-fact rule (`docs/phase-1-exit.md:7`). Flagged so it is not forgotten.
+
+**The one question left in this item.** The owner approved the employer name and said nothing about the product. Whether `DealBridge CRM` or a pattern-level description of the work may be public is unanswered, so both stay out. If the owner later permits a pattern-level description, `currentWork` can be drafted, but not before.
 
 ## F. Site source repository and its affordances (blocked)
 
@@ -245,6 +239,158 @@ The old line could never be ticked once wording is refused. The replacement is c
 Item 7 records that what replaces the source affordance, or whether the repository becomes public, "is the one part of item 7 still open" (`docs/phase-1-exit.md:121`). Drafting a replacement now would mean inventing a decision. When the owner settles it, the amendment is mechanical across those four sites.
 
 Two related sites look like conflicts but are not, and should not be edited with this: the footer's personal GitHub profile link is a separate affordance and can stay (`docs/phase-1-exit.md:121`), and `PRD.md:1313` already allows Marginalia's repository "or a written reason it is private", which the now-public repository makes unnecessary but not wrong.
+
+## G. The Guardrail deferral
+
+**Decision.** Guardrail is deferred, not published dashboard-only (owner, 2026-10-02; `docs/phase-1-exit.md:85`). The contract source is unrecoverable: the address the dashboard hardcodes is a deployed contract, but it is not verified, so no source is published on chain and the explorer cannot recover it (`docs/truth/guardrail.md:61`). Section 38 then applies directly, "A project is deferred, not padded, if it cannot meet the requirements below without invented features" (`PRD.md:1278`), and section 43 item 3 requires section 38 of published projects only (`PRD.md:1443`).
+
+**Three rules the deferral does not change.** The count already derives from published content and the R2 line already reads "after all five (or all that pass section 38)" (`PRD.md:1278`, `PRD.md:1321`), so this amendment is a consistency pass, not a change of policy. The 15-record total is explicitly not relaxed by a deferral (`PRD.md:1278`). And Guardrail leaves public copy entirely (owner, 2026-10-02), so its live URL and its repository appear in no page, list or structured data (`PRD.md:1479`).
+
+**Site `PRD.md:31`, before:**
+
+```text
+Five projects (RentIt, Space Tourism, Guardrail, Foreign Exchange Checker, Marginalia; five is a target, not a quota, see section 38) each get a bespoke interactive experience on top of a consistent case-study spine, so a visitor can compare judgment across very different products.
+```
+
+**After (proposal):**
+
+```text
+Five projects (RentIt, Space Tourism, Guardrail, Foreign Exchange Checker, Marginalia; five is a target, not a quota, see section 38) each get a bespoke interactive experience on top of a consistent case-study spine, so a visitor can compare judgment across very different products. Five remains the target; four ship in v1, because Guardrail is deferred under section 38.
+```
+
+The target language is kept and section 38 keeps ownership of the count, rather than rewriting the target from five to four. State the number directly instead if the owner prefers.
+
+**Site `PRD.md:283`, before:**
+
+```text
+A simulation is honest only when it is labeled and its output comes from real rules (Guardrail, the FX snapshot).
+```
+
+**After:**
+
+```text
+A simulation is honest only when it is labeled and its output comes from real rules (the FX snapshot).
+```
+
+The rule keeps its force and one surviving example. Guardrail was the other referent, and it is deferred.
+
+**Site `PRD.md:310` to `PRD.md:311`, before:**
+
+```text
+/work                  Contents page, all projects with status and stack
+/work/[slug]           Project experience (five is the target)
+```
+
+**After:**
+
+```text
+/work                  Contents page, all projects with status and stack
+/work/[slug]           Project experience (four in v1; Guardrail is deferred under section 38)
+```
+
+**Site `PRD.md:386`, before:**
+
+```text
+- **Contents list:** one row per project (five is the target), styled as a book's table of contents with a leader line, title, year and a short stack tag.
+```
+
+**After:**
+
+```text
+- **Contents list:** one row per project (five is the target; four ship in v1, with Guardrail deferred under section 38), styled as a book's table of contents with a leader line, title, year and a short stack tag.
+```
+
+This is the homepage surface, so a four-row list must not read as a five-row list that is missing a row.
+
+**Site `PRD.md:461`, before:**
+
+```text
+- **Exit:** "Open live ↗", "Source", "Next: Guardrail".
+```
+
+**After (proposal):**
+
+```text
+- **Exit:** "Open live ↗", "Source", "Next: Foreign Exchange Checker".
+```
+
+Forced, because a "Next" link cannot point at a project that has no page. The PRD's own order is RentIt, Space Tourism, Guardrail, FX Checker, Marginalia (`PRD.md:461`, `PRD.md:472`, `PRD.md:483`, `PRD.md:494`), so removing Guardrail makes FX Checker the next shipping project and the loop still closes through Marginalia back to RentIt. The owner can reorder freely; the target value is not a judgment call, the order is.
+
+**Site `PRD.md:463`, the Guardrail experience heading. Applied as an edit to that one line.** The drafted form inserted a separate deferral paragraph, which would have added two lines to `PRD.md` and shifted every line number below it. Because this whole pass exists to keep citations valid, the deferral was folded into the heading instead, and the file stayed at 1507 lines:
+
+```text
+#### Guardrail: "Try a transaction (simulated)" (deferred, owner 2026-10-02: the contract source is unrecoverable, so no enforcement rule can be evidenced; nothing below ships and this section is retained as a record of the intended piece)
+```
+
+The bullets at `PRD.md:465` to `PRD.md:472` are unchanged. They describe a piece that is not being built, and `PRD.md:472`'s own "Next: Foreign Exchange Checker" already survives the deferral.
+
+**Site `PRD.md:661`, before:**
+
+```text
+**Semantic color:** PASS and BLOCKED chips in the Guardrail simulation use text labels as well as color, never color alone.
+```
+
+**After (applied):**
+
+```text
+**Semantic color:** status chips use text labels as well as color, never color alone. The Guardrail simulation that first carried this rule is deferred (section 16.3), so the rule applies to any status chip the site ships.
+```
+
+The rule is general accessibility, not a Guardrail rule. Only its referent is removed. The applied line cites section 16.3 rather than the heading line, because `PRD.md:463` is a heading whose number a later edit could move, while 16.3 is the section that owns the rule.
+
+**Site `PRD.md:908`, before:**
+
+```text
+No wallet or sign-in flows inside embeds. The Guardrail piece is a local simulation and never requests a wallet connection or signs anything.
+```
+
+**After:**
+
+```text
+No wallet or sign-in flows inside embeds.
+```
+
+The deleted sentence described the deferred piece and restated the prohibition the sentence before it already gives.
+
+**Site `PRD.md:1023`, before:**
+
+```text
+experiences/  rentit/, space-tourism/, guardrail/, fx-checker/, marginalia/
+```
+
+**After:**
+
+```text
+experiences/  rentit/, space-tourism/, fx-checker/, marginalia/
+```
+
+**Site `PRD.md:1299`, the asset table, before:**
+
+```text
+| Guardrail | Three scenarios with deterministic rule outputs | Dashboard, rule configuration, an error state `[CONFIRM]` |
+```
+
+**After:**
+
+```text
+| Guardrail (deferred, section 38) | Not built | Not captured |
+```
+
+**Site `PRD.md:1311`, the evidence table, before:**
+
+```text
+| Guardrail | The contract source or repository, the deployment or testnet, what the contract really enforces, the real revert reasons and error states | "Trustworthy UI around irreversible actions" only for rules and failure states that exist. Simulation outputs derive from those rules. The JSON-RPC batching problem needs a commit or issue behind it |
+```
+
+**After:**
+
+```text
+| Guardrail (deferred, section 38) | Deferred. The contract source is unrecoverable, so the evidence this row requires cannot exist (`docs/truth/guardrail.md:61`) | No interpretation is published |
+```
+
+**Sites that need no edit.** `PRD.md:1321` already reads "R2 after all five (or all that pass section 38)", which is the clause that makes a four-project R2 legitimate. `PRD.md:1278` already says the count derives from published content and that a deferral does not relax the 15-record total. `PRD.md:1445` requires "at least 3 per shipped project", which excludes Guardrail automatically. `PRD.md:1212` lists repository names as an internal record rather than public copy, and it stays accurate. Appendix A items 4 to 7 at `PRD.md:1484` to `PRD.md:1487` name Guardrail among the projects, and the written deferral in the worksheet resolves them under section 39 (`PRD.md:1327`), so the Appendix needs no edit.
+
+**Related, forced by item 7 and not by the deferral.** `PRD.md:494` carries `[CONFIRM repo visibility]` on Marginalia's Source link. Item 7 resolved every project repository as public (`docs/phase-1-exit.md:117`), so that marker can be dropped. Noted here so it is not forgotten; it is not part of the deferral.
 
 ## Voice sample audit
 
@@ -260,9 +406,9 @@ The observation: the only banned phrase in the sample appears inside the line th
 
 The gap: all three lines are confident statements. None demonstrates the tone for a failure, a limitation or an uncertainty, which is where this list is hardest to obey and where the content gate actually bites. The truth sheets are full of material that would breach the list if written carelessly, including "offline" for a state FX Checker does not have (`docs/truth/foreign-exchange-checker.md:66`). A fourth sample line covering a limitation would test the list rather than restate it. This is a suggestion, not a defect, and it changes nothing about the sample's current status.
 
-## Citation corrections owed to `docs/phase-1-exit.md`
+## Citation corrections in `docs/phase-1-exit.md` (applied)
 
-Both are wrong line numbers for otherwise correct findings. `AGENTS.md:4` requires every claim to cite a file path, so they should be fixed.
+Both were wrong line numbers for otherwise correct findings. `AGENTS.md:4` requires every claim to cite a file path. Both are now fixed, and the corrected numbers are recorded here so the change is traceable.
 
 | Worksheet site | Currently says | Should say | Why |
 | --- | --- | --- | --- |
@@ -271,11 +417,12 @@ Both are wrong line numbers for otherwise correct findings. `AGENTS.md:4` requir
 
 Two further worksheet citations are correct as written and were checked while drafting this: `PRD.md:479` for the FX Checker tabs and `PRD.md:510` for the 2025 row. The worksheet's pointer to G1 (`docs/phase-1-exit.md:53`, `:75`) cites `PRD.md:1151`, which is the sentence that says "adjust G1". The criterion itself is at `PRD.md:73` and `PRD.md:1441`, which Amendment E edits.
 
-## What applying these would and would not do
+## What applying these did and did not do
 
-Applying A to E satisfies Appendix B rule 10 for the decisions Phase 1 has already taken. It does not close Phase 1. Held back:
+A, B, C, D, E and G are applied to `PRD.md` as of 2026-10-02, which satisfies Appendix B rule 10 for the decisions Phase 1 has already taken. `[CONFIRM]` markers fell from 44 to 38, no em dash was introduced, and the file is still 1507 lines, so every `PRD.md` citation elsewhere in the docs still resolves. This did not close Phase 1. Held back:
 
-- Amendment A's 2026 artifact cell, which needs a decision.
-- The parts of Amendment E that name the employer, which need the NDA question in item 2 answered.
+- Amendment A's 2025 row wording, which is draft copy pending owner approval.
+- The product half of Amendment E: whether the product name or a pattern-level work description may be public, which item 2 leaves unanswered.
 - Amendment F, which needs the source-affordance decision in item 7.
-- Item 5's Guardrail sub-item, left open by the owner on 2026-10-02 (`docs/phase-1-exit.md:161`).
+
+Two residual mentions of the product name remain in `PRD.md` and both are deliberate. `PRD.md:1473` sits in Future Enhancements, which is post-launch and not published copy. `PRD.md:1482` is Appendix A item 2, the internal inventory of what may be said publicly, which describes the question rather than publishing an answer.

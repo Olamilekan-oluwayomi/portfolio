@@ -28,7 +28,7 @@ The site is a quiet, editorial document. At first glance it reads like a well-se
 2. **Inspect.** A toggle that flips the page over to show the engineering underneath: measured values from this visit (Web Vitals, JavaScript and font bytes, request count) and real component, type and token names. A short, honest panel, not a DevTools clone, and never decoration.
 3. **Decision records.** Every decision is indexed across the whole site, including the ones later reversed.
 
-Five projects (RentIt, Space Tourism, Guardrail, Foreign Exchange Checker, Marginalia; five is a target, not a quota, see section 38) each get a bespoke interactive experience on top of a consistent case-study spine, so a visitor can compare judgment across very different products.
+Five projects (RentIt, Space Tourism, Guardrail, Foreign Exchange Checker, Marginalia; five is a target, not a quota, see section 38) each get a bespoke interactive experience on top of a consistent case-study spine, so a visitor can compare judgment across very different products. Five remains the target; four ship in v1, because Guardrail is deferred under section 38.
 
 A recruiter gets what they need in 30 seconds from the homepage or from the plain `/brief` page. A hiring engineer gets evidence of judgment in about three minutes. Everything spectacular is optional depth, never a gate.
 
@@ -280,7 +280,7 @@ Lands on `/`, reads the name and role (0 to 5s). Hovers "Marginalia" in the Cont
 2. **Quiet by default.** After the opening, nothing moves unless the visitor acts. No looping animation anywhere.
 3. **Plain labels, unusual content.** Navigation says Work, About, Experience, Lab, Contact. The originality lives in what the pages do, never in what the links are called. A visitor is never asked to decode a menu.
 4. **Content before layers.** Every page is complete, readable HTML with no JavaScript required. Annotation, Inspect and transitions are enhancements.
-5. **Real data only.** Inspect shows measured or authored values. No fake terminals, fake metrics or invented logs. A simulation is honest only when it is labeled and its output comes from real rules (Guardrail, the FX snapshot). An unlabeled one is fake.
+5. **Real data only.** Inspect shows measured or authored values. No fake terminals, fake metrics or invented logs. A simulation is honest only when it is labeled and its output comes from real rules (the FX snapshot). An unlabeled one is fake.
 6. **Honest about reversals.** Show decisions that were changed or left open. Credibility comes from the ones that cost something.
 7. **Fast path first.** The 30-second route (homepage and `/brief`) is designed first and protected from every later creative decision.
 8. **Theatrics are rationed.** Five signature moments (section 10). Everything else is restraint.
@@ -308,7 +308,7 @@ Each layer earns its place by what it gives the visitor. Anything that only deco
 /                      The Opening + Contents (project list) + Inspect invitation
 /brief                 30-second plain summary (print-friendly)
 /work                  Contents page, all projects with status and stack
-/work/[slug]           Project experience (five is the target)
+/work/[slug]           Project experience (four in v1; Guardrail is deferred under section 38)
 /decisions             Decision index: filter by theme, project, status
 /about                 The Record (timeline 2023 to 2026)
 /experience            The Log (work history, education)
@@ -381,9 +381,9 @@ Each layer earns its place by what it gives the visitor. Anything that only deco
 - Center-left column, top 18% empty on load.
 - **Display name:** `siteIdentity.name` in Instrument Serif at display size (section 23).
 - **Subline (italic serif):** a single sentence. Draft: *"Frontend developer. I keep notes on every decision."*
-- **Meta line (mono):** `siteIdentity.stackLine` (draft: `React · Next.js · TypeScript · Supabase`), then on a second line the current-work line built from `employer` and `currentWork` (draft: `Currently at PitchMatter, building DealBridge CRM`) `[CONFIRM public wording]`.
+- **Meta line (mono):** `siteIdentity.stackLine` (draft: `React · Next.js · TypeScript · Supabase`), then on a second line the employer line built from `employer` (draft: `Currently at PitchMatter`).
 - **Brief link:** "Only have 30 seconds? Read the brief." directly under the meta line, visible without scrolling on all viewports.
-- **Contents list:** one row per project (five is the target), styled as a book's table of contents with a leader line, title, year and a short stack tag.
+- **Contents list:** one row per project (five is the target; four ship in v1, with Guardrail deferred under section 38), styled as a book's table of contents with a leader line, title, year and a short stack tag.
 - **Footer colophon:** "Set in Instrument Serif and Geist. Built with Next.js. Source on GitHub."
 
 ### The Opening timeline
@@ -451,16 +451,16 @@ Every detail marked `[CONFIRM]` must be checked against the repository before pu
 
 #### Space Tourism: "Resize the viewport"
 
-- **Purpose:** Demonstrate layout craft, art direction across breakpoints and accessible tabbed interfaces.
+- **Purpose:** Demonstrate layout craft and art direction across breakpoints.
 - **Story:** A frontend implementation of a multi-section space tourism site (destinations, crew, technology) `[CONFIRM sections]`.
 - **Entry point:** A dark framed viewport embedded in the paper page, showing a poster image with a "Load live preview" button.
 - **Interaction model:** After the visitor loads it, the live site renders in a sandboxed iframe inside a frame the visitor resizes using a drag handle or a keyboard-operable slider (`role="slider"`, arrow keys, snap points at 375, 768 and 1280 px). Annotations update per snap point, explaining what changed and why (navigation collapse, image art direction swap, tab layout). Fallback: three static screenshots with the same annotations.
 - **Visual treatment:** The page stays paper. Only the frame is dark, so the contrast makes the piece feel like looking through a window.
-- **Technical story:** Component and layout strategy, tabs with correct ARIA roles and keyboard support, `<picture>` art direction, data-driven content, route-level code splitting (one line, no scores).
+- **Technical story:** Component and layout strategy, `<picture>` art direction, data-driven content, route-level code splitting (one line, no scores), and the selection controls as built: named native buttons on Destination, labelled dot buttons on Crew, numbered buttons exposing `aria-pressed` on Technology, with no ARIA tabs pattern.
 - **Case-study structure:** The standard spine plus a "Responsive transformation" table (width, what changes, why).
-- **Exit:** "Open live ↗", "Source", "Next: Guardrail".
+- **Exit:** "Open live ↗", "Source", "Next: Foreign Exchange Checker".
 
-#### Guardrail: "Try a transaction (simulated)"
+#### Guardrail: "Try a transaction (simulated)" (deferred, owner 2026-10-02: the contract source is unrecoverable, so no enforcement rule can be evidenced; nothing below ships and this section is retained as a record of the intended piece)
 
 - **Purpose:** Show the ability to design trustworthy UI around irreversible actions.
 - **Story:** A Web3 dApp with a smart contract enforcing rules, and a dashboard that reads and presents that state `[CONFIRM exactly what Guardrail enforces]`.
@@ -476,7 +476,7 @@ Every detail marked `[CONFIRM]` must be checked against the repository before pu
 - **Purpose:** Show restraint and correctness on a small utility, and treat system states as design.
 - **Story:** A currency conversion checker `[CONFIRM data source and features]`.
 - **Entry point:** One large input and result pair driven by a bundled snapshot dataset. The portfolio never calls a third-party rates API.
-- **Interaction model:** Tabs for Loading, Result, Stale rate, Error and Offline. Each renders the real state (recreated or screenshot) with annotations. A hand-built SVG sparkline (no chart library) plots the snapshot.
+- **Interaction model:** Tabs for the states the app has: Result and missing result, History loading, History empty or failed, Search no results, Empty favorites and log, and Missing comparison amount. Each renders the real state (recreated or screenshot) with annotations, and any recreation is labelled as one. A hand-built SVG sparkline (no chart library) plots the snapshot.
 - **Visual treatment:** Tabular numerals (`font-variant-numeric: tabular-nums`), hairline grid, the quietest of the five.
 - **Technical story:** Data fetching and caching, debounced input, `Intl.NumberFormat`, precision and rounding, error handling `[CONFIRM against repo]`.
 - **Case-study structure:** The standard spine plus a "Numbers you can trust" chapter on formatting and precision.
@@ -507,8 +507,8 @@ Always visible: breadcrumb "Work / Project", wordmark, palette. `Esc` closes lay
 |---|---|---|
 | 2023 | *Empty on purpose.* Caption in mono: "No commits. Left blank." `[CONFIRM]` | None. The row is intentionally blank |
 | 2024 | Came back. | First project or repository `[CONFIRM]` |
-| 2025 | Kept building. | RentIt, Marginalia, Shore Guesthouse, three state-management starters `[CONFIRM list]` |
-| 2026 | Building professionally. | PitchMatter, DealBridge CRM `[CONFIRM public wording]` |
+| 2025 | In service. Kept building. | None. The row is anchored to the NYSC placement and the Blueskills role, and neither has a verified artifact link |
+| 2026 | Building professionally. | PitchMatter |
 
 **The Gap:** 2023 is rendered at full size with nothing beside it. The empty space is the statement. It is the only place where silence is the content.
 
@@ -524,7 +524,7 @@ A reverse-chronological list. Each entry is a native `<details>` element (no Jav
 
 | Entry | Dates | Summary | Evidence |
 |---|---|---|---|
-| Frontend Developer Intern, PitchMatter (UAE-based, remote) | August 2026 to present | Frontend work on the DealBridge CRM product `[CONFIRM what can be public]` | Linked decisions or none if covered by confidentiality |
+| Frontend Developer Intern, PitchMatter (UAE-based, remote) | August 2026 to present | Company, role and dates only. No product and no description of the work | None |
 | Field Supervisor, Blueskills (remote role, field operations in Oyo State, Nigeria) | October 2025 to present | Oversees 32 branches across Oyo State, branch reporting and tracking | Branch tracker project `[CONFIRM link]` |
 | NYSC, Ministry of Establishment and Training, Oyo State | 2025 to 2026 | National service placement | None |
 | B.Sc. Geography, Obafemi Awolowo University | 2024 | Degree only, no class or CGPA | None |
@@ -658,7 +658,7 @@ Candidate alternatives if licensing or rendering issues appear: Newsreader or Fr
 
 **Theme behavior:** honor `prefers-color-scheme` on first visit, store an explicit choice, and expose a palette command "Toggle theme". **Inspect always uses the opposite theme** of the current one (paper visitors see night-ink Inspect, night visitors see paper-blueprint Inspect), so the flip is always a visible transformation.
 
-**Semantic color:** PASS and BLOCKED chips in the Guardrail simulation use text labels as well as color, never color alone.
+**Semantic color:** status chips use text labels as well as color, never color alone. The Guardrail simulation that first carried this rule is deferred (section 16.3), so the rule applies to any status chip the site ships.
 
 ## 25. Motion System
 
@@ -905,7 +905,7 @@ The site is static and collects almost nothing. Security work is about keeping i
   - `Referrer-Policy: strict-origin-when-cross-origin`
   - `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()`
 - **External links:** `rel="noopener noreferrer"` on every `target="_blank"`.
-- **Iframes:** only on explicit click, with `sandbox="allow-scripts allow-same-origin"` (the embedded sites are the owner's own deployments) and a `title`. No wallet or sign-in flows inside embeds. The Guardrail piece is a local simulation and never requests a wallet connection or signs anything.
+- **Iframes:** only on explicit click, with `sandbox="allow-scripts allow-same-origin"` (the embedded sites are the owner's own deployments) and a `title`. No wallet or sign-in flows inside embeds.
 - **Dependencies:** pin versions, run `npm audit` and Dependabot. The dependency rule in section 33 applies.
 - **Secrets:** none in the client bundle. Environment variables are limited to analytics identifiers. No API keys at all in v1.
 - **Content:** MDX is authored by the owner only. No user-generated content, so no sanitization surface. Content validation fails the build on malformed data.
@@ -1020,7 +1020,7 @@ src/
     inspect/      InspectProvider, InspectToggle, InspectOverlay, Chip, VitalsPanel
     palette/      CommandPalette, PaletteList, useCommandRegistry
     work/         Contents, ContentsRow, ProjectHeader, Chapter, StackList, NextProject
-    experiences/  rentit/, space-tourism/, guardrail/, fx-checker/, marginalia/
+    experiences/  rentit/, space-tourism/, fx-checker/, marginalia/
     lab/          LabRow, Terminal (post-R0, cut-first)
     ui/           Button, LinkExternal, Toggle, Sheet, Disclosure, CopyButton
   content/
@@ -1162,7 +1162,7 @@ export const rentit: Project = {
   title: "RentIt",
   tagline: "Two-sided marketplace where a profile must be complete before anyone can book.", // [CONFIRM]
   kind: "product",
-  year: 2025, // [CONFIRM]
+  year: 2026, // [CONFIRM]
   status: "live",
   role: "Design and build",
   order: 1,
@@ -1265,7 +1265,7 @@ Repository names (from the owner's GitHub): `rentit`, `guardrail-dapp`, `foreign
 One column, plain HTML, print-friendly:
 
 1. Name, role, location, availability line, all from `siteIdentity`.
-2. Current work from `siteIdentity` (draft: PitchMatter, DealBridge CRM, August 2026 to present) `[CONFIRM wording]`.
+2. Employer from `siteIdentity` (draft: PitchMatter, August 2026 to present). No product name and no description of the work.
 3. `siteIdentity.stackLine`.
 4. Each published project: name, one-line description, Open live, Source.
 5. Experience and education in five lines.
@@ -1296,8 +1296,8 @@ Minimum content to publish any project page:
 |---|---|---|
 | RentIt | Five steps, each with a screenshot or short loop, pins | Browse, listing detail, booking request, message thread, listing management, profile completion |
 | Space Tourism | Live iframe poster, three-width screenshots | Home, destination, crew, technology at 375, 768 and 1280 |
-| Guardrail | Three scenarios with deterministic rule outputs | Dashboard, rule configuration, an error state `[CONFIRM]` |
-| Foreign Exchange Checker | Snapshot dataset, five state screenshots or recreations | Loading, result, stale, error, offline |
+| Guardrail (deferred, section 38) | Not built | Not captured |
+| Foreign Exchange Checker | Snapshot dataset, state screenshots or recreations | Result and missing result, history loading, history empty or failed, search no results, empty favorites and log, missing comparison amount |
 | Marginalia | Manuscript text with 6 to 10 source markers (fewer if fewer are real) and their evidence | Main interface, citation view, manuscript view, source panel |
 
 ### Evidence and interpretation
@@ -1308,7 +1308,7 @@ Evidence is what actually exists. Interpretation is what the portfolio says it d
 |---|---|---|
 | RentIt | The deployed app, the repository, a screenshot of each of the five steps as they exist, and the real rules read from code and Supabase policies (profile-completion gate, access by role, booking statuses if any) | "End to end product thinking" and the Permission map, limited to rules that exist. A booking state diagram only if statuses exist |
 | Space Tourism | The deployed site, the repository, the real layout at 375, 768 and 1280 px, the sections that exist, the tab markup and keyboard behavior as built | "Art direction" and "accessible tabs" only if the markup does it. If it began from a provided design, the page says so and separates that design from the owner's own choices |
-| Guardrail | The contract source or repository, the deployment or testnet, what the contract really enforces, the real revert reasons and error states | "Trustworthy UI around irreversible actions" only for rules and failure states that exist. Simulation outputs derive from those rules. The JSON-RPC batching problem needs a commit or issue behind it |
+| Guardrail (deferred, section 38) | Deferred. The contract source is unrecoverable, so the evidence this row requires cannot exist (`docs/truth/guardrail.md:61`) | No interpretation is published |
 | Foreign Exchange Checker | The deployed app, the repository, the real data source, and only the states the app actually has. Recreated states are labeled as recreated, and the snapshot dataset is labeled as a dated snapshot | "Numbers you can trust" only for the formatting and rounding the code really does. A state the app lacks is dropped from the gallery, never invented |
 | Marginalia | The deployed app, the repository (or a written reason it is private), real screens, the facts of the AI integration | Described as the concept it is. Every numbered source marker resolves to a real screenshot, file or commit. Fewer real markers beat padded ones |
 
@@ -1412,7 +1412,7 @@ Evidence is what actually exists. Interpretation is what the portfolio says it d
 
 **Content**
 - [ ] No banned phrases, no em dashes, no fake metrics, no performance-score claims in project copy.
-- [ ] No proprietary PitchMatter material. Employer wording approved.
+- [ ] No proprietary PitchMatter material. Employer name approved; no product name and no work description is published.
 
 ## 42. Risks and Mitigations
 

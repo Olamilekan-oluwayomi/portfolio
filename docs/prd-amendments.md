@@ -1,24 +1,25 @@
-# PRD amendments owed by Phase 1 decisions
+# PRD amendments from Phase 1 decisions
 
 Appendix B rule 10 requires two things whenever the PRD and reality disagree: a recorded decision, and a PRD adjustment (`PRD.md:1507`). Phase 1 has produced the decisions. This file holds the adjustments as exact before-and-after text so they can be reviewed in one pass and applied.
 
-**Applied to `PRD.md` on 2026-10-02** for groups A, B, C, D, E and G, on the owner's instruction. Group F stays undrafted because its decision is open.
+**Applied to `PRD.md` on 2026-10-02** for groups A, B, C, D, E and G, and on 2026-10-03 for group H, on the owner's instruction. Amendment F was withdrawn on 2026-10-03: the site source repository is public (verified by an unauthenticated fetch returning HTTP 200), so the conflict F existed to resolve is gone.
 
 Every replacement swapped one line for one line, so no line number in `PRD.md` moved and every existing citation to `PRD.md` remains valid. What follows is now the record of what changed and why. Wording that was marked as a proposal was applied as such and remains open to owner editing: the decisions are settled, the phrasing is not.
 
-Amendment F is not drafted, because the decision it depends on is still open. It is recorded at the end rather than invented. Amendment G was added on 2026-10-02, when the owner deferred Guardrail. Amendment E was revised the same day, when the owner approved publishing the employer name, and that revision also closed Amendment A's 2026 cell.
+Amendment G was added on 2026-10-02, when the owner deferred Guardrail. Amendment E was revised the same day, when the owner approved publishing the employer name, and that revision also closed Amendment A's 2026 cell. Amendment H was added on 2026-10-03 to record the marker resolution sweep that closed the last of Phase 1's `[CONFIRM]` criterion.
 
 ## Summary
 
 | # | Amendment | PRD sites | Decision it implements | State |
 | --- | --- | --- | --- | --- |
-| A | About timeline, the 2025 row | `PRD.md:510`, `PRD.md:511` | `docs/phase-1-exit.md:74`, `:158` (items 4 and 14) | Applied; the 2025 row wording is still open to owner edits, and the 2026 cell is resolved by E |
+| A | About timeline, the 2025 row | `PRD.md:510`, `PRD.md:511` | `docs/phase-1-exit.md:74`, `:158` (items 4 and 14) | Applied; the 2025 row reads "In service. Kept building." as approved, and the 2026 cell is resolved by E |
 | B | RentIt example project year | `PRD.md:1165` | `docs/phase-1-exit.md:74` (item 4) | Applied |
 | C | Space Tourism, the accessible-tabs claim | `PRD.md:454`, `PRD.md:459` | `docs/phase-1-exit.md:89`, `:91` (item 5) | Applied |
 | D | FX Checker, the stale and offline states | `PRD.md:479`, `PRD.md:1300` | `docs/phase-1-exit.md:87`, `:91` (item 5) | Applied |
-| E | Employer name published, product name withheld | `PRD.md:384`, `:511`, `:527`, `:1268`, `:1415` (no change at `:73`, `:1441`) | `docs/phase-1-exit.md:53` (item 2, revised) | Applied; `currentWork` stays empty |
-| F | Site source repository and its affordances | `PRD.md:1456`, `:387`, `:128`, `:572` | `docs/phase-1-exit.md:119`, `:121` (item 7) | Blocked, decision open |
-| G | The Guardrail deferral across eleven sites | `PRD.md:31`, `:283`, `:310`, `:311`, `:386`, `:461`, `:463` to `:472`, `:661`, `:908`, `:1023`, `:1299`, `:1311` | `docs/phase-1-exit.md:85` (item 5) | Drafted |
+| E | Employer name published, product name withheld | `PRD.md:384`, `:511`, `:527`, `:1268`, `:1415`, `:1151` (no change at `:73`, `:1441`) | `docs/phase-1-exit.md:53` (item 2, revised and closed) | Applied; `currentWork` stays empty |
+| F | Site source repository and its affordances | `PRD.md:1456`, `:387`, `:128`, `:572` | `docs/phase-1-exit.md:119`, `:121` (item 7) | Withdrawn 2026-10-03: the repository is public, so no adjustment is owed |
+| G | The Guardrail deferral across eleven sites | `PRD.md:31`, `:283`, `:310`, `:311`, `:386`, `:461`, `:463` to `:472`, `:661`, `:908`, `:1023`, `:1299`, `:1311` | `docs/phase-1-exit.md:85` (item 5) | Applied |
+| H | Marker resolution sweep, 26 markers | 26 sites, listed in section H | `docs/phase-1-exit.md` sections A and D | Applied |
 
 Two citation corrections to `docs/phase-1-exit.md` are also owed, because the worksheet points at the wrong lines for two of these. They are listed at the end.
 
@@ -230,15 +231,15 @@ The original line became checkable once the employer name was approved. The repl
 
 **Site `PRD.md:1473`, Future Enhancements. Not drafted.** It lists "PitchMatter work (pattern level, with approval), DealBridge CRM case study, Branch Watch tracker story". The employer name is approved but the product is not, so "with approval" covers only the employer half and the DealBridge CRM case study is still unreachable. This is a post-launch wish list, and leaving it unchanged satisfies the deferred-fact rule (`docs/phase-1-exit.md:7`). Flagged so it is not forgotten.
 
-**The one question left in this item.** The owner approved the employer name and said nothing about the product. Whether `DealBridge CRM` or a pattern-level description of the work may be public is unanswered, so both stay out. If the owner later permits a pattern-level description, `currentWork` can be drafted, but not before.
+**The question in this item is closed (owner, 2026-10-03).** No product name and no description of the work is published, at any level of generality. The owner approved the employer name and did not permit the product, so `currentWork` stays empty and the boundary stands as the default rather than as an open question. `PRD.md:1151` was rewritten by group H to state it directly.
 
-## F. Site source repository and its affordances (blocked)
+## F. Site source repository and its affordances (withdrawn)
 
-**Not drafted, because the decision is open.** Section 43 item 16 requires the site repository to be public (`PRD.md:1456`). The owner states this repository is private (`docs/phase-1-exit.md:119`, `:121`). Three other sites assume a source link exists: the footer colophon "Source on GitHub" (`PRD.md:387`), the user need for a site source link (`PRD.md:128`), and the console greeting that links to the source repository (`PRD.md:572`).
+**Withdrawn on 2026-10-03. No adjustment is owed.** Section 43 item 16 requires the site repository to be public (`PRD.md:1456`), and it now is. An unauthenticated fetch of both `https://github.com/Olamilekan-oluwayomi/portfolio` and `https://api.github.com/repos/Olamilekan-oluwayomi/portfolio` returns HTTP 200, and the same check returns 200 for RentIt, Guardrail and Marginalia, which are known public, so the method distinguishes public from private rather than returning 200 for anything (`docs/phase-1-exit.md:121`).
 
-Item 7 records that what replaces the source affordance, or whether the repository becomes public, "is the one part of item 7 still open" (`docs/phase-1-exit.md:121`). Drafting a replacement now would mean inventing a decision. When the owner settles it, the amendment is mechanical across those four sites.
+The three sites that assume a source link now work as written, so none of them needs editing: the footer colophon "Source on GitHub" (`PRD.md:387`), the user need for a site source link (`PRD.md:128`), and the console greeting that links to the source repository (`PRD.md:572`). The only edit this amendment ever required was removing the `[CONFIRM]` marker at `PRD.md:1456`, which group H did.
 
-Two related sites look like conflicts but are not, and should not be edited with this: the footer's personal GitHub profile link is a separate affordance and can stay (`docs/phase-1-exit.md:121`), and `PRD.md:1313` already allows Marginalia's repository "or a written reason it is private", which the now-public repository makes unnecessary but not wrong.
+Two related sites look like conflicts but are not, and were not edited: the footer's personal GitHub profile link is a separate affordance and stays (`PRD.md:355`), and `PRD.md:1313` already allows Marginalia's repository "or a written reason it is private", which the now-public repository makes unnecessary but not wrong.
 
 ## G. The Guardrail deferral
 
@@ -392,6 +393,43 @@ experiences/  rentit/, space-tourism/, fx-checker/, marginalia/
 
 **Related, forced by item 7 and not by the deferral.** `PRD.md:494` carries `[CONFIRM repo visibility]` on Marginalia's Source link. Item 7 resolved every project repository as public (`docs/phase-1-exit.md:117`), so that marker can be dropped. Noted here so it is not forgotten; it is not part of the deferral.
 
+## H. Marker resolution sweep
+
+Applied 2026-10-03 to close the one live Phase 1 exit criterion: every `[CONFIRM]` has an owner decision or a written deferral (`PRD.md:1327`). Each row removes marker text from a single line, so `PRD.md` is unchanged in length and every citation still resolves. The disposition column names where the decision is recorded.
+
+| PRD site | Marker | Disposition |
+| --- | --- | --- |
+| `PRD.md:443` | `[CONFIRM origin and scope]` | RentIt origin and scope, `docs/phase-1-exit.md:78` (item 4) |
+| `PRD.md:447` | `[CONFIRM]` | RentIt RLS policies, `docs/phase-1-exit.md:90` (item 5) |
+| `PRD.md:448` | `[CONFIRM against real rules]` | RentIt access rules, `docs/phase-1-exit.md:90` (item 5) |
+| `PRD.md:450` | `[CONFIRM]` | RentIt booking statuses, `docs/phase-1-exit.md:90` (item 5) |
+| `PRD.md:455` | `[CONFIRM sections]` | Space Tourism sections, `docs/phase-1-exit.md:91` (item 5) |
+| `PRD.md:477` | `[CONFIRM data source and features]` | FX Checker data source, `docs/phase-1-exit.md:88` (item 5) |
+| `PRD.md:481` | `[CONFIRM against repo]` | FX Checker features, `docs/phase-1-exit.md:88` (item 5) |
+| `PRD.md:492` | `[CONFIRM]` | Marginalia AI integration, `docs/phase-1-exit.md:92` (item 5) |
+| `PRD.md:494` | `[CONFIRM repo visibility]` | Marginalia repository public, `docs/phase-1-exit.md:119` (item 7) |
+| `PRD.md:508` | `[CONFIRM]` | About 2023 gap confirmed, `docs/phase-1-exit.md:161` (item 14) |
+| `PRD.md:509` | `[CONFIRM]` | About 2024 artifact deferred; the cell now publishes no artifact, `docs/phase-1-exit.md:161` (item 14) |
+| `PRD.md:528` | `[CONFIRM link]` | Log link deferred; the cell names the project and publishes no link, `docs/phase-1-exit.md:149` (item 12) |
+| `PRD.md:533` | `[CONFIRM]` | Log facts confirmed against the CV, `docs/phase-1-exit.md:59` (item 3) |
+| `PRD.md:546` | `[CONFIRM inclusion]` | Lab list confirmed, `docs/phase-1-exit.md:149` (item 12) |
+| `PRD.md:560` | `[CONFIRM preferred public address]` | Public email decided, `docs/phase-1-exit.md:138` (item 10) |
+| `PRD.md:562` | `[CONFIRM]` | Availability wording decided, `docs/phase-1-exit.md:143` (item 11) |
+| `PRD.md:995` | `[CONFIRM]` | Domain deferred, no custom domain, `docs/phase-1-exit.md:154` (item 13) |
+| `PRD.md:1098` | `[CONFIRM]` | Project years decided, `docs/phase-1-exit.md:74` (item 4) |
+| `PRD.md:1143` | `[CONFIRM]` | Availability wording decided, `docs/phase-1-exit.md:143` (item 11) |
+| `PRD.md:1144` | `[CONFIRM]` | Public email decided, `docs/phase-1-exit.md:138` (item 10) |
+| `PRD.md:1147` | `[CONFIRM]` | Domain deferred, `docs/phase-1-exit.md:154` (item 13) |
+| `PRD.md:1151` | `[CONFIRM]` | Employer name published, product and work withheld, `docs/phase-1-exit.md:53` (item 2) |
+| `PRD.md:1163` | `[CONFIRM]` | RentIt tagline evidenced by the profile completion gate, `docs/truth/rentit.md:142` |
+| `PRD.md:1165` | `[CONFIRM]` | Project years decided, `docs/phase-1-exit.md:74` (item 4) |
+| `PRD.md:1212` | `[CONFIRM]` | Marginalia repository name and visibility, `docs/phase-1-exit.md:119` (item 7) |
+| `PRD.md:1456` | `[CONFIRM]` | Site repository public, verified 2026-10-03, `docs/phase-1-exit.md:121` (item 7) |
+
+**Two sites needed more than a marker deletion.** `PRD.md:509` asserted "First project or repository", which no evidence supports, so the assertion was replaced with a statement that no artifact is published. `PRD.md:1151` stated that `employer` and `currentWork` stay empty until wording is approved; approval was granted, so the sentence now states the boundary directly, that `employer` is published as PitchMatter and `currentWork` stays empty.
+
+**Twelve `CONFIRM` occurrences remain, and none is an unresolved fact.** Three are the Guardrail page markers at `PRD.md:466`, `PRD.md:470` and `PRD.md:472`. They are deliberately kept: that section is deferred and ships nothing, the facts it names were never confirmed, and deleting the markers would imply a verification that did not happen. The other nine are the PRD's own prose explaining the convention (`PRD.md:13`, `PRD.md:90`, `PRD.md:438`, `PRD.md:1327`, `PRD.md:1358`, `PRD.md:1360`, `PRD.md:1431`, `PRD.md:1444`, `PRD.md:1479`). Section 43 item 4 bars markers from published content, and none of the twelve is published.
+
 ## Voice sample audit
 
 Section C's other open box is the voice sample at `PRD.md:1243`, checked against the banned-phrase list at `PRD.md:1241`. Result: it passes, with one observation and one gap.
@@ -419,10 +457,6 @@ Two further worksheet citations are correct as written and were checked while dr
 
 ## What applying these did and did not do
 
-A, B, C, D, E and G are applied to `PRD.md` as of 2026-10-02, which satisfies Appendix B rule 10 for the decisions Phase 1 has already taken. `[CONFIRM]` markers fell from 44 to 38, no em dash was introduced, and the file is still 1507 lines, so every `PRD.md` citation elsewhere in the docs still resolves. This did not close Phase 1. Held back:
-
-- Amendment A's 2025 row wording, which is draft copy pending owner approval.
-- The product half of Amendment E: whether the product name or a pattern-level work description may be public, which item 2 leaves unanswered.
-- Amendment F, which needs the source-affordance decision in item 7.
+A, B, C, D, E, G and H are applied to `PRD.md` as of 2026-10-03, which satisfies Appendix B rule 10 for the decisions Phase 1 has taken. F is withdrawn. Resolvable `[CONFIRM]` markers fell from 44 to 12, and none of the twelve is an unresolved fact or published content. No em dash was introduced, and the file is still 1507 lines, so every `PRD.md` citation elsewhere in the docs still resolves. Nothing is held back: the three items this section previously listed as open are all closed, the 2025 row wording is approved, the product question is answered by default, and F no longer applies.
 
 Two residual mentions of the product name remain in `PRD.md` and both are deliberate. `PRD.md:1473` sits in Future Enhancements, which is post-launch and not published copy. `PRD.md:1482` is Appendix A item 2, the internal inventory of what may be said publicly, which describes the question rather than publishing an answer.

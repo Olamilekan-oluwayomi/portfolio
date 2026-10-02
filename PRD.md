@@ -440,19 +440,19 @@ Every detail marked `[CONFIRM]` must be checked against the repository before pu
 #### RentIt: "Follow a booking"
 
 - **Purpose:** Show end to end product thinking on a two-sided marketplace.
-- **Story:** A property marketplace where owners list and manage properties and renters browse, book and message, with profile completion gating participation. `[CONFIRM origin and scope]`
+- **Story:** A property marketplace where owners list and manage properties and renters browse, book and message, with profile completion gating participation.
 - **Entry point:** The Contents row opens the page on a full-width listing screenshot with numbered pins.
 - **Interaction model:** A five-step stepper: Browse, Listing, Request to book, Message, Manage listing. Each step swaps a real screenshot (or a muted loop of 8 seconds or less, poster first, `preload="none"`), reveals one or two pins, and shows the linked decisions. The stepper is a `role="group"` of buttons with roving tabindex and arrow-key movement. Without JavaScript, the steps render as a static sequence of figures.
 - **Visual treatment:** The product UI is the hero. Portfolio chrome recedes to paper and a 1 px frame.
-- **Technical story:** Supabase authentication and data access (row-level policies `[CONFIRM]`), React Router route structure, Zod validation at form boundaries, the profile-completion gate, listing management, the messaging data model.
-- **Case-study structure:** The standard spine plus a "Permission map" table (anonymous, renter, owner against what each can do) `[CONFIRM against real rules]`.
+- **Technical story:** Supabase authentication and data access (row-level policies), React Router route structure, Zod validation at form boundaries, the profile-completion gate, listing management, the messaging data model.
+- **Case-study structure:** The standard spine plus a "Permission map" table (anonymous, renter, owner against what each can do).
 - **Exit:** After the final step: "Open RentIt ↗", "Source", "Next: Marginalia".
-- **Optional (cut-first):** If the app implements booking statuses, a small state diagram of the request lifecycle `[CONFIRM]`.
+- **Optional (cut-first):** If the app implements booking statuses, a small state diagram of the request lifecycle.
 
 #### Space Tourism: "Resize the viewport"
 
 - **Purpose:** Demonstrate layout craft and art direction across breakpoints.
-- **Story:** A frontend implementation of a multi-section space tourism site (destinations, crew, technology) `[CONFIRM sections]`.
+- **Story:** A frontend implementation of a multi-section space tourism site (destinations, crew, technology).
 - **Entry point:** A dark framed viewport embedded in the paper page, showing a poster image with a "Load live preview" button.
 - **Interaction model:** After the visitor loads it, the live site renders in a sandboxed iframe inside a frame the visitor resizes using a drag handle or a keyboard-operable slider (`role="slider"`, arrow keys, snap points at 375, 768 and 1280 px). Annotations update per snap point, explaining what changed and why (navigation collapse, image art direction swap, tab layout). Fallback: three static screenshots with the same annotations.
 - **Visual treatment:** The page stays paper. Only the frame is dark, so the contrast makes the piece feel like looking through a window.
@@ -474,11 +474,11 @@ Every detail marked `[CONFIRM]` must be checked against the repository before pu
 #### Foreign Exchange Checker: "State gallery"
 
 - **Purpose:** Show restraint and correctness on a small utility, and treat system states as design.
-- **Story:** A currency conversion checker `[CONFIRM data source and features]`.
+- **Story:** A currency conversion checker.
 - **Entry point:** One large input and result pair driven by a bundled snapshot dataset. The portfolio never calls a third-party rates API.
 - **Interaction model:** Tabs for the states the app has: Result and missing result, History loading, History empty or failed, Search no results, Empty favorites and log, and Missing comparison amount. Each renders the real state (recreated or screenshot) with annotations, and any recreation is labelled as one. A hand-built SVG sparkline (no chart library) plots the snapshot.
 - **Visual treatment:** Tabular numerals (`font-variant-numeric: tabular-nums`), hairline grid, the quietest of the five.
-- **Technical story:** Data fetching and caching, debounced input, `Intl.NumberFormat`, precision and rounding, error handling `[CONFIRM against repo]`.
+- **Technical story:** Data fetching and caching, debounced input, `Intl.NumberFormat`, precision and rounding, error handling.
 - **Case-study structure:** The standard spine plus a "Numbers you can trust" chapter on formatting and precision.
 - **Exit:** "Open live ↗", "Source", "Next: Marginalia".
 
@@ -489,9 +489,9 @@ Every detail marked `[CONFIRM]` must be checked against the repository before pu
 - **Entry point:** A manuscript title page with an abstract and keywords.
 - **Interaction model:** The case study is typeset as a manuscript. Claims carry numbered source markers. Activating a marker opens a source panel (side sheet on desktop, bottom sheet on mobile) quoting the evidence (a screenshot, a repository file, a commit). "Show all sources" inlines every source as a footnote. The mechanic mirrors the product.
 - **Visual treatment:** The most editorial page: wider margins, footnotes, small caps for section marks, no drop caps.
-- **Technical story:** The citation data model (claims, sources, anchors), accessible footnote and disclosure pattern, editorial grid, highlight state, and the AI integration `[CONFIRM]`.
+- **Technical story:** The citation data model (claims, sources, anchors), accessible footnote and disclosure pattern, editorial grid, highlight state, and the AI integration.
 - **Case-study structure:** The standard spine plus a "How citations work in the product" chapter.
-- **Exit:** "Open Marginalia ↗" (https://marginalia-u6x8.vercel.app/), "Source" `[CONFIRM repo visibility]`, "Next: RentIt" (the list loops).
+- **Exit:** "Open Marginalia ↗" (https://marginalia-u6x8.vercel.app/), "Source", "Next: RentIt" (the list loops).
 
 ### 16.4 Exit behavior (all projects)
 
@@ -505,8 +505,8 @@ Always visible: breadcrumb "Work / Project", wordmark, palette. `Esc` closes lay
 
 | Year | Line (draft, owner edits for truth) | Artifact |
 |---|---|---|
-| 2023 | *Empty on purpose.* Caption in mono: "No commits. Left blank." `[CONFIRM]` | None. The row is intentionally blank |
-| 2024 | Came back. | First project or repository `[CONFIRM]` |
+| 2023 | *Empty on purpose.* Caption in mono: "No commits. Left blank." | None. The row is intentionally blank |
+| 2024 | Came back. | None. No artifact is published for this year |
 | 2025 | In service. Kept building. | None. The row is anchored to the NYSC placement and the Blueskills role, and neither has a verified artifact link |
 | 2026 | Building professionally. | PitchMatter |
 
@@ -525,12 +525,12 @@ A reverse-chronological list. Each entry is a native `<details>` element (no Jav
 | Entry | Dates | Summary | Evidence |
 |---|---|---|---|
 | Frontend Developer Intern, PitchMatter (UAE-based, remote) | August 2026 to present | Company, role and dates only. No product and no description of the work | None |
-| Field Supervisor, Blueskills (remote role, field operations in Oyo State, Nigeria) | October 2025 to present | Oversees 32 branches across Oyo State, branch reporting and tracking | Branch tracker project `[CONFIRM link]` |
+| Field Supervisor, Blueskills (remote role, field operations in Oyo State, Nigeria) | October 2025 to present | Oversees 32 branches across Oyo State, branch reporting and tracking | Branch tracker project |
 | NYSC, Ministry of Establishment and Training, Oyo State | 2025 to 2026 | National service placement | None |
 | B.Sc. Geography, Obafemi Awolowo University | 2024 | Degree only, no class or CGPA | None |
 | President, NAGS | 2023 to 2024 | Student association leadership | None |
 
-`[CONFIRM]` every title, date and number in this table (including the Blueskills branch count) against the CV before publication. An entry with `public: false` stays hidden until approved.
+Every title, date and number in this table (including the Blueskills branch count) is owner-confirmed against the current CV; `verified` stays false until the owner promotes it. An entry with `public: false` stays hidden until approved.
 
 **Rules:**
 
@@ -543,7 +543,7 @@ A reverse-chronological list. Each entry is a native `<details>` element (no Jav
 
 **Purpose:** Small things that are interesting but do not justify a full case study, plus the terminal. The whole of Lab is post-R0 and cut-first (section 5).
 
-**Initial contents** (one row each: title, year, stack, link) `[CONFIRM inclusion]`: Earthquake Tracker, IP Address Tracker, Launch Countdown Timer, Branch Watch, and the three open-source starters (Redux Toolkit, Zustand, Context API boilerplates).
+**Initial contents** (one row each: title, year, stack, link): Earthquake Tracker, IP Address Tracker, Launch Countdown Timer, Branch Watch, and the three open-source starters (Redux Toolkit, Zustand, Context API boilerplates).
 
 **Flagship (post-R0, optional, cut-first):** `/lab/terminal`, a text command interface built on the same command registry as the palette (section 34).
 
@@ -557,9 +557,9 @@ A reverse-chronological list. Each entry is a native `<details>` element (no Jav
 
 ## 20. Contact Experience
 
-- **The page:** One very large email address (`siteIdentity.email`) in Instrument Serif `[CONFIRM preferred public address]`. Click or Enter copies it to the clipboard and shows "Copied" for 1.5 seconds, announced through an `aria-live="polite"` region. A plain `mailto:` link sits directly under it.
+- **The page:** One very large email address (`siteIdentity.email`) in Instrument Serif. Click or Enter copies it to the clipboard and shows "Copied" for 1.5 seconds, announced through an `aria-live="polite"` region. A plain `mailto:` link sits directly under it.
 - **Secondary links:** LinkedIn, GitHub and the CV, read from `siteIdentity` (section 35). Each opens in the same tab for the CV and a new tab for external profiles with `rel="noopener noreferrer"`.
-- **Availability line:** `siteIdentity.availability`, one sentence, for example "Open to frontend roles. Replies within two working days." `[CONFIRM]`
+- **Availability line:** `siteIdentity.availability`, one sentence, for example "Open to frontend roles. Replies within two working days."
 - **Motion:** The underline on the email draws left to right on hover over 240 ms with `transform: scaleX`. Nothing else moves. The page ends in silence.
 - **Not included:** a form, a phone number by default, a calendar embed.
 
@@ -992,7 +992,7 @@ Static HTML on the CDN edge. Immutable hashed assets (`max-age=31536000, immutab
 
 - **Host:** Vercel. `main` deploys to production, pull requests get preview URLs.
 - **CI (GitHub Actions):** type check, lint, unit tests, content checks (section 40), build, bundle size check, Lighthouse CI on the preview, Playwright e2e and accessibility tests.
-- **Domain:** `siteIdentity.domain` `[CONFIRM]`, HTTPS, one canonical host.
+- **Domain:** `siteIdentity.domain`, HTTPS, one canonical host.
 - **Workflow:** small branches per task, many small commits, Conventional Commits, merge via PR with preview check. Commit and push after every working step so a failed experiment never costs more than a few minutes.
 
 ## 34. Component Architecture
@@ -1095,7 +1095,7 @@ export type Project = {
   title: string;
   tagline: string;                  // <= 90 chars, used as the Contents margin note
   kind: "product" | "implementation" | "concept" | "experiment";
-  year: number;                     // [CONFIRM]
+  year: number;
   status: "live" | "testnet" | "concept" | "archived";
   role: string;                     // "Design and build"
   order: number;
@@ -1140,15 +1140,15 @@ siteIdentity = {
   employer,      // approved wording only
   currentWork,   // approved wording only
   stackLine,     // one line, used on the homepage and the Brief
-  availability,  // one sentence [CONFIRM]
-  email,         // [CONFIRM]
+  availability,  // one sentence
+  email,
   links,         // { github: "https://github.com/Olamilekan-oluwayomi", linkedin: "https://www.linkedin.com/in/olamilekanilesanmi" }
   cv,            // "/olamilekan-ilesanmi-cv.pdf"
-  domain         // [CONFIRM]
+  domain
 }
 ```
 
-This is a specification, not implementation code. `employer` and `currentWork` remain subject to the `[CONFIRM]` and confidentiality rules (section 18): until wording is approved they stay empty, and no page, tag or structured data says anything about them. If approval is refused, record a decision and adjust G1.
+This is a specification, not implementation code. `employer` is published as PitchMatter; `currentWork` stays empty and no page, tag or structured data names the product or describes the work (owner, 2026-10-03; section 18).
 
 ### What `verified` means
 
@@ -1160,9 +1160,9 @@ This is a specification, not implementation code. `employer` and `currentWork` r
 export const rentit: Project = {
   slug: "rentit",
   title: "RentIt",
-  tagline: "Two-sided marketplace where a profile must be complete before anyone can book.", // [CONFIRM]
+  tagline: "Two-sided marketplace where a profile must be complete before anyone can book.",
   kind: "product",
-  year: 2026, // [CONFIRM]
+  year: 2026,
   status: "live",
   role: "Design and build",
   order: 1,
@@ -1209,7 +1209,7 @@ export const rentitZod: Decision = {
 };
 ```
 
-Repository names (from the owner's GitHub): `rentit`, `guardrail-dapp`, `foreign-exchange-checker`, `space-tourism-website-main`. The Marginalia repository name and visibility are `[CONFIRM]`.
+Repository names (from the owner's GitHub): `rentit`, `guardrail-dapp`, `foreign-exchange-checker`, `space-tourism-website-main`. The Marginalia repository is `Marginalia` and is public.
 
 ## 36. Routing
 
@@ -1453,7 +1453,7 @@ The portfolio is done when every MUST in this document is implemented or deferre
 13. **Technical.** WCAG 2.2 AA is verified by automated and manual testing.
 14. **Technical.** SEO assets (titles, descriptions, OG images, JSON-LD, sitemap, robots, canonical) are live and validated.
 15. **Technical.** Analytics are cookieless and respect DNT and GPC. Security headers are deployed and the CSP reports no violations.
-16. **Technical.** The source repository is public `[CONFIRM]`, with a README explaining decisions about the site itself (project zero).
+16. **Technical.** The source repository is public, with a README explaining decisions about the site itself (project zero).
 17. **Quality.** No proprietary PitchMatter material, no fake metrics, no unsupported performance claims, no banned phrases, and no em dashes in site copy.
 18. **Quality.** No accidental scope creep: every shipped feature traces to a line in this PRD, and no cut-first feature shipped ahead of the core.
 19. **Concept.** Content beats chrome. The memorability test (G5) has been run with five reviewers and recorded. If reviewers recalled only mechanics, chrome was cut before launch, and any interaction whose removal loses no information has been removed.

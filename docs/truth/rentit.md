@@ -2,7 +2,7 @@
 
 Source repository: `C:\Users\hp\Desktop\rentit`
 Inspected at HEAD `f07791d` (`f07791db8b241ed22143e5d8c0946a94e728c2a4`, 2026-07-31, "docs: update README for favorites, web push notifications, and co-located tests")
-Origin: `https://github.com/Olamilekan-oluwayomi/rentit.git` (`git config remote.origin.url`)
+Origin: `https://github.com/Olamilekan-oluwayomi/rentit.git` (`git config remote.origin.url`). Repository visibility: public. Verified 2026-10-02 by loading the repository page, which returns a repository view and not a 404 and reports 128 commits.
 Read-only inspection. Nothing in the RentIt repository was modified.
 Every claim below cites a file path or a commit hash. Anything I could not confirm from the repository is marked "unverified".
 

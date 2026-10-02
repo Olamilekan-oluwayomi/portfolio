@@ -26,7 +26,7 @@ The owner must supply the confirmed URL from the Vercel dashboard. Until then st
 
 **Private at audit time.** The GitHub API returns HTTP 404 for `https://api.github.com/repos/Olamilekan-oluwayomi/Marginalia`, which is what GitHub returns for a private repository to an unauthenticated caller. A repository that did not exist, or one owned by a different account, would produce the same 404, so this is strong but not absolute evidence. Combined with `remote.origin.url` resolving to that path and the local clone having `origin/main`, treat "private" as verified enough to plan around, and confirm it from the GitHub UI before it is published.
 
-**Amendment (2026-10-02): superseded.** The owner states the repository is public as of this date. The 404 above is left in place as the dated record of what the API returned during the audit. The change was not independently re-checked, because the review tooling could not reach the GitHub API at the time of this note. Re-confirm from the GitHub UI or the API before publishing, and plan for a Source link now that a visitor can open the repository.
+**Amendment (2026-10-02): superseded, and now verified.** The owner states the repository is public as of this date. The 404 above is left in place as the dated record of what the API returned during the audit. The public status was then confirmed independently on 2026-10-02 by loading `https://github.com/Olamilekan-oluwayomi/Marginalia`, which returned a repository view and not a 404: the standard GitHub tabs are present, the default branch is `main`, and the page reports 103 commits. That count matches the 103 commits on `main` recorded at line 6 above, which corroborates that the page is this repository rather than a namesake. Plan for a Source link now that a visitor can open the repository.
 
 This clears the `[CONFIRM repo visibility]` marker at PRD line 1212 and line 494. PRD line 1313 allows "the repository (or a written reason it is private)". On the amendment above the repository is public, so the project page carries a Source link like the other four projects and the question of what replaces that affordance no longer applies.
 
@@ -215,7 +215,7 @@ Vitest is split into two projects selected by file extension, `.test.ts` in node
 ## Open uncertainties
 
 1. Live URL. Vercel project link exists, deployment URL not in the repository, and the PRD's drafted URL is unconfirmed. Owner action.
-2. Repository visibility is private, inferred from a 404 on the unauthenticated GitHub API. Confirm in the GitHub UI before publishing. PRD line 494's `[CONFIRM repo visibility]` and line 1212's repository name can both be closed once confirmed.
+2. Repository visibility: public, verified on 2026-10-02 by loading the repository page, which returns a repository view and reports 103 commits, matching line 6. The earlier private reading came from a 404 on the unauthenticated GitHub API. PRD line 494's `[CONFIRM repo visibility]` and line 1212's repository name can both be closed.
 3. Whether the 474 test figure is current. Owner verified at `0d71954`; I did not run the suite.
 4. Whether a production deployment exists at all beyond the two "Trigger initial deployment" commits. unverified.
 5. Tavily free tier is capped at 1,000 credits per month per `.env.example`. Whether the live deployment is on that tier and what happens at the cap is unverified. This is a real product limitation if the portfolio implies "live web research" without qualification.

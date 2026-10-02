@@ -2,7 +2,7 @@
 
 Source repository: `C:\Users\hp\Desktop\Frontend-mentor\foreign-exchange-checker`
 Inspected at HEAD `3a73025` (`3a73025a88261a197c76718f1dec3fdcc41fadff`, 2026-07-14, "Refactor: migrate from context to feature-based architecture").
-Origin: `https://github.com/Olamilekan-oluwayomi/foreign-exchange-checker.git` (source repository `.git/config`, read with `git config remote.origin.url`). Repository visibility: unverified.
+Origin: `https://github.com/Olamilekan-oluwayomi/foreign-exchange-checker.git` (source repository `.git/config`, read with `git config remote.origin.url`). Repository visibility: public. Verified 2026-10-02 by loading the repository page, which returns a repository view and not a 404, reports 33 commits, and names the same live demo as the owner-supplied URL.
 
 Read-only source and history inspection. Source paths and line numbers below refer to that repository at this commit; explicitly identified portfolio paths refer to this repository. This is draft evidence, not approved public copy. `verified: false`; only the owner changes verification (portfolio `AGENTS.md:5`).
 

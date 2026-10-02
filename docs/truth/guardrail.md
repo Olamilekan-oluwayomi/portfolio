@@ -2,7 +2,7 @@
 
 Source repository: `C:\Users\hp\Desktop\guardrail-dapp`
 Inspected at HEAD `1e6f005` (`1e6f005c6e44596338b3d4d7cc16319b8356487f`, 2026-07-20, "page modification").
-Origin: `https://github.com/Olamilekan-oluwayomi/guardrail-dapp.git` (source repository `.git/config`, read with `git config remote.origin.url`). Repository visibility: unverified.
+Origin: `https://github.com/Olamilekan-oluwayomi/guardrail-dapp.git` (source repository `.git/config`, read with `git config remote.origin.url`). Repository visibility: public. Verified 2026-10-02 by loading the repository page, which returns a repository view and not a 404 and reports 2 commits, matching the two inspected commits at line 13.
 
 Read-only source and history inspection. Source paths and line numbers below refer to that repository at this commit; explicitly identified portfolio paths refer to this repository. This is draft evidence, not approved public copy. `verified: false`; only the owner changes verification (portfolio `AGENTS.md:5`).
 
@@ -57,6 +57,10 @@ The wallet setup names Arc Testnet and its native currency USDC with 18 decimals
 The ABI includes `spend`, `deposit`, `withdraw`, owner-setting functions, `pause`, `unpause`, `transfer_ownership`, balance/window getters and events. It does not contain contract bodies or custom-error entries. An ABI signature cannot prove that a memo, role, daily limit or pause is enforced on-chain (`AgentExpenseGuardrail_abi.json:1`, `AgentExpenseGuardrail_abi.json:158`, `AgentExpenseGuardrail_abi.json:184`, `AgentExpenseGuardrail_abi.json:246`, commit `1e6f005`).
 
 No Vyper/Solidity source, contract test suite or deployment artifact was found in the tracked tree at `1e6f005`. The deployed contract, exact revert reasons, window-reset rules and token handling are unverified. This leaves the contract-evidence requirement open in portfolio `PRD.md:1311` (§38).
+
+**Explorer check (2026-10-02).** The configured address was queried against Arcscan, Arc's Blockscout explorer for testnet (`https://testnet.arcscan.app` redirects to `https://explorer.testnet.arc.io`), using the read-only JSON API rather than the rendered page. `GET /api/v2/addresses/0x56b69422f196bfb49188764cc6afb6e9b750c22d` returns `is_contract: true`, `creation_status: "success"`, `is_verified: false` and `name: null`. `GET /api/v2/smart-contracts/{address}` returns creation and deployed bytecode with `implementations: []` and `proxy_type: null` (so it is not a proxy), and returns no `language`, `name`, `compiler_version` or `source_code` field.
+
+Two consequences. A contract does exist and deployed successfully at the address the dashboard hardcodes, which the truth sheet previously could not establish. But it is not verified, so no source is published on chain, the contract language remains unconfirmed, and the explorer cannot recover the Vyper source. Combined with the owner's statement that the source cannot now be located, the contract-source route is closed by evidence rather than by assumption. The owner's remaining options are a local recovery of the source or the project decision at line 99.
 
 ## 5. Features that exist in code
 

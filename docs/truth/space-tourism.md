@@ -2,7 +2,7 @@
 
 Source repository: `C:\Users\hp\Desktop\Frontend-mentor\space-tourism-website-main`
 Inspected at HEAD `90f8926` (`90f8926c4c39a9737f61990c39180a849468ef2a`, 2026-07-08, "Favicon updated").
-Origin: `https://github.com/Olamilekan-oluwayomi/space-tourism-website-main.git` (source repository `.git/config`, read with `git config remote.origin.url`). Repository visibility: unverified.
+Origin: `https://github.com/Olamilekan-oluwayomi/space-tourism-website-main.git` (source repository `.git/config`, read with `git config remote.origin.url`). Repository visibility: public. Verified 2026-10-02 by loading the repository page, which returns a repository view and not a 404 and reports 9 commits.
 
 Read-only source and history inspection. Source paths and line numbers below refer to that repository at this commit; explicitly identified portfolio paths refer to this repository. This is draft evidence, not approved public copy. `verified: false`; only the owner changes verification (portfolio `AGENTS.md:5`).
 

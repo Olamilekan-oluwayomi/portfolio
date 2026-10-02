@@ -26,7 +26,7 @@ finalUrl: https://guardrail-dapp.vercel.app/
 title: Agent Expense Guardrail
 ```
 
-This records document reachability only. Wallet connection, RPC availability, contract deployment, transactions and live failure states remain unverified. The returned title matches the title authored in `app/layout.tsx:4`, not proof of source/deployment parity.
+This records document reachability only. Wallet connection, RPC availability, contract deployment, transactions and live failure states remain unverified. The returned title matches the title authored in `app/layout.tsx:4`, not proof of source/deployment parity. A later fetch on 2026-10-02 rendered the dashboard, and its footer names the contract as `0x56b6...c22d` on Arc Testnet with chain ID 5042002, matching the hardcoded values at line 51 and line 53. That corroborates the contract address in the deployed app, which the audit could not establish. It is still not a commit-level parity check, and enforcement remains unverified at line 59.
 
 ## 3. Stack and application entry points
 

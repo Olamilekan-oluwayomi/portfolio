@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font candidates</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="specimen.css">
+<!-- Alternative families are loaded from the Google Fonts CDN for this decision aid
+     only. The site never does this: PRD.md:828 requires self-hosting with no
+     third-party font requests. The chosen families are self-hosted in fonts/. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=IBM+Plex+Mono:wght@400&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400&family=Newsreader:opsz,wght@6..72,400&display=swap">
+<style>
+  .cand { padding: var(--space-6) 0; border-bottom: var(--border-width) solid var(--rule); }
+  .cand:last-of-type { border-bottom: 0; }
+  .cand .name { font-family: var(--font-mono); font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta); text-transform: uppercase; color: var(--graphite);
+    margin-bottom: var(--space-3); }
+  .cand .name b { color: var(--ink); font-weight: 400; }
+  .cand .sample-display { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; letter-spacing: -0.015em; margin: 0 0 var(--space-3); }
+  .cand .sample-body { font-size: 1.0625rem; line-height: 1.6; max-width: 62ch; margin: 0 0 var(--space-3); }
+  .cand .sample-mono { font-size: 0.8125rem; line-height: 1.5; letter-spacing: 0.01em; margin: 0; }
+  .chosen { border-left: 3px solid var(--redline); padding-left: var(--space-4); margin-left: calc(-1 * var(--space-4)); }
+  .tagline-note { font-family: var(--font-mono); font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta); text-transform: uppercase; color: var(--redline-text); }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="spec-head">
+    <h1>Font candidates</h1>
+    <nav>
+      <a href="type.html">Type</a>
+      <a href="color.html">Color</a>
+      <a href="samples.html">Samples</a>
+      <a href="candidates.html" aria-current="page">Candidates</a>
+    </nav>
+  </header>
+
+  <p class="spec-note" style="margin-top: var(--space-8)">
+    Section 23 names alternatives and says to decide in Phase 2 after rendering real content at
+    real sizes. This page is that rendering. Each block shows the same real string in the chosen
+    family and in its alternatives, at site sizes. The chosen families are marked in red and are
+    the ones already self-hosted and measured on the <a href="type.html">type page</a>.
+  </p>
+
+  <section class="spec-section">
+    <h2>Display serif</h2>
+
+    <div class="cand chosen">
+      <p class="name"><b>Instrument Serif</b> &nbsp; chosen &nbsp; self-hosted, 21,032 bytes regular</p>
+      <p class="sample-display" style="font-family: 'Instrument Serif', serif">Olamilekan Ilesanmi</p>
+      <p class="sample-display" style="font-family: 'Instrument Serif', serif">Foreign Exchange Checker</p>
+    </div>
+
+    <div class="cand">
+      <p class="name">Newsreader &nbsp; alternative</p>
+      <p class="sample-display" style="font-family: 'Newsreader', serif">Olamilekan Ilesanmi</p>
+      <p class="sample-display" style="font-family: 'Newsreader', serif">Foreign Exchange Checker</p>
+    </div>
+
+    <div class="cand">
+      <p class="name">Fraunces &nbsp; alternative</p>
+      <p class="sample-display" style="font-family: 'Fraunces', serif">Olamilekan Ilesanmi</p>
+      <p class="sample-display" style="font-family: 'Fraunces', serif">Foreign Exchange Checker</p>
+    </div>
+
+    <p class="spec-note" style="margin-top: var(--space-6)">
+      Instrument Serif is the narrowest of the three, which is what lets the name sit at
+      10.5rem inside a 1280 px container without wrapping. It is also a single weight and a
+      single style per file, so the regular and italic together cost 43 KB rather than the
+      variable files the other two would need.
+    </p>
+  </section>
+
+  <section class="spec-section">
+    <h2>UI and body sans</h2>
+
+    <div class="cand chosen">
+      <p class="name"><b>Geist</b> &nbsp; chosen &nbsp; self-hosted, 29,400 bytes variable, 400 to 500</p>
+      <p class="sample-body" style="font-family: 'Geist', sans-serif">A marketplace where a profile has to be complete before anyone can book. Here is why. The gate is server-enforced, so the overlay is a courtesy rather than the control.</p>
+      <p class="sample-mono" style="font-family: 'Geist', sans-serif; font-weight: 500">Only have 30 seconds? Read the brief.</p>
+    </div>
+
+    <div class="cand">
+      <p class="name">Inter Tight &nbsp; alternative</p>
+      <p class="sample-body" style="font-family: 'Inter Tight', sans-serif">A marketplace where a profile has to be complete before anyone can book. Here is why. The gate is server-enforced, so the overlay is a courtesy rather than the control.</p>
+      <p class="sample-mono" style="font-family: 'Inter Tight', sans-serif; font-weight: 500">Only have 30 seconds? Read the brief.</p>
+    </div>
+
+    <div class="cand">
+      <p class="name">Switzer &nbsp; alternative, not on Google Fonts so not shown here</p>
+      <p class="sample-body" style="font-family: 'Geist', sans-serif; opacity: .5">Switzer ships from Fontshare rather than Google Fonts. Rendering it needs a second CDN or a manual file, so it is excluded from this comparison rather than approximated with a different face.</p>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <h2>Metadata and annotation mono</h2>
+
+    <div class="cand chosen">
+      <p class="name"><b>Geist Mono</b> &nbsp; chosen &nbsp; self-hosted, 23,128 bytes variable</p>
+      <p class="sample-mono" style="font-family: 'Geist Mono', monospace">2026&nbsp;&nbsp;REACT · VITE · SUPABASE<br>Fig. 3&nbsp;&nbsp;RentIt booking flow</p>
+    </div>
+
+    <div class="cand">
+      <p class="name">JetBrains Mono &nbsp; alternative</p>
+      <p class="sample-mono" style="font-family: 'JetBrains Mono', monospace">2026&nbsp;&nbsp;REACT · VITE · SUPABASE<br>Fig. 3&nbsp;&nbsp;RentIt booking flow</p>
+    </div>
+
+    <div class="cand">
+      <p class="name">IBM Plex Mono &nbsp; alternative</p>
+      <p class="sample-mono" style="font-family: 'IBM Plex Mono', monospace">2026&nbsp;&nbsp;REACT · VITE · SUPABASE<br>Fig. 3&nbsp;&nbsp;RentIt booking flow</p>
+    </div>
+
+    <p class="spec-note" style="margin-top: var(--space-6)">
+      Geist Mono is the only one of the three drawn to pair with the body sans beside it
+      (<code>PRD.md:608</code>), and substituting it would break that pairing. That is the
+      reason it is chosen, and it is the weakest of the three reasons here: if the owner prefers
+      either alternative on sight, the change costs one file and one token.
+    </p>
+  </section>
+
+  <section class="spec-section">
+    <h2>The decision as it stands</h2>
+    <p class="spec-note">
+      No licensing or rendering problem appeared, which is the condition section 23 attaches to
+      using the alternatives. The chosen trio renders correctly, pairs as intended, and measures
+      95,688 bytes total against a 150 KB budget. So the default stands and no substitution is
+      made. <span class="tagline-note">This is reversible</span>: every alternative here is one
+      token and one file away, and the specimen is the place to change it.
+    </p>
+  </section>
+
+</div>
+</body>
+</html>

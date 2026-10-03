@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Annotation and figure samples</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="specimen.css">
+<style>
+  /* Reading layout from PRD.md:587: metadata in columns 1 to 2, body text in
+     columns 3 to 8 held to 68 characters, annotation column in columns 9 to 12.
+     Approximated here with a three-track grid. */
+  .reading {
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 68ch) minmax(14rem, 1fr);
+    gap: var(--gap, var(--space-6));
+    align-items: start;
+  }
+  @media (max-width: 1100px) {
+    .reading { grid-template-columns: 8rem minmax(0, 68ch); }
+  }
+  @media (max-width: 768px) {
+    .reading { grid-template-columns: 1fr; }
+  }
+
+  .reading .meta-col {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    color: var(--graphite);
+    line-height: var(--leading-meta);
+  }
+
+  /* Anchor: the numbered marker from PRD.md:717, used here on desktop too so the
+     hover and the keyboard path are the same control. */
+  .anchor {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1;
+    color: var(--redline-text);
+    background: transparent;
+    border: var(--border-width) solid var(--redline);
+    border-radius: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    vertical-align: super;
+    cursor: help;
+    transition: background-color var(--dur-fast) var(--ease-out);
+  }
+  .anchor:hover,
+  .anchor[aria-expanded="true"] {
+    background: var(--paper-raised);
+  }
+  .anchor:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* The note. Absolute in the annotation column on a pointer device, in flow
+     otherwise. Opacity only, 150 ms, per PRD.md:716. */
+  .note {
+    font-family: var(--font-mono);
+    font-size: var(--text-annotation);
+    line-height: var(--leading-annotation);
+    letter-spacing: var(--tracking-annotation);
+    color: var(--ink);
+  }
+  .note .note-summary {
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    font-weight: var(--weight-ui);
+    color: var(--ink);
+    margin: 0 0 var(--space-2);
+  }
+  .note .note-body { margin: 0; }
+  .note .status {
+    display: inline-block;
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    color: var(--graphite);
+    margin-top: var(--space-2);
+  }
+
+  /* Leader line: 1 px redline, drawn to the left of the note (PRD.md:716). */
+  .note::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * var(--space-8));
+    top: 0.75em;
+    width: var(--space-6);
+    height: var(--border-width);
+    background: var(--redline);
+  }
+
+  @media (hover: hover) and (min-width: 1101px) {
+    .note-slot { position: relative; }
+    .note-slot .note {
+      position: absolute;
+      inset: 0 auto auto 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--dur-fast) var(--ease-out);
+    }
+    .note-slot .note.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  /* No-hover fallback and narrow screens: the note sits in the flow, collapsed to
+     its one-line summary until the marker is used (PRD.md:719). */
+  @media (hover: none), (max-width: 1100px) {
+    .note-slot { grid-column: 2; }
+    @media (max-width: 768px) { .note-slot { grid-column: 1; } }
+    .note { display: none; border-left: var(--border-width) solid var(--redline); padding-left: var(--space-4); margin-top: var(--space-3); }
+    .note.is-open { display: block; }
+    .note::before { display: none; }
+    .note .note-body { display: none; }
+    .note.is-open .note-body { display: block; }
+  }
+
+  /* Figure: natural colour inside a 1 px --ink frame, no device mockup, fixed
+     aspect ratio, mono caption with a redline pin (PRD.md:596). */
+  .fig { margin: 0; }
+  .fig .frame {
+    position: relative;
+    border: var(--border-width) solid var(--ink);
+    aspect-ratio: 16 / 10;
+    background: var(--paper-raised);
+    display: grid;
+    place-items: center;
+  }
+  .fig .frame .placeholder {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    color: var(--graphite);
+    text-align: center;
+    padding: var(--space-4);
+  }
+  .fig .pin {
+    position: absolute;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--redline);
+    border: 2px solid var(--paper);
+  }
+  .fig figcaption {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    color: var(--graphite);
+    margin-top: var(--space-3);
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="spec-head">
+    <h1>Annotation and figure</h1>
+    <nav>
+      <a href="type.html">Type</a>
+      <a href="color.html">Color</a>
+      <a href="samples.html" aria-current="page">Samples</a>
+      <a href="candidates.html">Candidates</a>
+    </nav>
+  </header>
+
+  <p class="spec-note" style="margin-top: var(--space-8)">
+    Static HTML samples of the two components Phase 2 owes. The annotation follows
+    <code>PRD.md:716</code> to <code>PRD.md:719</code>: an <code>&lt;aside aria-label="Decision note"&gt;</code>
+    in the DOM immediately after what it explains, positioned into the margin by CSS, so a screen
+    reader meets it inline in order and needs no pointer. The figure follows
+    <code>PRD.md:596</code>. <b>The record text is layout placeholder, not publishable copy.</b>
+    Real records come from <code>docs/truth/</code> once the owner promotes the seeds, and every
+    seed is still <code>verified: false</code>.
+  </p>
+
+  <section class="spec-section">
+    <h2>Matrix note in the reading layout</h2>
+
+    <div class="reading">
+      <div class="meta-col">2026<br>MARGINALIA</div>
+
+      <div>
+        <p class="t-body">
+          The answer text arrives with citation tokens in it, each one an index into a numbered
+          evidence list<button class="anchor" type="button" aria-expanded="false" aria-controls="note-1">1</button>
+          that the server assembles before the model ever sees it. Nothing in the display path
+          trusts the model to name a source.
+        </p>
+      </div>
+
+      <div class="note-slot">
+        <aside class="note" id="note-1" aria-label="Decision note">
+          <p class="note-summary">Close the token in the citation protocol, not in the model.</p>
+          <p class="note-body">
+            The token is resolved server-side against the evidence list. An index that does not
+            resolve is dropped rather than rendered, and every display field is filled from real
+            data. The cost is that a claim the model grounds in nothing simply loses its citation
+            instead of failing loudly.
+            <span class="status">Status: kept &nbsp; Theme: data</span>
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <h2>Figure treatment</h2>
+
+    <figure class="fig">
+      <div class="frame">
+        <span class="placeholder">Screenshot pending<br>natural colour, no device frame</span>
+        <span class="pin" style="left: 22%; top: 34%" aria-hidden="true"></span>
+        <span class="pin" style="left: 61%; top: 68%" aria-hidden="true"></span>
+      </div>
+      <figcaption>Fig. 3 &nbsp; Booking flow, step two &nbsp; 1440 wide &nbsp; AVIF with WebP fallback</figcaption>
+    </figure>
+
+    <p class="spec-note" style="margin-top: var(--space-6)">
+      The frame is a fixed aspect ratio so nothing shifts when the image arrives
+      (<code>PRD.md:596</code>, and CLS in <code>PRD.md:808</code>). The two redline pins are
+      decorative markers that an anchored note attaches to. No screenshot is committed in Phase 2:
+      the truth sheets record images as still outstanding per project, and a screenshot that does
+      not exist would be an invented asset.
+    </p>
+  </section>
+
+</div>
+
+<script>
+  // One note open at a time, Esc closes (PRD.md:716). The note is in the DOM
+  // regardless, so this only affects the visual reveal.
+  const anchors = Array.from(document.querySelectorAll(".anchor"));
+  const close = (a) => {
+    a.setAttribute("aria-expanded", "false");
+    const n = document.getElementById(a.getAttribute("aria-controls"));
+    if (n) n.classList.remove("is-open");
+  };
+  anchors.forEach((a) => {
+    a.addEventListener("click", () => {
+      const open = a.getAttribute("aria-expanded") === "true";
+      anchors.forEach(close);
+      if (!open) {
+        a.setAttribute("aria-expanded", "true");
+        const n = document.getElementById(a.getAttribute("aria-controls"));
+        if (n) n.classList.add("is-open");
+      }
+    });
+    a.addEventListener("mouseenter", () => {
+      if (window.matchMedia("(hover: hover) and (min-width: 1101px)").matches) {
+        anchors.forEach(close);
+        a.setAttribute("aria-expanded", "true");
+        document.getElementById(a.getAttribute("aria-controls")).classList.add("is-open");
+      }
+    });
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") anchors.forEach(close);
+  });
+</script>
+</body>
+</html>

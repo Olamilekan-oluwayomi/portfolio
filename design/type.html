@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Type specimen</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="specimen.css">
+</head>
+<body>
+<div class="shell">
+
+  <header class="spec-head">
+    <h1>Type specimen</h1>
+    <nav>
+      <a href="type.html" aria-current="page">Type</a>
+      <a href="color.html">Color</a>
+      <a href="samples.html">Samples</a>
+      <a href="candidates.html">Candidates</a>
+      <button class="theme-toggle" type="button" id="theme">Night</button>
+    </nav>
+  </header>
+
+  <p class="spec-note" style="margin-top: var(--space-8)">
+    Every value on this page comes from the hierarchy table at <code>PRD.md:614</code> to
+    <code>PRD.md:624</code>. The copy is real site copy taken from the PRD, not placeholder text,
+    because the point of the specimen is to show the type at real sizes with real strings.
+    Toggle Night in the header to check the second theme; contrast is verified on the
+    <a href="color.html">color page</a>.
+  </p>
+
+  <section class="spec-section">
+    <h2>Families</h2>
+
+    <div class="row">
+      <div class="row-label">Instrument Serif<small>Display and headings, 400, regular and italic. 28 px and above only.</small></div>
+      <div>
+        <p class="t-display-l">Editorial confidence</p>
+        <p class="t-lead" style="margin-top: var(--space-3)">Editorial confidence, italic</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Geist<small>UI and body. Variable, two weights loaded: 400 and 500.</small></div>
+      <div>
+        <p class="t-body">Two-sided marketplace where a profile must be complete before anyone can book.</p>
+        <p class="t-ui" style="margin-top: var(--space-3)">Read the brief</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Geist Mono<small>Metadata and annotations. The engineer's voice.</small></div>
+      <div>
+        <p class="t-annotation">Result: 1.8 seconds, seven sequential getters at 300 ms.</p>
+        <p class="t-meta" style="margin-top: var(--space-3)">2026&nbsp;&nbsp;REACT · VITE · SUPABASE</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <h2>Hierarchy</h2>
+
+    <div class="row">
+      <div class="row-label">Display XL<small>Instrument Serif Regular<br>clamp(3.5rem, 11vw, 10.5rem)<br>0.92 / -0.02em</small></div>
+      <p class="t-display-xl">Olamilekan Ilesanmi</p>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Display L<small>Instrument Serif Regular<br>clamp(2.5rem, 6vw, 5.5rem)<br>1.0 / -0.015em</small></div>
+      <p class="t-display-l">Foreign Exchange Checker</p>
+    </div>
+
+    <div class="row">
+      <div class="row-label">H2<small>Instrument Serif Regular<br>clamp(1.75rem, 3.4vw, 2.75rem)<br>1.1 / -0.01em</small></div>
+      <p class="t-h2">What I would change</p>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Lead and subline<small>Instrument Serif Italic<br>clamp(1.25rem, 2vw, 1.75rem)<br>1.35 / 0</small></div>
+      <p class="t-lead">Frontend developer. I keep notes on every decision.</p>
+    </div>
+
+    <div class="row">
+      <div class="row-label">H3<small>Geist 500<br>1.25rem / 1.3 / 0</small></div>
+      <p class="t-h3">Premise</p>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Body<small>Geist 400<br>1rem mobile, 1.0625rem desktop<br>1.6 / 0, measure capped at 68ch</small></div>
+      <p class="t-body">A marketplace where a profile has to be complete before anyone can book. Here is why. The gate is server-enforced, so the overlay is a courtesy rather than the control. Moving the requirement from a display name to a location was the change that made the rule mean something.</p>
+    </div>
+
+    <div class="row">
+      <div class="row-label">UI label<small>Geist 500<br>0.875rem / 1.2 / 0.01em</small></div>
+      <p class="t-ui">Only have 30 seconds? Read the brief.</p>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Annotation<small>Geist Mono 400<br>0.8125rem / 1.5 / 0.01em</small></div>
+      <p class="t-annotation">Chose the wallet provider over a direct RPC read because the connected account was already in scope, at the cost of a provider dependency.</p>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Meta<small>Geist Mono 400, uppercase. Minimum size, nothing below 12 px<br>0.75rem / 1.4 / 0.04em</small></div>
+      <p class="t-meta">Fig. 3&nbsp;&nbsp;RentIt booking flow&nbsp;&nbsp;2026</p>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <h2>Rules</h2>
+
+    <div class="row">
+      <div class="row-label">Tabular numerals<small>Any number in a column or that changes must not shift width.</small></div>
+      <div>
+        <p class="t-meta" style="font-variant-numeric: tabular-nums">
+          RATES 1.0842 &nbsp; 1.0847 &nbsp; 1.0791 &nbsp; 1.0963 &nbsp; 1.0918
+        </p>
+        <p class="t-meta" style="opacity: .55">
+          RATES 1.0842 &nbsp; 1.0847 &nbsp; 1.0791 &nbsp; 1.0963 &nbsp; 1.0918 &nbsp;(proportional, for contrast)
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Measure<small>Body text never exceeds 68 characters.</small></div>
+      <p class="t-body" style="border-right: var(--border-width) solid var(--redline); padding-right: var(--space-2)">
+        This paragraph is set to the maximum measure so the line-ending of the longest permitted line can be checked by eye against the redline. If a line reaches past it, the container is too wide.
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Font files<small>Self-hosted, Latin subset, measured 2026-10-03.</small></div>
+      <table class="spec">
+        <caption>Three files preloaded. Instrument Serif Italic is not preloaded.</caption>
+        <thead>
+          <tr><th scope="col">File</th><th scope="col">Bytes</th><th scope="col">Preload</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>instrument-serif-regular.woff2</td><td class="num">21,032</td><td class="num">yes</td></tr>
+          <tr><td>instrument-serif-italic.woff2</td><td class="num">22,128</td><td class="num">no</td></tr>
+          <tr><td>geist-var.woff2</td><td class="num">29,400</td><td class="num">yes</td></tr>
+          <tr><td>geist-mono-var.woff2</td><td class="num">23,128</td><td class="num">yes</td></tr>
+          <tr><td><b>Total</b></td><td class="num"><b>95,688</b></td><td class="num">93.4 KB</td></tr>
+        </tbody>
+      </table>
+      <p class="spec-note" style="margin-top: var(--space-3)">
+        Budget is 150 KB total woff2 and at most 3 preloaded (<code>PRD.md:803</code>). Preloaded
+        weight is 73,560 bytes, 71.8 KB. Both are inside budget with no adjustment needed.
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Specimen-only theme toggle. The site itself uses the palette command and
+  // stores the choice; here it just flips the attribute so both themes can be
+  // reviewed side by side.
+  const btn = document.getElementById("theme");
+  const root = document.documentElement;
+  btn.addEventListener("click", () => {
+    const night = root.getAttribute("data-theme") === "night";
+    if (night) {
+      root.removeAttribute("data-theme");
+      btn.textContent = "Night";
+    } else {
+      root.setAttribute("data-theme", "night");
+      btn.textContent = "Paper";
+    }
+  });
+</script>
+</body>
+</html>

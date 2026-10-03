@@ -1,0 +1,212 @@
+/* Design tokens, Phase 2.
+ *
+ * Source: PRD.md sections 22 (Visual System), 23 (Typography), 24 (Color System)
+ * and 25 (Motion System). Every value is taken from those sections. Nothing here
+ * is invented, and no value may drift from the PRD without a recorded decision.
+ *
+ * Verified 2026-10-03: the contrast ratios in section 24 were recomputed from the
+ * hex values below. All of them pass. See design/README.md for the measurements.
+ */
+
+/* ---------------------------------------------------------------------------
+ * Fonts: self-hosted, Latin subset only (PRD.md:628, PRD.md:970).
+ * Four files, 93.4 KB total, against the 150 KB budget at PRD.md:803.
+ * Three are preloaded; Instrument Serif Italic is not (PRD.md:628).
+ * ------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/instrument-serif-regular.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/instrument-serif-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("fonts/geist-var.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("fonts/geist-mono-var.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------------------------------------------------------------------------
+ * Tokens
+ * ------------------------------------------------------------------------- */
+
+:root {
+  /* Typography: families (PRD.md:602 to PRD.md:608).
+   * Fallbacks are metric-similar so the swap does not shift layout (PRD.md:628). */
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-ui: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Type scale (PRD.md:614 to PRD.md:624). Nothing below 12 px. */
+  --text-display-xl: clamp(3.5rem, 11vw, 10.5rem);
+  --text-display-l: clamp(2.5rem, 6vw, 5.5rem);
+  --text-h2: clamp(1.75rem, 3.4vw, 2.75rem);
+  --text-lead: clamp(1.25rem, 2vw, 1.75rem);
+  --text-h3: 1.25rem;
+  --text-body: 1rem;
+  --text-ui: 0.875rem;
+  --text-annotation: 0.8125rem;
+  --text-meta: 0.75rem;
+
+  --leading-display-xl: 0.92;
+  --leading-display-l: 1;
+  --leading-h2: 1.1;
+  --leading-lead: 1.35;
+  --leading-h3: 1.3;
+  --leading-body: 1.6;
+  --leading-ui: 1.2;
+  --leading-annotation: 1.5;
+  --leading-meta: 1.4;
+
+  --tracking-display-xl: -0.02em;
+  --tracking-display-l: -0.015em;
+  --tracking-h2: -0.01em;
+  --tracking-lead: 0;
+  --tracking-ui: 0.01em;
+  --tracking-annotation: 0.01em;
+  --tracking-meta: 0.04em;
+
+  --weight-body: 400;
+  --weight-ui: 500;
+
+  /* Spacing scale, 4 px base (PRD.md:588) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-36: 144px;
+
+  --gap-section: 96px;
+  --gap-section-mobile: 64px;
+
+  /* Layout (PRD.md:587) */
+  --container-max: 1280px;
+  --grid-columns: 12;
+  --gutter: 24px;
+  --pad-x: 32px;
+  --pad-x-mobile: 16px;
+  --measure: 68ch;
+
+  /* Borders and corners (PRD.md:591 to PRD.md:592) */
+  --border-width: 1px;
+  --radius-none: 0px;
+  --radius-control: 2px;
+
+  /* Motion (PRD.md:667 to PRD.md:676) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-instant: 80ms;
+  --dur-fast: 150ms;
+  --dur-base: 240ms;
+  --dur-slow: 400ms;
+  --dur-scene: 700ms;
+
+  /* Color, paper theme (PRD.md:635 to PRD.md:654). Contrast verified 2026-10-03. */
+  --paper: #f2eee5;
+  --paper-raised: #f8f5ee;
+  --ink: #14130f;
+  --graphite: #5a574e;
+  --rule: #d8d2c2;
+  --redline: #d9391f;
+  --redline-text: #b42a12;
+  --focus: #14130f;
+
+  color-scheme: light;
+}
+
+/* Body copy steps up at desktop width (PRD.md:622). */
+@media (min-width: 768px) {
+  :root {
+    --text-body: 1.0625rem;
+    --gap-section: 144px;
+  }
+}
+
+/* Night theme (PRD.md:645 to PRD.md:654) */
+:root[data-theme="night"] {
+  --paper: #12110e;
+  --paper-raised: #1b1a16;
+  --ink: #ece6d8;
+  --graphite: #a9a394;
+  --rule: #34312a;
+  --redline: #ff7a5c;
+  --redline-text: #ff7a5c;
+  --focus: #ece6d8;
+
+  color-scheme: dark;
+}
+
+/* Honor the system preference until a visitor makes an explicit choice
+ * (PRD.md:659). An explicit choice sets data-theme and wins. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --paper: #12110e;
+    --paper-raised: #1b1a16;
+    --ink: #ece6d8;
+    --graphite: #a9a394;
+    --rule: #34312a;
+    --redline: #ff7a5c;
+    --redline-text: #ff7a5c;
+    --focus: #ece6d8;
+
+    color-scheme: dark;
+  }
+}
+
+/* Lite mode: same reductions as reduced motion, plus no grain, no video and no
+ * outline draw (PRD.md:697). Motion tokens collapse so every transition that
+ * reads them becomes instant. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 0ms;
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 100ms;
+    --dur-scene: 0ms;
+  }
+}
+
+:root[data-lite="true"] {
+  --dur-instant: 0ms;
+  --dur-fast: 0ms;
+  --dur-base: 0ms;
+  --dur-slow: 100ms;
+  --dur-scene: 0ms;
+}

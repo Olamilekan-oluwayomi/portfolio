@@ -20,9 +20,8 @@ import sys
 
 PRD = "PRD.md"
 CSS = "design/tokens.css"
+APP_CSS = "src/styles/tokens.css"
 
-PAPER_BLOCK = (636, 643)
-NIGHT_BLOCK = (646, 653)
 
 # (label, foreground token, background token, threshold or None)
 PAIRS = [
@@ -52,14 +51,12 @@ def contrast(a, b):
     return (hi + 0.05) / (lo + 0.05)
 
 
-def prd_palette(first, last):
-    lines = io.open(PRD, encoding="utf-8").read().split("\n")
-    out = {}
-    for line in lines[first - 1:last]:
-        m = re.match(r"\s*(--[a-z-]+):\s*(#[0-9A-Fa-f]{6})", line)
-        if m:
-            out[m.group(1)] = m.group(2).lower()
-    return out
+def prd_palette(selector):
+    # The October 4 amendment shifted line numbers. Locate the historical
+    # section by heading and selector so this specimen check stays reproducible.
+    text = io.open(PRD, encoding="utf-8").read()
+    section = text.split("## 24. Color System", 1)[1].split("## 25.", 1)[0]
+    return css_block(section, selector)
 
 
 def css_block(text, selector):
@@ -78,8 +75,8 @@ def main():
     failures = []
 
     themes = [
-        ("paper", prd_palette(*PAPER_BLOCK), css_block(css, ":root {")),
-        ("night", prd_palette(*NIGHT_BLOCK), css_block(css, ':root[data-theme="night"]')),
+        ("paper", prd_palette(":root {"), css_block(css, ":root {")),
+        ("night", prd_palette(':root[data-theme="night"]'), css_block(css, ':root[data-theme="night"]')),
     ]
 
     print("Palette hexes against the PRD")
@@ -113,13 +110,38 @@ def main():
                                 % (name, label, ratio, threshold))
             print("    %-36s %6.2f:1  %s" % (label, ratio, verdict))
 
+    # Verify the active app separately from the historical Phase 2 specimen.
+    active_raw = io.open(APP_CSS, encoding="utf-8").read()
+    active = re.sub(r"/\*.*?\*/", "", active_raw, flags=re.S)
+    base = css_block(active, ":root {")
+    night = dict(base, **css_block(active, ':root[data-theme="night"]'))
+    active_pairs = [
+        ("body text", "--ink", "--paper", 4.5),
+        ("secondary text and controls", "--graphite", "--paper", 4.5),
+        ("raised surface text", "--ink", "--paper-raised", 4.5),
+        ("selection and focus", "--selection", "--paper", 3.0),
+    ]
+    active_pairs += [(color + " cover text", "--card-ink", "--" + color, 4.5)
+                     for color in ("blue", "mint", "yellow", "pink")]
+    active_pairs.append(("space cover text", "--space-ink", "--space-surface", 4.5))
+    print("\nActive homepage contrast")
+    for theme, palette in (("paper", base), ("night", night)):
+        for label, fg, bg, threshold in active_pairs:
+            if fg not in palette or bg not in palette:
+                failures.append("active %s: missing token for %s" % (theme, label))
+                continue
+            ratio = contrast(palette[fg], palette[bg])
+            print("  %-6s %-30s %6.2f:1" % (theme, label, ratio))
+            if ratio < threshold:
+                failures.append("active %s %s: contrast below %.1f:1" % (theme, label, threshold))
+
     print()
     if failures:
         print("FAILED")
         for f in failures:
             print("  " + f)
         return 1
-    print("OK: palette matches the PRD, every contrast pair passes")
+    print("OK: historical palette matches the PRD; historical and active contrast pairs pass")
     return 0
 
 

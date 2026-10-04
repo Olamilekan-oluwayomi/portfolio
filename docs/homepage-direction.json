@@ -4,14 +4,16 @@
   "title": "Change the homepage visual direction",
   "context": "The owner rejected the basic homepage and supplied a reference after selecting a change of direction.",
   "options": ["Continue the original Annotated visual direction", "Adapt the supplied reference"],
-  "choice": "Use a grid canvas, framed name, pastel labels and colored work panels.",
-  "tradeoff": "The revised presentation needs new contrast and responsive checks; the original specimens no longer establish homepage acceptance.",
+  "choice": "Use a grid canvas, framed mono identity, a separate introduction margin and asymmetrically placed, project-specific typographic covers.",
+  "tradeoff": "Original typographic covers distinguish the four projects before approved application captures are available; they communicate project identity and do not imply an application screenshot.",
   "status": "kept",
   "theme": "ux",
   "evidence": [
     { "label": "Owner instruction and reference adaptation", "ref": "docs/homepage-direction.md" },
     { "label": "Supplied inspiration", "ref": "https://www.iamthecode.xyz/" },
-    { "label": "Homepage implementation", "ref": "src/app/page.tsx" }
+    { "label": "Homepage implementation", "ref": "src/app/page.tsx" },
+    { "label": "Original project covers", "ref": "src/components/work/project-panel.tsx" },
+    { "label": "Active homepage tokens", "ref": "src/styles/tokens.css" }
   ],
   "verified": false
 }

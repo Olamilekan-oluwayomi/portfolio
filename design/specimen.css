@@ -1,0 +1,351 @@
+/* Specimen chrome.
+ *
+ * Styles the design-system specimen pages only. None of this ships: it exists to
+ * display tokens for review, so it uses colour, borders and spacing freely in ways
+ * the site itself would not. The shipped rules live in tokens.css.
+ */
+
+@layer specimen;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-weight: var(--weight-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-16) var(--pad-x) var(--space-36);
+}
+
+@media (max-width: 768px) {
+  .shell {
+    padding: var(--space-12) var(--pad-x-mobile) var(--space-24);
+  }
+}
+
+/* Page header */
+.spec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: var(--border-width) solid var(--ink);
+}
+
+.spec-head h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  letter-spacing: var(--tracking-h2);
+  margin: 0;
+}
+
+.spec-head nav {
+  display: flex;
+  gap: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+}
+
+.spec-head nav a {
+  color: var(--graphite);
+  text-decoration: none;
+  border-bottom: var(--border-width) solid transparent;
+}
+
+.spec-head nav a:hover,
+.spec-head nav a:focus-visible {
+  color: var(--redline-text);
+  border-bottom-color: var(--redline);
+}
+
+.spec-head nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+/* Section rhythm */
+.spec-section {
+  margin-top: var(--gap-section);
+}
+
+.spec-section > h2 {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  font-weight: 400;
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--graphite);
+  margin: 0 0 var(--space-8);
+  padding-bottom: var(--space-2);
+  border-bottom: var(--border-width) solid var(--rule);
+}
+
+.spec-note {
+  font-family: var(--font-mono);
+  font-size: var(--text-annotation);
+  line-height: var(--leading-annotation);
+  color: var(--graphite);
+  max-width: 68ch;
+}
+
+/* Specimen rows: label above, sample below, hairline between */
+.row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-6);
+  padding: var(--space-6) 0;
+  border-bottom: var(--border-width) solid var(--rule);
+  align-items: baseline;
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+
+.row > .row-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+
+.row > .row-label small {
+  display: block;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--graphite);
+  margin-top: var(--space-1);
+}
+
+/* The type samples themselves. Each class applies one row of the hierarchy table
+ * at PRD.md:614 to PRD.md:624 and nothing else. */
+.t-display-xl {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-display-xl);
+  line-height: var(--leading-display-xl);
+  letter-spacing: var(--tracking-display-xl);
+  margin: 0;
+}
+
+.t-display-l {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-display-l);
+  line-height: var(--leading-display-l);
+  letter-spacing: var(--tracking-display-l);
+  margin: 0;
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  letter-spacing: var(--tracking-h2);
+  margin: 0;
+}
+
+.t-lead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--text-lead);
+  line-height: var(--leading-lead);
+  letter-spacing: var(--tracking-lead);
+  margin: 0;
+}
+
+.t-h3 {
+  font-family: var(--font-ui);
+  font-weight: var(--weight-ui);
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  margin: 0;
+}
+
+.t-body {
+  font-family: var(--font-ui);
+  font-weight: var(--weight-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  max-width: 68ch;
+  margin: 0;
+}
+
+.t-ui {
+  font-family: var(--font-ui);
+  font-weight: var(--weight-ui);
+  font-size: var(--text-ui);
+  line-height: var(--leading-ui);
+  letter-spacing: var(--tracking-ui);
+}
+
+.t-annotation {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--text-annotation);
+  line-height: var(--leading-annotation);
+  letter-spacing: var(--tracking-annotation);
+  margin: 0;
+}
+
+.t-meta {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--text-meta);
+  line-height: var(--leading-meta);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+}
+
+/* Any heading inside a row balances, any body pretty (PRD.md:626) */
+.t-display-xl,
+.t-display-l,
+.t-h2,
+.t-h3 {
+  text-wrap: balance;
+  hyphens: none;
+}
+
+.t-body,
+.t-lead {
+  text-wrap: pretty;
+}
+
+/* Swatches */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+
+.swatch {
+  border: var(--border-width) solid var(--rule);
+}
+
+.swatch .chip {
+  height: 72px;
+  border-bottom: var(--border-width) solid var(--rule);
+}
+
+.swatch .meta {
+  padding: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  line-height: 1.5;
+  color: var(--graphite);
+}
+
+.swatch .meta b {
+  display: block;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+/* Tables */
+table.spec {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-ui);
+}
+
+table.spec caption {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--graphite);
+  padding-bottom: var(--space-3);
+}
+
+table.spec th,
+table.spec td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: var(--border-width) solid var(--rule);
+  vertical-align: baseline;
+}
+
+table.spec th {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+
+table.spec td.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.pass {
+  color: var(--graphite);
+}
+
+.pass::before {
+  content: "pass";
+  display: inline-block;
+  border: var(--border-width) solid var(--rule);
+  border-radius: var(--radius-control);
+  padding: 1px var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+}
+
+.swatch-row {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* Theme toggle in the specimen header */
+.theme-toggle {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: var(--border-width) solid var(--graphite);
+  border-radius: var(--radius-control);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.theme-toggle:hover {
+  border-color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}

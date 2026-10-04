@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color and contrast</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="specimen.css">
+<style>
+  /* Both palettes are shown at once so they can be compared without toggling.
+     Each block re-declares the colour tokens on its own subtree. */
+  .palette {
+    border: var(--border-width) solid var(--rule);
+    padding: var(--space-6);
+    margin-top: var(--space-8);
+  }
+  .palette.paper-theme {
+    --paper: #f2eee5; --paper-raised: #f8f5ee; --ink: #14130f; --graphite: #5a574e;
+    --rule: #d8d2c2; --redline: #d9391f; --redline-text: #b42a12; --focus: #14130f;
+  }
+  .palette.night-theme {
+    --paper: #12110e; --paper-raised: #1b1a16; --ink: #ece6d8; --graphite: #a9a394;
+    --rule: #34312a; --redline: #ff7a5c; --redline-text: #ff7a5c; --focus: #ece6d8;
+  }
+  .palette { background: var(--paper); color: var(--ink); }
+  .palette .chip { border-bottom: var(--border-width) solid var(--rule); }
+  .palette .swatch { border-color: var(--rule); }
+  .palette .swatch .meta { color: var(--graphite); }
+  .palette .swatch .meta b { color: var(--ink); }
+  .palette table.spec td, .palette table.spec th { border-bottom-color: var(--rule); }
+  .palette table.spec th, .palette table.spec caption { color: var(--graphite); }
+  .palette h3 { font-family: var(--font-mono); font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta); text-transform: uppercase;
+    color: var(--graphite); margin: 0 0 var(--space-4); font-weight: 400; }
+  .redline-demo { color: var(--redline-text); }
+  .mark-demo { color: var(--redline); }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="spec-head">
+    <h1>Color and contrast</h1>
+    <nav>
+      <a href="type.html">Type</a>
+      <a href="color.html" aria-current="page">Color</a>
+      <a href="samples.html">Samples</a>
+      <a href="candidates.html">Candidates</a>
+    </nav>
+  </header>
+
+  <p class="spec-note" style="margin-top: var(--space-8)">
+    Section 24 gives the hex values and states approximate ratios, and asks for them to be
+    verified with tooling in Phase 2. Every ratio below was recomputed from the tokens on
+    2026-10-03. All of them pass, so no adjustment is owed under Appendix B rule 10.
+    Ratios are WCAG 2.x relative luminance: 4.5:1 for body text, 3:1 for non-text marks
+    and for control borders under 1.4.11. The control-border requirement is
+    <code>PRD.md:590</code>, the redline rule is <code>PRD.md:657</code>.
+  </p>
+
+  <div class="palette paper-theme">
+    <h3>Paper theme</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#f2eee5"></div><div class="meta"><b>--paper</b>#F2EEE5</div></div>
+      <div class="swatch"><div class="chip" style="background:#f8f5ee"></div><div class="meta"><b>--paper-raised</b>#F8F5EE</div></div>
+      <div class="swatch"><div class="chip" style="background:#14130f"></div><div class="meta"><b>--ink</b>#14130F</div></div>
+      <div class="swatch"><div class="chip" style="background:#5a574e"></div><div class="meta"><b>--graphite</b>#5A574E</div></div>
+      <div class="swatch"><div class="chip" style="background:#d8d2c2"></div><div class="meta"><b>--rule</b>#D8D2C2</div></div>
+      <div class="swatch"><div class="chip" style="background:#d9391f"></div><div class="meta"><b>--redline</b>#D9391F</div></div>
+      <div class="swatch"><div class="chip" style="background:#b42a12"></div><div class="meta"><b>--redline-text</b>#B42A12</div></div>
+    </div>
+
+    <table class="spec" style="margin-top: var(--space-6)">
+      <caption>Verified contrast, paper theme</caption>
+      <thead>
+        <tr><th scope="col">Pair</th><th scope="col">Ratio</th><th scope="col">Requirement</th><th scope="col">Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>--ink on --paper (body text)</td><td class="num">16.05:1</td><td>4.5:1</td><td class="pass"></td></tr>
+        <tr><td>--graphite on --paper (secondary text)</td><td class="num">6.24:1</td><td>4.5:1</td><td class="pass"></td></tr>
+        <tr><td>--redline-text on --paper (red text)</td><td class="num">5.53:1</td><td>4.5:1</td><td class="pass"></td></tr>
+        <tr><td>--redline on --paper (marks, non-text)</td><td class="num">3.98:1</td><td>3.0:1</td><td class="pass"></td></tr>
+        <tr><td>--graphite on --paper (control borders, 1.4.11)</td><td class="num">6.24:1</td><td>3.0:1</td><td class="pass"></td></tr>
+        <tr><td>--ink on --paper-raised</td><td class="num">17.07:1</td><td>4.5:1</td><td class="pass"></td></tr>
+        <tr><td>--rule on --paper (decorative only)</td><td class="num">1.30:1</td><td>none</td><td>dividers only</td></tr>
+      </tbody>
+    </table>
+
+    <p class="spec-note" style="margin-top: var(--space-4)">
+      Redline text: <span class="redline-demo">this sentence is set in --redline-text, which clears 4.5:1.</span>
+      <br>
+      Redline mark: <span class="mark-demo">this one is --redline at 3.98:1</span>, which clears the 3:1
+      non-text threshold but is below 4.5:1, so it may never carry text. That is the rule at
+      <code>PRD.md:657</code> and it is now enforced by the numbers rather than by intent.
+    </p>
+  </div>
+
+  <div class="palette night-theme" style="margin-top: var(--space-12)">
+    <h3>Night theme</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#12110e"></div><div class="meta"><b>--paper</b>#12110E</div></div>
+      <div class="swatch"><div class="chip" style="background:#1b1a16"></div><div class="meta"><b>--paper-raised</b>#1B1A16</div></div>
+      <div class="swatch"><div class="chip" style="background:#ece6d8"></div><div class="meta"><b>--ink</b>#ECE6D8</div></div>
+      <div class="swatch"><div class="chip" style="background:#a9a394"></div><div class="meta"><b>--graphite</b>#A9A394</div></div>
+      <div class="swatch"><div class="chip" style="background:#34312a"></div><div class="meta"><b>--rule</b>#34312A</div></div>
+      <div class="swatch"><div class="chip" style="background:#ff7a5c"></div><div class="meta"><b>--redline</b>#FF7A5C</div></div>
+    </div>
+
+    <table class="spec" style="margin-top: var(--space-6)">
+      <caption>Verified contrast, night theme</caption>
+      <thead>
+        <tr><th scope="col">Pair</th><th scope="col">Ratio</th><th scope="col">Requirement</th><th scope="col">Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>--ink on --paper (body text)</td><td class="num">15.17:1</td><td>4.5:1</td><td class="pass"></td></tr>
+        <tr><td>--graphite on --paper (secondary text)</td><td class="num">7.51:1</td><td>4.5:1</td><td class="pass"></td></tr>
+        <tr><td>--graphite on --paper (control borders, 1.4.11)</td><td class="num">7.51:1</td><td>3.0:1</td><td class="pass"></td></tr>
+        <tr><td>--redline-text on --paper (red text)</td><td class="num">7.36:1</td><td>4.5:1</td><td class="pass"></td></tr>
+        <tr><td>--redline on --paper (marks, non-text)</td><td class="num">7.36:1</td><td>3.0:1</td><td class="pass"></td></tr>
+        <tr><td>--ink on --paper-raised</td><td class="num">13.99:1</td><td>4.5:1</td><td class="pass"></td></tr>
+        <tr><td>--rule on --paper (decorative only)</td><td class="num">1.46:1</td><td>none</td><td>dividers only</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="spec-section">
+    <h2>Against the PRD's stated approximations</h2>
+    <table class="spec">
+      <caption>Section 24 predicted these. The recomputed values are the record.</caption>
+      <thead>
+        <tr><th scope="col">Pair</th><th scope="col">PRD said</th><th scope="col">Measured</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>--ink on --paper</td><td class="num">above 15:1</td><td class="num">16.05:1</td></tr>
+        <tr><td>--graphite on --paper</td><td class="num">about 6.2:1</td><td class="num">6.24:1</td></tr>
+        <tr><td>--redline-text on --paper</td><td class="num">about 5.5:1</td><td class="num">5.53:1</td></tr>
+        <tr><td>--redline on --paper</td><td class="num">about 4:1</td><td class="num">3.98:1</td></tr>
+        <tr><td>night --graphite on night --paper</td><td class="num">about 7.5:1</td><td class="num">7.51:1</td></tr>
+      </tbody>
+    </table>
+    <p class="spec-note" style="margin-top: var(--space-4)">
+      Every prediction holds. Nothing in section 24 needs editing, and the only thing the PRD
+      asked for here, verification with tooling, is done.
+    </p>
+  </section>
+
+</div>
+</body>
+</html>

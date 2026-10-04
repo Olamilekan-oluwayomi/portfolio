@@ -2,10 +2,10 @@
   "id": "reference-homepage-direction",
   "projectSlug": "site",
   "title": "Change the homepage visual direction",
-  "context": "The owner rejected the basic homepage and supplied a reference after selecting a change of direction.",
+  "context": "The owner supplied a reference, reviewed the initial adaptation and requested a substantially more distinctive composition.",
   "options": ["Continue the original Annotated visual direction", "Adapt the supplied reference"],
-  "choice": "Use a grid canvas, framed mono identity, a separate introduction margin and asymmetrically placed, project-specific typographic covers.",
-  "tradeoff": "Original typographic covers distinguish the four projects before approved application captures are available; they communicate project identity and do not imply an application screenshot.",
+  "choice": "Use an oversized two-line mono poster, offset blue surname frame, a native project index and a varied editorial spread with original project illustrations.",
+  "tradeoff": "The larger identity uses more vertical space; compact facts and brief access remain above the fold. Labeled illustrations establish project identity while approved application captures remain unavailable.",
   "status": "kept",
   "theme": "ux",
   "evidence": [

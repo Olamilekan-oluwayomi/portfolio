@@ -27,7 +27,6 @@
   --grid-size: 80px;
   --text-body: 17px;
   --text-meta: 12px;
-  --radius-panel: 8px;
   --dur-fast: 150ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: light;

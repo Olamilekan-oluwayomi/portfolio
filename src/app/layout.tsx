@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Link from "next/link";
 import { siteIdentity } from "@/content/identity";
+import { ThemeToggle } from "@/components/theme-toggle";
 import "@/styles/globals.css";
 
 const display = localFont({ src: "../../design/fonts/instrument-serif-regular.woff2", variable: "--font-display-loaded", display: "swap", weight: "400", adjustFontFallback: "Times New Roman" });
@@ -18,9 +19,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return <html lang="en" className={`${display.variable} ${italic.variable} ${ui.variable} ${mono.variable}`}>
     <body>
       <a className="skip-link" href="#main">Skip to content</a>
-      <header className="frame"><Link href="/">{siteIdentity.name}</Link><a href={`mailto:${siteIdentity.email}`}>Contact</a></header>
+      <header className="site-header">
+        <div className="header-inner frame">
+          <Link className="wordmark" href="/" aria-label={`${siteIdentity.name}, home`}>{siteIdentity.name.split(" ").map(part => part[0]).join("")}<span aria-hidden="true">.</span></Link>
+          <nav aria-label="Main navigation"><Link className="nav-home" href="/">Home</Link><a href="/#work">Work</a><a href="/#about">About</a></nav>
+          <div className="header-actions"><ThemeToggle /><a className="contact-link" href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </header>
       <main id="main" className="frame" tabIndex={-1}>{children}</main>
-      <footer className="frame">
+      <footer className="site-footer frame">
+        <span className="footer-name">{siteIdentity.name}</span>
         <a href={siteIdentity.links.github} target="_blank" rel="noopener noreferrer">GitHub <span className="sr-only">(opens in new tab)</span></a>
         <a href={siteIdentity.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span className="sr-only">(opens in new tab)</span></a>
         <a href={`mailto:${siteIdentity.email}`}>{siteIdentity.email}</a>

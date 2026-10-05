@@ -41,15 +41,21 @@ This is a sharing graphic, not an application screenshot or a substitute for a s
 | Booking conversation | Missing | Requires authorized participant view; `rentit:src/features/messages/hooks/useMessages.js` |
 | Owner listing management | Missing | Requires owner account; `rentit:src/features/listings/hooks/useListing.js` |
 | Profile completion | Missing | `rentit:src/features/profile/context/ProfileContext.jsx`; section 38 asset needs |
-| Tool-selection reasons | Proposed wording drafted at owner's request; confirmation pending | `docs/rentit-case-study.md`, Proposed selection reasons for owner confirmation |
-| Reflection wording | Proposed paragraph in approved draft; original same-day rationale still unverified | `docs/rentit-case-study.md`, What I would change |
+| Tool-selection reasons | Owner confirmed the drafted reasons | `docs/rentit-case-study.md`, Stack reason confirmation |
+| Reflection wording | Proposed paragraph awaits owner confirmation; original same-day rationale still unverified | `docs/rentit-case-study.md`, What I would change |
 | OG image | Prepared and visually inspected; route integration pending | `rentit-og.svg`, `rentit-og.png` above |
-| Static experience | Not complete; needs real journey figures | `PRD.md` section 38 |
+| Static experience | Static reading path implemented; real journey figures and interactive stepper remain incomplete | `src/components/work/case-study.tsx`; `PRD.md` sections 16.3 and 38 |
 
 Screens must use actual application state with owner-approved public content. Messages and profile material need privacy review before publication. No credentials, access tokens, session storage, private messages or authentication bypass are requested or recorded.
 
 ## Draft content prepared
 
-`src/content/projects/rentit.mdx` and the three `src/content/decisions/rentit-*.mdx` records now use the existing `src/lib/schemas.ts` contracts and `src/lib/content.ts` loader. Schema validation passes. All four records remain `verified: false`, media is empty, and OG integration is absent. The planned `walkthrough` experience field is specification data, not a completed component.
+`src/content/projects/rentit.mdx` and the three `src/content/decisions/rentit-*.mdx` records now use the existing `src/lib/schemas.ts` contracts and `src/lib/content.ts` loader. Schema validation passes. All four records remain `verified: false`, media is empty, and OG integration is absent. The review page has a static five-step reading path and permission map; the full screenshot-backed interactive walkthrough remains incomplete.
 
-`src/content/release.ts` is unchanged and excludes RentIt from publication. No project route, case-study link or production deployment is introduced by these drafts. The records in `docs/rentit-case-study-decisions.json` are the historical review source; future owner verification belongs in the application MDX records. Tool rationale remains explicitly unverified in the draft project until the owner confirms the proposed wording.
+`src/content/release.ts` is unchanged and excludes RentIt from publication. The records in `docs/rentit-case-study-decisions.json` are the historical review source; future owner verification belongs in the application MDX records. The owner confirmed the tool rationale, which is now recorded in the draft project's stack fields. Missing figures and verification still prevent publication.
+
+## Case-study review page checkpoint
+
+The server-rendered spine in `src/components/work/case-study.tsx` uses native chapter links, source disclosures and a mobile live-product bar. Styling is scoped in `src/components/work/case-study.module.css`; no homepage styles or dependencies changed. `src/app/work/[slug]/page.tsx` generates eligible static pages and exposes explicitly marked drafts only in development or Vercel previews. `src/lib/project-page.test.ts` checks that adding a release slug alone cannot expose an unverified project.
+
+Local browser checks on 2026-10-05: 390x844, 430x932 and 1440x900 had no horizontal overflow; all six chapter targets existed and their links were at least 44px tall. Native navigation reached `#decisions`. With JavaScript disabled, the title, journey, permission map and decision text remained readable. A production build returned HTTP 404 for `/work/rentit`. Review captures are in ignored `artifacts/rentit-case-study-{390,430,1440}.png`. These are portfolio layout checks, not RentIt journey evidence or a complete accessibility certification.

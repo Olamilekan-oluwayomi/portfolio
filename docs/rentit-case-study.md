@@ -116,7 +116,7 @@ Evidence: `rentit:src/features/bookings/components/AvailabilityCalendar.jsx`, `r
 
 ## Stack, with evidence rather than invented preferences
 
-These explain what each tool does. They do not assert why it was originally selected over alternatives. Those selection reasons remain unverified and are needed for the final section 16.1 stack copy.
+The table explains each tool's implementation role. The selection wording below was drafted from those roles and then confirmed by the owner (Stack reason confirmation). No rejected technology alternatives are inferred.
 
 | Technology | Responsibility in the implementation | Evidence |
 | --- | --- | --- |
@@ -126,15 +126,19 @@ These explain what each tool does. They do not assert why it was originally sele
 | Zod | Listing-create and listing-edit validation schemas | `rentit:src/shared/lib/validations.js`; validation inventory in `docs/truth/rentit.md` |
 | Vite and Tailwind CSS | Build tooling and styling dependencies | `rentit:package.json`, `rentit:vite.config.js`; stack inventory in `docs/truth/rentit.md` |
 
-### Proposed selection reasons for owner confirmation
+### Stack reason confirmation
 
-The owner requested help drafting these reasons on 2026-10-05. They are inferred from the tools' roles in the implementation, not recovered historical testimony. Confirm or correct them before converting them into final first-person stack copy. No rejected alternatives, measured speed gains or cost savings are asserted.
+The owner answered "correct go ahead" after the five proposed selection reasons were presented in this conversation on 2026-10-05. The wording below is therefore owner-confirmed rationale. The corresponding `stack[].why` fields in `src/content/projects/rentit.mdx` now use that wording. No verification flag was changed, and the owner still requires the full evidence gate before publication.
 
-- **React:** "I chose React to build the rental flow from reusable components, with hooks managing the loading, error and interaction states across listings, bookings and conversations." Evidence for that implementation role: `rentit:src/features/listings/hooks/useListing.js`, `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/messages/hooks/useMessages.js`. The original selection reason is unverified.
-- **Supabase:** "I chose Supabase to connect authentication, database records, image storage and real-time messages while building the application independently. It let me work on the rental flow with those services in one backend." Evidence for the service roles: `docs/truth/rentit.md`, Auth, Listings and Messaging sections; `rentit:src/features/messages/hooks/useMessages.js`. The selection rationale and whether a different backend was considered are unverified. This does not certify the deployed policies or current image loading.
-- **Zod:** "I chose Zod to express listing-form rules in schemas, keeping the requirements for creating and editing a listing explicit before submitting data." Evidence for schema roles: `rentit:src/shared/lib/validations.js`; `docs/truth/rentit.md`, Listings section. The historical choice is unverified.
-- **Vite:** "I chose Vite as the build setup for the React application, so development and production builds used the same project tooling." Evidence for the tooling role: `rentit:package.json`, `rentit:vite.config.js`. The selection reason is unverified; no build-time comparison is claimed.
-- **Tailwind CSS:** "I chose Tailwind to style the listing, booking and dashboard interfaces through utility classes, including their responsive layouts." Evidence for utility styling: `rentit:src/features/auth/components/ProtectedRoute.jsx` and the Tailwind dependency in `rentit:package.json`; styling inventory in `docs/truth/rentit.md`. The original preference is unverified; no claim of a complete design system or proven accessibility is implied.
+### Selection reasons drafted and confirmed
+
+The owner requested help drafting these reasons on 2026-10-05. They were initially inferred from the tools' roles in the implementation, then confirmed by the owner as recorded above. No rejected alternatives, measured speed gains or cost savings are asserted.
+
+- **React:** "I chose React to build the rental flow from reusable components, with hooks managing the loading, error and interaction states across listings, bookings and conversations." Evidence for that implementation role: `rentit:src/features/listings/hooks/useListing.js`, `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/messages/hooks/useMessages.js`. Selection reason confirmed by the owner above.
+- **Supabase:** "I chose Supabase to connect authentication, database records, image storage and real-time messages while building the application independently. It let me work on the rental flow with those services in one backend." Evidence for the service roles: `docs/truth/rentit.md`, Auth, Listings and Messaging sections; `rentit:src/features/messages/hooks/useMessages.js`. Selection rationale confirmed by the owner above; whether a different backend was considered remains unverified. This does not certify the deployed policies or current image loading.
+- **Zod:** "I chose Zod to express listing-form rules in schemas, keeping the requirements for creating and editing a listing explicit before submitting data." Evidence for schema roles: `rentit:src/shared/lib/validations.js`; `docs/truth/rentit.md`, Listings section. Selection reason confirmed by the owner above.
+- **Vite:** "I chose Vite as the build setup for the React application, so development and production builds used the same project tooling." Evidence for the tooling role: `rentit:package.json`, `rentit:vite.config.js`. Selection reason confirmed by the owner above; no build-time comparison is claimed.
+- **Tailwind CSS:** "I chose Tailwind to style the listing, booking and dashboard interfaces through utility classes, including their responsive layouts." Evidence for utility styling: `rentit:src/features/auth/components/ProtectedRoute.jsx` and the Tailwind dependency in `rentit:package.json`; styling inventory in `docs/truth/rentit.md`. Selection reason confirmed by the owner above; no claim of a complete design system or proven accessibility is implied.
 
 ## Result we can substantiate
 
@@ -162,4 +166,4 @@ Evidence for the gaps: `docs/truth/rentit.md`, database and uncertainty sections
 - Current deployed journey and permissions evidence; push delivery only if that claim will be included (`docs/truth/rentit.md`, open uncertainties).
 - Real five-step screenshots, profile-completion evidence and privacy-reviewed conversation material. At least four figures, or the bespoke piece plus two figures, with dimensions, alt text and captions (`PRD.md` section 38). The public QA captures in `docs/evidence/rentit/` record a signed-out listing with image-loading failures; they are not accepted publication figures or substitutes for authenticated states.
 - Static fallback and OG image; project schema validation and publication checks (`PRD.md` section 38; `src/lib/schemas.ts`, `src/lib/content.ts`).
-- No route or homepage case-study link until these gates pass. R0 continues to show its existing approved listing and external links (`PRD.md` section 39; `src/content/release.ts`, `src/content/work-index.ts`).
+- No production route or homepage case-study link until these gates pass. The guarded `/work/rentit` review route is available only in development and Vercel previews, explicitly labeled and excluded from indexing (`src/app/work/[slug]/page.tsx`, `src/lib/project-page.ts`). R0 continues to show its existing approved listing and external links (`PRD.md` section 39; `src/content/release.ts`, `src/content/work-index.ts`).

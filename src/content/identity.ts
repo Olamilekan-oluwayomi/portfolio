@@ -2,6 +2,7 @@
 // Links and name: PRD.md section 35. CV and deployment host are deferred.
 export const siteIdentity = {
   name: "Olamilekan Ilesanmi",
+  nameAbb: "OI",
   role: "Frontend Engineer",
   location: "Oyo State, Nigeria",
   employer: "PitchMatter",
@@ -12,6 +13,8 @@ export const siteIdentity = {
   links: {
     github: "https://github.com/Olamilekan-oluwayomi",
     linkedin: "https://www.linkedin.com/in/olamilekanilesanmi",
+    whatsapp: "https://wa.me/2347069924563",
+    twitter: "https://x.com/Adelizzle_",
   },
   cv: null,
   domain: null,

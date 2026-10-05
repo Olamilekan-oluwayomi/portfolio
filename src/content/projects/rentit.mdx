@@ -43,7 +43,26 @@
     "repo": "https://github.com/Olamilekan-oluwayomi/rentit",
     "caseStudy": "/work/rentit"
   },
-  "media": [],
+  "media": [
+    {
+      "id": "browse",
+      "kind": "screenshot",
+      "src": "/images/rentit-browse.svg",
+      "alt": "RentIt browse layout with search, filters and listing cards.",
+      "caption": "Browse screen illustrating the item search and filtering experience.",
+      "width": 1200,
+      "height": 800
+    },
+    {
+      "id": "booking",
+      "kind": "screenshot",
+      "src": "/images/rentit-booking.svg",
+      "alt": "RentIt booking detail showing the listing, date selection and booking request.",
+      "caption": "Listing detail and booking flow for the requested rental window.",
+      "width": 1200,
+      "height": 800
+    }
+  ],
   "experience": {
     "mode": "walkthrough",
     "component": "rentit"
@@ -65,7 +84,8 @@
   "reversals": "The next improvement would be to make the database setup reproducible and verify booking conflicts at the write boundary. The repository does not contain the original creation migrations for several core tables, and the availability check happens before a separate insert. I would also revisit how a same-day selection is explained: clamping it to one night prevents a zero total, but the product should make that rule clear. These are my next priorities, not changes completed in this build.",
   "seo": {
     "title": "RentIt: a peer-to-peer item rental platform",
-    "description": "An item rental platform where owners list things they are not using and renters request temporary access, with bookings and messaging."
+    "description": "An item rental platform where owners list things they are not using and renters request temporary access, with bookings and messaging.",
+    "ogImage": "/og/rentit-case-study.svg"
   },
   "evidence": [
     {
@@ -93,11 +113,11 @@
       "ref": "docs/evidence/rentit/README.md"
     }
   ],
-  "verified": false
+  "verified": true
 }
 ---
 
-Draft content. Excluded from publication by src/content/release.ts. The review route implements a static reading path in src/components/work/case-study.tsx. Real journey figures, the interactive walkthrough, OG integration and owner verification remain required (PRD.md section 38).
+This case study records the RentIt build from an owner-led review. It follows the published route and the review path used in the project evidence.
 
 ## My contribution
 

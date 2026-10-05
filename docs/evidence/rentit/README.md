@@ -28,6 +28,19 @@ Alt text: "Annotated case study for RentIt: earn from what you own, rent what yo
 
 This is a sharing graphic, not an application screenshot or a substitute for a section 38 figure. It has been visually inspected and remains outside public application assets until the project is eligible. Re-rendering the SVG should use the existing Geist Mono font rather than its generic monospace fallback.
 
+## Owner-supplied screenshots, received 2026-10-05
+
+Four screenshots supplied in the conversation are retained unchanged in ignored `artifacts/rentit-owner-captures/`. Each is 1920x1080 pixels and includes browser tabs and address-bar chrome. The original capture date, CSS viewport dimensions and device pixel ratio are unverified. They are supporting evidence, not accepted 2x journey figures. The browser chrome is not being published as part of the portfolio.
+
+| Local original | Observed page / evidence boundary | SHA-256 |
+| --- | --- | --- |
+| `landing-desktop.png` | Signed-out landing page at `rentitdaily.vercel.app`, with item-rental purpose, search and category links. This is not the browse-results screen | `027E180C9801C3842730067B9FB0D9DBF25C885F51A527903F55C3490DFC10C0` |
+| `login-desktop.png` | `/login`, empty email/password fields and Google sign-in button. Successful authentication is not shown | `5669A76A214BD9DC81BD7C3FF0F34B95D98868348E7AEDFE810EF480512162D7` |
+| `register-desktop.png` | `/register`, empty account fields and unchecked terms agreement. Account creation and profile completion are not shown | `225AD769678701755E0AC3A3C4183FDD18A2B9C6E09CF12242CC7721E753A44E` |
+| `new-listing-desktop.png` | `/listings/new`, signed-in navigation and upper portion of an empty listing-creation form: title, description, category and daily price. Submission, existing-listing editing, hide/restore and booking management are not shown | `B5C5638A5019E92CF8C20188134A3A3D33DC3CE9863FD71B0C3548BEAAA09477` |
+
+The fourth screenshot supplies a real signed-in creation state. It does not replace the owner-management figure for an existing listing in the five-step experience (`PRD.md` section 16.3; `src/components/work/case-study.tsx`). A broken-image indicator is visible in its avatar area; the underlying cause remains unverified. The first three support onboarding context, but none shows the request or conversation flow. No private message content or entered credentials are visible in these supplied screenshots.
+
 ## Still needed
 
 | Required evidence | Current state | Reason / source |
@@ -40,6 +53,7 @@ This is a sharing graphic, not an application screenshot or a substitute for a s
 | Booking date selection and request state | Missing | Observed page requires login; `rentit:src/features/bookings/hooks/useCreateBooking.js` |
 | Booking conversation | Missing | Requires authorized participant view; `rentit:src/features/messages/hooks/useMessages.js` |
 | Owner listing management | Missing | Requires owner account; `rentit:src/features/listings/hooks/useListing.js` |
+| Supporting onboarding / listing creation screens | Four owner-supplied originals retained locally; not accepted journey figures | Owner-supplied screenshot inventory above. Creation is distinct from existing-listing management |
 | Profile completion | Missing | `rentit:src/features/profile/context/ProfileContext.jsx`; section 38 asset needs |
 | Tool-selection reasons | Owner confirmed the drafted reasons | `docs/rentit-case-study.md`, Stack reason confirmation |
 | Reflection wording | Owner confirmed the three future priorities; original same-day rationale still unverified | `docs/rentit-case-study.md`, Reflection confirmation |

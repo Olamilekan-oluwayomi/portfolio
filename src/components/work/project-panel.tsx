@@ -27,7 +27,7 @@ export function ProjectPanel({ project, index }: { project: WorkListing; index: 
         <h3 id={`${id}-title`}>{project.title}</h3>
         <p className="project-summary">{project.summary}</p>
         {"note" in project && <p className="project-note">{project.note}</p>}
-        <div className="project-bottomline"><ul className="stack-tags" aria-label="Technology">{project.stack.map(tech => <li key={tech}>{tech}</li>)}</ul><div className="project-links"><a href={project.live} target="_blank" rel="noopener noreferrer">Open live <span aria-hidden="true">↗</span><span className="sr-only">, {project.title} (opens in new tab)</span></a><a href={project.repo} target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span><span className="sr-only">, {project.title} (opens in new tab)</span></a></div></div>
+        <div className="project-bottomline"><ul className="stack-tags" aria-label="Technology">{project.stack.map(tech => <li key={tech}>{tech}</li>)}</ul><div className="project-links"><a href={`/work/${project.slug}`}>Case study <span aria-hidden="true">↗</span></a><a href={project.live} target="_blank" rel="noopener noreferrer">Open live <span aria-hidden="true">↗</span><span className="sr-only">, {project.title} (opens in new tab)</span></a><a href={project.repo} target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span><span className="sr-only">, {project.title} (opens in new tab)</span></a></div></div>
       </div>
     </article>
   </li>;

@@ -16,3 +16,15 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run typecheck
+      - name: Check mobile performance budgets
+        run: npm run check:performance
+      - name: Keep Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-${{ github.event_name }}-${{ github.run_id }}
+          path: |
+            .lighthouseci/
+            artifacts/lighthouse/
+          if-no-files-found: warn
+          retention-days: 14

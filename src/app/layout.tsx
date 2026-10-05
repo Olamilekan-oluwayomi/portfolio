@@ -6,9 +6,9 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import "@/styles/globals.css";
 
 const display = localFont({ src: "../../design/fonts/instrument-serif-regular.woff2", variable: "--font-display-loaded", display: "swap", weight: "400", preload: false, adjustFontFallback: "Times New Roman" });
-const italic = localFont({ src: "../../design/fonts/instrument-serif-italic.woff2", variable: "--font-italic-loaded", display: "swap", weight: "400", style: "italic", preload: false, adjustFontFallback: "Times New Roman" });
+const italic = localFont({ src: "../../design/fonts/instrument-serif-italic.woff2", variable: "--font-italic-loaded", display: "swap", weight: "400", style: "italic", adjustFontFallback: "Times New Roman" });
 const ui = localFont({ src: "../../design/fonts/geist-var.woff2", variable: "--font-ui-loaded", display: "swap", weight: "400 500" });
-const mono = localFont({ src: "../../design/fonts/geist-mono-var.woff2", variable: "--font-mono-loaded", display: "swap", weight: "400 500" });
+const mono = localFont({ src: "../../design/fonts/geist-mono-var.woff2", variable: "--font-mono-loaded", display: "swap", weight: "400 500", adjustFontFallback: false, fallback: ["Courier New", "monospace"] });
 
 export const metadata: Metadata = {
   title: `${siteIdentity.name}, ${siteIdentity.role}`,
@@ -21,8 +21,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header">
         <div className="header-inner frame">
-          <Link className="wordmark" href="/" aria-label={`${siteIdentity.name}, home`}>{siteIdentity.name.split(" ").map(part => part[0]).join("")}<span aria-hidden="true">.</span></Link>
-          <nav aria-label="Main navigation"><Link className="nav-home" href="/">Home</Link><a href="/#work">Work</a><a href="/#about">About</a></nav>
+          <Link className="wordmark" href="/" prefetch={false} aria-label={`${siteIdentity.name}, home`}>{siteIdentity.name.split(" ").map(part => part[0]).join("")}<span aria-hidden="true">.</span></Link>
+          <nav aria-label="Main navigation"><Link className="nav-home" href="/" prefetch={false}>Home</Link><a href="/#work">Work</a><a href="/#about">About</a></nav>
           <div className="header-actions"><ThemeToggle /><a className="contact-link" href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
         </div>
       </header>

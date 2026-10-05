@@ -30,9 +30,9 @@ Status of the Phase 3 deliverables in `PRD.md` section 39. This records implemen
 
 | Item | Evidence and constraint |
 | --- | --- |
-| Configure Vercel and verify the production deploy | Required by `PRD.md` sections 33 and 39. No deployment has been made. |
+| Configure Vercel and verify the production deploy | Required by `PRD.md` sections 33 and 39. Preview deployment of `dd6dae4` failed after a successful build because the project had no framework preset and expected `public`. `vercel.json` now declares Next.js and retains the gated build command. See `docs/vercel-framework-decision.json`; successful deployment remains to be checked. |
 | Add Lighthouse CI with the fixed mobile profile and thresholds | Required by `PRD.md` sections 29 and 39. Browser-size checks run in CI; Lighthouse does not yet. |
 | Choose and record a static-compatible CSP | `PRD.md` section 32 says the static CSP approach must be selected and recorded. Current headers omit CSP pending that recorded decision. |
 | Add the deferred CV file and production metadata host | `docs/phase-1-exit.md`, Appendix A items 8 and 13. |
-| Build the Phase 4 navigation routes and achieve R0 | `PRD.md` section 39. Current implemented routes are only `/` and `/_not-found`. |
+| Build the Phase 4 navigation routes and achieve R0 | `PRD.md` section 39. Current implemented routes are `/`, `/brief` and `/_not-found` (`src/app/`). |
 | Owner review of content and evidence | No project or decision is published. `src/content/release.ts` keeps the project list empty. No implementation sets a verification field true. |

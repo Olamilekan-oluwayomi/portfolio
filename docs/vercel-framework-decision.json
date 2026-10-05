@@ -4,7 +4,7 @@
   "title": "Declare the Next.js deployment preset in source control",
   "context": "Deployment dpl_Aht8GraUB12zBJaasbVcWZgdLg9f built commit dd6dae4 successfully but failed looking for public. The Vercel project API returned a null framework preset.",
   "options": ["Set the framework only in the Vercel dashboard", "Declare the Next.js preset in vercel.json"],
-  "choice": "Declare nextjs in vercel.json and retain npm run build so the content and byte-budget checks run on Vercel.",
+  "choice": "Declare nextjs in vercel.json and retain npm run build. Read prerendered HTML from both the normal app output and Next.js 16.3 adapter route-cache output so content and byte-budget checks run on Vercel.",
   "tradeoff": "The repository now contains provider-specific configuration, but the preset travels with each reviewed commit.",
   "status": "kept",
   "theme": "architecture",
@@ -12,6 +12,8 @@
     { "label": "Failed deployment build log", "ref": "https://vercel.com/ilesanmiolamilekan7gmailcoms-projects/portfolio/Aht8GraUB12zBJaasbVcWZgdLg9f" },
     { "label": "Framework and build configuration", "ref": "vercel.json" },
     { "label": "Build gates", "ref": "package.json" },
+    { "label": "Adapter-compatible byte measurement", "ref": "scripts/check-budgets.mjs" },
+    { "label": "Next.js route-cache output implementation", "ref": "node_modules/next/dist/server/lib/route-cache-key.js" },
     { "label": "Vercel framework override documentation", "ref": "https://vercel.com/docs/project-configuration/vercel-json#framework" }
   ],
   "verified": false

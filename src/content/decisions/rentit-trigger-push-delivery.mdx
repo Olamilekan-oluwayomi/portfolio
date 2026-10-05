@@ -1,0 +1,37 @@
+---
+{
+  "id": "rentit-trigger-push-delivery",
+  "projectSlug": "rentit",
+  "title": "Deliver notification events through database triggers",
+  "context": "The migration records that the dashboard Database Webhooks UI was unavailable on this project.",
+  "options": [
+    "Use the unavailable dashboard Webhooks UI.",
+    "Use triggers and pg_net with Vault lookups."
+  ],
+  "choice": "Triggers post booking and message events to the Edge Function.",
+  "tradeoff": "Two Vault reads per invocation; missing configuration skips delivery while the insert succeeds. The owner confirmed these costs in docs/seed-promotion-drafts.md. Production delivery is unverified.",
+  "status": "kept",
+  "theme": "architecture",
+  "evidence": [
+    {
+      "label": "Trigger implementation and missing-configuration paths",
+      "ref": "rentit@f07791d:supabase/migrations/20260804000000_webpush_pg_net_triggers.sql"
+    },
+    {
+      "label": "Trigger delivery implementation",
+      "ref": "rentit commit e2a1aaf"
+    },
+    {
+      "label": "Owner-confirmed costs",
+      "ref": "docs/seed-promotion-drafts.md, RentIt seed 7"
+    },
+    {
+      "label": "Owner confirmed alternatives and trade-offs",
+      "ref": "docs/rentit-case-study.md, Decision review confirmation, 2026-10-05"
+    }
+  ],
+  "verified": true
+}
+---
+
+The trigger-based delivery path keeps notifications in the database flow and makes the missing configuration path explicit instead of silently hiding it.

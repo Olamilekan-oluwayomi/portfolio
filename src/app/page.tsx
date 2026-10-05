@@ -1,11 +1,50 @@
 import { siteIdentity } from "@/content/identity";
+import { workIndex } from "@/content/work-index";
+import { ProjectPanel } from "@/components/work/project-panel";
 
 export default function Home() {
-  return <section className="opening" aria-labelledby="name">
-    <h1 id="name">{siteIdentity.name}</h1>
-    <p className="lead">{siteIdentity.role}</p>
-    <p className="meta">{siteIdentity.stackLine}</p>
-    <p className="meta">Currently at {siteIdentity.employer}</p>
-    <a href={`mailto:${siteIdentity.email}`}>Get in touch</a>
-  </section>;
+  const [firstName, ...lastName] = siteIdentity.name.split(" ");
+  return <>
+    <section className="hero" aria-labelledby="name">
+      <div className="hero-topline">
+        <p className="eyebrow"><span className="registration-mark" aria-hidden="true" />Annotated <span className="muted">/ An annotated build</span></p>
+        <p className="hero-location">{siteIdentity.location}</p>
+      </div>
+      <div className="identity-poster">
+        <div className="identity-preface"><p className="hero-intro">Hello, I’m</p></div>
+        <div className="name-composition">
+          <h1 id="name"><span className="name-first">{firstName}</span><span className="name-frame"><span>{lastName.join(" ")}</span><i className="handle handle-tl" aria-hidden="true" /><i className="handle handle-tr" aria-hidden="true" /><i className="handle handle-bl" aria-hidden="true" /><i className="handle handle-br" aria-hidden="true" /></span></h1>
+          <p className="role-label">{siteIdentity.role}</p>
+        </div>
+        <div className="identity-caption"><span className="eyebrow">Interfaces. And what goes into them.</span><span className="poster-mark" aria-hidden="true">[↗]</span></div>
+      </div>
+      <div className="hero-context">
+        <p className="hero-statement">Every interface<br />is a set of <em>decisions.</em></p>
+        <div className="hero-facts"><p className="employment-label"><span className="eyebrow">Currently at</span><span>{siteIdentity.employer}</span></p><ul className="hero-stack" aria-label="Technology stack">{siteIdentity.stackLine.split("·").map(skill => <li key={skill.trim()}>{skill.trim()}</li>)}</ul></div>
+        <div className="hero-actions"><a className="primary-link" href="#work">Explore the work <span aria-hidden="true">↘</span></a><a className="brief-link" href="/brief">The 30-second brief <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div className="hero-bottomline"><p className="availability"><span className="availability-mark" aria-hidden="true" />{siteIdentity.availability}</p><a href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section className="selected-work" id="work" aria-labelledby="work-title">
+      <div className="section-heading"><div><p className="eyebrow">Selected work / {workIndex[0].year}</p><h2 id="work-title">Built.<br /><span className="accent">Considered.</span></h2></div><div className="work-directory"><p className="eyebrow">Index <span>({String(workIndex.length).padStart(2, "0")})</span></p><ol>{workIndex.map((project, index) => <li key={project.slug}><a href={`#project-${project.slug}`}><span>{String(index + 1).padStart(2, "0")}</span>{project.title}<span aria-hidden="true">↘</span></a></li>)}</ol></div></div>
+      <ol className="project-grid">{workIndex.map((project, index) => <ProjectPanel key={project.slug} project={project} index={index} />)}</ol>
+    </section>
+
+    <section className="about-home" id="about" aria-labelledby="about-title">
+      <div className="about-margin"><p className="eyebrow">A little context</p><span className="about-symbol" aria-hidden="true">[<span>*</span>]</span></div>
+      <div className="about-main"><h2 id="about-title">Frontend.<br />With a <span className="accent">point of view.</span></h2><div className="about-columns"><p className="about-lead">{siteIdentity.role},<br />based in {siteIdentity.location}.</p><div className="about-copy"><p>Currently at {siteIdentity.employer}.</p><p className="stack-line">{siteIdentity.stackLine}</p><div className="profile-links">
+        <a className="text-link" href={siteIdentity.links.github} target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (opens in new tab)</span></a>
+        <a className="text-link" href={siteIdentity.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span><span className="sr-only"> (opens in new tab)</span></a>
+        <a className="text-link" href={siteIdentity.links.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span><span className="sr-only"> (opens in new tab)</span></a>
+        <a className="text-link" href={siteIdentity.links.twitter} target="_blank" rel="noopener noreferrer">Twitter / X <span aria-hidden="true">↗</span><span className="sr-only"> (opens in new tab)</span></a>
+      </div></div></div></div>
+    </section>
+
+    <section className="contact-home" id="contact" aria-labelledby="contact-title">
+      <div className="contact-topline"><p className="eyebrow">Have something in mind?</p><span className="eyebrow">Contact / ↗</span></div>
+      <a className="contact-heading" href={`mailto:${siteIdentity.email}`}><h2 id="contact-title">Let’s <span className="accent">talk.</span></h2><span className="contact-arrow" aria-hidden="true">↗</span><span className="sr-only"> Email {siteIdentity.name}</span></a>
+      <div className="contact-bottomline"><a className="contact-email" href={`mailto:${siteIdentity.email}`}>{siteIdentity.email}</a><p>{siteIdentity.availability}</p></div>
+    </section>
+  </>;
 }

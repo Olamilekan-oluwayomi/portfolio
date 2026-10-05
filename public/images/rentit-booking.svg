@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">RentIt booking illustration</title>
+  <desc id="desc">Abstract booking detail view with a listing card, calendar and request summary.</desc>
+  <rect width="1200" height="800" fill="#f4efe7"/>
+  <rect x="80" y="70" width="1040" height="660" rx="22" fill="#fffdf9" stroke="#111111" stroke-width="3"/>
+  <rect x="120" y="115" width="520" height="390" rx="18" fill="#f4f7ff" stroke="#111111" stroke-width="3"/>
+  <rect x="690" y="115" width="360" height="390" rx="18" fill="#ffffff" stroke="#111111" stroke-width="3"/>
+  <rect x="150" y="150" width="460" height="140" rx="12" fill="#dfeaff"/>
+  <text x="170" y="220" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#111111">PS5 with games</text>
+  <text x="170" y="270" font-family="Arial, sans-serif" font-size="20" fill="#4a4a4a">Covers blackout dates and approved requests</text>
+  <rect x="150" y="325" width="180" height="26" rx="8" fill="#111111"/>
+  <rect x="360" y="325" width="180" height="26" rx="8" fill="#dfeaff"/>
+  <rect x="150" y="380" width="390" height="18" rx="9" fill="#d8d8d8"/>
+  <rect x="150" y="420" width="390" height="18" rx="9" fill="#d8d8d8"/>
+  <text x="720" y="180" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#111111">Request booking</text>
+  <rect x="720" y="220" width="300" height="50" rx="12" fill="#f1f1f1" stroke="#111111" stroke-width="2"/>
+  <rect x="720" y="290" width="300" height="50" rx="12" fill="#f1f1f1" stroke="#111111" stroke-width="2"/>
+  <rect x="720" y="360" width="300" height="66" rx="12" fill="#1a5eff"/>
+  <text x="780" y="402" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff">Send request</text>
+  <rect x="120" y="560" width="930" height="120" rx="18" fill="#f8f5f0" stroke="#111111" stroke-width="3"/>
+  <text x="150" y="610" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#111111">Booking summary</text>
+  <text x="430" y="610" font-family="Arial, sans-serif" font-size="22" fill="#4a4a4a">3 nights</text>
+  <text x="640" y="610" font-family="Arial, sans-serif" font-size="22" fill="#4a4a4a">$72 total</text>
+  <text x="820" y="610" font-family="Arial, sans-serif" font-size="22" fill="#4a4a4a">Pending</text>
+</svg>

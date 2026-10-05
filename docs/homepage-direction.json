@@ -1,0 +1,19 @@
+{
+  "id": "reference-homepage-direction",
+  "projectSlug": "site",
+  "title": "Change the homepage visual direction",
+  "context": "The owner supplied a reference, reviewed the initial adaptation and requested a substantially more distinctive composition.",
+  "options": ["Continue the original Annotated visual direction", "Adapt the supplied reference"],
+  "choice": "Use an oversized two-line mono poster, offset lime surname frame with a registered cobalt role annotation, an equally weighted technical skill strip, a native project index and a varied editorial spread with original project illustrations.",
+  "tradeoff": "The larger identity uses more vertical space; compact facts and brief access remain above the fold. Labeled illustrations establish project identity while approved application captures remain unavailable.",
+  "status": "kept",
+  "theme": "ux",
+  "evidence": [
+    { "label": "Owner instruction and reference adaptation", "ref": "docs/homepage-direction.md" },
+    { "label": "Supplied inspiration", "ref": "https://www.iamthecode.xyz/" },
+    { "label": "Homepage implementation", "ref": "src/app/page.tsx" },
+    { "label": "Original project covers", "ref": "src/components/work/project-panel.tsx" },
+    { "label": "Active homepage tokens", "ref": "src/styles/tokens.css" }
+  ],
+  "verified": false
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">RentIt: earn from what you own, rent what you need</title>
+  <desc id="description">Annotated case study for RentIt, a peer-to-peer item rental platform built independently by Olamilekan Ilesanmi.</desc>
+  <defs>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#21211f" stroke-opacity=".09"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#90cff0"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <g fill="#21211f" font-family="Geist Mono, monospace">
+    <text x="48" y="64" font-size="17">ANNOTATED / CASE STUDY</text>
+    <text x="1152" y="64" text-anchor="end" font-size="17">2026</text>
+    <path d="M48 88H1152" stroke="#21211f"/>
+    <text x="48" y="148" font-size="18">PEER-TO-PEER ITEM RENTAL</text>
+    <rect x="152" y="186" width="800" height="176" fill="#faf9f5" stroke="#21211f"/>
+    <text x="180" y="322" font-size="140" font-weight="500" letter-spacing="-8">RENTIT.</text>
+    <g fill="#faf9f5" stroke="#21211f"><rect x="147" y="181" width="10" height="10"/><rect x="947" y="181" width="10" height="10"/><rect x="147" y="357" width="10" height="10"/><rect x="947" y="357" width="10" height="10"/></g>
+    <text x="216" y="422" font-size="26">Earn from what you own.</text>
+    <text x="216" y="462" font-size="26">Rent what you need for the moment.</text>
+    <path d="M48 528H1152" stroke="#21211f"/>
+    <text x="48" y="584" font-size="18">OLAMILEKAN ILESANMI</text>
+    <text x="1152" y="584" text-anchor="end" font-size="16">SOLE DEVELOPER</text>
+  </g>
+</svg>

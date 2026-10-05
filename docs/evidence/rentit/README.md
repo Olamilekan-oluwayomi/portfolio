@@ -30,7 +30,7 @@ This is a sharing graphic, not an application screenshot or a substitute for a s
 
 ## Owner-supplied screenshots, received 2026-10-05
 
-Four screenshots supplied in the conversation are retained unchanged in ignored `artifacts/rentit-owner-captures/`. Each is 1920x1080 pixels and includes browser tabs and address-bar chrome. The original capture date, CSS viewport dimensions and device pixel ratio are unverified. They are supporting evidence, not accepted 2x journey figures. The browser chrome is not being published as part of the portfolio.
+Eight screenshots supplied in two batches in the conversation are retained unchanged in ignored `artifacts/rentit-owner-captures/`. Each is 1920x1080 pixels and includes browser tabs and address-bar chrome. The original capture date, CSS viewport dimensions and device pixel ratio are unverified. They are supporting evidence, not accepted 2x journey figures. The browser chrome is not being published as part of the portfolio.
 
 | Local original | Observed page / evidence boundary | SHA-256 |
 | --- | --- | --- |
@@ -38,8 +38,16 @@ Four screenshots supplied in the conversation are retained unchanged in ignored 
 | `login-desktop.png` | `/login`, empty email/password fields and Google sign-in button. Successful authentication is not shown | `5669A76A214BD9DC81BD7C3FF0F34B95D98868348E7AEDFE810EF480512162D7` |
 | `register-desktop.png` | `/register`, empty account fields and unchecked terms agreement. Account creation and profile completion are not shown | `225AD769678701755E0AC3A3C4183FDD18A2B9C6E09CF12242CC7721E753A44E` |
 | `new-listing-desktop.png` | `/listings/new`, signed-in navigation and upper portion of an empty listing-creation form: title, description, category and daily price. Submission, existing-listing editing, hide/restore and booking management are not shown | `B5C5638A5019E92CF8C20188134A3A3D33DC3CE9863FD71B0C3548BEAAA09477` |
+| `profile-desktop.png` | `/profile`, signed-in profile form with name, location, bio and photo controls. The avatar does not render. Saving and the profile-completion gate are not shown | `20B7E6A55516AE52EF9EE286FC89D215644E4172D233C31CA5559DCDC05BE807` |
+| `conversation-desktop.png` | Booking-specific conversation route, PS5 listing context, incoming/outgoing greeting bubbles and message composer. A static capture does not establish real-time delivery or access enforcement | `29579AEF0A73DC1F25FECEEF07EF70A61FCCB847DE0E3B65A13C8FCDD53CD97D` |
+| `bookings-empty-desktop.png` | `/dashboard/bookings`, owner booking-management page with All, Pending, Approved, Completed and Cancelled filters, notification opt-in prompt and empty state. No status transition or successful push delivery is shown | `B98739B326C0148667D329F6A7D4B00D682CA720D4E7C371674864A240659286` |
+| `listing-management-desktop.png` | `/dashboard/listings`, one active PS5 listing with a rendered thumbnail and Edit, Remove from Browse and Delete controls. Successful mutations and the hidden-listing restore state are not shown | `136D9BAFA7DFF0436E3A660D5AEEA4FB061F8A6C7A58821475C2ABDEAE8A8666` |
 
-The fourth screenshot supplies a real signed-in creation state. It does not replace the owner-management figure for an existing listing in the five-step experience (`PRD.md` section 16.3; `src/components/work/case-study.tsx`). A broken-image indicator is visible in its avatar area; the underlying cause remains unverified. The first three support onboarding context, but none shows the request or conversation flow. No private message content or entered credentials are visible in these supplied screenshots.
+The first batch supplies onboarding and a real signed-in creation state. The second batch adds the actual conversation and existing-listing management views needed by the five-step experience (`PRD.md` section 16.3; `src/components/work/case-study.tsx`). The profile form adds supporting evidence but does not prove that its requirements are satisfied or show a completion prompt.
+
+The rendered PS5 thumbnail in `listing-management-desktop.png` proves that this image appears in that supplied capture. It does not resolve the earlier signed-out gallery failures or establish their cause. Avatar failures remain visible in the supplied profile and conversation captures. No database, authentication or mutation was performed by the agent to obtain these states.
+
+The originals remain local because they include unrelated browser UI, profile values, participant identity, a booking identifier and a partially visible account email in dashboard sidebars. Publication assets need an application-only crop and a privacy review. The visible conversation contains short greetings; whether it is a test conversation is unverified. No entered credentials are visible, and no additional conversation data was accessed.
 
 ## Still needed
 
@@ -51,16 +59,16 @@ The fourth screenshot supplies a real signed-in creation state. It does not repl
 | Authenticated browse | Missing | Guest root renders marketing; `rentit:src/App.jsx` and live root observation above |
 | Listing detail with visible gallery | Needs replacement capture | QA captures show image failures; cause unverified |
 | Booking date selection and request state | Missing | Observed page requires login; `rentit:src/features/bookings/hooks/useCreateBooking.js` |
-| Booking conversation | Missing | Requires authorized participant view; `rentit:src/features/messages/hooks/useMessages.js` |
-| Owner listing management | Missing | Requires owner account; `rentit:src/features/listings/hooks/useListing.js` |
+| Booking conversation | Owner-supplied real view received; publication crop/privacy review and 2x provenance pending | `conversation-desktop.png` in the local inventory above; `rentit:src/features/messages/hooks/useMessages.js` |
+| Owner listing management | Owner-supplied existing-listing view received; publication crop/privacy review and 2x provenance pending | `listing-management-desktop.png` above; `rentit:src/features/listings/hooks/useListing.js` |
 | Supporting onboarding / listing creation screens | Four owner-supplied originals retained locally; not accepted journey figures | Owner-supplied screenshot inventory above. Creation is distinct from existing-listing management |
-| Profile completion | Missing | `rentit:src/features/profile/context/ProfileContext.jsx`; section 38 asset needs |
+| Profile completion | Profile form received; completion-gate state is not shown | `profile-desktop.png` above; `rentit:src/features/profile/context/ProfileContext.jsx`; section 38 asset needs |
 | Tool-selection reasons | Owner confirmed the drafted reasons | `docs/rentit-case-study.md`, Stack reason confirmation |
 | Reflection wording | Owner confirmed the three future priorities; original same-day rationale still unverified | `docs/rentit-case-study.md`, Reflection confirmation |
 | OG image | Prepared and visually inspected; route integration pending | `rentit-og.svg`, `rentit-og.png` above |
 | Static experience | Static reading path implemented; real journey figures and interactive stepper remain incomplete | `src/components/work/case-study.tsx`; `PRD.md` sections 16.3 and 38 |
 
-Screens must use actual application state with owner-approved public content. Messages and profile material need privacy review before publication. No credentials, access tokens, session storage, private messages or authentication bypass are requested or recorded.
+Screens must use actual application state with owner-approved public content. Messages and profile material need privacy review before publication. No credentials, access tokens, session storage or authentication bypass are requested or recorded. The supplied conversation original is retained locally as described above.
 
 ## Draft content prepared
 

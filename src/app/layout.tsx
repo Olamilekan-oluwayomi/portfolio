@@ -21,8 +21,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header">
         <div className="header-inner frame">
-          <Link className="wordmark" href="/" aria-label={`${siteIdentity.name}, home`}>{siteIdentity.name.split(" ").map(part => part[0]).join("")}<span aria-hidden="true">.</span></Link>
-          <nav aria-label="Main navigation"><Link className="nav-home" href="/">Home</Link><a href="/#work">Work</a><a href="/#about">About</a></nav>
+          <Link className="wordmark" href="/" prefetch={false} aria-label={`${siteIdentity.name}, home`}>{siteIdentity.name.split(" ").map(part => part[0]).join("")}<span aria-hidden="true">.</span></Link>
+          <nav aria-label="Main navigation"><Link className="nav-home" href="/" prefetch={false}>Home</Link><a href="/#work">Work</a><a href="/#about">About</a></nav>
           <div className="header-actions"><ThemeToggle /><a className="contact-link" href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
         </div>
       </header>

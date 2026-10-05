@@ -17,7 +17,7 @@ Run `npm run build`, then `npm run check:performance`. Chrome must be installed.
 
 `@lhci/cli@0.15.1` is a pinned development dependency (`package.json`, `package-lock.json`). It provides repeatable collection, per-route assertions and reviewable reports rather than a custom performance scoring implementation. Its installed direct files measure 97,899 bytes (`scripts/dependency-sizes.mjs`, `docs/phase-3-dependency-sizes.md`); transitive tooling is additional disk weight, not client transfer. First-load JavaScript remains checked independently by `scripts/check-budgets.mjs`.
 
-The CLI's original dependency tree reported 14 advisories. Scoped overrides use `tmp@0.2.7`, `uuid@11.1.1`, `basic-ftp@6.2.2` and `puppeteer-core@25.12.0`. The Puppeteer override crosses a major version, so compatibility is checked by real Lighthouse collection through its browser connection, not assumed. Collection of six reports succeeds and `npm audit --json` reports zero advisories with the resolved lockfile on 2026-10-05. The overrides apply only inside the CLI dependency tree (`package.json`).
+The CLI's original dependency tree reported 14 advisories. Scoped overrides use `tmp@0.2.7`, `uuid@11.1.1`, `basic-ftp@6.2.2` and `lighthouse@13.5.0`. Using the current Lighthouse engine keeps its supported Puppeteer dependency paired with it. Actual collection and report assertions work with that engine; `npm audit --json` reports zero advisories with the resolved lockfile on 2026-10-05. The overrides apply only inside the CLI dependency tree (`package.json`). Node 22.19 or newer is required by the engine; CI runs Node 24.
 
 ## Initial local findings
 
@@ -25,6 +25,14 @@ Reports from the fresh local production server on 2026-10-05 show homepage media
 
 Before the font fix, homepage CLS was 0.068262. Next's generated Arial fallback for Geist Mono used 131.49 percent size adjustment. `src/app/layout.tsx` now uses an unscaled monospace fallback and prioritizes the italic font used in the first viewport. Final loaded font files and typography remain the existing ones; three fonts are preloaded at most. This improves measured CLS without relaxing the threshold.
 
-Linux CI measurement and a reviewed regression baseline remain to be established. Section 29's greater-than-10-percent regression rule is not yet enforced by this first absolute-budget checkpoint. Do not claim Phase 3 or the full performance phase complete on the strength of these gates alone.
+## CI findings and follow-up
+
+Initial Linux CI for `0e5f20e` failed only the LCP assertions: homepage median 2571.070 ms and Brief median 2411.470 ms. CLS, TBT and homepage transfer passed. Evidence: https://github.com/Olamilekan-oluwayomi/portfolio/actions/runs/37297882981 . Reports were retained successfully, including on this failing run. These are lab values for that commit and engine, not field measurements.
+
+The Windows webpack build emitted an empty `.next/server/next-font-manifest.json` despite three configured font preloads. The default Turbopack build emits the expected route entries and three preload links. `package.json` now uses the default build; `src/app/layout.tsx` disables automatic prefetch on its two Home links to avoid two unnecessary initial RSC requests. Existing routes and client navigation remain intact. Diagnostic collection confirms no RSC prefetch requests and zero CLS with this build, but LCP still misses the fixed limit locally. These changes are not claimed as a complete LCP fix.
+
+Inspecting the existing font character maps found 225 code points in each Geist file and 206 in each Instrument Serif file. A temporary subset experiment saved only 9056 bytes across all files, so it was not applied. The font assets remain unchanged (`design/fonts/`).
+
+The remaining performance checkpoint is to resolve the measured LCP miss and establish a reviewed regression baseline. Section 29's greater-than-10-percent regression rule is not yet enforced by this first absolute-budget checkpoint. Do not claim Phase 3 or the full performance phase complete on the strength of these gates alone. PR 5 remains a draft until its gates pass.
 
 References: https://googlechrome.github.io/lighthouse-ci/docs/configuration.html and the installed Lighthouse mobile profile in `node_modules/lighthouse/core/config/constants.js`.

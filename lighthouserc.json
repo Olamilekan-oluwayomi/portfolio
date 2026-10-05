@@ -1,0 +1,53 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 4173",
+      "startServerReadyPattern": "Ready in",
+      "startServerReadyTimeout": 30000,
+      "url": ["http://127.0.0.1:4173/", "http://127.0.0.1:4173/brief"],
+      "numberOfRuns": 3,
+      "settings": {
+        "onlyCategories": ["performance"],
+        "formFactor": "mobile",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 390,
+          "height": 844,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "cpuSlowdownMultiplier": 4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.56,
+          "uploadThroughputKbps": 675
+        }
+      }
+    },
+    "assert": {
+      "assertMatrix": [
+        {
+          "matchingUrlPattern": ".*",
+          "assertions": {
+            "largest-contentful-paint": ["error", {"maxNumericValue": 2000, "aggregationMethod": "median"}],
+            "cumulative-layout-shift": ["error", {"maxNumericValue": 0.05, "aggregationMethod": "median"}],
+            "total-blocking-time": ["error", {"maxNumericValue": 150, "aggregationMethod": "median"}]
+          }
+        },
+        {
+          "matchingUrlPattern": "^http://127\\.0\\.0\\.1:4173/$",
+          "assertions": {
+            "total-byte-weight": ["error", {"maxNumericValue": 512000, "aggregationMethod": "median"}]
+          }
+        }
+      ]
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "artifacts/lighthouse"
+    }
+  }
+}

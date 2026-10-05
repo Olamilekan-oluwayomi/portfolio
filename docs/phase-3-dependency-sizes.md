@@ -15,6 +15,7 @@ Versions are pinned in `package.json` and resolved in `package-lock.json`.
 | react | 19.3.0 | 178663 | dependencies |
 | react-dom | 19.3.0 | 8063782 | dependencies |
 | zod | 4.6.5 | 6140311 | dependencies |
+| @lhci/cli | 0.15.1 | 97899 | devDependencies |
 | @tailwindcss/postcss | 4.3.3 | 100480 | devDependencies |
 | @types/mdx | 2.0.14 | 9985 | devDependencies |
 | @types/node | 26.6.4 | 2546018 | devDependencies |

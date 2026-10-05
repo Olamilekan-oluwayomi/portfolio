@@ -39,7 +39,7 @@ Status of the Phase 3 deliverables in `PRD.md` section 39. This records implemen
 | Item | Evidence and constraint |
 | --- | --- |
 | Verify the production deploy after the branch is merged | Required by `PRD.md` sections 33 and 39. The preview deployment above succeeds; `main` is not changed in this checkpoint. See `docs/vercel-framework-decision.json`. |
-| Add Lighthouse CI with the fixed mobile profile and thresholds | Required by `PRD.md` sections 29 and 39. Browser-size checks run in CI; Lighthouse does not yet. |
+| Validate Lighthouse CI and establish a regression baseline | `lighthouserc.json` and `.github/workflows/ci.yml` now enforce the fixed mobile absolute budgets. Local LCP and TBT miss the limits; Linux CI results and the 10 percent regression baseline remain pending (`docs/lighthouse-ci.md`). |
 | Choose and record a static-compatible CSP | `PRD.md` section 32 says the static CSP approach must be selected and recorded. Current headers omit CSP pending that recorded decision. |
 | Add the deferred CV file and production metadata host | `docs/phase-1-exit.md`, Appendix A items 8 and 13. |
 | Build the Phase 4 navigation routes and achieve R0 | `PRD.md` section 39. Current implemented routes are `/`, `/brief` and `/_not-found` (`src/app/`). |

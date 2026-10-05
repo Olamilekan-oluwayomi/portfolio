@@ -1,0 +1,19 @@
+{
+  "id": "gate-mobile-performance-in-ci",
+  "projectSlug": "site",
+  "title": "Gate production routes with a fixed mobile Lighthouse profile",
+  "context": "The existing CI checked content and compressed assets but did not measure the mobile rendering metrics required by PRD.md section 29.",
+  "options": ["Run ad hoc manual Lighthouse audits", "Pin Lighthouse CI and run a fixed production-server profile on pushes and pull requests"],
+  "choice": "Audit both implemented content routes three times at 390 by 844 with simulated Slow 4G and 4x CPU slowdown. Enforce median LCP, CLS and TBT limits and retain reports as CI artifacts.",
+  "tradeoff": "Chrome audits add CI time and development dependencies. Absolute budgets land first; historical regression comparison still needs a reviewed baseline.",
+  "status": "kept",
+  "theme": "performance",
+  "evidence": [
+    { "label": "Required performance gates", "ref": "PRD.md" },
+    { "label": "Fixed profile and assertions", "ref": "lighthouserc.json" },
+    { "label": "CI execution and reports", "ref": ".github/workflows/ci.yml" },
+    { "label": "Dependency rationale and measured findings", "ref": "docs/lighthouse-ci.md" },
+    { "label": "Monospace fallback and font preload fix", "ref": "src/app/layout.tsx" }
+  ],
+  "verified": false
+}

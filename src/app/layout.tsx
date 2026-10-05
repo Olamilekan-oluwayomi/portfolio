@@ -6,9 +6,9 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import "@/styles/globals.css";
 
 const display = localFont({ src: "../../design/fonts/instrument-serif-regular.woff2", variable: "--font-display-loaded", display: "swap", weight: "400", preload: false, adjustFontFallback: "Times New Roman" });
-const italic = localFont({ src: "../../design/fonts/instrument-serif-italic.woff2", variable: "--font-italic-loaded", display: "swap", weight: "400", style: "italic", preload: false, adjustFontFallback: "Times New Roman" });
+const italic = localFont({ src: "../../design/fonts/instrument-serif-italic.woff2", variable: "--font-italic-loaded", display: "swap", weight: "400", style: "italic", adjustFontFallback: "Times New Roman" });
 const ui = localFont({ src: "../../design/fonts/geist-var.woff2", variable: "--font-ui-loaded", display: "swap", weight: "400 500" });
-const mono = localFont({ src: "../../design/fonts/geist-mono-var.woff2", variable: "--font-mono-loaded", display: "swap", weight: "400 500" });
+const mono = localFont({ src: "../../design/fonts/geist-mono-var.woff2", variable: "--font-mono-loaded", display: "swap", weight: "400 500", adjustFontFallback: false, fallback: ["Courier New", "monospace"] });
 
 export const metadata: Metadata = {
   title: `${siteIdentity.name}, ${siteIdentity.role}`,

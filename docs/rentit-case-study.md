@@ -8,7 +8,9 @@ This draft separates candidate visitor copy from editorial review notes. It desc
 
 ## Owner clarification of purpose
 
-Owner account, received in this conversation on 2026-10-05: RentIt lets people list things they are not using to earn some money, while renters can get something for the moment instead of buying it. This establishes the intended audience and purpose, not evidence of actual earnings, demand or adoption. Personal contribution beyond the existing own-build confirmation remains unverified.
+Owner account, received in this conversation on 2026-10-05: RentIt lets people list things they are not using to earn some money, while renters can get something for the moment instead of buying it. This establishes the intended audience and purpose, not evidence of actual earnings, demand or adoption.
+
+Owner contribution confirmation, received in the same conversation on 2026-10-05: "i built it all bymyself". This supports sole developer credit for the whole application. Original visual-design authorship is not separately confirmed and remains unverified. This testimony does not change any `verified` flag or approve the decision records.
 
 The earlier property-specific draft was inaccurate for that purpose. The source categories include tools, cameras, electronics and musical instruments (`rentit:src/shared/lib/constants.js`). The draft now describes item rental. The existing `Property marketplace` label in `src/content/work-index.ts` and property wording in `PRD.md` remain historical inconsistencies to resolve when approved copy is integrated; neither file is changed by this draft correction.
 
@@ -17,7 +19,7 @@ The earlier property-specific draft was inaccurate for that purpose. The source 
 - Title: RentIt. Evidence: `src/content/work-index.ts`.
 - Year: 2026. Evidence: owner confirmation in `docs/phase-1-exit.md`, Appendix A item 4.
 - Category: Peer-to-peer item rental. Evidence: owner account recorded in this document under "Owner clarification of purpose"; `rentit:src/shared/lib/constants.js`.
-- Role: Own build from the start, confirmed in `docs/phase-1-exit.md`, Appendix A item 4. A more specific credit such as sole designer, sole developer or end-to-end ownership is unverified and needs owner wording.
+- Role: Sole developer. Evidence: owner contribution confirmation recorded in this document under "Owner clarification of purpose"; earlier own-build confirmation in `docs/phase-1-exit.md`, Appendix A item 4. Original visual-design authorship remains unverified.
 - Tagline: Earn from what you own. Rent what you need for the moment.
 - Summary: An item rental platform where owners list things they are not using and renters request temporary access, with bookings and messaging.
 - Live link: `https://rentitdaily.vercel.app/`. Evidence: `src/content/work-index.ts` and `docs/phase-1-exit.md`, Appendix A item 6. Current authenticated functionality is unverified.
@@ -38,6 +40,14 @@ Candidate editorial framing: **Something unused by one person can be useful to s
 The owner describes two needs: earning from things that would otherwise sit unused, and getting temporary access without buying. RentIt addresses that intended exchange through listings, booking requests and conversations. The engineering challenge is connecting those steps: a renter's request and an owner's incoming booking view must refer to the same listing, dates and conversation. The source demonstrates those connections; it does not establish that a market or user-research problem was validated.
 
 Evidence: owner account recorded in this document under "Owner clarification of purpose"; `rentit:src/features/bookings/hooks/useBookings.js`, `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/messages/hooks/useMessages.js`.
+
+## My contribution
+
+Candidate visitor copy:
+
+> I built RentIt independently, implementing the application myself. My work connects item listings, authentication and profile checks, booking requests, booking-linked messaging and owner listing controls.
+
+Evidence for authorship: owner contribution confirmation recorded in this document under "Owner clarification of purpose". Evidence for implemented scope: `docs/truth/rentit.md`; `rentit:src/App.jsx`, `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/messages/hooks/useMessages.js`, `rentit:src/features/listings/hooks/useListing.js`. This describes development responsibility, not original design authorship, measured outcomes or independently certified production behavior.
 
 ## Follow a booking
 
@@ -126,7 +136,7 @@ Evidence for the gaps: `docs/truth/rentit.md`, database and uncertainty sections
 
 ## Owner review needed
 
-1. Purpose and intended audience are now recorded under "Owner clarification of purpose". How should your personal contribution be credited: which parts did you design and implement? Existing own-build confirmation: `docs/phase-1-exit.md`, Appendix A item 4. Specific credits remain unverified.
+1. Purpose, intended audience and sole developer credit are now supported by the owner account recorded under "Owner clarification of purpose". The draft includes "My contribution" without claiming original visual-design authorship. Final visitor copy still needs review.
 2. For the three draft decisions, were the listed alternatives actually considered? Was there another option? Does the accepted-cost wording match your experience? Source drafts: `docs/rentit-case-study-decisions.json`, `docs/seed-promotion-drafts.md`.
 3. Is the proposed reflection your actual position? In particular, why did you choose one-night clamping over rejecting a same-day selection? Evidence gap: `docs/truth/rentit-decisions.md`, seed 5.
 

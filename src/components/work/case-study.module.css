@@ -34,7 +34,6 @@
 .stepLabel > span { color: var(--graphite); font: 400 12px/1.5 var(--font-mono); }
 .stepLabel h3, .problems h3 { font-size: 24px; font-weight: 500; letter-spacing: -.035em; line-height: 1.3; }
 .walkthrough p { max-width: 60ch; }
-.figurePending { margin-top: 20px; padding: 16px; border: 1px dashed var(--rule); color: var(--graphite); font: 400 12px/1.6 var(--font-mono); }
 .sourceRef { margin-top: 12px; color: var(--graphite); overflow-wrap: anywhere; font: 400 12px/1.6 var(--font-mono); }
 .permissions { margin-top: 40px; }
 .permissions h3 { font: 500 24px/1.3 var(--font-mono); margin-bottom: 12px; }

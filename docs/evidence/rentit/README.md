@@ -30,7 +30,7 @@ This is a sharing graphic, not an application screenshot or a substitute for a s
 
 ## Owner-supplied screenshots, received 2026-10-05
 
-Eight screenshots supplied in two batches in the conversation are retained unchanged in ignored `artifacts/rentit-owner-captures/`. Each is 1920x1080 pixels and includes browser tabs and address-bar chrome. The original capture date, CSS viewport dimensions and device pixel ratio are unverified. They are supporting evidence, not accepted 2x journey figures. The browser chrome is not being published as part of the portfolio.
+Nine screenshots supplied in three batches in the conversation are retained unchanged in ignored `artifacts/rentit-owner-captures/`. Each is 1920x1080 pixels and includes browser tabs and address-bar chrome. The original capture date, CSS viewport dimensions and device pixel ratio are unverified. They are supporting evidence, not accepted 2x journey figures. The browser chrome is not being published as part of the portfolio.
 
 | Local original | Observed page / evidence boundary | SHA-256 |
 | --- | --- | --- |
@@ -42,12 +42,19 @@ Eight screenshots supplied in two batches in the conversation are retained uncha
 | `conversation-desktop.png` | Booking-specific conversation route, PS5 listing context, incoming/outgoing greeting bubbles and message composer. A static capture does not establish real-time delivery or access enforcement | `29579AEF0A73DC1F25FECEEF07EF70A61FCCB847DE0E3B65A13C8FCDD53CD97D` |
 | `bookings-empty-desktop.png` | `/dashboard/bookings`, owner booking-management page with All, Pending, Approved, Completed and Cancelled filters, notification opt-in prompt and empty state. No status transition or successful push delivery is shown | `B98739B326C0148667D329F6A7D4B00D682CA720D4E7C371674864A240659286` |
 | `listing-management-desktop.png` | `/dashboard/listings`, one active PS5 listing with a rendered thumbnail and Edit, Remove from Browse and Delete controls. Successful mutations and the hidden-listing restore state are not shown | `136D9BAFA7DFF0436E3A660D5AEEA4FB061F8A6C7A58821475C2ABDEAE8A8666` |
+| `listing-owner-availability-desktop.png` | PS5 listing detail, scrolled to description and host information, with an owner panel labeled Manage Availability and instructions to block dates. The gallery, renter date selection, submitted booking request and a successful availability change are not shown | `D92DC7B1C65CF10A0732BB608243A09B5E877C05FEE975FEF741F5695C1E9E99` |
 
 The first batch supplies onboarding and a real signed-in creation state. The second batch adds the actual conversation and existing-listing management views needed by the five-step experience (`PRD.md` section 16.3; `src/components/work/case-study.tsx`). The profile form adds supporting evidence but does not prove that its requirements are satisfied or show a completion prompt.
 
 The rendered PS5 thumbnail in `listing-management-desktop.png` proves that this image appears in that supplied capture. It does not resolve the earlier signed-out gallery failures or establish their cause. Avatar failures remain visible in the supplied profile and conversation captures. No database, authentication or mutation was performed by the agent to obtain these states.
 
 The originals remain local because they include unrelated browser UI, profile values, participant identity, a booking identifier and a partially visible account email in dashboard sidebars. Publication assets need an application-only crop and a privacy review. The visible conversation contains short greetings; whether it is a test conversation is unverified. No entered credentials are visible, and no additional conversation data was accessed.
+
+### Owner capture cutoff
+
+With the ninth screenshot, the owner said "thats all lets move on". Continue with the supplied evidence and do not request further captures in this checkpoint. Missing browse results, gallery, renter-request and profile-gate states are deferred; they are not fabricated or treated as verified. This cutoff does not change the owner's earlier choice to complete the full publication gate or authorize the agent to set verification flags. RentIt remains a review draft under `src/content/release.ts`, `AGENTS.md` and `PRD.md` sections 16.2 and 38.
+
+The review reading path in `src/components/work/case-study.tsx` now provides an evidence disclosure for each step, describing exactly what the supplied captures establish. It replaces repeated empty figure boxes; it does not substitute those descriptions for required publication figures or recreate missing application states.
 
 ## Still needed
 
@@ -57,7 +64,7 @@ The originals remain local because they include unrelated browser UI, profile va
 | Three decision alternatives and trade-offs | Owner confirmed "all good" | `docs/rentit-case-study.md`, Decision review confirmation |
 | Project and decision verification flags | Owner edit pending in the application content files | `src/content/projects/rentit.mdx`, `src/content/decisions/rentit-*.mdx`; `AGENTS.md` forbids agent changes to true |
 | Authenticated browse | Missing | Guest root renders marketing; `rentit:src/App.jsx` and live root observation above |
-| Listing detail with visible gallery | Needs replacement capture | QA captures show image failures; cause unverified |
+| Listing detail with visible gallery | Owner detail/availability view received; gallery remains uncaptured and deferred | `listing-owner-availability-desktop.png` above. Earlier QA gallery failures remain unexplained |
 | Booking date selection and request state | Missing | Observed page requires login; `rentit:src/features/bookings/hooks/useCreateBooking.js` |
 | Booking conversation | Owner-supplied real view received; publication crop/privacy review and 2x provenance pending | `conversation-desktop.png` in the local inventory above; `rentit:src/features/messages/hooks/useMessages.js` |
 | Owner listing management | Owner-supplied existing-listing view received; publication crop/privacy review and 2x provenance pending | `listing-management-desktop.png` above; `rentit:src/features/listings/hooks/useListing.js` |

@@ -9,11 +9,11 @@ const chapters = [
 
 // Authored from docs/rentit-case-study.md and its source references, not a simulated app.
 const rentitSteps = [
-  { id: "browse", title: "Browse", text: "Search and filter listings before choosing an item.", ref: "rentit:src/shared/lib/constants.js" },
-  { id: "listing", title: "Inspect the listing", text: "Read the listing details and select dates. Availability and booking require sign-in.", ref: "rentit:src/features/bookings/components/AvailabilityCalendar.jsx" },
-  { id: "request", title: "Request a booking", text: "Complete the profile requirements and submit a request. The hook checks availability again before inserting a pending booking.", ref: "rentit:src/features/bookings/hooks/useCreateBooking.js" },
-  { id: "conversation", title: "Continue the conversation", text: "Message history is attached to the booking, keeping the conversation in that context.", ref: "rentit:src/features/messages/hooks/useMessages.js" },
-  { id: "management", title: "Manage the listing", text: "The owner can edit, hide and restore an existing listing.", ref: "rentit:src/features/listings/hooks/useListing.js" },
+  { id: "browse", title: "Browse", text: "Search and filter listings before choosing an item.", ref: "rentit:src/shared/lib/constants.js", captured: "The supplied landing page shows search and category links. Browse results were not captured." },
+  { id: "listing", title: "Inspect the listing", text: "Read the listing details and select dates. Availability and booking require sign-in.", ref: "rentit:src/features/bookings/components/AvailabilityCalendar.jsx", captured: "The supplied PS5 detail view shows the description, host information and owner availability calendar. It does not show the gallery or renter date selection." },
+  { id: "request", title: "Request a booking", text: "Complete the profile requirements and submit a request. The hook checks availability again before inserting a pending booking.", ref: "rentit:src/features/bookings/hooks/useCreateBooking.js", captured: "The profile form and empty owner booking dashboard were supplied. A renter request and the profile-completion prompt were not captured." },
+  { id: "conversation", title: "Continue the conversation", text: "Message history is attached to the booking, keeping the conversation in that context.", ref: "rentit:src/features/messages/hooks/useMessages.js", captured: "The supplied booking-specific conversation shows listing context, incoming and outgoing greetings, and a message composer. The image does not establish real-time delivery." },
+  { id: "management", title: "Manage the listing", text: "The owner can edit, hide and restore an existing listing.", ref: "rentit:src/features/listings/hooks/useListing.js", captured: "The supplied owner dashboard shows an active listing with Edit, Remove from Browse and Delete controls. No completed mutation or restore state was captured." },
 ];
 
 function Section({ id, index, title, children }: { id: string; index: string; title: string; children: React.ReactNode }) {
@@ -33,7 +33,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
     <a className={styles.back} href="/#work">← Back to selected work</a>
     {draft && <aside className={styles.preview} aria-label="Publication review status">
       <strong>Review preview. Not published.</strong>
-      <p>Purpose, contribution, decision reasoning, stack reasons and reflection confirmed. Real journey figures and owner-edited verification flags are still required.</p>
+      <p>Purpose, contribution, decision reasoning, stack reasons and reflection confirmed. Supplied screenshots are documented; publication figures and owner-edited verification flags remain incomplete.</p>
       <details><summary>Publication requirements</summary><ul>{issues.map(issue => <li key={issue}>{issue}</li>)}</ul></details>
     </aside>}
     <header className={styles.hero}>
@@ -54,7 +54,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
       {project.slug === "rentit" && <ol className={styles.walkthrough}>{rentitSteps.map((step, index) => {
         const media = project.media.find(item => item.id === step.id && item.kind === "screenshot");
         return <li key={step.id}><div className={styles.stepLabel}><span>{String(index + 1).padStart(2, "0")}</span><h3>{step.title}</h3></div><p>{step.text}</p>
-          {media ? <figure><Image src={media.src} width={media.width} height={media.height} alt={media.alt} sizes="(max-width: 767px) 100vw, 70vw" /><figcaption>{media.caption}</figcaption></figure> : draft && <p className={styles.figurePending}>Real figure pending. No recreated application screen.</p>}
+          {media ? <figure><Image src={media.src} width={media.width} height={media.height} alt={media.alt} sizes="(max-width: 767px) 100vw, 70vw" /><figcaption>{media.caption}</figcaption></figure> : draft && <details className={styles.evidence}><summary>Capture evidence / review only</summary><p>{step.captured}</p><p className={styles.sourceRef}>Evidence: docs/evidence/rentit/README.md, owner-supplied screenshots. Originals remain outside publication assets.</p></details>}
           <p className={styles.sourceRef}>Source: {step.ref}</p>
         </li>;
       })}</ol>}

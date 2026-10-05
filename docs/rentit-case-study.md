@@ -1,6 +1,6 @@
 # RentIt case-study draft
 
-Status: owner review draft. `verified: false`. Not published and not eligible for a project route. Publication still requires the evidence, assets and owner-verified decisions in `PRD.md` sections 16.2, 35 and 38.
+Status: owner-authorized publication requested on 2026-10-05 ("you can publish it"). `verified: false`. Not published and not yet eligible under the existing project-page gate. The owner approved proceeding with publication after clarifying purpose and sole developer credit; no verification flags are changed by the agent. Publication still requires the evidence, assets and owner-verified decisions in `PRD.md` sections 16.2, 35 and 38, or an explicit owner-approved amendment defining a narrower narrative release.
 
 Source checkout inspected read-only at `f07791db8b241ed22143e5d8c0946a94e728c2a4` in `C:\Users\hp\Desktop\rentit`. All `rentit:` references below are paths in that checkout at this commit. Existing research: `docs/truth/rentit.md`, `docs/truth/rentit-decisions.md`, `docs/seed-promotion-drafts.md` and `docs/phase-1-exit.md`.
 
@@ -136,7 +136,7 @@ Evidence for the gaps: `docs/truth/rentit.md`, database and uncertainty sections
 
 ## Owner review needed
 
-1. Purpose, intended audience and sole developer credit are now supported by the owner account recorded under "Owner clarification of purpose". The draft includes "My contribution" without claiming original visual-design authorship. Final visitor copy still needs review.
+1. Purpose, intended audience and sole developer credit are now supported by the owner account recorded under "Owner clarification of purpose". The owner subsequently authorized publication (see Status above). The draft includes "My contribution" without claiming original visual-design authorship. This does not establish the unrecorded alternatives in the decision drafts or certify missing assets.
 2. For the three draft decisions, were the listed alternatives actually considered? Was there another option? Does the accepted-cost wording match your experience? Source drafts: `docs/rentit-case-study-decisions.json`, `docs/seed-promotion-drafts.md`.
 3. Is the proposed reflection your actual position? In particular, why did you choose one-night clamping over rejecting a same-day selection? Evidence gap: `docs/truth/rentit-decisions.md`, seed 5.
 

@@ -1,0 +1,37 @@
+---
+{
+  "id": "rentit-update-existing-listings",
+  "projectSlug": "rentit",
+  "title": "Update existing listings instead of upserting",
+  "context": "Three listing mutation paths used upsert, omitting owner_id required by the INSERT policy.",
+  "options": [
+    "Keep the previous upsert path.",
+    "Use UPDATE filtered by listing id."
+  ],
+  "choice": "Use UPDATE for edits, hiding and restoring existing listings.",
+  "tradeoff": "No lost creation capability on this path, according to owner confirmation recorded in docs/seed-promotion-drafts.md: it only changes an existing listing.",
+  "status": "kept",
+  "theme": "security",
+  "evidence": [
+    {
+      "label": "Listing mutation implementation",
+      "ref": "rentit@f07791d:src/features/listings/hooks/useListing.js"
+    },
+    {
+      "label": "Mutation fix",
+      "ref": "rentit commit 4f7fb62"
+    },
+    {
+      "label": "Recorded owner cost confirmation",
+      "ref": "docs/seed-promotion-drafts.md, RentIt seed 1"
+    },
+    {
+      "label": "Owner confirmed alternatives and trade-offs",
+      "ref": "docs/rentit-case-study.md, Decision review confirmation, 2026-10-05"
+    }
+  ],
+  "verified": false
+}
+---
+
+Owner confirmed alternatives and trade-offs in docs/rentit-case-study.md, Decision review confirmation. The owner must edit the verification flag under AGENTS.md. The agent has left it false.

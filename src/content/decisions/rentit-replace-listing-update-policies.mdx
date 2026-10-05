@@ -1,0 +1,38 @@
+---
+{
+  "id": "rentit-replace-listing-update-policies",
+  "projectSlug": "rentit",
+  "title": "Replace unknown UPDATE policies with one owner policy",
+  "context": "Original listing policies were manually created and their names were not versioned. The migration records rejected owner updates.",
+  "options": [
+    "Leave existing policies in place.",
+    "Add another policy alongside them.",
+    "Discover and replace all listing UPDATE policies."
+  ],
+  "choice": "Iterate pg_policies, drop listing UPDATE policies and create one owner-only policy.",
+  "tradeoff": "The script also removes any other listing UPDATE rule and contains no rollback. The owner confirmed this cost during case-study review.",
+  "status": "kept",
+  "theme": "security",
+  "evidence": [
+    {
+      "label": "Policy replacement script",
+      "ref": "rentit@f07791d:supabase/migrations/20260802000000_listings_update_policy.sql"
+    },
+    {
+      "label": "Policy fix",
+      "ref": "rentit commit c9a206e"
+    },
+    {
+      "label": "Historical decision draft",
+      "ref": "docs/seed-promotion-drafts.md, RentIt seed 2"
+    },
+    {
+      "label": "Owner confirmed alternatives and trade-offs",
+      "ref": "docs/rentit-case-study.md, Decision review confirmation, 2026-10-05"
+    }
+  ],
+  "verified": false
+}
+---
+
+Owner confirmed alternatives and trade-offs in docs/rentit-case-study.md, Decision review confirmation. The owner must edit the verification flag under AGENTS.md. The agent has left it false.

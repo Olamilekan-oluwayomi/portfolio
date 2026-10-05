@@ -34,7 +34,7 @@ This is a sharing graphic, not an application screenshot or a substitute for a s
 | --- | --- | --- |
 | Intended problem, audience and contribution | Owner account recorded | `docs/rentit-case-study.md`, Owner clarification of purpose |
 | Three decision alternatives and trade-offs | Owner confirmed "all good" | `docs/rentit-case-study.md`, Decision review confirmation |
-| Decision verification flags | Owner edit pending | `docs/rentit-case-study-decisions.json`; `AGENTS.md` forbids agent changes to true |
+| Project and decision verification flags | Owner edit pending in the application content files | `src/content/projects/rentit.mdx`, `src/content/decisions/rentit-*.mdx`; `AGENTS.md` forbids agent changes to true |
 | Authenticated browse | Missing | Guest root renders marketing; `rentit:src/App.jsx` and live root observation above |
 | Listing detail with visible gallery | Needs replacement capture | QA captures show image failures; cause unverified |
 | Booking date selection and request state | Missing | Observed page requires login; `rentit:src/features/bookings/hooks/useCreateBooking.js` |
@@ -47,3 +47,9 @@ This is a sharing graphic, not an application screenshot or a substitute for a s
 | Static experience | Not complete; needs real journey figures | `PRD.md` section 38 |
 
 Screens must use actual application state with owner-approved public content. Messages and profile material need privacy review before publication. No credentials, access tokens, session storage, private messages or authentication bypass are requested or recorded.
+
+## Draft content prepared
+
+`src/content/projects/rentit.mdx` and the three `src/content/decisions/rentit-*.mdx` records now use the existing `src/lib/schemas.ts` contracts and `src/lib/content.ts` loader. Schema validation passes. All four records remain `verified: false`, media is empty, and OG integration is absent. The planned `walkthrough` experience field is specification data, not a completed component.
+
+`src/content/release.ts` is unchanged and excludes RentIt from publication. No project route, case-study link or production deployment is introduced by these drafts. The records in `docs/rentit-case-study-decisions.json` are the historical review source; future owner verification belongs in the application MDX records. Tool rationale remains explicitly unverified in the draft project until the owner confirms the proposed wording.

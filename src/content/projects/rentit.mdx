@@ -1,0 +1,131 @@
+---
+{
+  "slug": "rentit",
+  "title": "RentIt",
+  "tagline": "Earn from what you own. Rent what you need for the moment.",
+  "kind": "product",
+  "year": 2026,
+  "status": "live",
+  "role": "Sole developer",
+  "order": 1,
+  "featured": true,
+  "summary": "An item rental platform where owners list things they are not using and renters request temporary access, with bookings and messaging.",
+  "premise": "RentIt connects people who have items they are not using with people who need them temporarily. Owners can list those items with the aim of earning extra money; renters can request access for the time they need instead of buying. The implementation brings listings, date selection, booking requests and booking-linked conversations into one flow. This case study follows that exchange, including profile requirements, changing availability and the owner controls that keep a listing manageable after it has been published.",
+  "stack": [
+    {
+      "name": "React",
+      "category": "framework",
+      "why": "Unverified proposed rationale: reusable components and hooks for loading, error and interaction states."
+    },
+    {
+      "name": "Supabase",
+      "category": "data",
+      "why": "Unverified proposed rationale: authentication, records, storage and real-time messaging in one backend for an independent build."
+    },
+    {
+      "name": "Zod",
+      "category": "validation",
+      "why": "Unverified proposed rationale: explicit create and edit form rules in validation schemas."
+    },
+    {
+      "name": "Vite",
+      "category": "tooling",
+      "why": "Unverified proposed rationale: development and production tooling for the React application."
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "styling",
+      "why": "Unverified proposed rationale: utility classes for feature styling and responsive layouts."
+    }
+  ],
+  "links": {
+    "live": "https://rentitdaily.vercel.app/",
+    "repo": "https://github.com/Olamilekan-oluwayomi/rentit",
+    "caseStudy": "/work/rentit"
+  },
+  "media": [],
+  "experience": {
+    "mode": "walkthrough",
+    "component": "rentit"
+  },
+  "problems": [
+    {
+      "title": "An existing listing could still hit an INSERT policy",
+      "body": "Editing, hiding and restoring a listing used upsert. The payload omitted `owner_id`, which the INSERT policy expected even when the intended operation was a change to an existing row. The fix used UPDATE filtered by listing id across all three paths. The hook then selects the changed row and surfaces an error when that operation fails."
+    },
+    {
+      "title": "Calendar availability could become stale before submission",
+      "body": "A renter could select dates before another approved booking changed availability. The booking hook fetches blocked ranges again before inserting and rejects an overlap with a message asking for different dates. It also stops when the availability query fails. That catches changes visible at the second read; the read and insert remain separate operations, so this is not an atomic concurrency guarantee."
+    },
+    {
+      "title": "A same-day selection produced a zero-night booking",
+      "body": "The previous day-difference calculation could return zero for a same-day range. The implementation clamps the calendar calculation to at least one night and adds guards against fewer than one night and a non-positive total. That removes the zero-price path in the inspected code. Why clamping was preferred to rejecting the selection, and whether the wording matches the rental model, remain unverified."
+    }
+  ],
+  "reversals": "The next improvement would be to make the database setup reproducible and verify booking conflicts at the write boundary. The repository does not contain the original creation migrations for several core tables, and the availability check happens before a separate insert. I would also revisit how a same-day selection is explained: clamping it to one night prevents a zero total, but the product should make that rule clear. Those are proposals to review, not changes completed in this build.",
+  "seo": {
+    "title": "RentIt: a peer-to-peer item rental platform",
+    "description": "An item rental platform where owners list things they are not using and renters request temporary access, with bookings and messaging."
+  },
+  "evidence": [
+    {
+      "label": "Owner-confirmed purpose, sole developer contribution and copy",
+      "ref": "docs/rentit-case-study.md"
+    },
+    {
+      "label": "Inspected source and known limits",
+      "ref": "docs/truth/rentit.md; rentit commit f07791db8b241ed22143e5d8c0946a94e728c2a4"
+    },
+    {
+      "label": "Owner-confirmed year and project URLs",
+      "ref": "docs/phase-1-exit.md, Appendix A items 4 and 6"
+    },
+    {
+      "label": "Live evidence checkpoint; figures still incomplete",
+      "ref": "docs/evidence/rentit/README.md"
+    }
+  ],
+  "verified": false
+}
+---
+
+Draft content. Excluded from publication by src/content/release.ts. Real media, a static walkthrough, OG integration and owner verification remain required (PRD.md section 38). The experience field describes the intended section 16.3 walkthrough, not an implemented component.
+
+## My contribution
+
+I built RentIt independently, implementing the application myself. My work connects item listings, authentication and profile checks, booking requests, booking-linked messaging and owner listing controls.
+
+Evidence: docs/rentit-case-study.md, Owner clarification of purpose and My contribution; docs/truth/rentit.md.
+
+## Follow a booking
+
+These are narrative chapters, not a claim that all production behavior was tested. The five-step structure follows `PRD.md` section 16.3. Real captures are still required by section 38.
+
+| Step | What the visitor should understand | Implementation evidence | Capture needed |
+| --- | --- | --- | --- |
+| Browse | Search and filter before choosing a listing | Listing inventory in `docs/truth/rentit.md`; `rentit:src/shared/lib/constants.js` | Browse screen with actual filters and results |
+| Inspect a listing | Review its details and choose dates | `rentit:src/features/bookings/components/AvailabilityCalendar.jsx`; listing-detail route in `rentit:src/App.jsx` | Detail screen and date selection |
+| Request a booking | Sign-in and profile prerequisites precede a pending request; availability is checked again | `rentit:src/features/bookings/hooks/useCreateBooking.js` | Request state, profile-completion gate and overlap/error state |
+| Continue the conversation | Messages belong to a booking rather than a disconnected inbox exchange | `rentit:src/features/messages/hooks/useMessages.js` | Booking thread with owner-approved, non-sensitive content |
+| Manage the listing | Owners can edit, hide and restore an existing listing | `rentit:src/features/listings/hooks/useListing.js` | Listing management before and after a visibility change |
+
+Do not substitute the homepage's editorial illustration for an application screenshot. Screenshot dimensions, final alt text and captions must follow the actual captured content. No figure filenames, accounts, item records or conversation text are invented here (`PRD.md` section 38).
+
+## Permission map
+
+This table distinguishes UI/query behavior from migration intent. It does not certify the deployed database. RLS policies govern rows inside the database; UI guards alone are not authorization evidence ([Supabase RLS documentation](https://supabase.com/docs/guides/database/postgres/row-level-security)).
+
+| Action | Behavior visible in source | Evidence and boundary |
+| --- | --- | --- |
+| Open a listing | Listing-detail route belongs to the public layout | `rentit:src/App.jsx`. Live data visibility is unverified |
+| Submit a booking | Guest redirected to login; profile gate before submission; inserted row uses current user as renter and starts pending | `rentit:src/features/bookings/hooks/useCreateBooking.js` |
+| Create listings, bookings or messages | Versioned INSERT policies require `has_complete_profile(auth.uid())`; later migration changes that check to avatar and location | `rentit:supabase/migrations/20260726010000_require_complete_profile.sql`, `rentit:supabase/migrations/20260730000000_profile_completion_location.sql`. Applied production state is unverified |
+| Read renter/owner booking views | Renter query filters their user id; owner query first fetches owned listing ids | `rentit:src/features/bookings/hooks/useBookings.js`. Query scope is not proof of backend enforcement |
+| Update a listing | Migration scopes the existing and resulting row to its owner; hook uses UPDATE | `rentit:supabase/migrations/20260802000000_listings_update_policy.sql`, `rentit:src/features/listings/hooks/useListing.js`. Applied production policy is unverified |
+| Send booking messages | Migration checks sender identity, completed profile and participation as renter or listing owner | `rentit:supabase/migrations/20260726010000_require_complete_profile.sql`. Applied production policy is unverified |
+
+## Implementation outcomes
+
+The inspected source implements booking requests with pending status, owner and renter booking queries, booking-scoped message history and listing-edit/visibility controls. It also contains explicit failures for unavailable dates and failed availability reads. These are concrete implementation outcomes. They do not establish adoption, business results, successful deployed permissions or notification delivery.
+
+Evidence: `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/bookings/hooks/useBookings.js`, `rentit:src/features/messages/hooks/useMessages.js`, `rentit:src/features/listings/hooks/useListing.js`. No product metrics or current test-pass counts are asserted.

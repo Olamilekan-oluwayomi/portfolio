@@ -10,7 +10,7 @@ This draft separates candidate visitor copy from editorial review notes. It desc
 
 On 2026-10-05 the owner chose "Complete the full evidence gate first" rather than a narrative-only release exception. The original section 38 publication requirements remain binding.
 
-The owner then answered "all good" to the review question naming the three decisions in `docs/rentit-case-study-decisions.json` and asking whether their listed alternatives were actually considered and their trade-offs matched the owner's experience. This is the owner testimony for those alternatives and accepted costs. It does not certify current backend behavior or authorize the agent to set verification flags. The records remain `verified: false` until the owner edits them under `AGENTS.md`.
+The owner then answered "all good" to the review question naming the three decisions in `docs/rentit-case-study-decisions.json` and asking whether their listed alternatives were actually considered and their trade-offs matched the owner's experience. This is the owner testimony for those alternatives and accepted costs. It does not certify current backend behavior or authorize the agent to set verification flags. The records have been transferred to `src/content/decisions/rentit-*.mdx` and remain `verified: false` until the owner edits those application records under `AGENTS.md`. The draft project is in `src/content/projects/rentit.mdx`, also false and unpublished.
 
 ## Owner clarification of purpose
 
@@ -153,7 +153,7 @@ Evidence for the gaps: `docs/truth/rentit.md`, database and uncertainty sections
 ## Owner review needed
 
 1. Purpose, intended audience and sole developer credit are now supported by the owner account recorded under "Owner clarification of purpose". The owner subsequently authorized publication (see Status above). The draft includes "My contribution" without claiming original visual-design authorship. This does not establish the unrecorded alternatives in the decision drafts or certify missing assets.
-2. The owner confirmed the three decisions' alternatives and accepted costs ("Decision review confirmation" above). The owner must edit their verification flags; the agent cannot do so (`AGENTS.md`). Source records: `docs/rentit-case-study-decisions.json`.
+2. The owner confirmed the three decisions' alternatives and accepted costs ("Decision review confirmation" above). The owner must edit verification flags in `src/content/projects/rentit.mdx` and `src/content/decisions/rentit-*.mdx` after the remaining publication requirements are met; the agent cannot do so (`AGENTS.md`). Historical review records: `docs/rentit-case-study-decisions.json`.
 3. Is the proposed reflection your actual position? In particular, why did you choose one-night clamping over rejecting a same-day selection? Evidence gap: `docs/truth/rentit-decisions.md`, seed 5.
 
 ## Remaining publication gates

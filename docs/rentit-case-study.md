@@ -148,17 +148,19 @@ Evidence: `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/
 
 ## What I would change
 
-Proposed reflection for owner review, not the owner's confirmed position:
+### Reflection confirmation
 
-> The next improvement would be to make the database setup reproducible and verify booking conflicts at the write boundary. The repository does not contain the original creation migrations for several core tables, and the availability check happens before a separate insert. I would also revisit how a same-day selection is explained: clamping it to one night prevents a zero total, but the product should make that rule clear. Those are proposals to review, not changes completed in this build.
+The owner answered "Yes, these reflect my priorities" on 2026-10-05 when asked about reproducible database setup, booking conflicts at the database write boundary and clearer same-day rental rules. The paragraph below records those approved priorities as future improvements. It does not establish the historical reason for choosing one-night clamping.
 
-Evidence for the gaps: `docs/truth/rentit.md`, database and uncertainty sections; `rentit:src/features/bookings/hooks/useCreateBooking.js`; commit `6cebfbf`. The proposed priorities and first-person wording are unverified until the owner approves them. No reversed/open decision is fabricated from these recommendations.
+> The next improvement would be to make the database setup reproducible and verify booking conflicts at the write boundary. The repository does not contain the original creation migrations for several core tables, and the availability check happens before a separate insert. I would also revisit how a same-day selection is explained: clamping it to one night prevents a zero total, but the product should make that rule clear. These are my next priorities, not changes completed in this build.
+
+Evidence for the gaps: `docs/truth/rentit.md`, database and uncertainty sections; `rentit:src/features/bookings/hooks/useCreateBooking.js`; commit `6cebfbf`. The priorities are confirmed by the owner above. No reversed/open decision is fabricated from these recommendations.
 
 ## Owner review needed
 
 1. Purpose, intended audience and sole developer credit are now supported by the owner account recorded under "Owner clarification of purpose". The owner subsequently authorized publication (see Status above). The draft includes "My contribution" without claiming original visual-design authorship. This does not establish the unrecorded alternatives in the decision drafts or certify missing assets.
 2. The owner confirmed the three decisions' alternatives and accepted costs ("Decision review confirmation" above). The owner must edit verification flags in `src/content/projects/rentit.mdx` and `src/content/decisions/rentit-*.mdx` after the remaining publication requirements are met; the agent cannot do so (`AGENTS.md`). Historical review records: `docs/rentit-case-study-decisions.json`.
-3. Is the proposed reflection your actual position? In particular, why did you choose one-night clamping over rejecting a same-day selection? Evidence gap: `docs/truth/rentit-decisions.md`, seed 5.
+3. Reflection priorities are now owner-confirmed above. The historical reason for one-night clamping remains unverified and is not claimed as a decision rationale (`docs/truth/rentit-decisions.md`, seed 5).
 
 ## Remaining publication gates
 

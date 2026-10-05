@@ -33,7 +33,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
     <a className={styles.back} href="/#work">← Back to selected work</a>
     {draft && <aside className={styles.preview} aria-label="Publication review status">
       <strong>Review preview. Not published.</strong>
-      <p>Purpose, contribution, decision reasoning and stack reasons confirmed. Reflection review, real journey figures and owner-edited verification flags are still required.</p>
+      <p>Purpose, contribution, decision reasoning, stack reasons and reflection confirmed. Real journey figures and owner-edited verification flags are still required.</p>
       <details><summary>Publication requirements</summary><ul>{issues.map(issue => <li key={issue}>{issue}</li>)}</ul></details>
     </aside>}
     <header className={styles.hero}>
@@ -77,7 +77,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
     </article>)}</div></Section>
     <Section id="stack" index="04" title="The tools"><dl className={styles.stack}>{project.stack.map(tool => <div key={tool.name}><dt>{tool.name}</dt><dd>{tool.why}</dd></div>)}</dl></Section>
     <Section id="problems" index="05" title="Problems and fixes"><div className={styles.problems}>{project.problems.map(problem => <section key={problem.title}><h3>{problem.title}</h3><p><InlineCode text={problem.body} /></p></section>)}</div></Section>
-    <Section id="reflection" index="06" title="What I would change">{draft && <p className={styles.sourceRef}>Proposed reflection. Owner confirmation pending: docs/rentit-case-study.md.</p>}<p className={styles.lead}>{project.reversals}</p></Section>
+    <Section id="reflection" index="06" title="What I would change"><p className={styles.lead}>{project.reversals}</p></Section>
     <footer className={styles.exit}><p>Read the reasoning. Try the product.</p><div className={styles.links}><a href="/#work">Back to Work</a>{project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer">Open {project.title} ↗<span className="sr-only"> (opens in new tab)</span></a>}</div></footer>
     {project.links.live && <div className={styles.mobileLive}><a href={project.links.live} target="_blank" rel="noopener noreferrer">Open {project.title} ↗<span className="sr-only"> (opens in new tab)</span></a><a href="#decisions">Read decisions</a></div>}
   </article>;

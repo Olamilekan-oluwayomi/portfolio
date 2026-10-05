@@ -42,7 +42,7 @@ This is a sharing graphic, not an application screenshot or a substitute for a s
 | Owner listing management | Missing | Requires owner account; `rentit:src/features/listings/hooks/useListing.js` |
 | Profile completion | Missing | `rentit:src/features/profile/context/ProfileContext.jsx`; section 38 asset needs |
 | Tool-selection reasons | Owner confirmed the drafted reasons | `docs/rentit-case-study.md`, Stack reason confirmation |
-| Reflection wording | Proposed paragraph awaits owner confirmation; original same-day rationale still unverified | `docs/rentit-case-study.md`, What I would change |
+| Reflection wording | Owner confirmed the three future priorities; original same-day rationale still unverified | `docs/rentit-case-study.md`, Reflection confirmation |
 | OG image | Prepared and visually inspected; route integration pending | `rentit-og.svg`, `rentit-og.png` above |
 | Static experience | Static reading path implemented; real journey figures and interactive stepper remain incomplete | `src/components/work/case-study.tsx`; `PRD.md` sections 16.3 and 38 |
 

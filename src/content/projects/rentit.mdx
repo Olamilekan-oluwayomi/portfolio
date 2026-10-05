@@ -62,7 +62,7 @@
       "body": "The previous day-difference calculation could return zero for a same-day range. The implementation clamps the calendar calculation to at least one night and adds guards against fewer than one night and a non-positive total. That removes the zero-price path in the inspected code. Why clamping was preferred to rejecting the selection, and whether the wording matches the rental model, remain unverified."
     }
   ],
-  "reversals": "The next improvement would be to make the database setup reproducible and verify booking conflicts at the write boundary. The repository does not contain the original creation migrations for several core tables, and the availability check happens before a separate insert. I would also revisit how a same-day selection is explained: clamping it to one night prevents a zero total, but the product should make that rule clear. Those are proposals to review, not changes completed in this build.",
+  "reversals": "The next improvement would be to make the database setup reproducible and verify booking conflicts at the write boundary. The repository does not contain the original creation migrations for several core tables, and the availability check happens before a separate insert. I would also revisit how a same-day selection is explained: clamping it to one night prevents a zero total, but the product should make that rule clear. These are my next priorities, not changes completed in this build.",
   "seo": {
     "title": "RentIt: a peer-to-peer item rental platform",
     "description": "An item rental platform where owners list things they are not using and renters request temporary access, with bookings and messaging."
@@ -75,6 +75,10 @@
     {
       "label": "Owner-confirmed stack-selection wording",
       "ref": "docs/rentit-case-study.md, Stack reason confirmation, 2026-10-05"
+    },
+    {
+      "label": "Owner-confirmed reflection priorities",
+      "ref": "docs/rentit-case-study.md, Reflection confirmation, 2026-10-05"
     },
     {
       "label": "Inspected source and known limits",
@@ -93,7 +97,7 @@
 }
 ---
 
-Draft content. Excluded from publication by src/content/release.ts. The review route implements a static reading path in src/components/work/case-study.tsx. Real journey figures, the interactive walkthrough, OG integration, reflection approval and owner verification remain required (PRD.md section 38).
+Draft content. Excluded from publication by src/content/release.ts. The review route implements a static reading path in src/components/work/case-study.tsx. Real journey figures, the interactive walkthrough, OG integration and owner verification remain required (PRD.md section 38).
 
 ## My contribution
 

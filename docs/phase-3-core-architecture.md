@@ -26,11 +26,19 @@ Status of the Phase 3 deliverables in `PRD.md` section 39. This records implemen
 - `python design/verify.py`: passed, all palette values and contrast pairs match `PRD.md`.
 - `npm.cmd audit --omit=dev --json`: zero production dependency advisories at check time. A prior full audit reported five advisories in the removed Next ESLint preset dependency tree. After replacing that preset with `typescript-eslint`, the npm install reported zero advisories; a full audit has not been rerun successfully since the registry audit endpoint began returning errors.
 
-## Open work
+## Deployment checkpoint, 2026-10-05
+
+- `263fab4` declares the Next.js Vercel preset in `vercel.json`. The previous project preset was null and deployment `dpl_Aht8GraUB12zBJaasbVcWZgdLg9f` failed expecting `public` after building successfully.
+- `4044eb6` updates `scripts/check-budgets.mjs` for Next.js 16.3 adapter output under `.next/server/route-cache/APP_PAGE/`. An actual local adapter build passed the homepage and other-route limits; a normal build also passed. The limits remain 140 KB for home, 170 KB for other routes, and 150 KB for fonts (`PRD.md` section 29).
+- Preview deployment `dpl_G7Ajf2zi7qgJmkaXmsgVKCQmu5BW` for `4044eb6` reached Ready: https://portfolio-c1lmchs7o-ilesanmiolamilekan7gmailcoms-projects.vercel.app . Authenticated Vercel CLI requests returned 200 for `/` and `/brief`, and 404 for a missing route. Served HTML contains the identity and owner-provided WhatsApp and Twitter/X URLs (`src/content/identity.ts`). This is a deployment smoke check, not a browser accessibility or interaction sign-off.
+- Both GitHub CI jobs passed for `4044eb6`: https://github.com/Olamilekan-oluwayomi/portfolio/actions/runs/37294667558 and https://github.com/Olamilekan-oluwayomi/portfolio/actions/runs/37294672725 .
+- Production `main` remains outside this checkpoint. The changes are on `feat/editorial-homepage` in PR 4; this record does not claim that `main` deploys or that Phase 3 is complete.
+
+## Remaining work
 
 | Item | Evidence and constraint |
 | --- | --- |
-| Configure Vercel and verify the production deploy | Required by `PRD.md` sections 33 and 39. Preview deployment of `dd6dae4` failed after a successful build because the project had no framework preset and expected `public`. `vercel.json` now declares Next.js and retains the gated build command. See `docs/vercel-framework-decision.json`; successful deployment remains to be checked. |
+| Verify the production deploy after the branch is merged | Required by `PRD.md` sections 33 and 39. The preview deployment above succeeds; `main` is not changed in this checkpoint. See `docs/vercel-framework-decision.json`. |
 | Add Lighthouse CI with the fixed mobile profile and thresholds | Required by `PRD.md` sections 29 and 39. Browser-size checks run in CI; Lighthouse does not yet. |
 | Choose and record a static-compatible CSP | `PRD.md` section 32 says the static CSP approach must be selected and recorded. Current headers omit CSP pending that recorded decision. |
 | Add the deferred CV file and production metadata host | `docs/phase-1-exit.md`, Appendix A items 8 and 13. |

@@ -6,7 +6,7 @@ The owner supplied [iamthecode.xyz](https://www.iamthecode.xyz/) as inspiration 
 
 The reference was fetched again and rendered in headless Chrome for this revision. Its oversized framed identity, grid canvas, compact navigation, colored labels and generous spacing informed the visual study. The local reference capture and HTML are ignored under `artifacts/reference/desktop.png` and `artifacts/reference/home.html`. No reference assets, fonts or source code were copied into the application.
 
-The adaptation is an editorial engineering portfolio: a two-line monospace identity poster with a blue surname frame, a separate band for the recruiter facts, a native linked project index and a work spread with changing scale. RentIt and Foreign Exchange Checker use wide feature rows. Marginalia and Space Tourism form an unequal, staggered pair. About uses an annotation-shaped bracket mark and Contact becomes a large pink typographic sign-off (`src/app/page.tsx`, `src/styles/globals.css`).
+The adaptation is an editorial engineering portfolio: a two-line monospace identity poster with a highlighted surname frame, a separate band for the recruiter facts, a native linked project index and a work spread with changing scale. RentIt and Foreign Exchange Checker use wide feature rows. Marginalia and Space Tourism form an unequal, staggered pair. About uses an annotation-shaped bracket mark and Contact becomes a large pink typographic sign-off (`src/app/page.tsx`, `src/styles/globals.css`).
 
 Original illustrations give each project a different identity: an architectural line drawing for RentIt, a tilted manuscript sheet for Marginalia, an orbital line drawing for Space Tourism, and directional exchange typography for Foreign Exchange Checker. The visible caption says "Editorial illustration". These are not application captures, simulations, verified decision notes or product logos. Facts and links still come from `src/content/work-index.ts`; drawings live in `src/components/work/project-panel.tsx`.
 
@@ -19,10 +19,11 @@ These choices supersede the original homepage presentation under the amendment i
 | Canvas / ink | `#faf9f5` / `#21211f` |
 | Secondary text | `#585852` |
 | Selection frame | `#1379a8` |
+| Selected identity / annotation and action | `#d5ff00` / `#244bff`, with `#ffffff` annotation text |
 | Project surfaces | `#90cff0`, `#c4dfcf`, `#efd391`; Space Tourism `#182a34` |
 | Contact surface | `#eebac9` |
 | Night canvas / ink | `#191b1c` / `#f7f5ef` |
-| Name | Geist Mono, up to 184px; offset surname frame |
+| Name | Geist Mono, up to 184px; desktop size also responds to viewport height; offset surname frame |
 | Body / editorial accents | Geist / Instrument Serif |
 | Grid | 80px desktop, 56px mobile |
 | Project layout | Wide features and a seven/five-column pair; a linear list below 768px |
@@ -32,6 +33,16 @@ These choices supersede the original homepage presentation under the amendment i
 | Font preload | Geist and Geist Mono; Instrument Serif variants load on use |
 
 Tokens live in `src/styles/tokens.css`; composition and responsive rules live in `src/styles/globals.css`. Illustrations use inline SVG and CSS. No dependencies or client components were added (`package.json`, `src/components/work/project-panel.tsx`). The surname handles and illustrated sheets are static artwork, not draggable controls. All real navigation uses ordinary anchors (`src/app/page.tsx`).
+
+## Hero composition checkpoint, October 5, 2026
+
+Following the owner's audit and instruction to begin improvements, the hero retains its lime selected surname, cobalt annotation, graph canvas and asymmetric name. The role is now registered to the surname's right edge between the name lines; it is static text, without a navigation arrow. The heading contains only the owner's name (`src/app/page.tsx`, `src/styles/globals.css`).
+
+The skills use a two-column technical strip with equal emphasis, sourced from the existing identity string. On mobile, this strip spans the full information band below the manifesto and employment pair, avoiding the earlier width-dependent badge wrapping. Hero supporting text is at least 12px and hero links have targets at least 44px high. The name size responds to viewport height on desktop, with additional spacing adjustments for screens at most 800px high. The principal accent values now live in the active token file and their text contrast is included in the existing verifier (`src/styles/globals.css`, `src/styles/tokens.css`, `design/verify.py`).
+
+This checkpoint changes the hero composition only. Project content, routes and Inspect are not expanded. No decision is promoted to owner-verified (`src/content/release.ts`, `docs/homepage-direction.json`).
+
+Checkpoint validation: lint, typecheck, the production build, the contrast verifier and the whitespace check passed. The build measured 135,483 gzip bytes of first-load homepage JavaScript and 95,688 font-file bytes, within the existing limits (`package.json`, `scripts/check-budgets.mjs`, `design/verify.py`). Headless viewport checks at 320, 390, 430, 639, 640, 768, 1024, 1366 and 1440px detected no document-width overflow. At 390 and 430px the skill strip is 48px high in both compositions. At 1366x768 the brief and hero contact targets fit above the fold. Theme toggling preserved hero height, reduced motion yielded a zero-second contact underline transition, and the first keyboard Tab reached the skip link with a visible outline. Reports and captures are local review artifacts under `artifacts/review/hero-checkpoint-report.json`, `artifacts/review/hero-checkpoint-interactions.json` and `artifacts/review/hero-*.png`. These are viewport and targeted behavior checks, not a full screen-reader, physical-device or cross-browser accessibility sign-off.
 
 ## Public content boundary
 

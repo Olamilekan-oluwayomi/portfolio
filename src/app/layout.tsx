@@ -31,7 +31,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <span className="footer-name">{siteIdentity.name}</span>
         <a href={siteIdentity.links.github} target="_blank" rel="noopener noreferrer">GitHub <span className="sr-only">(opens in new tab)</span></a>
         <a href={siteIdentity.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span className="sr-only">(opens in new tab)</span></a>
-        <a href={`mailto:${siteIdentity.email}`}>{siteIdentity.email}</a>
+        <a href={siteIdentity.links.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp <span className="sr-only">(opens in new tab)</span></a>
+        <a href={siteIdentity.links.twitter} target="_blank" rel="noopener noreferrer">Twitter / X <span className="sr-only">(opens in new tab)</span></a>
+        <a className="footer-email" href={`mailto:${siteIdentity.email}`}>{siteIdentity.email}</a>
       </footer>
     </body>
   </html>;

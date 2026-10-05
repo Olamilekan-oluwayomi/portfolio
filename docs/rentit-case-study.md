@@ -6,32 +6,38 @@ Source checkout inspected read-only at `f07791db8b241ed22143e5d8c0946a94e728c2a4
 
 This draft separates candidate visitor copy from editorial review notes. It describes implementation, not measured product success. Live backend behavior, customer use, conversion, revenue and concurrency guarantees are unverified. No authenticated activity, booking, message, migration or database write was performed for this draft.
 
+## Owner clarification of purpose
+
+Owner account, received in this conversation on 2026-10-05: RentIt lets people list things they are not using to earn some money, while renters can get something for the moment instead of buying it. This establishes the intended audience and purpose, not evidence of actual earnings, demand or adoption. Personal contribution beyond the existing own-build confirmation remains unverified.
+
+The earlier property-specific draft was inaccurate for that purpose. The source categories include tools, cameras, electronics and musical instruments (`rentit:src/shared/lib/constants.js`). The draft now describes item rental. The existing `Property marketplace` label in `src/content/work-index.ts` and property wording in `PRD.md` remain historical inconsistencies to resolve when approved copy is integrated; neither file is changed by this draft correction.
+
 ## Header
 
 - Title: RentIt. Evidence: `src/content/work-index.ts`.
 - Year: 2026. Evidence: owner confirmation in `docs/phase-1-exit.md`, Appendix A item 4.
-- Category: Property marketplace. Evidence: `src/content/work-index.ts`.
+- Category: Peer-to-peer item rental. Evidence: owner account recorded in this document under "Owner clarification of purpose"; `rentit:src/shared/lib/constants.js`.
 - Role: Own build from the start, confirmed in `docs/phase-1-exit.md`, Appendix A item 4. A more specific credit such as sole designer, sole developer or end-to-end ownership is unverified and needs owner wording.
-- Tagline: From a listing to a booking request, with the conversation attached.
-- Summary: A property marketplace connecting listings, booking requests and conversations, with profile checks and owner controls built into the flow.
+- Tagline: Earn from what you own. Rent what you need for the moment.
+- Summary: An item rental platform where owners list things they are not using and renters request temporary access, with bookings and messaging.
 - Live link: `https://rentitdaily.vercel.app/`. Evidence: `src/content/work-index.ts` and `docs/phase-1-exit.md`, Appendix A item 6. Current authenticated functionality is unverified.
 - Source: `https://github.com/Olamilekan-oluwayomi/rentit`. Evidence: `src/content/work-index.ts`.
 
-Tagline and summary evidence: `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/messages/hooks/useMessages.js`, `rentit:src/features/listings/hooks/useListing.js`.
+Tagline and summary evidence: owner account recorded in this document under "Owner clarification of purpose"; `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/messages/hooks/useMessages.js`, `rentit:src/features/listings/hooks/useListing.js`. Earning is the intended benefit, not a measured result or a claim that payment processing is implemented.
 
 ## Premise
 
-RentIt is a property marketplace for people listing properties and people requesting a booking. A renter can browse listings, inspect a property, select dates and submit a request. Conversations are attached to bookings, while owners have separate views for incoming requests and their listings. The implementation connects these steps through authentication, profile-completion checks and booking status. This case study follows that path and the concrete failures encountered while building it, rather than treating the marketplace as a collection of screens.
+RentIt connects people who have items they are not using with people who need them temporarily. Owners can list those items with the aim of earning extra money; renters can request access for the time they need instead of buying. The implementation brings listings, date selection, booking requests and booking-linked conversations into one flow. This case study follows that exchange, including profile requirements, changing availability and the owner controls that keep a listing manageable after it has been published.
 
-Evidence: `rentit:src/App.jsx`, `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/bookings/hooks/useBookings.js`, `rentit:src/features/messages/hooks/useMessages.js`; the listing and dashboard inventory in `docs/truth/rentit.md`. Why the owner originally chose this problem, the intended rental duration and any user research are unverified. Those cannot be inferred from the feature set.
+Evidence: owner account recorded in this document under "Owner clarification of purpose"; `rentit:src/App.jsx`, `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/bookings/hooks/useBookings.js`, `rentit:src/features/messages/hooks/useMessages.js`; the listing and dashboard inventory in `docs/truth/rentit.md`. Exact rental-duration limits, user research and measured benefits remain unverified.
 
 ## The problem the implementation addresses
 
-Candidate editorial framing: **A listing is only the beginning. The request, permissions and conversation need to remain connected.**
+Candidate editorial framing: **Something unused by one person can be useful to someone else for a while.**
 
-RentIt has different queries for a renter's bookings and an owner's incoming requests. Booking creation has prerequisites and explicit failure paths; messages use the booking id to load their history. The case study can explain those boundaries through one journey. This is an interpretation of the implementation, not evidence that a market or user-research problem was validated.
+The owner describes two needs: earning from things that would otherwise sit unused, and getting temporary access without buying. RentIt addresses that intended exchange through listings, booking requests and conversations. The engineering challenge is connecting those steps: a renter's request and an owner's incoming booking view must refer to the same listing, dates and conversation. The source demonstrates those connections; it does not establish that a market or user-research problem was validated.
 
-Evidence: `rentit:src/features/bookings/hooks/useBookings.js`, `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/messages/hooks/useMessages.js`.
+Evidence: owner account recorded in this document under "Owner clarification of purpose"; `rentit:src/features/bookings/hooks/useBookings.js`, `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/messages/hooks/useMessages.js`.
 
 ## Follow a booking
 
@@ -45,7 +51,7 @@ These are narrative chapters, not a claim that all production behavior was teste
 | Continue the conversation | Messages belong to a booking rather than a disconnected inbox exchange | `rentit:src/features/messages/hooks/useMessages.js` | Booking thread with owner-approved, non-sensitive content |
 | Manage the listing | Owners can edit, hide and restore an existing listing | `rentit:src/features/listings/hooks/useListing.js` | Listing management before and after a visibility change |
 
-Do not substitute the homepage's editorial illustration for an application screenshot. Screenshot dimensions, final alt text and captions must follow the actual captured content. No figure filenames, accounts, property records or conversation text are invented here (`PRD.md` section 38).
+Do not substitute the homepage's editorial illustration for an application screenshot. Screenshot dimensions, final alt text and captions must follow the actual captured content. No figure filenames, accounts, item records or conversation text are invented here (`PRD.md` section 38).
 
 ## Permission map
 
@@ -120,7 +126,7 @@ Evidence for the gaps: `docs/truth/rentit.md`, database and uncertainty sections
 
 ## Owner review needed
 
-1. What prompted you to build RentIt, who was it intended for, and how should your personal contribution be credited? Existing own-build confirmation: `docs/phase-1-exit.md`, Appendix A item 4.
+1. Purpose and intended audience are now recorded under "Owner clarification of purpose". How should your personal contribution be credited: which parts did you design and implement? Existing own-build confirmation: `docs/phase-1-exit.md`, Appendix A item 4. Specific credits remain unverified.
 2. For the three draft decisions, were the listed alternatives actually considered? Was there another option? Does the accepted-cost wording match your experience? Source drafts: `docs/rentit-case-study-decisions.json`, `docs/seed-promotion-drafts.md`.
 3. Is the proposed reflection your actual position? In particular, why did you choose one-night clamping over rejecting a same-day selection? Evidence gap: `docs/truth/rentit-decisions.md`, seed 5.
 

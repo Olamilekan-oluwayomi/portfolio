@@ -26,7 +26,10 @@ for (const page of pages) {
   const scripts = new Set([...html.matchAll(/<script\b[^>]*src="([^"?]+)(?:\?[^\"]*)?"[^>]*>/g)]
     .filter(match => !/\bnomodule\b/iu.test(match[0]))
     .map(match => match[1]).filter(src => src.startsWith("/_next/")));
-  const chunks = [...scripts].map(src => ({ src, size: gzipSync(readFileSync(join(root, src.slice("/_next/".length)))).length }));
+  const chunks = [...scripts].map(src => ({
+    src,
+    size: gzipSync(readFileSync(join(root, decodeURIComponent(src.slice("/_next/".length))))).length,
+  }));
   const bytes = chunks.reduce((sum, chunk) => sum + chunk.size, 0);
   const home = page === join(root, "server/app/index.html") || page.endsWith(join("$", "index.html"));
   const limit = home ? 140 * 1024 : 170 * 1024;

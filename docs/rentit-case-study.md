@@ -4,7 +4,13 @@ Status: owner-authorized publication requested on 2026-10-05 ("you can publish i
 
 Source checkout inspected read-only at `f07791db8b241ed22143e5d8c0946a94e728c2a4` in `C:\Users\hp\Desktop\rentit`. All `rentit:` references below are paths in that checkout at this commit. Existing research: `docs/truth/rentit.md`, `docs/truth/rentit-decisions.md`, `docs/seed-promotion-drafts.md` and `docs/phase-1-exit.md`.
 
-This draft separates candidate visitor copy from editorial review notes. It describes implementation, not measured product success. Live backend behavior, customer use, conversion, revenue and concurrency guarantees are unverified. No authenticated activity, booking, message, migration or database write was performed for this draft.
+This draft separates candidate visitor copy from editorial review notes. It describes implementation, not measured product success. Customer use, conversion, revenue and concurrency guarantees are unverified. Public listing detail and the signed-out booking boundary were inspected on 2026-10-05 (`docs/evidence/rentit/README.md`). No authenticated activity, booking, message, migration or database write was performed for this draft.
+
+## Decision review confirmation
+
+On 2026-10-05 the owner chose "Complete the full evidence gate first" rather than a narrative-only release exception. The original section 38 publication requirements remain binding.
+
+The owner then answered "all good" to the review question naming the three decisions in `docs/rentit-case-study-decisions.json` and asking whether their listed alternatives were actually considered and their trade-offs matched the owner's experience. This is the owner testimony for those alternatives and accepted costs. It does not certify current backend behavior or authorize the agent to set verification flags. The records remain `verified: false` until the owner edits them under `AGENTS.md`.
 
 ## Owner clarification of purpose
 
@@ -86,7 +92,7 @@ Three draft records are in `docs/rentit-case-study-decisions.json`, using the ex
 
 The first two records support listing management. The third is an optional depth chapter about notifications, not a claim that a booking requires push delivery. Production push delivery is unverified (`docs/truth/rentit.md`, open uncertainties).
 
-The alternatives are recoverable from historical code and migration comments. Whether the owner actually weighed all of them, and whether another option was considered, remains unverified. Status `kept` describes the inspected implementation, not owner verification.
+The alternatives are recoverable from historical code and migration comments, and the owner confirmed the listed alternatives and trade-offs in "Decision review confirmation" above. No additional alternative was supplied. Status `kept` describes the inspected implementation. Verification flags still await the owner's edit (`AGENTS.md`).
 
 ## Problems and fixes
 
@@ -120,6 +126,16 @@ These explain what each tool does. They do not assert why it was originally sele
 | Zod | Listing-create and listing-edit validation schemas | `rentit:src/shared/lib/validations.js`; validation inventory in `docs/truth/rentit.md` |
 | Vite and Tailwind CSS | Build tooling and styling dependencies | `rentit:package.json`, `rentit:vite.config.js`; stack inventory in `docs/truth/rentit.md` |
 
+### Proposed selection reasons for owner confirmation
+
+The owner requested help drafting these reasons on 2026-10-05. They are inferred from the tools' roles in the implementation, not recovered historical testimony. Confirm or correct them before converting them into final first-person stack copy. No rejected alternatives, measured speed gains or cost savings are asserted.
+
+- **React:** "I chose React to build the rental flow from reusable components, with hooks managing the loading, error and interaction states across listings, bookings and conversations." Evidence for that implementation role: `rentit:src/features/listings/hooks/useListing.js`, `rentit:src/features/bookings/hooks/useCreateBooking.js`, `rentit:src/features/messages/hooks/useMessages.js`. The original selection reason is unverified.
+- **Supabase:** "I chose Supabase to connect authentication, database records, image storage and real-time messages while building the application independently. It let me work on the rental flow with those services in one backend." Evidence for the service roles: `docs/truth/rentit.md`, Auth, Listings and Messaging sections; `rentit:src/features/messages/hooks/useMessages.js`. The selection rationale and whether a different backend was considered are unverified. This does not certify the deployed policies or current image loading.
+- **Zod:** "I chose Zod to express listing-form rules in schemas, keeping the requirements for creating and editing a listing explicit before submitting data." Evidence for schema roles: `rentit:src/shared/lib/validations.js`; `docs/truth/rentit.md`, Listings section. The historical choice is unverified.
+- **Vite:** "I chose Vite as the build setup for the React application, so development and production builds used the same project tooling." Evidence for the tooling role: `rentit:package.json`, `rentit:vite.config.js`. The selection reason is unverified; no build-time comparison is claimed.
+- **Tailwind CSS:** "I chose Tailwind to style the listing, booking and dashboard interfaces through utility classes, including their responsive layouts." Evidence for utility styling: `rentit:src/features/auth/components/ProtectedRoute.jsx` and the Tailwind dependency in `rentit:package.json`; styling inventory in `docs/truth/rentit.md`. The original preference is unverified; no claim of a complete design system or proven accessibility is implied.
+
 ## Result we can substantiate
 
 The inspected source implements booking requests with pending status, owner and renter booking queries, booking-scoped message history and listing-edit/visibility controls. It also contains explicit failures for unavailable dates and failed availability reads. These are concrete implementation outcomes. They do not establish adoption, business results, successful deployed permissions or notification delivery.
@@ -137,13 +153,13 @@ Evidence for the gaps: `docs/truth/rentit.md`, database and uncertainty sections
 ## Owner review needed
 
 1. Purpose, intended audience and sole developer credit are now supported by the owner account recorded under "Owner clarification of purpose". The owner subsequently authorized publication (see Status above). The draft includes "My contribution" without claiming original visual-design authorship. This does not establish the unrecorded alternatives in the decision drafts or certify missing assets.
-2. For the three draft decisions, were the listed alternatives actually considered? Was there another option? Does the accepted-cost wording match your experience? Source drafts: `docs/rentit-case-study-decisions.json`, `docs/seed-promotion-drafts.md`.
+2. The owner confirmed the three decisions' alternatives and accepted costs ("Decision review confirmation" above). The owner must edit their verification flags; the agent cannot do so (`AGENTS.md`). Source records: `docs/rentit-case-study-decisions.json`.
 3. Is the proposed reflection your actual position? In particular, why did you choose one-night clamping over rejecting a same-day selection? Evidence gap: `docs/truth/rentit-decisions.md`, seed 5.
 
 ## Remaining publication gates
 
 - Owner-approved copy, contribution wording, tool-selection reasons and at least three owner-verified decisions (`PRD.md` sections 16.1, 16.2 and 38). The agent never sets `verified: true`.
 - Current deployed journey and permissions evidence; push delivery only if that claim will be included (`docs/truth/rentit.md`, open uncertainties).
-- Real five-step screenshots, profile-completion evidence and privacy-reviewed conversation material. At least four figures, or the bespoke piece plus two figures, with dimensions, alt text and captions (`PRD.md` section 38).
+- Real five-step screenshots, profile-completion evidence and privacy-reviewed conversation material. At least four figures, or the bespoke piece plus two figures, with dimensions, alt text and captions (`PRD.md` section 38). The public QA captures in `docs/evidence/rentit/` record a signed-out listing with image-loading failures; they are not accepted publication figures or substitutes for authenticated states.
 - Static fallback and OG image; project schema validation and publication checks (`PRD.md` section 38; `src/lib/schemas.ts`, `src/lib/content.ts`).
 - No route or homepage case-study link until these gates pass. R0 continues to show its existing approved listing and external links (`PRD.md` section 39; `src/content/release.ts`, `src/content/work-index.ts`).

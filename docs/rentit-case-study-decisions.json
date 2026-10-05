@@ -12,7 +12,8 @@
     "evidence": [
       { "label": "Listing mutation implementation", "ref": "rentit@f07791d:src/features/listings/hooks/useListing.js" },
       { "label": "Mutation fix", "ref": "rentit commit 4f7fb62" },
-      { "label": "Recorded owner cost confirmation; options still need review", "ref": "docs/seed-promotion-drafts.md, RentIt seed 1" }
+      { "label": "Recorded owner cost confirmation", "ref": "docs/seed-promotion-drafts.md, RentIt seed 1" },
+      { "label": "Owner confirmed alternatives and trade-offs", "ref": "docs/rentit-case-study.md, Decision review confirmation, 2026-10-05" }
     ],
     "verified": false
   },
@@ -23,13 +24,14 @@
     "context": "Original listing policies were manually created and their names were not versioned. The migration records rejected owner updates.",
     "options": ["Leave existing policies in place.", "Add another policy alongside them.", "Discover and replace all listing UPDATE policies."],
     "choice": "Iterate pg_policies, drop listing UPDATE policies and create one owner-only policy.",
-    "tradeoff": "The script also removes any other listing UPDATE rule and contains no rollback. This inferred cost needs owner confirmation.",
+    "tradeoff": "The script also removes any other listing UPDATE rule and contains no rollback. The owner confirmed this cost during case-study review.",
     "status": "kept",
     "theme": "security",
     "evidence": [
       { "label": "Policy replacement script", "ref": "rentit@f07791d:supabase/migrations/20260802000000_listings_update_policy.sql" },
       { "label": "Policy fix", "ref": "rentit commit c9a206e" },
-      { "label": "Historical draft requiring owner review", "ref": "docs/seed-promotion-drafts.md, RentIt seed 2" }
+      { "label": "Historical decision draft", "ref": "docs/seed-promotion-drafts.md, RentIt seed 2" },
+      { "label": "Owner confirmed alternatives and trade-offs", "ref": "docs/rentit-case-study.md, Decision review confirmation, 2026-10-05" }
     ],
     "verified": false
   },
@@ -46,7 +48,8 @@
     "evidence": [
       { "label": "Trigger implementation and missing-configuration paths", "ref": "rentit@f07791d:supabase/migrations/20260804000000_webpush_pg_net_triggers.sql" },
       { "label": "Trigger delivery implementation", "ref": "rentit commit e2a1aaf" },
-      { "label": "Owner-confirmed costs; options still need review", "ref": "docs/seed-promotion-drafts.md, RentIt seed 7" }
+      { "label": "Owner-confirmed costs", "ref": "docs/seed-promotion-drafts.md, RentIt seed 7" },
+      { "label": "Owner confirmed alternatives and trade-offs", "ref": "docs/rentit-case-study.md, Decision review confirmation, 2026-10-05" }
     ],
     "verified": false
   }

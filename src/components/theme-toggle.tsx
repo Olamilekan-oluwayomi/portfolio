@@ -31,6 +31,15 @@ function subscribe(onChange: () => void) {
   };
 }
 
+// Theme preference contract: PRD.md section 24. Shared with the palette "Toggle theme" command.
+export function toggleTheme() {
+  const root = document.documentElement;
+  const theme = isNight() ? "paper" : "night";
+  root.setAttribute("data-theme", theme);
+  window.dispatchEvent(new Event("annotated-theme-change"));
+  try { localStorage.setItem("annotated-theme", theme); } catch { /* Theme still changes when storage is unavailable. */ }
+}
+
 // Theme preference contract: PRD.md section 24.
 export function ThemeToggle() {
   const night = useSyncExternalStore(subscribe, isNight, () => false);
@@ -43,12 +52,5 @@ export function ThemeToggle() {
       }
     } catch { /* System preference remains available without storage. */ }
   }, []);
-  function toggle() {
-    const root = document.documentElement;
-    const theme = isNight() ? "paper" : "night";
-    root.setAttribute("data-theme", theme);
-    window.dispatchEvent(new Event("annotated-theme-change"));
-    try { localStorage.setItem("annotated-theme", theme); } catch { /* Theme still changes when storage is unavailable. */ }
-  }
-  return <button className="theme-control" type="button" onClick={toggle} aria-label="Dark theme" aria-pressed={night}><span aria-hidden="true">◐</span></button>;
+  return <button className="theme-control" type="button" onClick={toggleTheme} aria-label="Dark theme" aria-pressed={night}><span aria-hidden="true">◐</span></button>;
 }

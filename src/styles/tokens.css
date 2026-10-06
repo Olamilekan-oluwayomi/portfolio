@@ -33,6 +33,7 @@
   --text-body: 17px;
   --text-meta: 12px;
   --dur-fast: 150ms;
+  --dur-draw: 240ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: light;
 }
@@ -53,5 +54,5 @@
 @media (max-width: 639px) {
   :root { --pad-x: 16px; --grid-size: 56px; --grid-major-size: 280px; --text-body: 16px; }
 }
-@media (prefers-reduced-motion: reduce) { :root { --dur-fast: 0ms; } }
-:root[data-lite="true"] { --dur-fast: 0ms; }
+@media (prefers-reduced-motion: reduce) { :root { --dur-fast: 0ms; --dur-draw: 0ms; } }
+:root[data-lite="true"] { --dur-fast: 0ms; --dur-draw: 0ms; }

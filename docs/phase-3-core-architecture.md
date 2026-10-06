@@ -38,9 +38,14 @@ Status of the Phase 3 deliverables in `PRD.md` section 39. This records implemen
 
 | Item | Evidence and constraint |
 | --- | --- |
-| Verify the production deploy after the branch is merged | Required by `PRD.md` sections 33 and 39. The preview deployment above succeeds; `main` is not changed in this checkpoint. See `docs/vercel-framework-decision.json`. |
+| Verify the production deploy | Required by `PRD.md` sections 33 and 39. Preview deployments reached Ready on 2026-10-05 (`dpl_G7Ajf2zi7qgJmkaXmsgVKCQmu5BW`); whether `main` deploys to production is unverified. See `docs/vercel-framework-decision.json`. |
 | Add Lighthouse CI with the fixed mobile profile and thresholds | Required by `PRD.md` sections 29 and 39. Browser-size checks run in CI; Lighthouse does not yet. |
 | Choose and record a static-compatible CSP | `PRD.md` section 32 says the static CSP approach must be selected and recorded. Current headers omit CSP pending that recorded decision. |
 | Add the deferred CV file and production metadata host | `docs/phase-1-exit.md`, Appendix A items 8 and 13. |
-| Build the Phase 4 navigation routes and achieve R0 | `PRD.md` section 39. Current implemented routes are `/`, `/brief` and `/_not-found` (`src/app/`). |
-| Owner review of content and evidence | No project or decision is published. `src/content/release.ts` keeps the project list empty. No implementation sets a verification field true. |
+| Complete Phase 4 navigation and achieve R0 | `PRD.md` sections 14, 36 and 39. Routes delivered so far: `/`, `/brief`, `/work/[slug]`, `/_not-found`. |
+
+## Update, 2026-10-06
+
+- Publication state changed since the checkpoint above. `src/content/release.ts` declares release `R1` with four published project slugs (`rentit`, `marginalia`, `space-tourism`, `foreign-exchange-checker`) after owner approval on 2026-10-06. The statement in the earlier remaining-work table that "no project or decision is published" and that "release.ts keeps the project list empty" is superseded by this line.
+- Twelve decision records across the four projects carry `verified: true`, set by the owner (`src/content/decisions/`). The 15-record portfolio total and the two `reversed` or `open` records are checked from R2 onward (`PRD.md` section 16.2).
+- Checks on 2026-10-06: `npm run lint`, `npm test` (17 tests), `npm run typecheck`, `npm run build` with `scripts/check-content.ts` reporting "4 published project pages (R1)", and `python design/verify.py` pass. This remains an implementation record, not an accessibility, deployment or release sign-off.

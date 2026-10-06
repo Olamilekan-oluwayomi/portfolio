@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Decision, Project } from "@/lib/schemas";
 import styles from "./case-study.module.css";
 
@@ -55,7 +56,7 @@ function InlineCode({ text }: { text: string }) {
 
 export function CaseStudy({ project, decisions, draft, issues }: { project: Project; decisions: Decision[]; draft: boolean; issues: string[] }) {
   return <article className={styles.page}>
-    <a className={styles.back} href="/#work">← Back to selected work</a>
+    <nav className={styles.back} aria-label="Breadcrumb"><Link href="/work">Work</Link><span aria-hidden="true">/</span><span>{project.title}</span></nav>
     {draft && <aside className={styles.preview} aria-label="Publication review status">
       <strong>Review preview. Not published.</strong>
       <p>Purpose, contribution, decision reasoning, stack reasons and reflection confirmed. Supplied screenshots are documented; publication figures and owner-edited verification flags remain incomplete.</p>
@@ -107,7 +108,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
     <Section id="stack" index="04" title="The tools"><dl className={styles.stack}>{project.stack.map(tool => <div key={tool.name}><dt>{tool.name}</dt><dd>{tool.why}</dd></div>)}</dl></Section>
     <Section id="problems" index="05" title="Problems and fixes"><div className={styles.problems}>{project.problems.map(problem => <section key={problem.title}><h3>{problem.title}</h3><p><InlineCode text={problem.body} /></p></section>)}</div></Section>
     <Section id="reflection" index="06" title="What I would change"><p className={styles.lead}>{project.reversals}</p></Section>
-    <footer className={styles.exit}><p>Read the reasoning. Try the product.</p><div className={styles.links}><a href="/#work">Back to Work</a>{project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer">Open {project.title} ↗<span className="sr-only"> (opens in new tab)</span></a>}</div></footer>
+    <footer className={styles.exit}><p>Read the reasoning. Try the product.</p><div className={styles.links}><Link href="/work">Back to Work</Link>{project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer">Open {project.title} ↗<span className="sr-only"> (opens in new tab)</span></a>}</div></footer>
     {project.links.live && <div className={styles.mobileLive}><a href={project.links.live} target="_blank" rel="noopener noreferrer">Open {project.title} ↗<span className="sr-only"> (opens in new tab)</span></a><a href="#decisions">Read decisions</a></div>}
   </article>;
 }

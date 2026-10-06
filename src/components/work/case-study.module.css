@@ -1,5 +1,7 @@
 .page { padding-block: 24px 64px; }
-.back { display: inline-flex; align-items: center; min-height: 44px; font: 400 12px/1.5 var(--font-mono); }
+.back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 400 12px/1.5 var(--font-mono); }
+.back a { min-height: 44px; padding: 0; font: inherit; }
+.back > span:last-child { color: var(--graphite); }
 .preview { margin-block: 16px 24px; padding: 16px 20px; border: 1px solid var(--rule); border-left: 3px solid var(--selection); font-size: 14px; }
 .preview strong { font-family: var(--font-mono); }
 .preview p { margin-block: 6px; }
@@ -23,10 +25,10 @@
 .chips { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; padding: 0; list-style: none; }
 .links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .links a { display: inline-flex; align-items: center; min-height: 44px; font: 400 13px/1.5 var(--font-mono); }
-/* Back, chapter, hero and footer links: no underline, marker bar sweeps in on hover or focus. */
-:is(.back, .contents a, .links a, .mobileLive a) { text-decoration: none; position: relative; }
-:is(.back, .contents a, .links a, .mobileLive a)::after { content: ""; position: absolute; left: 0; right: 0; bottom: 9px; height: 3px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform var(--dur-fast) var(--ease-out); }
-:is(.back, .contents a, .links a, .mobileLive a):is(:hover, :focus-visible)::after { transform: scaleX(1); }
+/* Breadcrumb, chapter, hero and footer links: no underline, marker bar sweeps in on hover or focus. */
+:is(.back a, .contents a, .links a, .mobileLive a) { text-decoration: none; position: relative; }
+:is(.back a, .contents a, .links a, .mobileLive a)::after { content: ""; position: absolute; left: 0; right: 0; bottom: 9px; height: 3px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform var(--dur-fast) var(--ease-out); }
+:is(.back a, .contents a, .links a, .mobileLive a):is(:hover, :focus-visible)::after { transform: scaleX(1); }
 .contents { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 24px; padding-block: 24px 40px; }
 .contents a { display: flex; align-items: center; justify-content: flex-start; gap: 16px; min-height: 44px; padding: 8px 0; font: 400 12px/1.5 var(--font-mono); }
 .contents span { color: var(--graphite); }

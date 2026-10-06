@@ -13,7 +13,7 @@
 .registration, .heroFoot, .decisionTop { display: flex; align-items: center; justify-content: space-between; gap: 16px; font: 400 12px/1.5 var(--font-mono); }
 .registration { padding-bottom: 16px; border-bottom: 1px solid currentColor; }
 .heroGrid { display: grid; grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr); gap: 48px; align-items: end; padding-block: 40px; }
-.hero h1 { display: table; padding: 0 16px 8px; margin-left: 24px; border: 1px solid currentColor; background: var(--paper-raised); color: var(--ink); font: 500 clamp(68px, 10vw, 144px)/1 var(--font-mono); letter-spacing: -.075em; }
+.hero h1 { display: table; padding: 0 16px 8px; border: 1px solid currentColor; background: var(--paper-raised); color: var(--ink); font: 500 clamp(68px, 10vw, 144px)/1 var(--font-mono); letter-spacing: -.075em; }
 .tagline { max-width: 18ch; margin-top: 28px; font-size: clamp(30px, 4vw, 50px); line-height: 1.1; letter-spacing: -.05em; }
 .role { border-left: 1px solid currentColor; padding-left: 20px; }
 .role > span { display: block; font: 400 12px/1.5 var(--font-mono); }
@@ -23,6 +23,10 @@
 .chips { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; padding: 0; list-style: none; }
 .links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .links a { display: inline-flex; align-items: center; min-height: 44px; font: 400 13px/1.5 var(--font-mono); }
+/* Back, chapter, hero and footer links: no underline, marker bar sweeps in on hover or focus. */
+:is(.back, .contents a, .links a, .mobileLive a) { text-decoration: none; position: relative; }
+:is(.back, .contents a, .links a, .mobileLive a)::after { content: ""; position: absolute; left: 0; right: 0; bottom: 9px; height: 3px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform var(--dur-fast) var(--ease-out); }
+:is(.back, .contents a, .links a, .mobileLive a):is(:hover, :focus-visible)::after { transform: scaleX(1); }
 .contents { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 24px; padding-block: 24px 40px; }
 .contents a { display: flex; align-items: center; justify-content: flex-start; gap: 16px; min-height: 44px; padding: 8px 0; font: 400 12px/1.5 var(--font-mono); }
 .contents span { color: var(--graphite); }
@@ -58,7 +62,7 @@
 .decision dl { display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 16px; margin-block: 24px 12px; }
 .decision dt { color: var(--graphite); font: 400 12px/1.6 var(--font-mono); }
 .decision dd { margin: 0; }
-.decision dd ul { margin: 0; padding-left: 20px; }
+.decision dd ul { margin: 0; padding-left: 0; list-style-position: outside; }
 .evidence { border-top: 1px solid var(--rule); font: 400 12px/1.6 var(--font-mono); }
 .evidence ul { margin: 0; padding-left: 20px; }
 .evidence li { margin-bottom: 12px; }
@@ -84,7 +88,8 @@
 @media (max-width: 639px) {
   .page { padding-top: 12px; padding-bottom: 112px; }.preview { padding: 12px; font-size: 13px; }
   .hero { padding: 20px; }.registration { font-size: 12px; gap: 8px; }
-  .heroGrid { padding-block: 32px; }.hero h1 { margin-left: 12px; padding-inline: 10px; font-size: clamp(54px, 16vw, 86px); }
+  .hero h1.longTitle { font-size: clamp(40px, 12vw, 76px); overflow-wrap: anywhere; }
+  .heroGrid { padding-block: 32px; }.hero h1 { padding-inline: 10px; font-size: clamp(54px, 16vw, 86px); }
   .tagline { font-size: 32px; max-width: 17ch; }.role { display: block; }.role strong { margin-block: 8px 16px; }
   .contents { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; padding-bottom: 24px; }.contents a { font-size: 12px; gap: 10px; }
   .section { grid-template-columns: minmax(0, 1fr); padding-block: 28px 40px; gap: 24px; }

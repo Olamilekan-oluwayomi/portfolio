@@ -17,8 +17,12 @@ h1, h2, h3, p { margin: 0; }
 h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
 strong { font-weight: 500; }
-a { color: inherit; text-underline-offset: 5px; }
-a:hover { text-decoration-thickness: 2px; }
+a { color: inherit; text-underline-offset: 5px; text-decoration-line: underline; text-decoration-thickness: 1px; text-decoration-color: var(--graphite); }
+a:hover { text-decoration-thickness: 3px; text-decoration-color: currentColor; }
+/* Nav and CTA links trade the underline for a marker bar that sweeps in on hover or focus. */
+:is(.brief-link, .text-link, .contact-link, .hero-bottomline > a, .project-links a) { text-decoration: none; position: relative; }
+:is(.brief-link, .text-link, .contact-link, .hero-bottomline > a, .project-links a)::after { content: ""; position: absolute; left: 0; right: 0; bottom: 9px; height: 3px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform var(--dur-fast) var(--ease-out); }
+:is(.brief-link, .text-link, .contact-link, .hero-bottomline > a, .project-links a):is(:hover, :focus-visible)::after { transform: scaleX(1); }
 button { font: inherit; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 .skip-link { position: fixed; top: 8px; left: 16px; transform: translateY(-200%); padding: 12px 20px; background: var(--paper-raised); z-index: 30; }

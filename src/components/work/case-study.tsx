@@ -19,6 +19,11 @@ const heroColorClass: Record<string, string | undefined> = {
   "foreign-exchange-checker": styles.heroFx,
 };
 
+// A title word of 8+ rendered characters (the trailing period is inline) cannot
+// wrap at the mobile display size, so the h1 needs the long-title scale.
+const hasLongTitleWord = (title: string): boolean =>
+  `${title}.`.split(/\s+/).some(word => word.length >= 8);
+
 function chapterList(slug: string): [string, string][] {
   const experience = experienceChapters[slug] ?? defaultExperienceChapter;
   return [
@@ -59,7 +64,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
     <header className={`${styles.hero}${heroColorClass[project.slug] ? ` ${heroColorClass[project.slug]}` : ""}`}>
       <div className={styles.registration}><span>Annotated / Case study</span><span>{project.year} / {project.status}</span></div>
       <div className={styles.heroGrid}>
-        <div><h1>{project.title}<span aria-hidden="true">.</span></h1><p className={styles.tagline}>{project.tagline}</p></div>
+        <div><h1 className={hasLongTitleWord(project.title) ? styles.longTitle : undefined}>{project.title}<span aria-hidden="true">.</span></h1><p className={styles.tagline}>{project.tagline}</p></div>
         <div className={styles.role}><span>Contribution</span><strong>{project.role}</strong><p>{project.summary}</p></div>
       </div>
       <div className={styles.heroFoot}><ul className={styles.chips} aria-label="Technology">{project.stack.map(tool => <li key={tool.name}>{tool.name}</li>)}</ul><div className={styles.links}>

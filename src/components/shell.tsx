@@ -189,5 +189,6 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
       <p className="muted">Modifier shortcuts stay active when single-character shortcuts are off.</p>
     </dialog>
     {!pathname.startsWith("/work/") && <a className="mobile-email" href={`mailto:${siteIdentity.email}`}>Email <span aria-hidden="true">↗</span></a>}
+    <div className={pathname.startsWith("/work/") ? "spacer-live" : "spacer-pill"} aria-hidden="true" />
   </ShellContext.Provider>;
 }

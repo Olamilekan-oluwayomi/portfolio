@@ -17,8 +17,17 @@ export function useDialog(open: boolean, onClose: () => void) {
     const dialog = ref.current;
     if (!dialog) return;
     const handle = () => onCloseRef.current();
+    const handleOutside = (event: MouseEvent) => {
+      const rect = dialog.getBoundingClientRect();
+      const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+      if (outside) dialog.close();
+    };
     dialog.addEventListener("close", handle);
-    return () => dialog.removeEventListener("close", handle);
+    dialog.addEventListener("click", handleOutside);
+    return () => {
+      dialog.removeEventListener("close", handle);
+      dialog.removeEventListener("click", handleOutside);
+    };
   }, []);
   return ref;
 }

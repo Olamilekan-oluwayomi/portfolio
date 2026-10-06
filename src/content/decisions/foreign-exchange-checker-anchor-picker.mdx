@@ -1,0 +1,33 @@
+---
+{
+  "id": "foreign-exchange-checker-anchor-picker",
+  "projectSlug": "foreign-exchange-checker",
+  "title": "Render the currency picker inside the panel that opens it",
+  "context": "Both currency panels shared one picker controlled through onOpenPicker, rendered as a centred desktop overlay.",
+  "options": [
+    "Keep the single shared picker mounted at the page level.",
+    "Move picker-open state into CurrencyPanel and render the picker inside the button's wrapper."
+  ],
+  "choice": "Each panel owns its picker, positioned over the control that opened it, with the fixed bottom sheet kept on mobile.",
+  "tradeoff": "The picker now appears where the visitor clicked, and each mounted picker fetches the currency list, so the list is requested more than once.",
+  "status": "kept",
+  "theme": "ux",
+  "evidence": [
+    {
+      "label": "Picker state moved into the panel",
+      "ref": "foreign-exchange-checker commit a88b805"
+    },
+    {
+      "label": "Positioned wrapper and mobile bottom sheet",
+      "ref": "foreign-exchange-checker:starter-code/src/components/CurrencyPanel.jsx"
+    },
+    {
+      "label": "Seed record and specificity verdict",
+      "ref": "docs/truth/foreign-exchange-checker-decisions.md, seed 4; docs/seed-specificity-review.md"
+    }
+  ],
+  "verified": true
+}
+---
+
+Draft record pending owner review. The duplicate list fetch is the stated cost of giving each panel its own picker.

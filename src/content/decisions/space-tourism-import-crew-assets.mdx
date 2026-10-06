@@ -1,0 +1,33 @@
+---
+{
+  "id": "space-tourism-import-crew-assets",
+  "projectSlug": "space-tourism",
+  "title": "Import crew images instead of linking their asset paths",
+  "context": "The crew data pointed at images with literal /src/assets/crew/... paths.",
+  "options": [
+    "Keep literal paths that resolve in development but never enter the bundler graph.",
+    "Import the WebP and PNG files and store the imported URLs in the data records."
+  ],
+  "choice": "Import both formats and assign the imported URLs to each record, one file per format.",
+  "tradeoff": "Build output now emits and hashes the images, and a missing file fails the build instead of rendering empty. No responsive sources were added, so each record still holds exactly one file per format.",
+  "status": "kept",
+  "theme": "architecture",
+  "evidence": [
+    {
+      "label": "Import change over the crew data records",
+      "ref": "space-tourism commit a97919d"
+    },
+    {
+      "label": "Picture elements consuming both formats",
+      "ref": "space-tourism:src/sections/Crew.jsx"
+    },
+    {
+      "label": "Seed record and specificity verdict",
+      "ref": "docs/truth/space-tourism-decisions.md, seed 1; docs/seed-specificity-review.md"
+    }
+  ],
+  "verified": true
+}
+---
+
+Draft record pending owner review. The change moves image delivery from a runtime path assumption to a build-time dependency.

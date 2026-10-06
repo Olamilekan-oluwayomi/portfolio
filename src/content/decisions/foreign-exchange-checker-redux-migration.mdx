@@ -1,0 +1,33 @@
+---
+{
+  "id": "foreign-exchange-checker-redux-migration",
+  "projectSlug": "foreign-exchange-checker",
+  "title": "Move currency state into a Redux slice",
+  "context": "Currency data and request lifecycle lived in local component state, so each view held its own copy.",
+  "options": [
+    "Keep per-view local state and pass fetched results between components.",
+    "Move currency state into a Redux Toolkit slice with thunks that carry request cancellation."
+  ],
+  "choice": "One slice owns currency state, the thunks and the cancellation, and selectors read it from each view.",
+  "tradeoff": "Requests cancel cleanly and views share one source of truth, at the cost of a store, selectors and thunks to maintain around what was a local fetch.",
+  "status": "kept",
+  "theme": "architecture",
+  "evidence": [
+    {
+      "label": "Currency slice, thunks and selectors",
+      "ref": "foreign-exchange-checker:starter-code/src/features/currency/"
+    },
+    {
+      "label": "Cancellation handling in the thunks",
+      "ref": "foreign-exchange-checker:starter-code/src/features/currency/currencySlice.js"
+    },
+    {
+      "label": "Seed record and specificity verdict",
+      "ref": "docs/truth/foreign-exchange-checker-decisions.md, seed 1; docs/seed-specificity-review.md"
+    }
+  ],
+  "verified": true
+}
+---
+
+Draft record pending owner review. The migration moved both the data and the request lifecycle, which is why cancellation sits inside the slice.

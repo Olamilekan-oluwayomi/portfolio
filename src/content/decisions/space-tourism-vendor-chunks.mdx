@@ -1,0 +1,33 @@
+---
+{
+  "id": "space-tourism-vendor-chunks",
+  "projectSlug": "space-tourism",
+  "title": "Split vendor chunks and run Terser for the production build",
+  "context": "The production build is a single output, and the image asset strategy is fixed by the design's fixed-size pictures.",
+  "options": [
+    "Ship the default Vite output with one chunk and the default minifier.",
+    "Register named vendor chunks and run Terser in the production build."
+  ],
+  "choice": "Register vendor chunks for React, the router, motion and Tailwind, and minify production output with Terser.",
+  "tradeoff": "Vendor code caches separately from app code across deploys, and the build gains a minifier step. No before-and-after numbers were recorded, so the gain is architectural rather than measured.",
+  "status": "kept",
+  "theme": "performance",
+  "evidence": [
+    {
+      "label": "Chunk and minifier configuration",
+      "ref": "space-tourism:vite.config.js"
+    },
+    {
+      "label": "Build tooling and plugin registration",
+      "ref": "space-tourism:vite.config.js (react, tailwindcss plugins)"
+    },
+    {
+      "label": "Seed record and specificity verdict",
+      "ref": "docs/truth/space-tourism-decisions.md, seed 4; docs/seed-specificity-review.md"
+    }
+  ],
+  "verified": true
+}
+---
+
+Draft record pending owner review. The site's own performance guide claims numbers with no audit artifact, so this record stops at what vite.config.js contains.

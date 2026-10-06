@@ -1,0 +1,37 @@
+---
+{
+  "id": "marginalia-unpdf-swap",
+  "projectSlug": "marginalia",
+  "title": "Swap pdf-parse for unpdf for serverless compatibility",
+  "context": "PDF text extraction used pdf-parse, which bundles pdfjs-dist canvas-dependent code paths that break in Vercel's serverless runtime.",
+  "options": [
+    "Keep pdf-parse with the hand-written DOMMatrix polyfill added in commit 13d832f.",
+    "Move to unpdf, which extracts text with no canvas or native dependencies."
+  ],
+  "choice": "Move to unpdf, remove the polyfill and the pdfjs-dist paths, and set serverExternalPackages in next.config.ts.",
+  "tradeoff": "Dependency weight fell, 301 lines removed against 51 added. Whether extraction fidelity on chart-heavy PDFs was measured or only observed is not recorded.",
+  "status": "kept",
+  "theme": "architecture",
+  "evidence": [
+    {
+      "label": "Dependency swap",
+      "ref": "Marginalia commit 179c217 (6 files, 51 insertions, 301 deletions)"
+    },
+    {
+      "label": "Extraction module and server external package setting",
+      "ref": "Marginalia:src/lib/research/document-parse.ts; Marginalia:next.config.ts"
+    },
+    {
+      "label": "Extraction tests",
+      "ref": "Marginalia:src/lib/research/__tests__/document-parse.test.ts"
+    },
+    {
+      "label": "Seed record and specificity verdict",
+      "ref": "docs/truth/marginalia-decisions.md, seed 4; docs/seed-specificity-review.md"
+    }
+  ],
+  "verified": true
+}
+---
+
+Draft record pending owner review. Some PDFs with embedded figures still failed extraction under the polyfill, which is the failure recorded in the commit body.

@@ -1,0 +1,33 @@
+---
+{
+  "id": "foreign-exchange-checker-format-receive-input",
+  "projectSlug": "foreign-exchange-checker",
+  "title": "Format the receive amount instead of the input",
+  "context": "Typing a thousand in the source field needs a readable separator without fighting the caret.",
+  "options": [
+    "Format the amount the visitor types, re-writing the input as digits are entered.",
+    "Leave the input raw and format only the computed receive amount shown beside it."
+  ],
+  "choice": "The input stays as typed, and the receive amount is formatted with locale grouping before it is rendered.",
+  "tradeoff": "The caret is never disturbed while typing, and the two sides of the converter are formatted differently: receive caps at two fraction digits while the input shows what was typed.",
+  "status": "kept",
+  "theme": "data",
+  "evidence": [
+    {
+      "label": "Receive amount formatting in the converter view",
+      "ref": "foreign-exchange-checker:starter-code/src/components/Convert.jsx"
+    },
+    {
+      "label": "Contrasting formatting in compare and log views",
+      "ref": "docs/truth/foreign-exchange-checker.md, section 6"
+    },
+    {
+      "label": "Seed record and specificity verdict",
+      "ref": "docs/truth/foreign-exchange-checker-decisions.md, seed 5; docs/seed-specificity-review.md"
+    }
+  ],
+  "verified": true
+}
+---
+
+Draft record pending owner review. The inconsistency between views is the trade, and a currency-specific minor-unit policy does not exist yet.

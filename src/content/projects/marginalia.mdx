@@ -1,0 +1,152 @@
+---
+{
+  "slug": "marginalia",
+  "title": "Marginalia",
+  "tagline": "An assistant where every claim keeps its source attached.",
+  "kind": "concept",
+  "year": 2026,
+  "status": "live",
+  "role": "Sole developer",
+  "order": 2,
+  "featured": false,
+  "summary": "An AI research assistant where answers cite a numbered evidence list that the server resolves, so a source can never be invented.",
+  "premise": "Marginalia is an AI research assistant for people working from their own documents. A reader uploads PDFs, asks questions inside a workspace, and gets an answer whose citations point at the passages that produced it. The build covers upload and text extraction, retrieval that selects relevant passages, three source modes for document, web or both, and a citation protocol that resolves every marker server-side. It runs as a private single-user app: every table carries row-level security and each answer holds a status the interface polls until generation finishes.",
+  "stack": [
+    {
+      "name": "Next.js",
+      "category": "framework",
+      "why": "App Router routes, server actions for research flows and server-side generation keep the model keys and prompts off the client."
+    },
+    {
+      "name": "TypeScript",
+      "category": "language",
+      "why": "Typed contracts for the citation protocol, the answer schema and the retrieval layer, with tests alongside them."
+    },
+    {
+      "name": "Supabase",
+      "category": "data",
+      "why": "Authentication, row-level security on every table, private storage for documents and status columns for state."
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "styling",
+      "why": "Shared utility styling across the document, research and settings routes."
+    },
+    {
+      "name": "Vitest",
+      "category": "tooling",
+      "why": "Unit tests split into node and jsdom projects, so the environment follows the file extension."
+    }
+  ],
+  "links": {
+    "live": "https://marginalia-u6x8.vercel.app/",
+    "repo": "https://github.com/Olamilekan-oluwayomi/Marginalia",
+    "caseStudy": "/work/marginalia"
+  },
+  "media": [
+    {
+      "id": "capture-2026-10-06",
+      "kind": "screenshot",
+      "src": "/figures/marginalia/marginalia-2026-10-06.png",
+      "alt": "Screenshot of the Marginalia application window captured on 2026-10-06.",
+      "caption": "Marginalia, captured 2026-10-06. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134149",
+      "kind": "screenshot",
+      "src": "/figures/marginalia/marginalia-2026-10-06-134149.png",
+      "alt": "Screenshot of the Marginalia application captured on 2026-10-06 at 13:41.",
+      "caption": "Marginalia, captured 2026-10-06 13:41. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134203",
+      "kind": "screenshot",
+      "src": "/figures/marginalia/marginalia-2026-10-06-134203.png",
+      "alt": "Screenshot of the Marginalia application captured on 2026-10-06 at 13:42.",
+      "caption": "Marginalia, captured 2026-10-06 13:42. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134215",
+      "kind": "screenshot",
+      "src": "/figures/marginalia/marginalia-2026-10-06-134215.png",
+      "alt": "Screenshot of the Marginalia application captured on 2026-10-06 at 13:42.",
+      "caption": "Marginalia, captured 2026-10-06 13:42. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    }
+  ],
+  "experience": {
+    "mode": "manuscript",
+    "component": "marginalia"
+  },
+  "problems": [
+    {
+      "title": "PDF extraction failed in the serverless runtime",
+      "body": "`pdf-parse` bundles `pdfjs-dist` canvas-dependent code paths, which break in Vercel's serverless environment even after a hand-written `DOMMatrix` polyfill, and some PDFs with embedded figures still failed extraction. Commit `179c217` moves extraction to `unpdf`, which needs no canvas or native dependencies. The commit removes 301 lines and adds 51, and it preserves the input and output shape and the user-safe error handling."
+    },
+    {
+      "title": "One table had no row-level security",
+      "body": "Every application table had row-level security except `profiles`, which `ProfileProvider` and `ProfileForm` read and update from the browser's authenticated client. Any authenticated request that could name a user id could read or overwrite another row, and only the app's own query behaviour stood in the way. Migration `20260929000000_secure_profiles.sql` enables RLS and scopes SELECT and UPDATE to `auth.uid()`, and grants no INSERT because the sign-up trigger creates rows as the table owner."
+    },
+    {
+      "title": "A web-only question could answer with nothing",
+      "body": "When a web-only question returned no usable results, the app still generated an answer, which claimed a search had happened. Commit `3c8530f` changed that path to mark the question failed with `NO_WEB_SOURCES_MESSAGE` instead. The case only became reachable after `e39c03d` surfaced provider failures. The cost is stated in the comment above the constant: the reader gets a failure where a thin answer would have been something."
+    }
+  ],
+  "reversals": "What I would change first is the deployment and verification story. The repository carries no deployment-to-commit parity check, the web search tier caps at 1,000 credits a month with no handling for the cap, and the fallback provider only runs if its key is configured, so that resilience path may never execute in production. I would also give the retrieval layer a recovery path when it misses a passage, because a correct answer depending on that passage becomes uncitable. These are open items in the project's own audit, not changes already made.",
+  "seo": {
+    "title": "Marginalia: an AI research assistant with visible citations",
+    "description": "An AI research assistant concept where every answer cites a numbered evidence list resolved server-side, with document, web and combined modes.",
+    "ogImage": "/og/marginalia-case-study.svg"
+  },
+  "evidence": [
+    {
+      "label": "Inspected source, stack, routes and AI integration",
+      "ref": "docs/truth/marginalia.md (HEAD 0d71954)"
+    },
+    {
+      "label": "Owner-supplied live URL, public repository and 2026 year",
+      "ref": "docs/phase-1-exit.md, Appendix A items 4, 6 and 7"
+    },
+    {
+      "label": "Owner confirmation that the build is their own from the start",
+      "ref": "docs/phase-1-exit.md, Appendix A item 4, origins"
+    },
+    {
+      "label": "Decision seeds and specificity verdicts",
+      "ref": "docs/truth/marginalia-decisions.md; docs/seed-specificity-review.md"
+    },
+    {
+      "label": "Owner-supplied application captures, 2026-10-06",
+      "ref": "public/figures/marginalia/"
+    }
+  ],
+  "verified": true
+}
+---
+
+This case study is a draft assembled from the Marginalia truth sheet and its decision seeds. It is not published: figures and owner verification are still outstanding.
+
+## My contribution
+
+I built Marginalia independently, from the initial implementation onward. My work covers document upload and extraction, the retrieval layer, the three source modes, the citation protocol, the provider fallback and the row-level security on every table.
+
+Evidence: docs/phase-1-exit.md, Appendix A item 4 origins; docs/truth/marginalia.md.
+
+## What the sources show
+
+Every claim on this page is drawn from the inspected repository at commit `0d71954`, not from the product's own description. The citation mechanism, the bounds on prompts and timeouts, the database policies and the state machine are read from source and cited at the point they appear. The README's own test figures were corrected against `npm test` in commit `0d71954`, which is the standard this page follows.
+
+Evidence: docs/truth/marginalia.md, sections 3 to 7.
+
+## Figures still to capture
+
+Four owner captures exist under `public/figures/marginalia/`, supplied on 2026-10-06, and their alt text and captions await confirmation, as does whether each meets the 2x expectation of PRD.md section 38. That section requires at least four figures at 2x with alt text and captions, or the bespoke piece plus two. The captures it lists for this project are the main interface, the citation view, the manuscript view and the source panel, and the four files supplied cover which of those is to be confirmed in owner review.
+
+Evidence: PRD.md section 38; docs/truth/marginalia.md, open uncertainties.

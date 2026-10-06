@@ -1,0 +1,37 @@
+---
+{
+  "id": "marginalia-reject-unknown-oauth",
+  "projectSlug": "marginalia",
+  "title": "Reject unknown OAuth identities instead of provisioning them",
+  "context": "The callback first self-healed a missing profile by upserting one server-side, then that path was removed.",
+  "options": [
+    "Self-heal a missing profile by upserting one server-side, the earlier behaviour at commit 8b2b5c8.",
+    "Reject unknown Google identities with account_not_found, sign out and clear every cookie, commit 5b0e7ae."
+  ],
+  "choice": "Reject unknown Google identities, so nothing is silently provisioned and the admission check is a profile row.",
+  "tradeoff": "A registered user whose profile row is missing is told no account exists, the error classification matches the substring \"signup\" in upstream error text, and every rejection lands on /login.",
+  "status": "reversed",
+  "theme": "security",
+  "evidence": [
+    {
+      "label": "Self-healing callback, then its removal",
+      "ref": "Marginalia commits 8b2b5c8 and 5b0e7ae"
+    },
+    {
+      "label": "Admission, rejection and classification paths",
+      "ref": "Marginalia:src/app/auth/callback/route.ts"
+    },
+    {
+      "label": "Admission and no-silent-provisioning tests",
+      "ref": "Marginalia:src/app/auth/__tests__/callback-route.test.ts"
+    },
+    {
+      "label": "Seed record and specificity verdict",
+      "ref": "docs/truth/marginalia-decisions.md, seed 8; docs/seed-specificity-review.md"
+    }
+  ],
+  "verified": true
+}
+---
+
+Draft record pending owner review. The earlier self-healing existed because an OAuth metadata flag did not survive repeat sign-ins, and the reversal trades that problem for a hard admission check.

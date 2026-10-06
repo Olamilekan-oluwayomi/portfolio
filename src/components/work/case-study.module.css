@@ -6,6 +6,10 @@
 .preview summary, .evidence summary { min-height: 44px; padding-block: 10px; cursor: pointer; }
 .preview li { overflow-wrap: anywhere; }
 .hero { padding: 24px 32px; border: 1px solid var(--card-ink); background: var(--blue); color: var(--card-ink); }
+/* Per-project hero matches the homepage cover colour of the same project. */
+.heroMint { background: var(--mint); }
+.heroSpace { background: var(--space-surface); color: var(--space-ink); }
+.heroFx { background: var(--yellow); }
 .registration, .heroFoot, .decisionTop { display: flex; align-items: center; justify-content: space-between; gap: 16px; font: 400 12px/1.5 var(--font-mono); }
 .registration { padding-bottom: 16px; border-bottom: 1px solid currentColor; }
 .heroGrid { display: grid; grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr); gap: 48px; align-items: end; padding-block: 40px; }

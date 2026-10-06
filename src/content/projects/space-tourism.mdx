@@ -1,0 +1,161 @@
+---
+{
+  "slug": "space-tourism",
+  "title": "Space Tourism",
+  "tagline": "Four routes, one supplied design, built across three widths.",
+  "kind": "implementation",
+  "year": 2026,
+  "status": "live",
+  "role": "Implementation of a supplied design",
+  "order": 3,
+  "featured": false,
+  "summary": "A responsive space tourism site with destination, crew and technology sections, built from a supplied Frontend Mentor design with React and Tailwind.",
+  "premise": "Space Tourism is a responsive front-end implementation of a multi-section site supplied as a Frontend Mentor design. It has four routes: a home page, a destination selector covering Moon, Mars, Europa and Titan, a crew selector with four members, and a technology section with three vehicles. The design is credited to Frontend Mentor and the implementation is mine. Content is bundled rather than fetched, and each section keeps its selection in local component state rather than in the URL.",
+  "stack": [
+    {
+      "name": "React",
+      "category": "framework",
+      "why": "Component model for the four route pages and their selection controls."
+    },
+    {
+      "name": "React Router",
+      "category": "framework",
+      "why": "Four nested routes resolved through the router, each loaded by a route-level lazy import."
+    },
+    {
+      "name": "Framer Motion",
+      "category": "tooling",
+      "why": "Keyed transitions around selected content and images, with configured durations per section."
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "styling",
+      "why": "Theme tokens for type and spacing live in CSS, labelled as coming from the supplied style guide."
+    },
+    {
+      "name": "Vite",
+      "category": "tooling",
+      "why": "Registers the React and Tailwind plugins, runs Terser for production and emits the named vendor chunks."
+    }
+  ],
+  "links": {
+    "live": "https://space-tourismx.vercel.app/",
+    "repo": "https://github.com/Olamilekan-oluwayomi/space-tourism-website-main",
+    "caseStudy": "/work/space-tourism"
+  },
+  "media": [
+    {
+      "id": "capture-2026-10-06",
+      "kind": "screenshot",
+      "src": "/figures/space-tourism/space-tourism-2026-10-06.png",
+      "alt": "Screenshot of the Space Tourism site captured on 2026-10-06.",
+      "caption": "Space Tourism, captured 2026-10-06. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134326",
+      "kind": "screenshot",
+      "src": "/figures/space-tourism/space-tourism-2026-10-06-134326.png",
+      "alt": "Screenshot of the Space Tourism site captured on 2026-10-06 at 13:43.",
+      "caption": "Space Tourism, captured 2026-10-06 13:43. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134336",
+      "kind": "screenshot",
+      "src": "/figures/space-tourism/space-tourism-2026-10-06-134336.png",
+      "alt": "Screenshot of the Space Tourism site captured on 2026-10-06 at 13:43.",
+      "caption": "Space Tourism, captured 2026-10-06 13:43. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134347",
+      "kind": "screenshot",
+      "src": "/figures/space-tourism/space-tourism-2026-10-06-134347.png",
+      "alt": "Screenshot of the Space Tourism site captured on 2026-10-06 at 13:43.",
+      "caption": "Space Tourism, captured 2026-10-06 13:43. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134355",
+      "kind": "screenshot",
+      "src": "/figures/space-tourism/space-tourism-2026-10-06-134355.png",
+      "alt": "Screenshot of the Space Tourism site captured on 2026-10-06 at 13:43.",
+      "caption": "Space Tourism, captured 2026-10-06 13:43. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    }
+  ],
+  "experience": {
+    "mode": "resizer",
+    "component": "space-tourism"
+  },
+  "problems": [
+    {
+      "title": "Crew images never became build dependencies",
+      "body": "Crew imagery was referenced by literal `/src/assets/crew/...` paths. Those resolve during development but never enter the bundler's dependency graph, so nothing guaranteed they reached the output or were hashed. Commit `a97919d` imports the WebP and PNG files and assigns the imported URLs to the data records. Both formats are now emitted into the build output, and each record still holds one file per format with no width or density alternatives."
+    },
+    {
+      "title": "The performance guide describes decisions the code does not make",
+      "body": "`PERFORMANCE_OPTIMIZATIONS.md` says lazy routing was abandoned for direct imports, while commit `dd21daa` replaces direct imports with route-level lazy ones that remain at HEAD. The guide also attributes the font change to `display=swap`, which the parent revision already had. The audit treats the source as the truth, so no claimed measurement from that guide appears on this page."
+    },
+    {
+      "title": "No reduced-motion path and no selected state",
+      "body": "Animated page components and hover transitions have no reduced-motion handling in the components or the global styles, and the README's keyboard and WCAG claims carry no audit artifact. Destination and crew expose native buttons that work on click but no selected state and no arrow-key handler, and the mobile menu has no Escape handling or focus return. This page reports what the markup does rather than what the design intended."
+    }
+  ],
+  "reversals": "What I would change first is the accessibility work: a reduced-motion path for the keyed transitions, selected state on the destination and crew selectors, and Escape handling with focus return in the mobile menu. The performance guide would be rewritten to match the code, since it currently describes a routing decision the history does not support. I would also capture the real page at three widths before making any responsive claim, and add a not-found route with an authored no-JavaScript fallback. None of that exists today, and none of it is claimed.",
+  "seo": {
+    "title": "Space Tourism: a responsive multi-section implementation",
+    "description": "A responsive space tourism site with destination, crew and technology sections, built from a supplied Frontend Mentor design with React and Tailwind.",
+    "ogImage": "/og/space-tourism-case-study.svg"
+  },
+  "evidence": [
+    {
+      "label": "Inspected source, routes, stack and stated limits",
+      "ref": "docs/truth/space-tourism.md (HEAD 90f8926)"
+    },
+    {
+      "label": "Owner-supplied live URL, public repository and 2026 year",
+      "ref": "docs/phase-1-exit.md, Appendix A items 4, 6 and 7"
+    },
+    {
+      "label": "Design attribution to Frontend Mentor",
+      "ref": "docs/truth/space-tourism.md:11; space-tourism README.md:210"
+    },
+    {
+      "label": "Decision seeds and specificity verdicts",
+      "ref": "docs/truth/space-tourism-decisions.md; docs/seed-specificity-review.md"
+    },
+    {
+      "label": "Owner-supplied application captures, 2026-10-06",
+      "ref": "public/figures/space-tourism/"
+    }
+  ],
+  "verified": true
+}
+---
+
+This case study is a draft assembled from the Space Tourism truth sheet and its decision seeds. It is not published: figures and owner verification are still outstanding.
+
+## My contribution
+
+The design is supplied by Frontend Mentor and is credited as such. My work is the implementation: the router with route-level lazy imports, the responsive layouts and picture elements, the selection controls, the production build configuration and the motion around selected content.
+
+Evidence: docs/truth/space-tourism.md:11; docs/phase-1-exit.md, Appendix A item 4, origins.
+
+## Where the page stops short
+
+The audit records what the source does not contain: no tablist or tabpanel semantics, no reduced-motion handling, no Escape handling in the mobile menu, no not-found route and no authored no-JavaScript fallback. The README's performance figures have no checked-in audit artifact, so no number from them is repeated here.
+
+Evidence: docs/truth/space-tourism.md, sections 6 and 7.
+
+## Figures still to capture
+
+Five owner captures exist under `public/figures/space-tourism/`, supplied on 2026-10-06, and their alt text and captions await confirmation, as does whether each meets the 2x expectation of PRD.md section 38. That section requires at least four figures at 2x with alt text and captions, or the bespoke piece plus two. The captures it lists for this project are home, destination, crew and technology at 375, 768 and 1280 pixels, and which of those the five files cover is to be confirmed in owner review.
+
+Evidence: PRD.md section 38; docs/truth/space-tourism.md:69.

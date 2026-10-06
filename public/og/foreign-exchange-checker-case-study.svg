@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Foreign Exchange Checker case study</title>
+  <desc id="desc">Annotated case study cover for Foreign Exchange Checker with an exchange ticket and the project tagline.</desc>
+  <rect width="1200" height="630" fill="#f4efe7"/>
+  <rect x="42" y="42" width="1116" height="546" rx="24" fill="#fbfaf7" stroke="#111111" stroke-width="4"/>
+  <text x="140" y="200" font-family="Arial, sans-serif" font-size="30" fill="#111111">&#8599;</text>
+  <text x="430" y="500" font-family="Arial, sans-serif" font-size="30" fill="#111111">&#8601;</text>
+  <rect x="150" y="170" width="300" height="300" fill="#ffffff" stroke="#111111" stroke-width="4"/>
+  <text x="300" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" letter-spacing="2" fill="#111111">FOREIGN EXCHANGE</text>
+  <path d="M180 244H420" stroke="#111111" stroke-width="2"/>
+  <text x="300" y="368" text-anchor="middle" font-family="Arial, sans-serif" font-size="110" font-weight="700" fill="#111111">FX</text>
+  <path d="M180 396H420" stroke="#111111" stroke-width="2"/>
+  <text x="300" y="438" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#111111">Checker &#8596;</text>
+  <text x="610" y="190" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#111111">Annotated case study</text>
+  <text x="610" y="256" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#111111">Foreign Exchange</text>
+  <text x="610" y="316" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#111111">Checker</text>
+  <text x="610" y="392" font-family="Arial, sans-serif" font-size="32" fill="#444444">Convert, compare and keep</text>
+  <text x="610" y="440" font-family="Arial, sans-serif" font-size="32" fill="#444444">a record of the numbers.</text>
+  <text x="610" y="504" font-family="Arial, sans-serif" font-size="24" fill="#111111">Implementation by Olamilekan Ilesanmi</text>
+  <text x="610" y="544" font-family="Arial, sans-serif" font-size="22" fill="#666666">Design supplied by Frontend Mentor / 2026</text>
+</svg>

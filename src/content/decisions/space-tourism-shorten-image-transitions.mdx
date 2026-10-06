@@ -1,0 +1,33 @@
+---
+{
+  "id": "space-tourism-shorten-image-transitions",
+  "projectSlug": "space-tourism",
+  "title": "Shorten the image transitions around selected content",
+  "context": "Page transitions animate whole sections while image swaps keep their own timing, and the second duration is the one a visitor waits on.",
+  "options": [
+    "Leave the configured transition durations untouched across sections.",
+    "Shorten the image transition around the selected image and keep the rest of the motion configured as-is."
+  ],
+  "choice": "Shorten the image transition so the swapped image settles before the surrounding copy does.",
+  "tradeoff": "The swap reads faster, and the section now has two motion speeds rather than one, so the shorter duration has to hold against the page transition it sits inside.",
+  "status": "kept",
+  "theme": "motion",
+  "evidence": [
+    {
+      "label": "Configured transition durations per section",
+      "ref": "space-tourism:src/utils/transitionPresets.js"
+    },
+    {
+      "label": "Image swap motion around selected content",
+      "ref": "space-tourism:src/sections/Crew.jsx; space-tourism:src/sections/Destination.jsx"
+    },
+    {
+      "label": "Seed record and specificity verdict",
+      "ref": "docs/truth/space-tourism-decisions.md, seed 3; docs/seed-specificity-review.md"
+    }
+  ],
+  "verified": true
+}
+---
+
+Draft record pending owner review. No measured timing backs this yet; it is an interaction judgement written down before it is tuned.

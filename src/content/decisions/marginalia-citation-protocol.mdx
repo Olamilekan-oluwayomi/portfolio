@@ -1,0 +1,37 @@
+---
+{
+  "id": "marginalia-citation-protocol",
+  "projectSlug": "marginalia",
+  "title": "Close the token in the citation protocol, not in the model",
+  "context": "The model produced citations, and a wrong citation is a fabricated source.",
+  "options": [
+    "Let the model emit citation identifiers and resolve them afterwards.",
+    "Have the model cite by 1-based index into a numbered evidence list, resolved server-side."
+  ],
+  "choice": "Cite by 1-based index into a numbered evidence list, resolved server-side, dropping anything unresolvable.",
+  "tradeoff": "The model can only cite what was retrieved, so a correct answer depending on a missed passage becomes uncitable and its marker is stripped.",
+  "status": "kept",
+  "theme": "data",
+  "evidence": [
+    {
+      "label": "Citation protocol implementation and type comment",
+      "ref": "Marginalia:src/lib/research/citation-generation.ts (GeneratedCitation, toAnswerCitations, sanitizeAnswerMarkers)"
+    },
+    {
+      "label": "Deleted parallel resolution path",
+      "ref": "Marginalia commit c42ed06"
+    },
+    {
+      "label": "Protocol tests",
+      "ref": "Marginalia:src/lib/research/__tests__/citation-generation.test.ts"
+    },
+    {
+      "label": "Seed record and specificity verdict",
+      "ref": "docs/truth/marginalia-decisions.md, seed 1; docs/seed-specificity-review.md"
+    }
+  ],
+  "verified": true
+}
+---
+
+Draft record pending owner review. The failure mode moves from fabricated sources to missing ones, which is the intended trade.

@@ -1,0 +1,161 @@
+---
+{
+  "slug": "foreign-exchange-checker",
+  "title": "Foreign Exchange Checker",
+  "tagline": "Convert, compare and keep a record of the numbers.",
+  "kind": "implementation",
+  "year": 2026,
+  "status": "live",
+  "role": "Implementation of a supplied design",
+  "order": 4,
+  "featured": false,
+  "summary": "A currency converter with rate history, saved pairs and a conversion log, built on the Frankfurter API with Redux Toolkit.",
+  "premise": "Foreign Exchange Checker converts an amount between currencies, shows rate history over six ranges, compares a base against a fixed candidate list, and keeps saved pairs and manual conversion snapshots in the browser. It consumes the Frankfurter API directly from the browser with no API key, and the design system and assets come from a Frontend Mentor challenge. The work here covers the state architecture, the request lifecycle, the anchor picker and how each view presents a missing or empty result.",
+  "stack": [
+    {
+      "name": "React",
+      "category": "framework",
+      "why": "Component model for the convert, history, compare, favorites and log views."
+    },
+    {
+      "name": "Redux Toolkit",
+      "category": "state",
+      "why": "A currency slice with thunks that carry request cancellation, plus selectors for each view."
+    },
+    {
+      "name": "Frankfurter API",
+      "category": "data",
+      "why": "Browser-side endpoints for conversion, history and currencies, called without an API key."
+    },
+    {
+      "name": "Recharts",
+      "category": "tooling",
+      "why": "Area chart rendering for the selected history range."
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "styling",
+      "why": "Utility styling built on the challenge's supplied design tokens."
+    }
+  ],
+  "links": {
+    "live": "https://foreign-exchange-checker-eight.vercel.app/",
+    "repo": "https://github.com/Olamilekan-oluwayomi/ForeignExchangeChecker",
+    "caseStudy": "/work/foreign-exchange-checker"
+  },
+  "media": [
+    {
+      "id": "capture-2026-10-06",
+      "kind": "screenshot",
+      "src": "/figures/foreign-exchange-checker/fx-2026-10-06.png",
+      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06.",
+      "caption": "Foreign Exchange Checker, captured 2026-10-06. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134550",
+      "kind": "screenshot",
+      "src": "/figures/foreign-exchange-checker/fx-2026-10-06-134550.png",
+      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06 at 13:45.",
+      "caption": "Foreign Exchange Checker, captured 2026-10-06 13:45. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134601",
+      "kind": "screenshot",
+      "src": "/figures/foreign-exchange-checker/fx-2026-10-06-134601.png",
+      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06 at 13:46.",
+      "caption": "Foreign Exchange Checker, captured 2026-10-06 13:46. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134610",
+      "kind": "screenshot",
+      "src": "/figures/foreign-exchange-checker/fx-2026-10-06-134610.png",
+      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06 at 13:46.",
+      "caption": "Foreign Exchange Checker, captured 2026-10-06 13:46. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    },
+    {
+      "id": "capture-2026-10-06-134617",
+      "kind": "screenshot",
+      "src": "/figures/foreign-exchange-checker/fx-2026-10-06-134617.png",
+      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06 at 13:46.",
+      "caption": "Foreign Exchange Checker, captured 2026-10-06 13:46. The page shown is to be confirmed in owner review.",
+      "width": 1920,
+      "height": 955
+    }
+  ],
+  "experience": {
+    "mode": "state-gallery",
+    "component": "foreign-exchange-checker"
+  },
+  "problems": [
+    {
+      "title": "One picker served two panels from the middle of the screen",
+      "body": "Both currency panels shared one picker controlled through `onOpenPicker`, rendered as a centred desktop overlay, so the control that opened the list and the control the visitor then used sat in different places. Commit `a88b805` moves picker-open state into `CurrencyPanel` and renders the picker inside the button's positioned wrapper, keeping the fixed bottom sheet on mobile. Each mounted picker now fetches the currency list, so the list is requested more than once."
+    },
+    {
+      "title": "The deployed page ships the starter template's title",
+      "body": "`starter-code/index.html` sets the document title to `starter-code`, the Frontend Mentor starter folder name, so the live deployment's browser tab and link previews read as the template rather than the product. The string matches the file exactly, which also confirms the deployment builds from this repository. The fix is one line, and it has not been applied."
+    },
+    {
+      "title": "Saved snapshots dropped the provider's rate date",
+      "body": "Log entries are user-triggered snapshots of the converter fields with a local timestamp and a generated id, and they do not preserve the provider's rate date. The local-storage hook catches neither invalid JSON nor storage exceptions, and saved pairs and entries live under `fx-favorites` and `fx-log` in the browser origin, so persistence is tied to one browser and one origin with no export."
+    }
+  ],
+  "reversals": "What I would change first is the document title, then make formatting consistent: receive amounts cap at two fraction digits while compare and log use default locale settings, and no currency-specific minor-unit policy exists. I would give the local-storage hook parsing and exception recovery, store the rate date with each snapshot, and reconcile the log's session copy with what local storage actually persists. The picker also needs dialog semantics and focus restoration, and the view buttons need selection state for assistive technology. Each of these was read from the source rather than assumed.",
+  "seo": {
+    "title": "Foreign Exchange Checker: rates, history and saved pairs",
+    "description": "A currency converter with rate history over six ranges, saved pairs and a conversion log, built on the Frankfurter API with Redux Toolkit.",
+    "ogImage": "/og/foreign-exchange-checker-case-study.svg"
+  },
+  "evidence": [
+    {
+      "label": "Inspected source, data sources and state inventory",
+      "ref": "docs/truth/foreign-exchange-checker.md (HEAD 3a73025)"
+    },
+    {
+      "label": "Owner-supplied live URL, public repository and 2026 year",
+      "ref": "docs/phase-1-exit.md, Appendix A items 4, 6 and 7"
+    },
+    {
+      "label": "Design attribution to Frontend Mentor",
+      "ref": "docs/truth/foreign-exchange-checker.md:11"
+    },
+    {
+      "label": "Decision seeds and specificity verdicts",
+      "ref": "docs/truth/foreign-exchange-checker-decisions.md; docs/seed-specificity-review.md"
+    },
+    {
+      "label": "Owner-supplied application captures, 2026-10-06",
+      "ref": "public/figures/foreign-exchange-checker/"
+    }
+  ],
+  "verified": true
+}
+---
+
+This case study is a draft assembled from the Foreign Exchange Checker truth sheet and its decision seeds. It is not published: figures and owner verification are still outstanding.
+
+## My contribution
+
+The design system and assets are supplied by a Frontend Mentor challenge and are credited as such. My work is the state architecture, the request lifecycle with cancellation, the anchor picker behaviour, the history and compare views, and the local persistence for saved pairs and snapshots.
+
+Evidence: docs/truth/foreign-exchange-checker.md:11; docs/phase-1-exit.md, Appendix A item 4, origins.
+
+## Where the page stops short
+
+The audit records what the source does not contain: no currency-specific rounding policy, no loading or error surface inside the chart body, no dialog semantics on the picker, and no selection state on the view buttons. No measured performance figure from the starter template's guide is repeated here.
+
+Evidence: docs/truth/foreign-exchange-checker.md, sections 6 and 7.
+
+## Figures still to capture
+
+Five owner captures exist under `public/figures/foreign-exchange-checker/`, supplied on 2026-10-06, and their alt text and captions await confirmation, as does whether each meets the 2x expectation of PRD.md section 38. That section requires at least four figures at 2x with alt text and captions, or the bespoke piece plus two. The captures it lists are result and missing result, history loading, history empty or failed, search no results, empty favorites and log, and missing comparison amount, and which of those the five files cover is to be confirmed in owner review.
+
+Evidence: PRD.md section 38; docs/truth/foreign-exchange-checker.md, open uncertainties.

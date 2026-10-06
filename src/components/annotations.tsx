@@ -76,7 +76,6 @@ export function HeroConcepts({ notes }: { notes: ({ id: ConceptId } & NoteRecord
       <aside className="concept-note" aria-label="Decision note" data-open={open === item.id ? "true" : "false"}>
         <span className="note-label">{item.label}</span>
         <p>{item.note}</p>
-        <span className="note-source">{item.source}</span>
       </aside>
     </li>)}
   </ul>;
@@ -89,6 +88,5 @@ export function SiteNote({ note }: { note: NoteRecord }) {
   return <aside className="site-note" aria-label="Decision note">
     <span className="note-label">{note.label}</span>
     <p>{note.note}</p>
-    <span className="note-source">{note.source}</span>
   </aside>;
 }

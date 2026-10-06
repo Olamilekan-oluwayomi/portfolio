@@ -232,7 +232,6 @@ dialog::backdrop { background: color-mix(in srgb, var(--ink) 55%, transparent); 
 .site-note { max-width: 360px; margin: 20px 0 0 auto; padding: 14px 16px; border: 1px solid var(--rule); border-left: 3px solid var(--annotation-accent); background: var(--paper-raised); }
 .note-label { display: block; margin-bottom: 6px; color: var(--annotation-accent); font: 400 12px/1.5 var(--font-mono); letter-spacing: 0.04em; }
 .site-note p, .concept-note p { font-size: 14px; line-height: 1.55; }
-.note-source { display: block; margin-top: 8px; color: var(--graphite); font: 400 11px/1.5 var(--font-mono); overflow-wrap: anywhere; }
 @media (hover: none) {
   .hero-concepts { display: block; }
   .hero-concepts li { position: static; margin-bottom: 8px; }

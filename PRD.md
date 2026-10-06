@@ -330,7 +330,7 @@ Each layer earns its place by what it gives the visitor. Anything that only deco
 
 **Labeling:** "Work" (not "Builds"), "About" (not "The Record" in the nav, though the page is titled that), "Experience" (not "Log"), "Lab", "Contact". The in-page names (The Record, The Log) are headings, not navigation.
 
-**Cross-cutting structure:** decisions are the connective tissue. They appear in the homepage margin notes, inside project pages, in About (a computed summary by theme) and in `/decisions`.
+**Cross-cutting structure:** decisions are the connective tissue. They appear in the homepage margin notes, in Decision Mode annotations (Appendix C), inside project pages, in About (a computed summary by theme) and in `/decisions`.
 
 ## 13. User Journeys
 
@@ -348,7 +348,7 @@ Each layer earns its place by what it gives the visitor. Anything that only deco
 **Persistent frame (every route):**
 
 - Top-left: wordmark (`siteIdentity.name`, link to `/`).
-- Top-right (desktop): Work, About, Experience, Lab, Contact, then an "Inspect" toggle and a palette button labeled `Search ⌘K` (shows `Ctrl K` on Windows and Linux).
+- Top-right (desktop): Work, About, Experience, Lab, Contact, then "Inspect" and "Decisions" toggles and a palette button labeled `Search ⌘K` (shows `Ctrl K` on Windows and Linux).
 - Bottom-left: GitHub ↗ and LinkedIn ↗ (from `siteIdentity.links`; full URLs in the `href`, visible text short).
 - Bottom-right: a monospace "coordinates" readout: route and scroll percentage, for example `/work/rentit  34%`. Optional polish, cut-first (section 11). Real values, `aria-hidden`.
 
@@ -369,13 +369,13 @@ Each layer earns its place by what it gives the visitor. Anything that only deco
 |---|---|
 | `⌘K` or `Ctrl K` | Open command palette (always active, including inside inputs) |
 | `/` | Open palette (only when focus is not in a text field) |
-| `i` | Toggle Inspect (only when focus is not in a text field) |
+| `i` or `d` | Toggle Inspect or Decision Mode (only when focus is not in a text field) |
 | `g` then `h`, `w`, `a`, `e`, `l`, `c` | Home, Work, About, Experience, Lab, Contact |
 | `[` and `]` | Previous and next project (project pages) |
 | `?` | Shortcut sheet |
 | `Esc` | Close the top-most layer (palette, sheet, Inspect) and restore focus |
 
-**Shortcut accessibility rule (WCAG 2.1.4):** all single-character shortcuts (`/`, `i`, `g`-sequences, `[`, `]`, `?`) MUST be disableable from the `?` sheet and from the palette ("Shortcuts: on or off", persisted in `localStorage`). Modifier shortcuts (`⌘K` or `Ctrl K`) remain active.
+**Shortcut accessibility rule (WCAG 2.1.4):** all single-character shortcuts (`/`, `i`, `d`, `g`-sequences, `[`, `]`, `?`) MUST be disableable from the `?` sheet and from the palette ("Shortcuts: on or off", persisted in `localStorage`). Modifier shortcuts (`⌘K` or `Ctrl K`) remain active.
 
 **Gestures:** none required. Mobile uses tap only. No swipe navigation, so no conflict with browser back gestures.
 
@@ -1513,3 +1513,37 @@ The canonical inventory of `[CONFIRM]` facts, grouped by category. Resolve or de
 8. **Small commits:** commit and push after each working step, with Conventional Commit messages. Keep PRs reviewable.
 9. **Style:** no em dashes in any site copy or documentation. Sentence case headings on site UI.
 10. **When the PRD and reality conflict,** record a decision (using the Decision model), adjust the PRD, and continue.
+
+## Appendix C. Decision Mode and the annotation layer
+
+Added on 2026-10-06 on the owner's approval of the interactive brief recorded in `docs/prd-amendments.md`, section I. It is appended at the end of this file, so no line above it moves, and it is binding under Appendix B rule 10.
+
+### C.1 Control, shortcut and persistence
+
+- Decision Mode is a global annotation-visibility layer. It is plain chrome beside the annotation layer, which the chrome classification lists as Core (`PRD.md:304`), and not a sixth signature moment (`PRD.md:269`, `PRD.md:294`).
+- The control is an `aria-pressed` toggle labeled "Decisions": in the persistent frame on desktop, inside the menu on mobile, as a palette command in the View group, and as a row in the `?` sheet.
+- The shortcut `d` toggles the mode when focus is not in a text field. It joins the disableable single-character set of section 14, so turning single-character shortcuts off disables `d` while the button, the palette command and the menu row stay available.
+- The setting persists in `localStorage` under `annotated-decision-mode` as `on` or `off`, syncs across tabs like `annotated-shortcuts`, and defaults to `off`, so a first visit stays clean.
+- The shortcut is shown subtly: the frame control carries its `D` key hint and the `?` sheet lists the row.
+- Nothing important depends on the mode (`PRD.md:295`): every note it reveals is either decorative repetition of content that already exists in a case study or a homepage explanation whose subject is visible without the mode.
+
+### C.2 What the mode shows
+
+- A small number of site notes, never one per element. Each note is a short label plus one to three sentences explaining a real decision of this build: why the grid keeps its gap, why the project surfaces carry no card border, why text is the LCP element. Every note is checkable against the code it annotates, and no metric, year, URL or feature is invented (Appendix B rules 2 and 10).
+- Hero concept anchors: the four concept words beside the hero statement are focusable anchors. On hover, focus or tap they reveal one contextual example drawn from real project evidence, and one note is open at a time with `Esc` closing it (`PRD.md:724`).
+- Every note follows section 26 (`PRD.md:725` to `PRD.md:727`): an `<aside aria-label="Decision note">` immediately after its anchor in reading order, a 1 px leader line on desktop, a numbered marker plus a bottom sheet on touch, and inline disclosure under `@media (hover: none)`.
+- Notes fade over 150 ms opacity only. No scroll-triggered entrance, no loop, no pulse (`PRD.md:709`, `PRD.md:288`).
+
+### C.3 Homepage index previews
+
+- The homepage index rows keep their anchors. On fine pointers, hovering or focusing a row swaps the preview in a reserved area, with the first project shown by default, so nothing shifts and layout stays stable.
+- Previews use assets already in the repository: the first published media item of each project (`public/images/rentit-browse.svg` and the first capture under `public/figures/` for the other three). No new mockup is created.
+- The pointer label is a static chip inside the preview area. No element follows the cursor (`PRD.md:709`) and nothing pulses or loops.
+- Preview images lazy-load and stay out of the accessible name, which the row already carries. `alt` is empty and the preview layer is `aria-hidden`.
+
+### C.4 Case studies, contact and status
+
+- What I rejected: records with `reversed` or `open` status are presented editorially inside the existing "What I would change" block, which already links to a reversed or open decision (`PRD.md:433`). No ninth block joins the spine, `kept` records keep their per-record options list, and a project with no reversed or open record shows no such presentation.
+- The homepage contact eyebrow may read "Have something worth building?" (owner copy from the brief) while the heading stays "Let's talk." The contact page keeps section 20 unchanged (`PRD.md:566` to `PRD.md:572`).
+- The availability status dot stays static, with no pulse (`PRD.md:288`).
+- The brief's case-study restructure is rejected: the eight-block spine stands (`PRD.md:425` to `PRD.md:434`).

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { siteIdentity } from "@/content/identity";
 import { timeline } from "@/content/timeline";
+import { siteNotes } from "@/content/annotations";
+import { SiteNote } from "@/components/annotations";
 import { loadContent } from "@/lib/content";
 
 // Route contract: PRD.md sections 12 and 17. The Record, timeline 2023 to 2026.
@@ -17,6 +19,12 @@ export default function AboutPage() {
   return <article className="record-page">
     <p className="eyebrow">About</p>
     <h1 className="page-title">The Record</h1>
+    <dl className="about-facts">
+      <div><dt>Based</dt><dd>{siteIdentity.location}</dd></div>
+      <div><dt>Role</dt><dd>{siteIdentity.role}</dd></div>
+      <div><dt>Currently</dt><dd>{siteIdentity.employer}</dd></div>
+      <div><dt>Stack</dt><dd>{siteIdentity.stackLine}</dd></div>
+    </dl>
     <ol className="record-list">
       {timeline.map(entry => <li key={entry.year} className="record-row">
         <span className="record-year">{entry.year}</span>
@@ -33,6 +41,7 @@ export default function AboutPage() {
       <h2 id="how-i-work-heading">How I work</h2>
       <p>{decisions.length} recorded decisions, counted by theme.</p>
       <ul className="theme-counts">{counts.map(([theme, count]) => <li key={theme}><span>{theme}</span><span>{count}</span></li>)}</ul>
+      <SiteNote note={siteNotes["theme-counts"]} />
       <p className="muted">Every decision keeps its options, choice and trade-off inside a case study.</p>
     </section>
   </article>;

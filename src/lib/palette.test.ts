@@ -46,6 +46,7 @@ describe("buildCommands", () => {
     [{ id: "rentit-policy", title: "Replace unknown UPDATE policies", theme: "security", projectSlug: "rentit" },
       { id: "site-example", title: "Publish employer name only", theme: "ux", projectSlug: "site" }],
     true,
+    false,
   );
 
   it("includes the standard navigate, copy and view groups", () => {
@@ -57,6 +58,7 @@ describe("buildCommands", () => {
     expect(ids).toContain("view-theme");
     expect(ids).toContain("view-sheet");
     expect(commands.find(command => command.id === "view-shortcuts-toggle")?.label).toBe("Shortcuts: on");
+    expect(commands.find(command => command.id === "view-decision-mode")?.label).toBe("Decision mode: off");
   });
 
   it("links published projects to their case study and every project to live and source", () => {
@@ -73,7 +75,8 @@ describe("buildCommands", () => {
   });
 
   it("reflects the shortcut setting in its label", () => {
-    const off = buildCommands([], false);
+    const off = buildCommands([], false, true);
     expect(off.find(command => command.id === "view-shortcuts-toggle")?.label).toBe("Shortcuts: off");
+    expect(off.find(command => command.id === "view-decision-mode")?.label).toBe("Decision mode: on");
   });
 });

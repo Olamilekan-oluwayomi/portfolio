@@ -17,6 +17,8 @@ type ShellContextValue = {
   announce: (message: string) => void;
   shortcutsOn: boolean;
   toggleShortcuts: () => void;
+  decisionOn: boolean;
+  toggleDecisions: () => void;
 };
 
 const ShellContext = createContext<ShellContextValue | null>(null);
@@ -44,6 +46,7 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
   const [menuOpen, setMenuOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [shortcutsOn, setShortcutsOn] = useState(true);
+  const [decisionOn, setDecisionOn] = useState(false);
   const [status, setStatus] = useState("");
   const pending = useRef<string | null>(null);
   const pendingTimer = useRef<number | undefined>(undefined);
@@ -79,15 +82,26 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
     announce(next ? "Single-character shortcuts on" : "Single-character shortcuts off");
   }, [shortcutsOn, announce]);
 
-  const commands = useMemo(() => buildCommands(decisions, shortcutsOn), [decisions, shortcutsOn]);
+  const toggleDecisions = useCallback(() => {
+    setDecisionOn(current => {
+      const next = !current;
+      try { localStorage.setItem("annotated-decision-mode", next ? "on" : "off"); } catch { /* The setting survives only while storage is available. */ }
+      announce(next ? "Decision mode on" : "Decision mode off");
+      return next;
+    });
+  }, [announce]);
 
-  // Shortcut accessibility rule (WCAG 2.1.4): the setting persists across visits (PRD.md section 14).
+  const commands = useMemo(() => buildCommands(decisions, shortcutsOn, decisionOn), [decisions, shortcutsOn, decisionOn]);
+
+  // Decision Mode and shortcut settings persist across visits and sync across tabs (PRD.md section 14, Appendix C).
   useEffect(() => {
     try {
       if (localStorage.getItem("annotated-shortcuts") === "off") setShortcutsOn(false);
-    } catch { /* Default stays on without storage. */ }
+      if (localStorage.getItem("annotated-decision-mode") === "on") setDecisionOn(true);
+    } catch { /* Defaults stay clean without storage. */ }
     function sync(event: StorageEvent) {
       if (event.key === "annotated-shortcuts") setShortcutsOn(event.newValue !== "off");
+      if (event.key === "annotated-decision-mode") setDecisionOn(event.newValue === "on");
     }
     window.addEventListener("storage", sync);
     return () => window.removeEventListener("storage", sync);
@@ -134,6 +148,9 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
       } else if (key === "?") {
         event.preventDefault();
         setSheetOpen(open => !open);
+      } else if (key === "d") {
+        event.preventDefault();
+        toggleDecisions();
       } else if (key === "[" || key === "]") {
         const match = /^\/work\/([^/]+)$/u.exec(window.location.pathname);
         const index = match ? publishedProjects.findIndex(project => project.slug === match[1]) : -1;
@@ -146,14 +163,14 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [shortcutsOn, menuOpen, sheetOpen, paletteOpen, router]);
+  }, [shortcutsOn, menuOpen, sheetOpen, paletteOpen, router, toggleDecisions]);
 
-  const value = useMemo<ShellContextValue>(() => ({ openPalette, openMenu, announce, shortcutsOn, toggleShortcuts }), [openPalette, openMenu, announce, shortcutsOn, toggleShortcuts]);
+  const value = useMemo<ShellContextValue>(() => ({ openPalette, openMenu, announce, shortcutsOn, toggleShortcuts, decisionOn, toggleDecisions }), [openPalette, openMenu, announce, shortcutsOn, toggleShortcuts, decisionOn, toggleDecisions]);
 
   return <ShellContext.Provider value={value}>
     {children}
     <div className="shell-status sr-only" role="status" aria-live="polite">{status}</div>
-    {paletteMounted && <Palette open={paletteOpen} onClose={() => setPaletteOpen(false)} commands={commands} announce={announce} onToggleShortcuts={toggleShortcuts} onOpenSheet={() => { setPaletteOpen(false); setSheetOpen(true); }} />}
+    {paletteMounted && <Palette open={paletteOpen} onClose={() => setPaletteOpen(false)} commands={commands} announce={announce} onToggleShortcuts={toggleShortcuts} onToggleDecisions={toggleDecisions} onOpenSheet={() => { setPaletteOpen(false); setSheetOpen(true); }} />}
     <dialog className="mobile-menu" ref={menuDialog} aria-label="Menu">
       <div className="mobile-menu-head"><span className="eyebrow">Menu</span><button type="button" className="dialog-close" onClick={() => menuDialog.current?.close()}>Close</button></div>
       <nav aria-label="Mobile navigation">
@@ -163,6 +180,7 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
         <Link href="/contact" onClick={() => menuDialog.current?.close()}>Contact</Link>
       </nav>
       <button type="button" className="menu-jump" onClick={openPalette}>Jump to <span aria-hidden="true">⌘K</span></button>
+      <button type="button" className="menu-decisions" aria-pressed={decisionOn} onClick={toggleDecisions}>Decision mode: {decisionOn ? "on" : "off"} <span aria-hidden="true">D</span></button>
       <div className="menu-external">
         <a href={siteIdentity.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗<span className="sr-only"> (opens in new tab)</span></a>
         <a href={siteIdentity.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗<span className="sr-only"> (opens in new tab)</span></a>
@@ -175,6 +193,7 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
         <tbody>
           <tr><th scope="row"><kbd>⌘K</kbd> <span className="muted">or</span> <kbd>Ctrl K</kbd></th><td>Open the command palette</td></tr>
           <tr><th scope="row"><kbd>/</kbd></th><td>Open the palette when focus is not in a field</td></tr>
+          <tr><th scope="row"><kbd>d</kbd></th><td>Toggle Decision Mode when focus is not in a field</td></tr>
           <tr><th scope="row"><kbd>g</kbd> <span className="muted">then</span> <kbd>h</kbd></th><td>Home</td></tr>
           <tr><th scope="row"><kbd>g</kbd> <span className="muted">then</span> <kbd>w</kbd></th><td>Work</td></tr>
           <tr><th scope="row"><kbd>g</kbd> <span className="muted">then</span> <kbd>a</kbd></th><td>About</td></tr>
@@ -186,6 +205,7 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
         </tbody>
       </table>
       <button type="button" className="shortcuts-toggle" aria-pressed={shortcutsOn} onClick={toggleShortcuts}>Single-character shortcuts: {shortcutsOn ? "on" : "off"}</button>
+      <button type="button" className="shortcuts-toggle" aria-pressed={decisionOn} onClick={toggleDecisions}>Decision mode: {decisionOn ? "on" : "off"}</button>
       <p className="muted">Modifier shortcuts stay active when single-character shortcuts are off.</p>
     </dialog>
     {!pathname.startsWith("/work/") && <a className="mobile-email" href={`mailto:${siteIdentity.email}`}>Email <span aria-hidden="true">↗</span></a>}

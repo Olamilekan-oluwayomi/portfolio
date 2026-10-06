@@ -10,6 +10,7 @@ export type CommandAction =
   | { kind: "copy-email" }
   | { kind: "theme" }
   | { kind: "shortcuts" }
+  | { kind: "decisions" }
   | { kind: "sheet" };
 
 export type Command = {
@@ -38,7 +39,7 @@ const viewCommands: Command[] = [
   { id: "view-sheet", group: "View", label: "Show shortcuts", keywords: "help keys", action: { kind: "sheet" } },
 ];
 
-export function buildCommands(decisions: PaletteDecision[], shortcutsOn: boolean): Command[] {
+export function buildCommands(decisions: PaletteDecision[], shortcutsOn: boolean, decisionModeOn: boolean): Command[] {
   const projects = workIndex.map(project => {
     const published = publishedProjectSlugs.includes(project.slug);
     const commands: Command[] = [];
@@ -69,6 +70,7 @@ export function buildCommands(decisions: PaletteDecision[], shortcutsOn: boolean
     { id: "copy-email", group: "Copy", label: "Copy email", hint: siteIdentity.email, action: { kind: "copy-email" } },
     ...viewCommands,
     { id: "view-shortcuts-toggle", group: "View", label: `Shortcuts: ${shortcutsOn ? "on" : "off"}`, keywords: "single character keys disable wcag", action: { kind: "shortcuts" } },
+    { id: "view-decision-mode", group: "View", label: `Decision mode: ${decisionModeOn ? "on" : "off"}`, keywords: "annotation notes annotate margin", action: { kind: "decisions" } },
     ...decisionCommands,
   ];
 }

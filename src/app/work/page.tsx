@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteIdentity } from "@/content/identity";
 import { publishedProjectSlugs } from "@/content/release";
+import { siteNotes } from "@/content/annotations";
+import { SiteNote } from "@/components/annotations";
 import { loadContent } from "@/lib/content";
 
 // Route contract: PRD.md section 12, /work is the Contents page with status and stack.
@@ -15,6 +17,7 @@ export default function WorkPage() {
   return <article className="work-page">
     <p className="eyebrow">Contents</p>
     <h1 className="page-title">Work</h1>
+    <SiteNote note={siteNotes["one-spine"]} />
     <ol className="work-list">
       {projects.map((project, index) => {
         const published = publishedProjectSlugs.includes(project.slug);

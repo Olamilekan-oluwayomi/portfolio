@@ -6,7 +6,7 @@ Appendix B rule 10 requires two things whenever the PRD and reality disagree: a 
 
 Every replacement swapped one line for one line, so no line number in `PRD.md` moved and every existing citation to `PRD.md` remains valid. What follows is now the record of what changed and why. Wording that was marked as a proposal was applied as such and remains open to owner editing: the decisions are settled, the phrasing is not.
 
-Amendment G was added on 2026-10-02, when the owner deferred Guardrail. Amendment E was revised the same day, when the owner approved publishing the employer name, and that revision also closed Amendment A's 2026 cell. Amendment H was added on 2026-10-03 to record the marker resolution sweep that closed the last of Phase 1's `[CONFIRM]` criterion.
+Amendment G was added on 2026-10-02, when the owner deferred Guardrail. Amendment E was revised the same day, when the owner approved publishing the employer name, and that revision also closed Amendment A's 2026 cell. Amendment H was added on 2026-10-03 to record the marker resolution sweep that closed the last of Phase 1's `[CONFIRM]` criterion. Amendment I was added on 2026-10-06, when the owner approved the interactive brief recorded below.
 
 ## Summary
 
@@ -20,6 +20,7 @@ Amendment G was added on 2026-10-02, when the owner deferred Guardrail. Amendmen
 | F | Site source repository and its affordances | `PRD.md:1456`, `:387`, `:128`, `:572` | `docs/phase-1-exit.md:119`, `:121` (item 7) | Withdrawn 2026-10-03: the repository is public, so no adjustment is owed |
 | G | The Guardrail deferral across eleven sites | `PRD.md:31`, `:283`, `:310`, `:311`, `:386`, `:461`, `:463` to `:472`, `:661`, `:908`, `:1023`, `:1299`, `:1311` | `docs/phase-1-exit.md:85` (item 5) | Applied |
 | H | Marker resolution sweep, 26 markers | 26 sites, listed in section H | `docs/phase-1-exit.md` sections A and D | Applied |
+| I | Decision Mode, hero anchors, homepage previews and microinteraction decisions | `PRD.md:333`, `:351`, `:372`, `:378`, new Appendix C; `docs/homepage-direction.md` two table rows and a new checkpoint | Owner brief approved in conversation, 2026-10-06, recorded in section I | Applied 2026-10-06; the PRD grew by append only |
 
 Two citation corrections to `docs/phase-1-exit.md` are also owed, because the worksheet points at the wrong lines for two of these. They are listed at the end.
 
@@ -460,3 +461,137 @@ Two further worksheet citations are correct as written and were checked while dr
 A, B, C, D, E, G and H are applied to `PRD.md` as of 2026-10-03, which satisfies Appendix B rule 10 for the decisions Phase 1 has taken. F is withdrawn. Resolvable `[CONFIRM]` markers fell from 44 to 12, and none of the twelve is an unresolved fact or published content. No em dash was introduced, and the file is still 1507 lines, so every `PRD.md` citation elsewhere in the docs still resolves. Nothing is held back: the three items this section previously listed as open are all closed, the 2025 row wording is approved, the product question is answered by default, and F no longer applies.
 
 Two residual mentions of the product name remain in `PRD.md` and both are deliberate. `PRD.md:1473` sits in Future Enhancements, which is post-launch and not published copy. `PRD.md:1482` is Appendix A item 2, the internal inventory of what may be said publicly, which describes the question rather than publishing an answer.
+
+## I. Decision Mode, hero anchors, homepage previews and microinteraction decisions
+
+**Decision (owner, 2026-10-06).** The owner approved in full an interactive and annotation brief titled "EVERY INTERFACE IS A SET OF DECISIONS" and instructed implementation to begin. The brief arrived in conversation, not as a file, so this section is its record: what it adds, where each approved item lands, what it adjusts, and what in it was rejected against binding rules.
+
+### Where each approved item lands
+
+| Brief item | Landing place | Adjusted sites |
+| --- | --- | --- |
+| Decision Mode, an on and off annotation layer | Plain chrome beside the annotation layer, which the chrome classification lists as Core (`PRD.md:304`); not a sixth signature moment (`PRD.md:269`, `PRD.md:294`) | New Appendix C; `PRD.md:333`, `PRD.md:351` |
+| `D` shortcut for Decision Mode | The section 14 shortcut table and the disableable single-character set | `PRD.md:372`, `PRD.md:378` |
+| Hero concept anchors with one contextual example each | The margin-note rules of section 26 (`PRD.md:724` to `PRD.md:727`) | Appendix C; section 26 already carries the behavior |
+| Homepage index previews with a static pointer chip | The homepage composition, which `docs/homepage-direction.md` governs (`PRD.md:16`) | `docs/homepage-direction.md`, two table rows and a checkpoint |
+| Contact eyebrow "Have something worth building?" | The homepage contact section only; the contact page keeps section 20 (`PRD.md:566` to `PRD.md:572`) | `docs/homepage-direction.md` checkpoint |
+| What I rejected, presented editorially | Inside the existing "What I would change" block, which already links to a `reversed` or `open` decision (`PRD.md:433`) | Appendix C; no spine change |
+| Static status dot, and a chip inside the preview area instead of a cursor-following label | Section 11.2 and the section 25 avoid list (`PRD.md:288`, `PRD.md:709`) | Appendix C records both |
+
+### What in the brief is rejected
+
+Three proposals in the brief collide with rules the owner has kept binding, so the rules win. A pulsing status dot loops, which section 11.2 forbids (`PRD.md:288`). Scroll-triggered transitions between beats sit on the section 25 avoid list (`PRD.md:709`). Restructuring the case-study page would break the eight-block spine that makes projects comparable (`PRD.md:425` to `PRD.md:434`), and the brief does not need it, because its beats map onto the existing blocks. Appendix B rule 4 keeps motion exactly as section 25 defines it (`PRD.md:1509`). The status dot stays static, no scroll entrance is added, and the spine stands.
+
+**Site `PRD.md:333`, before:**
+
+```text
+**Cross-cutting structure:** decisions are the connective tissue. They appear in the homepage margin notes, inside project pages, in About (a computed summary by theme) and in `/decisions`.
+```
+
+**After:**
+
+```text
+**Cross-cutting structure:** decisions are the connective tissue. They appear in the homepage margin notes, in Decision Mode annotations (Appendix C), inside project pages, in About (a computed summary by theme) and in `/decisions`.
+```
+
+**Site `PRD.md:351`, before:**
+
+```text
+- Top-right (desktop): Work, About, Experience, Lab, Contact, then an "Inspect" toggle and a palette button labeled `Search ⌘K` (shows `Ctrl K` on Windows and Linux).
+```
+
+**After:**
+
+```text
+- Top-right (desktop): Work, About, Experience, Lab, Contact, then "Inspect" and "Decisions" toggles and a palette button labeled `Search ⌘K` (shows `Ctrl K` on Windows and Linux).
+```
+
+**Site `PRD.md:372`, before:**
+
+```text
+| `i` | Toggle Inspect (only when focus is not in a text field) |
+```
+
+**After:**
+
+```text
+| `i` or `d` | Toggle Inspect or Decision Mode (only when focus is not in a text field) |
+```
+
+**Site `PRD.md:378`, before:**
+
+```text
+**Shortcut accessibility rule (WCAG 2.1.4):** all single-character shortcuts (`/`, `i`, `g`-sequences, `[`, `]`, `?`) MUST be disableable from the `?` sheet and from the palette ("Shortcuts: on or off", persisted in `localStorage`). Modifier shortcuts (`⌘K` or `Ctrl K`) remain active.
+```
+
+**After:**
+
+```text
+**Shortcut accessibility rule (WCAG 2.1.4):** all single-character shortcuts (`/`, `i`, `d`, `g`-sequences, `[`, `]`, `?`) MUST be disableable from the `?` sheet and from the palette ("Shortcuts: on or off", persisted in `localStorage`). Modifier shortcuts (`⌘K` or `Ctrl K`) remain active.
+```
+
+**New `PRD.md` Appendix C, appended after `PRD.md:1515`.** Appending at the end of the file moves no line above it, so every existing citation still resolves. The appended block:
+
+```markdown
+## Appendix C. Decision Mode and the annotation layer
+
+Added on 2026-10-06 on the owner's approval of the interactive brief recorded in `docs/prd-amendments.md`, section I. It is appended at the end of this file, so no line above it moves, and it is binding under Appendix B rule 10.
+
+### C.1 Control, shortcut and persistence
+
+- Decision Mode is a global annotation-visibility layer. It is plain chrome beside the annotation layer, which the chrome classification lists as Core (`PRD.md:304`), and not a sixth signature moment (`PRD.md:269`, `PRD.md:294`).
+- The control is an `aria-pressed` toggle labeled "Decisions": in the persistent frame on desktop, inside the menu on mobile, as a palette command in the View group, and as a row in the `?` sheet.
+- The shortcut `d` toggles the mode when focus is not in a text field. It joins the disableable single-character set of section 14, so turning single-character shortcuts off disables `d` while the button, the palette command and the menu row stay available.
+- The setting persists in `localStorage` under `annotated-decision-mode` as `on` or `off`, syncs across tabs like `annotated-shortcuts`, and defaults to `off`, so a first visit stays clean.
+- The shortcut is shown subtly: the frame control carries its `D` key hint and the `?` sheet lists the row.
+- Nothing important depends on the mode (`PRD.md:295`): every note it reveals is either decorative repetition of content that already exists in a case study or a homepage explanation whose subject is visible without the mode.
+
+### C.2 What the mode shows
+
+- A small number of site notes, never one per element. Each note is a short label plus one to three sentences explaining a real decision of this build: why the grid keeps its gap, why the project surfaces carry no card border, why text is the LCP element. Every note is checkable against the code it annotates, and no metric, year, URL or feature is invented (Appendix B rules 2 and 10).
+- Hero concept anchors: the four concept words beside the hero statement are focusable anchors. On hover, focus or tap they reveal one contextual example drawn from real project evidence, and one note is open at a time with `Esc` closing it (`PRD.md:724`).
+- Every note follows section 26 (`PRD.md:725` to `PRD.md:727`): an `<aside aria-label="Decision note">` immediately after its anchor in reading order, a 1 px leader line on desktop, a numbered marker plus a bottom sheet on touch, and inline disclosure under `@media (hover: none)`.
+- Notes fade over 150 ms opacity only. No scroll-triggered entrance, no loop, no pulse (`PRD.md:709`, `PRD.md:288`).
+
+### C.3 Homepage index previews
+
+- The homepage index rows keep their anchors. On fine pointers, hovering or focusing a row swaps the preview in a reserved area, with the first project shown by default, so nothing shifts and layout stays stable.
+- Previews use assets already in the repository: the first published media item of each project (`public/images/rentit-browse.svg` and the first capture under `public/figures/` for the other three). No new mockup is created.
+- The pointer label is a static chip inside the preview area. No element follows the cursor (`PRD.md:709`) and nothing pulses or loops.
+- Preview images lazy-load and stay out of the accessible name, which the row already carries. `alt` is empty and the preview layer is `aria-hidden`.
+
+### C.4 Case studies, contact and status
+
+- What I rejected: records with `reversed` or `open` status are presented editorially inside the existing "What I would change" block, which already links to a reversed or open decision (`PRD.md:433`). No ninth block joins the spine, `kept` records keep their per-record options list, and a project with no reversed or open record shows no such presentation.
+- The homepage contact eyebrow may read "Have something worth building?" (owner copy from the brief) while the heading stays "Let's talk." The contact page keeps section 20 unchanged (`PRD.md:566` to `PRD.md:572`).
+- The availability status dot stays static, with no pulse (`PRD.md:288`).
+- The brief's case-study restructure is rejected: the eight-block spine stands (`PRD.md:425` to `PRD.md:434`).
+```
+
+**`docs/homepage-direction.md`, two table rows, before:**
+
+```text
+| Interaction | Native index anchors, visible hover/focus feedback, contact underline |
+| Motion | Contact underline only, 150ms; zero duration for reduced motion and lite mode |
+```
+
+**After:**
+
+```text
+| Interaction | Native index anchors with preview swap on hover and focus, hero concept anchors, contact underline |
+| Motion | Contact underline, preview swap and note fades, 150 to 240ms; zero duration for reduced motion and lite mode |
+```
+
+**`docs/homepage-direction.md`, new checkpoint, appended at the end:**
+
+```markdown
+## Decision mode and index previews checkpoint, October 6, 2026
+
+The owner approved an interactive brief on October 6, 2026. The decision record and the new binding Appendix C live in `docs/prd-amendments.md`, section I, and in `PRD.md`. This checkpoint names only the homepage values that change.
+
+The index rows keep their anchors and gain a reserved preview area on fine pointers: the first project shows by default, and hovering or focusing a row swaps the preview over 240 ms. No element follows the cursor; a static chip inside the preview area carries the view label. The four concept words beside the hero statement become focusable anchors that open one section 26 note each, with one note open at a time and `Esc` closing it. Decision Mode reveals a small number of site notes, defaults to off, and is driven by its frame control, the `d` shortcut, a palette command and the `annotated-decision-mode` key, all specified in Appendix C. The contact eyebrow reads "Have something worth building?" while the heading stays "Let's talk." The availability dot stays static. Previews reuse the first published media item of each project (`src/content/projects/*.mdx`), lazy, with empty alt text inside an `aria-hidden` layer.
+
+Reduced motion and lite mode zero the new fades along with the contact underline. Checkpoint validation belongs to the next verification pass: lint, typecheck, tests, production build, budgets, `design/verify.py` and viewport checks (`src/styles/globals.css`, `scripts/check-budgets.mjs`, `design/verify.py`).
+```
+
+Applied to `PRD.md` and `docs/homepage-direction.md` on 2026-10-06 on the same instruction. The four `PRD.md` replacements are one line each, and Appendix C is appended after the old end of file, so no existing `PRD.md` citation moves.

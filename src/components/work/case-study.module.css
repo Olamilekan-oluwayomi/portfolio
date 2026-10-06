@@ -106,3 +106,10 @@
 @media print {
   .preview, .back, .contents, .mobileLive { display: none; }.hero { background: transparent; }.section { display: block; }.margin { margin-bottom: 20px; }.decision, .problems section { break-inside: avoid; }
 }
+/* Reversed and open records inside the "What I would change" block (PRD.md Appendix C.4). */
+.rejected { max-width: 46ch; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.rejected h3 { margin-bottom: 20px; font: 400 22px/1.25 var(--font-mono); letter-spacing: -.04em; }
+.rejectedEntry + .rejectedEntry { margin-top: 20px; }
+.rejectedTop { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; font-size: 16px; }
+.rejectedStatus { flex: none; padding: 2px 8px; border: 1px solid var(--graphite); font: 400 12px/1.5 var(--font-mono); }
+.rejectedEntry > p:last-child { margin-top: 6px; color: var(--graphite); font-size: 15px; }

@@ -28,8 +28,8 @@ These choices supersede the original homepage presentation under the amendment i
 | Grid | 80px desktop, 56px mobile |
 | Project layout | Wide features and a seven/five-column pair; a linear list below 768px |
 | Corners | Square project and contact surfaces; circular link glyphs |
-| Interaction | Native index anchors, visible hover/focus feedback, contact underline |
-| Motion | Contact underline only, 150ms; zero duration for reduced motion and lite mode |
+| Interaction | Native index anchors with preview swap on hover and focus, hero concept anchors, contact underline |
+| Motion | Contact underline, preview swap and note fades, 150 to 240ms; zero duration for reduced motion and lite mode |
 | Font preload | Geist and Geist Mono; Instrument Serif variants load on use |
 
 Tokens live in `src/styles/tokens.css`; composition and responsive rules live in `src/styles/globals.css`. Illustrations use inline SVG and CSS. No dependencies or client components were added (`package.json`, `src/components/work/project-panel.tsx`). The surname handles and illustrated sheets are static artwork, not draggable controls. All real navigation uses ordinary anchors (`src/app/page.tsx`).
@@ -55,3 +55,11 @@ On October 4, 2026, `npm run lint`, `npm run build`, `python -B design/verify.py
 Headless Chrome rendering was checked at 320, 390, 768, 1024, 1440 and 1920 CSS px, with no detected document overflow. Desktop and mobile screenshots were inspected, including paper and night palettes. At 390px, the employer, stack, brief link and contact route remain above the 844px fold. The first keyboard Tab reaches the visible skip link with a solid focus outline. All four index anchors resolve; the theme toggle updates its state and `aria-pressed`; reduced motion yields a zero-second contact underline transition. Runtime exception collection returned no exceptions. Local captures and reports are ignored under `artifacts/review/`; the scripts are `artifacts/review-home.mjs` and `artifacts/review-details.mjs`.
 
 The contrast verifier covers text on canvas, raised manuscript sheets, all pastel panels and the dark Space Tourism surface. All checked pairs pass (`design/verify.py`). Full keyboard traversal, screen-reader behavior, Safari, Firefox, real-device testing, automated axe checks and Web Vitals remain unverified. This is a visually reviewed homepage checkpoint, not a completed accessibility or release audit (`PRD.md` sections 28, 29 and 41).
+
+## Decision mode and index previews checkpoint, October 6, 2026
+
+The owner approved an interactive brief on October 6, 2026. The decision record and the new binding Appendix C live in `docs/prd-amendments.md`, section I, and in `PRD.md`. This checkpoint names only the homepage values that change.
+
+The index rows keep their anchors and gain a reserved preview area on fine pointers: the first project shows by default, and hovering or focusing a row swaps the preview over 240 ms. No element follows the cursor; a static chip inside the preview area carries the view label. The four concept words beside the hero statement become focusable anchors that open one section 26 note each, with one note open at a time and `Esc` closing it. Decision Mode reveals a small number of site notes, defaults to off, and is driven by its frame control, the `d` shortcut, a palette command and the `annotated-decision-mode` key, all specified in Appendix C. The contact eyebrow reads "Have something worth building?" while the heading stays "Let's talk." The availability dot stays static. Previews reuse the first published media item of each project (`src/content/projects/*.mdx`), lazy, with empty alt text inside an `aria-hidden` layer.
+
+Reduced motion and lite mode zero the new fades along with the contact underline. Checkpoint validation belongs to the next verification pass: lint, typecheck, tests, production build, budgets, `design/verify.py` and viewport checks (`src/styles/globals.css`, `scripts/check-budgets.mjs`, `design/verify.py`).

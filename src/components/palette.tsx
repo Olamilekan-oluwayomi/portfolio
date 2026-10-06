@@ -13,10 +13,11 @@ type PaletteProps = {
   commands: Command[];
   announce: (message: string) => void;
   onToggleShortcuts: () => void;
+  onToggleDecisions: () => void;
   onOpenSheet: () => void;
 };
 
-export default function Palette({ open, onClose, commands, announce, onToggleShortcuts, onOpenSheet }: PaletteProps) {
+export default function Palette({ open, onClose, commands, announce, onToggleShortcuts, onToggleDecisions, onOpenSheet }: PaletteProps) {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
@@ -57,6 +58,9 @@ export default function Palette({ open, onClose, commands, announce, onToggleSho
       onClose();
     } else if (action.kind === "shortcuts") {
       onToggleShortcuts();
+      onClose();
+    } else if (action.kind === "decisions") {
+      onToggleDecisions();
       onClose();
     } else if (action.kind === "sheet") {
       onClose();

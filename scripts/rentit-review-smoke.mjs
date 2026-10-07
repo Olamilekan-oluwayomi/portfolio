@@ -8,7 +8,7 @@ async function check(path, test) {
   results.push({ path, status: response.status });
   return body;
 }
-const body = await check("/work/rentit", html => html.includes("Review preview. Not published.") && html.includes("Follow the booking walkthrough") && html.includes("request journey screenshot is required"));
+const body = await check("/work/rentit", html => !html.includes("Review preview. Not published.") && html.includes("Follow the booking walkthrough") && html.includes("do not show a renter submitting a request"));
 if ([...body.matchAll(/<h1\b/g)].length !== 1) throw new Error("RentIt must have one H1");
 for (const id of ["premise", "experience", "decisions", "stack", "problems", "reflection", "rentit-step-browse", "rentit-step-listing", "rentit-step-request", "rentit-step-conversation", "rentit-step-management"]) {
   if (!body.includes(`id="${id}"`)) throw new Error(`Missing static anchor: ${id}`);
@@ -24,6 +24,6 @@ for (const record of JSON.parse(readFileSync("docs/figure-crops.json", "utf8")).
   if (bytes > 120 * 1024) throw new Error(`1440px figure exceeds budget: ${path} (${bytes})`);
   results.push({ path, optimizerStatus: response.status, bytes });
 }
-const report = { results, staticReadingPath: "one H1, five journey anchors, six chapter anchors, eight supplied figures and draft publication status present in returned HTML", limits: "HTTP and image checks only. Browser interaction, viewport fit, screen readers, animation frame time and real devices remain unverified." };
+const report = { results, staticReadingPath: "one H1, five journey anchors, six chapter anchors, eight supplied figures and explicit capture boundaries present in returned HTML", limits: "HTTP and image checks only. Browser interaction, viewport fit, screen readers, animation frame time and real devices remain unverified." };
 writeFileSync("docs/rentit-smoke-results.json", `${JSON.stringify(report, null, 2)}\n`);
 console.log(`Review HTML and ${results.length - 1} optimized cropped figures passed.`);

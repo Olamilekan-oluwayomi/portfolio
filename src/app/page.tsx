@@ -14,7 +14,7 @@ export default function Home() {
     const media = publishedProjectSlugs.includes(item.slug) ? projects.find(project => project.slug === item.slug)?.media.find(entry => entry.kind === "screenshot") : undefined;
     // Server-authored optimizer URLs avoid shipping the image component to this page.
     const optimized = (width: number) => media ? "/_next/image?url=" + encodeURIComponent(media.src) + "&w=" + width + "&q=75" : "";
-    const props = media ? { src: optimized(640), srcSet: [640, 1080, 1920].map(width => optimized(width) + " " + width + "w").join(", "), sizes: "(min-width: 1440px) 480px, (min-width: 1024px) 40vw, 100vw" } : undefined;
+    const props = media ? { src: optimized(640), srcSet: [640, 960, 1440, 1920].map(width => optimized(width) + " " + width + "w").join(", "), sizes: "(min-width: 1440px) 480px, (min-width: 1024px) 40vw, 100vw" } : undefined;
     return { slug: item.slug, title: item.title, src: props?.src ?? "", srcSet: props?.srcSet, sizes: props?.sizes, width: media?.width ?? 1200, height: media?.height ?? 800 };
   });
   return <>

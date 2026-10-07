@@ -64,7 +64,8 @@ describe("buildCommands", () => {
 
   it("links published projects to their case study and every project to live and source", () => {
     const ids = commands.map(command => command.id);
-    expect(ids).not.toContain("open-rentit");
+    expect(ids).toContain("open-rentit");
+    expect(commands.find(command => command.id === "open-rentit")?.action).toEqual({ kind: "href", href: "/work/rentit" });
     expect(ids).toContain("open-marginalia");
     expect(ids).toContain("live-rentit");
     expect(ids).toContain("repo-rentit");
@@ -73,7 +74,7 @@ describe("buildCommands", () => {
 
   it("routes decision searches to the project chapter", () => {
     expect(commands.find(command => command.id === "decision-marginalia-citation-protocol")?.action).toEqual({ kind: "href", href: "/work/marginalia#marginalia-citation-protocol-heading" });
-    expect(commands.find(command => command.id === "decision-rentit-policy")).toBeUndefined();
+    expect(commands.find(command => command.id === "decision-rentit-policy")?.action).toEqual({ kind: "href", href: "/work/rentit#rentit-policy-heading" });
     expect(commands.find(command => command.id === "decision-site-example")).toBeUndefined();
   });
 

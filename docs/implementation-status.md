@@ -42,3 +42,9 @@ The owner requested local-script crops across all case studies. RentIt's browser
 Current browser behavior remains unverified: computer-use returned no available browser surfaces. Validation for this follow-up is recorded separately in `docs/rentit-validation.txt` and `docs/rentit-smoke-results.json`.
 
 The crop smoke check found that the optimizer rejected the PRD's 1440px figure width. Its configured widths now follow the four figure widths in section 33: 640, 960, 1440 and 1920px (`next.config.ts`, `scripts/rentit-review-smoke.mjs`). This supports the existing 1440px image budget rather than adding a new media requirement.
+
+## RentIt case-study links, 2026-10-07
+
+The owner requested that RentIt's preview and case-study link work like the other projects. RentIt is now included in `src/content/release.ts`; its existing owner verification flags are unchanged. The preceding unpublished/draft checkpoint is superseded by `PRD.md` Appendix F. The additional exact-request-image gate has been removed in favor of the canonical figure/count checks and the explicit missing-state deferrals. The page retains its source references and capture limits (`src/lib/schemas.ts`, `src/content/rentit-journey.ts`). Release remains R1, not a declaration of completed R2/R3 requirements.
+
+Homepage preview and cover use `public/figures/rentit/rentit-browse.png`, and the cover and Case study link open `/work/rentit`. Work, palette, project sequence and Inspect receive RentIt through the existing release collection (`src/app/page.tsx`, `src/components/work/project-panel.tsx`, `src/app/work/page.tsx`, `src/components/shell.tsx`, `src/app/layout.tsx`). Preview widths now match `next.config.ts`; the previously unsupported 1080px source-set entry is removed. The listing and cover no longer misdescribe the item-rental project as a property marketplace (`src/content/work-index.ts`, `docs/rentit-case-study.md`).

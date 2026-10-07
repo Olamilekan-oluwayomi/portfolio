@@ -115,6 +115,6 @@
       "bytes": 15041
     }
   ],
-  "staticReadingPath": "one H1, five journey anchors, six chapter anchors, eight supplied figures and draft publication status present in returned HTML",
+  "staticReadingPath": "one H1, five journey anchors, six chapter anchors, eight supplied figures and explicit capture boundaries present in returned HTML",
   "limits": "HTTP and image checks only. Browser interaction, viewport fit, screen readers, animation frame time and real devices remain unverified."
 }

@@ -16,10 +16,12 @@ describe("project-page publication boundary", () => {
     const page = projectPageContent(drafts, "rentit", [], "R1", true);
     expect(page).toBeDefined();
     expect(page?.draft).toBe(true);
-    expect(page?.issues.some(issue => issue.includes("request journey screenshot"))).toBe(true);
+    expect(page?.project.slug).toBe("rentit");
   });
-  it("does not accept profile and owner booking screens as a renter request", () => {
-    expect(projectPageContent(drafts, "rentit", ["rentit"], "R1")).toBeUndefined();
+  it("publishes the owner-approved case study without inventing a request capture", () => {
+    const page = projectPageContent(drafts, "rentit", ["rentit"], "R1");
+    expect(page?.draft).toBe(false);
+    expect(page?.project.media.some(media => media.id === "request")).toBe(false);
   });
   it("does not fabricate content for an unknown project, even in preview", () => {
     expect(projectPageContent(drafts, "missing-project", [], "R0", true)).toBeUndefined();

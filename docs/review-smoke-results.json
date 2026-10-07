@@ -31,6 +31,11 @@
       "oneH1": true
     },
     {
+      "route": "/work/rentit",
+      "status": 200,
+      "oneH1": true
+    },
+    {
       "route": "/work/marginalia",
       "status": 200,
       "oneH1": true
@@ -48,11 +53,15 @@
   ],
   "internalLinksAndAnchors": "passed",
   "restrictedFrameHeaders": "passed",
-  "unpublishedRentIt": 404,
+  "rentitCaseStudy": "published route and preview links passed",
+  "previewSourceSetCandidates": {
+    "count": 16,
+    "status": "all 200"
+  },
   "missingRoute": 404,
   "optimizedPreview": {
     "status": 200,
-    "bytes": 4866
+    "bytes": 9914
   },
   "browserInteraction": "unverified",
   "screenReader": "unverified",

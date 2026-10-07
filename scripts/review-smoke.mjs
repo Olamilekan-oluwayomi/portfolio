@@ -4,7 +4,7 @@ import { writeFileSync } from "node:fs";
 // HTTP and initial-HTML checks only. Browser interactions are not inferred.
 const base = process.argv[2];
 assert(base, "Supply the local server URL");
-const routes = ["/", "/brief", "/work", "/about", "/experience", "/contact", "/work/marginalia", "/work/space-tourism", "/work/foreign-exchange-checker"];
+const routes = ["/", "/brief", "/work", "/about", "/experience", "/contact", "/work/rentit", "/work/marginalia", "/work/space-tourism", "/work/foreign-exchange-checker"];
 const pages = new Map();
 const checks = [];
 for (const route of routes) {
@@ -29,7 +29,10 @@ for (const [route, html] of pages) {
 const home = pages.get("/");
 for (const slug of ["rentit", "marginalia", "space-tourism", "foreign-exchange-checker"]) assert(home.includes('href="#project-' + slug + '"'), "Index includes " + slug);
 assert(home.includes('aria-label="Read Marginalia case study"'));
-assert(!/<a\b[^>]*href="\/work\/rentit"/.test(home), "No unpublished RentIt case-study link");
+assert(/<a\b[^>]*href="\/work\/rentit"/.test(home), "RentIt case-study link exists");
+assert(home.includes('aria-label="Read RentIt case study"'), "RentIt cover opens its case study");
+assert(home.includes("rentit-browse.png"), "RentIt preview uses the actual browse capture");
+assert(!home.includes("&amp;w=1080"), "Preview widths match optimizer configuration");
 assert(home.includes("srcSet=") || home.includes("srcset="), "Optimized preview source sets");
 for (const route of routes.filter(route => route.startsWith("/work/"))) {
   const html = pages.get(route);
@@ -40,8 +43,9 @@ for (const route of routes.filter(route => route.startsWith("/work/"))) {
 assert(pages.get("/work/space-tourism").includes("Explore viewport widths"));
 assert(pages.get("/work/foreign-exchange-checker").includes("Explore the interface states"));
 assert(pages.get("/work/marginalia").includes("Read with sources visible"));
-const draft = await fetch(new URL("/work/rentit", base));
-assert.equal(draft.status, 404, "RentIt remains unpublished");
+const rental = pages.get("/work/rentit");
+assert(!rental.includes("Review preview. Not published."), "RentIt uses its published case-study presentation");
+assert(rental.includes("do not show a renter submitting a request"), "Missing request capture remains explicit");
 const missing = await fetch(new URL("/missing-review-route", base));
 assert.equal(missing.status, 404);
 const image = [...home.matchAll(/<img\b[^>]*src="([^"]+)"/g)].find(match => match[1].startsWith("/_next/image"));
@@ -50,6 +54,12 @@ const imageResponse = await fetch(new URL(image[1].replaceAll("&amp;", "&"), bas
 assert.equal(imageResponse.status, 200, "Optimized image endpoint");
 assert(imageResponse.headers.get("content-type")?.startsWith("image/"));
 const imageBytes = (await imageResponse.arrayBuffer()).byteLength;
-const report = { checks, internalLinksAndAnchors: "passed", restrictedFrameHeaders: "passed", unpublishedRentIt: draft.status, missingRoute: missing.status, optimizedPreview: { status: imageResponse.status, bytes: imageBytes }, browserInteraction: "unverified", screenReader: "unverified", viewports: "unverified" };
+const candidates = new Set([...home.matchAll(/src[Ss]et="([^"]+)"/g)].flatMap(match => match[1].replaceAll("&amp;", "&").split(", ").map(item => item.split(" ")[0])));
+for (const candidate of candidates) {
+  const response = await fetch(new URL(candidate, base), { headers: { Accept: "image/webp" } });
+  assert.equal(response.status, 200, "Preview source-set candidate: " + candidate);
+  await response.arrayBuffer();
+}
+const report = { checks, internalLinksAndAnchors: "passed", restrictedFrameHeaders: "passed", rentitCaseStudy: "published route and preview links passed", previewSourceSetCandidates: { count: candidates.size, status: "all 200" }, missingRoute: missing.status, optimizedPreview: { status: imageResponse.status, bytes: imageBytes }, browserInteraction: "unverified", screenReader: "unverified", viewports: "unverified" };
 writeFileSync("docs/review-smoke-results.json", JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report, null, 2));

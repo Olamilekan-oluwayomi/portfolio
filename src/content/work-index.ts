@@ -3,8 +3,8 @@
 // Appendix A items 4, 6 and 7. Features and stack: the referenced truth sheets.
 export const workIndex = [
   {
-    slug: "rentit", title: "RentIt", year: 2026, category: "Property marketplace",
-    summary: "Property listings, booking requests and messaging in one marketplace.",
+    slug: "rentit", title: "RentIt", year: 2026, category: "Item rental marketplace",
+    summary: "Item listings, booking requests and messaging in one marketplace.",
     stack: ["React", "Supabase", "Zod"],
     live: "https://rentitdaily.vercel.app/",
     repo: "https://github.com/Olamilekan-oluwayomi/rentit",

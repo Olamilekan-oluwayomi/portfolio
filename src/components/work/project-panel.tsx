@@ -3,18 +3,18 @@ import { publishedProjectSlugs } from "@/content/release";
 
 type WorkListing = (typeof workIndex)[number];
 
-// Original editorial illustrations, never screenshots or simulated interfaces.
+// RentIt uses its supplied browse capture; the other covers are editorial illustrations.
 // Project facts and external destinations: src/content/work-index.ts.
 function ProjectCover({ project }: { project: WorkListing }) {
   return <div className={`project-cover cover-${project.slug}`} aria-hidden="true">
     <div className="cover-registration"><span>{project.title}</span><span>↗</span></div>
     <div className="cover-art">
-      {project.slug === "rentit" && <><svg className="rentit-plan" viewBox="0 0 400 400" fill="none"><path d="M40 360V160L200 40l160 120v200H40Z" /><path d="M80 330V180l120-90 120 90v150H80Z M160 330V220h80v110 M40 160h320 M200 40v180 M80 180h240" /><circle cx="200" cy="180" r="100" /><path d="M0 200h400 M200 0v400" className="plan-guide" /></svg><span className="cover-wordmark">Rent<span>It.</span></span><span className="cover-side-label">Property marketplace</span></>}
+      {project.slug === "rentit" && <img className="rentit-cover-capture" src="/_next/image?url=%2Ffigures%2Frentit%2Frentit-browse.png&w=640&q=75" srcSet={[640, 960, 1440, 1920].map(width => `/_next/image?url=%2Ffigures%2Frentit%2Frentit-browse.png&w=${width}&q=75 ${width}w`).join(", ")} sizes="(min-width: 1024px) 50vw, 100vw" width="1897" height="958" alt="" loading="lazy" decoding="async" />}
       {project.slug === "marginalia" && <><div className="manuscript-sheet"><span className="manuscript-running">Research / Reading / Sources</span><span className="manuscript-mark">M<span>*</span></span><span className="manuscript-title">Marginalia</span><span className="manuscript-rule" /></div><span className="manuscript-bracket bracket-left">[</span><span className="manuscript-bracket bracket-right">]</span></>}
       {project.slug === "space-tourism" && <><svg className="orbital-illustration" viewBox="0 0 400 400" fill="none"><circle cx="200" cy="200" r="100" /><ellipse cx="200" cy="200" rx="176" ry="62" transform="rotate(-35 200 200)" /><ellipse cx="200" cy="200" rx="148" ry="45" transform="rotate(-35 200 200)" /><path d="M100 200h200 M104 175h192 M113 150h174 M134 125h132 M104 225h192 M113 250h174 M134 275h132" /><circle cx="337" cy="116" r="7" fill="currentColor" /></svg><span className="space-title">Space<br /><span>tourism.</span></span></>}
       {project.slug === "foreign-exchange-checker" && <><div className="exchange-route"><span>↗</span><span>↙</span></div><span className="exchange-ticket"><span className="eyebrow">Foreign exchange</span><span className="exchange-mark">FX</span><span className="eyebrow">Checker <span>↔</span></span></span></>}
     </div>
-    <div className="cover-caption"><span>Editorial illustration</span><span>{project.year}</span></div>
+    <div className="cover-caption"><span>{project.slug === "rentit" ? "Application capture" : "Editorial illustration"}</span><span>{project.year}</span></div>
   </div>;
 }
 

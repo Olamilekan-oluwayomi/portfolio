@@ -20,9 +20,10 @@ function ProjectCover({ project }: { project: WorkListing }) {
 
 export function ProjectPanel({ project, index }: { project: WorkListing; index: number }) {
   const id = `project-${project.slug}`;
+  const published = publishedProjectSlugs.includes(project.slug);
   return <li className={`project-panel project-${project.slug}`}>
     <article aria-labelledby={`${id}-title`} id={id}>
-      <a className="cover-link" href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live (opens in new tab)`}><ProjectCover project={project} /></a>
+      <a className="cover-link" href={published ? `/work/${project.slug}` : project.live} target={published ? undefined : "_blank"} rel={published ? undefined : "noopener noreferrer"} aria-label={published ? `Read ${project.title} case study` : `Open ${project.title} live (opens in new tab)`}><ProjectCover project={project} /></a>
       <div className="project-details">
         <div className="project-topline"><span className="project-number">{String(index + 1).padStart(2, "0")}</span><span>{project.category}</span><span className="project-year">{project.year}</span></div>
         <h3 id={`${id}-title`}>{project.title}</h3>

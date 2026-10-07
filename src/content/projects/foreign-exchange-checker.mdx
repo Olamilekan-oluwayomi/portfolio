@@ -48,8 +48,8 @@
       "id": "capture-2026-10-06",
       "kind": "screenshot",
       "src": "/figures/foreign-exchange-checker/fx-2026-10-06.png",
-      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06.",
-      "caption": "Foreign Exchange Checker, captured 2026-10-06. The page shown is to be confirmed in owner review.",
+      "alt": "Foreign Exchange Checker showing 1,000 USD converted to 892.54 EUR.",
+      "caption": "Captured example: sending 1,000 USD displays 892.54 EUR. These are captured values, not current exchange rates.",
       "width": 1920,
       "height": 955
     },
@@ -57,8 +57,8 @@
       "id": "capture-2026-10-06-134550",
       "kind": "screenshot",
       "src": "/figures/foreign-exchange-checker/fx-2026-10-06-134550.png",
-      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06 at 13:45.",
-      "caption": "Foreign Exchange Checker, captured 2026-10-06 13:45. The page shown is to be confirmed in owner review.",
+      "alt": "Foreign Exchange Checker one-month USD/EUR history chart.",
+      "caption": "USD/EUR history with the one-month range selected. The displayed statistics and plotted history are separate requests in the source.",
       "width": 1920,
       "height": 955
     },
@@ -66,8 +66,8 @@
       "id": "capture-2026-10-06-134601",
       "kind": "screenshot",
       "src": "/figures/foreign-exchange-checker/fx-2026-10-06-134601.png",
-      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06 at 13:46.",
-      "caption": "Foreign Exchange Checker, captured 2026-10-06 13:46. The page shown is to be confirmed in owner review.",
+      "alt": "Foreign Exchange Checker currency comparison with part of the list obscured by a screenshot notification.",
+      "caption": "Comparison list for an amount of 1,000 USD. A desktop screenshot notification obscures part of this capture; those obscured values are not interpreted.",
       "width": 1920,
       "height": 955
     },
@@ -75,8 +75,8 @@
       "id": "capture-2026-10-06-134610",
       "kind": "screenshot",
       "src": "/figures/foreign-exchange-checker/fx-2026-10-06-134610.png",
-      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06 at 13:46.",
-      "caption": "Foreign Exchange Checker, captured 2026-10-06 13:46. The page shown is to be confirmed in owner review.",
+      "alt": "Foreign Exchange Checker showing No conversions logged yet.",
+      "caption": "Empty log view beneath the converter. The captured session wording differs from the browser-local persistence in the repository.",
       "width": 1920,
       "height": 955
     },
@@ -84,8 +84,8 @@
       "id": "capture-2026-10-06-134617",
       "kind": "screenshot",
       "src": "/figures/foreign-exchange-checker/fx-2026-10-06-134617.png",
-      "alt": "Screenshot of the Foreign Exchange Checker application captured on 2026-10-06 at 13:46.",
-      "caption": "Foreign Exchange Checker, captured 2026-10-06 13:46. The page shown is to be confirmed in owner review.",
+      "alt": "Foreign Exchange Checker favorites showing a saved USD to BRL pair.",
+      "caption": "Favorites view with a saved USD to BRL pair. The picker and saved-pair behavior are separate interactions.",
       "width": 1920,
       "height": 955
     }
@@ -140,7 +140,7 @@
 }
 ---
 
-This case study is a draft assembled from the Foreign Exchange Checker truth sheet and its decision seeds. It is not published: figures and owner verification are still outstanding.
+Publication selection is declared in src/content/release.ts. Figure descriptions are grounded in the supplied captures and src/content/figure-stories.ts; verification flags remain owner-controlled.
 
 ## My contribution
 
@@ -154,8 +154,10 @@ The audit records what the source does not contain: no currency-specific roundin
 
 Evidence: docs/truth/foreign-exchange-checker.md, sections 6 and 7.
 
-## Figures still to capture
+## Figure evidence
 
 Five owner captures exist under `public/figures/foreign-exchange-checker/`, supplied on 2026-10-06, and their alt text and captions await confirmation, as does whether each meets the 2x expectation of PRD.md section 38. That section requires at least four figures at 2x with alt text and captions, or the bespoke piece plus two. The captures it lists are result and missing result, history loading, history empty or failed, search no results, empty favorites and log, and missing comparison amount, and which of those the five files cover is to be confirmed in owner review.
 
 Evidence: PRD.md section 38; docs/truth/foreign-exchange-checker.md, open uncertainties.
+
+The implemented interaction, descriptive figure labels and remaining evidence gaps are recorded in docs/implementation-status.md. Earlier audit gaps above are historical; current viewport geometry, capture density and browser interaction remain unverified.

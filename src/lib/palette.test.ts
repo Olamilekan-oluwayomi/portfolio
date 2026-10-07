@@ -44,6 +44,7 @@ describe("searchCommands", () => {
 describe("buildCommands", () => {
   const commands = buildCommands(
     [{ id: "rentit-policy", title: "Replace unknown UPDATE policies", theme: "security", projectSlug: "rentit" },
+      { id: "marginalia-citation-protocol", title: "Resolve source markers server-side", theme: "data", projectSlug: "marginalia" },
       { id: "site-example", title: "Publish employer name only", theme: "ux", projectSlug: "site" }],
     true,
     false,
@@ -63,15 +64,17 @@ describe("buildCommands", () => {
 
   it("links published projects to their case study and every project to live and source", () => {
     const ids = commands.map(command => command.id);
-    expect(ids).toContain("open-rentit");
+    expect(ids).not.toContain("open-rentit");
+    expect(ids).toContain("open-marginalia");
     expect(ids).toContain("live-rentit");
     expect(ids).toContain("repo-rentit");
-    expect(commands.find(command => command.id === "open-rentit")?.action).toEqual({ kind: "href", href: "/work/rentit" });
+    expect(commands.find(command => command.id === "open-marginalia")?.action).toEqual({ kind: "href", href: "/work/marginalia" });
   });
 
   it("routes decision searches to the project chapter", () => {
-    expect(commands.find(command => command.id === "decision-rentit-policy")?.action).toEqual({ kind: "href", href: "/work/rentit#decisions" });
-    expect(commands.find(command => command.id === "decision-site-example")?.action).toEqual({ kind: "href", href: "/about" });
+    expect(commands.find(command => command.id === "decision-marginalia-citation-protocol")?.action).toEqual({ kind: "href", href: "/work/marginalia#marginalia-citation-protocol-heading" });
+    expect(commands.find(command => command.id === "decision-rentit-policy")).toBeUndefined();
+    expect(commands.find(command => command.id === "decision-site-example")).toBeUndefined();
   });
 
   it("reflects the shortcut setting in its label", () => {

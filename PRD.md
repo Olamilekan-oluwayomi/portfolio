@@ -1547,3 +1547,15 @@ Added on 2026-10-06 on the owner's approval of the interactive brief recorded in
 - The homepage contact eyebrow may read "Have something worth building?" (owner copy from the brief) while the heading stays "Let's talk." The contact page keeps section 20 unchanged (`PRD.md:566` to `PRD.md:572`).
 - The availability status dot stays static, with no pulse (`PRD.md:288`).
 - The brief's case-study restructure is rejected: the eight-block spine stands (`PRD.md:425` to `PRD.md:434`).
+
+## Appendix D. Design and interaction review implementation
+
+The owner's instruction to implement the review recommendations is recorded in `docs/implementation-status.md`. The implementation decision draft is `docs/review-improvements.json`, outside the published collection with `verified: false`. Sections 16.2, 25, 35 and 38 and Appendices B and C remain binding.
+
+The homepage concept anchors now follow the recruiter information and availability in a dedicated band rather than taking width inside the statement column (`src/app/page.tsx`, `src/styles/globals.css`). This preserves the recruiter information hierarchy; current viewport fit is unverified. The four existing concept notes and their interaction rules remain.
+
+Desktop Decision Mode notes use anchored markers and opacity-only popovers; wide screens have a margin rail. Touch retains bottom sheets and inline disclosures. These are the same note records and optional depth, not an additional signature moment (`src/components/annotations.tsx`).
+
+Project interactions are implemented with supplied captures and source-backed recreations. Missing responsive captures and a numerical FX history series remain explicit evidence gaps, so no false three-width screenshot set or fabricated sparkline is shipped (`docs/implementation-status.md`, `src/components/experiences.tsx`). RentIt remains outside publication (`src/content/release.ts`).
+
+Inspect distinguishes document-scoped Web Vitals from client-side navigation. A route without its own document-load measurement shows "not yet measured" and offers a reload link rather than copying another route's numbers. Resource totals describe the document visit, including client navigation, and exclude the HTML document request (`src/lib/measurements.ts`, `src/components/inspect.tsx`). This is an explicit measurement-scope clarification of section 26, not permission to invent route metrics.

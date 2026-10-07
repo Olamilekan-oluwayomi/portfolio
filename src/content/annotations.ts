@@ -23,14 +23,14 @@ export const conceptNotes: ({ id: ConceptId } & NoteRecord)[] = [
   {
     id: "accessibility",
     label: "Accessibility",
-    note: "Space Tourism's selection controls are named native buttons that expose aria-pressed instead of using the ARIA tabs pattern.",
+    note: "Space Tourism uses named native selection buttons. Technology exposes aria-pressed; Destination and Crew do not expose selected state. None uses the ARIA tabs pattern.",
     source: "docs/truth/space-tourism.md:77 to :79",
   },
   {
     id: "performance",
     label: "Performance",
-    note: "Text is the LCP element on the homepage: no hero image or canvas loads before the name.",
-    source: "src/app/page.tsx",
+    note: "The homepage starts with text rather than a hero image or canvas. Inspect reports the measured LCP for this visit when the browser provides it.",
+    source: "src/app/page.tsx; src/lib/measurements.ts; src/components/inspect.tsx",
   },
 ];
 
@@ -43,12 +43,12 @@ export const siteNotes: Record<"static-dot" | "grid-gap" | "no-card-border" | "o
   },
   "grid-gap": {
     label: "Why this spacing",
-    note: "The work grid holds 96px between projects and 48px between columns, enough separation to read each project as its own entry without boxing it into a card.",
+    note: "On desktop, the work grid separates projects by 96px and columns by 48px. Smaller layouts tighten those gaps and become a linear list, keeping each project readable at its own scale.",
     source: "src/styles/globals.css, .project-grid",
   },
   "no-card-border": {
     label: "Why no card border",
-    note: "Project surfaces use color, scale and rules instead of borders, shadows or rounded corners, so the page reads as an editorial spread rather than a dashboard.",
+    note: "A fine border frames each illustration, while the complete project entry stays unboxed. Color, scale and spacing group the work without adding another card around its description.",
     source: "docs/homepage-direction.md, src/styles/globals.css",
   },
   "one-spine": {

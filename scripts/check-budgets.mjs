@@ -39,6 +39,25 @@ for (const page of pages) {
 }
 const fonts = readdirSync("design/fonts").filter(file => file.endsWith(".woff2")).reduce((sum, file) => sum + statSync(join("design/fonts", file)).size, 0);
 console.log(`Fonts: ${fonts} bytes (limit ${150 * 1024})`);
+// Feature code is identified by its authored UI text, not a guessed chunk hash.
+// Shared framework bytes are already covered by the route budgets above.
+function javascriptFiles(path) {
+  return readdirSync(path).flatMap(file => {
+    const full = join(path, file);
+    return statSync(full).isDirectory() ? javascriptFiles(full) : file.endsWith(".js") ? [full] : [];
+  });
+}
+const lazyCode = javascriptFiles(join(root, "static/chunks")).map(path => ({ path, code: readFileSync(path, "utf8") }));
+for (const feature of [
+  { label: "Inspect", marker: "Page measurements", limit: 40 * 1024 },
+  { label: "Palette", marker: "Command palette", limit: 25 * 1024 },
+  { label: "Project experiences", marker: "Recreated states / capture dated", limit: 60 * 1024 },
+]) {
+  const chunks = lazyCode.filter(chunk => chunk.code.includes(feature.marker));
+  const bytes = chunks.reduce((sum, chunk) => sum + gzipSync(chunk.code).length, 0);
+  console.log(`${feature.label}: ${bytes} gzip bytes of feature code (limit ${feature.limit})`);
+  if (!chunks.length || bytes > feature.limit) failed = true;
+}
 if (!pages.length) {
   console.error("No generated HTML found; JavaScript budgets cannot be checked.");
   for (const path of [".next/server/app", ".next/server/route-cache"]) {

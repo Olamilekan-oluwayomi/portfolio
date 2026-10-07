@@ -1,5 +1,6 @@
 import { siteIdentity } from "@/content/identity";
 import { workIndex } from "@/content/work-index";
+import { log, formatLogDates } from "@/content/log";
 
 export const metadata = { title: `The brief | ${siteIdentity.name}` };
 export default function Brief() {
@@ -17,6 +18,8 @@ export default function Brief() {
         <a href={project.repo} target="_blank" rel="noopener noreferrer">Source<span className="sr-only">, {project.title} (opens in new tab)</span> ↗</a>
       </div>
     </li>)}</ul>
-    <a className="primary-link" href={`mailto:${siteIdentity.email}`}>{siteIdentity.email} <span aria-hidden="true">↗</span></a>
+    <h2>Experience and education</h2>
+    <ul className="brief-log">{log.filter(entry => entry.public).map(entry => <li key={entry.id}><span>{entry.role}, {entry.org}</span><span>{formatLogDates(entry.start, entry.end)}</span></li>)}</ul>
+    <div className="brief-contact"><a href={`mailto:${siteIdentity.email}`}>{siteIdentity.email}</a><a href={siteIdentity.links.linkedin}>LinkedIn</a><a href={siteIdentity.links.github}>GitHub</a>{siteIdentity.cv && <a href={siteIdentity.cv}>CV</a>}</div>
   </article>;
 }

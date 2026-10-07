@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Link from "next/link";
 import { siteIdentity } from "@/content/identity";
 import { loadContent } from "@/lib/content";
+import { publishedProjectSlugs } from "@/content/release";
 import { HeaderActions } from "@/components/header-actions";
 import { Shell } from "@/components/shell";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 // Persistent frame contract: PRD.md sections 14 and 36. Navigation lists only
 // routes that exist in this release; Lab waits for /lab.
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const decisions = loadContent().decisions.map(decision => ({ id: decision.id, title: decision.title, theme: decision.theme, projectSlug: decision.projectSlug }));
+  const decisions = loadContent().decisions.filter(decision => publishedProjectSlugs.includes(decision.projectSlug)).map(decision => ({ id: decision.id, title: decision.title, theme: decision.theme, projectSlug: decision.projectSlug }));
   return <html lang="en" className={`${display.variable} ${italic.variable} ${ui.variable} ${mono.variable}`}>
     <body>
       <Shell decisions={decisions}>
@@ -33,7 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <div className="header-actions"><HeaderActions /><ThemeToggle /><a className="contact-link" href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
           </div>
         </header>
-        <main id="main" className="frame" tabIndex={-1}>{children}</main>
+        <main data-inspect="RootLayout" data-inspect-spacing="--pad-x" id="main" className="frame" tabIndex={-1}>{children}</main>
         <footer className="site-footer frame">
           <span className="footer-name">{siteIdentity.name}</span>
           <a href={siteIdentity.links.github} target="_blank" rel="noopener noreferrer">GitHub <span className="sr-only">(opens in new tab)</span></a>

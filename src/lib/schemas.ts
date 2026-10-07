@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { hasExperience } from "./experience";
 
 // Contracts and limits: PRD.md sections 16.2, 35 and 38.
 const text = z.string().trim().min(1);
@@ -26,7 +27,7 @@ export const projectSchema = z.strictObject({
   summary: text.min(120).max(155), premise: words(60, 90),
   stack: z.array(z.strictObject({ name: text, category: z.enum(["framework", "language", "styling", "data", "state", "validation", "tooling"]), why: text })).min(1),
   links: z.strictObject({ live: url.optional(), repo: url.optional(), caseStudy: z.string().startsWith("/work/") }),
-  media: z.array(z.strictObject({ id: text, kind: z.enum(["screenshot", "video", "diagram"]), src: text, poster: text.optional(), alt: text, caption: text, width: z.number().int().positive(), height: z.number().int().positive() })),
+  media: z.array(z.strictObject({ id: text, kind: z.enum(["screenshot", "video", "diagram", "illustration"]), src: text, poster: text.optional(), alt: text, caption: text, width: z.number().int().positive(), height: z.number().int().positive() })),
   experience: z.strictObject({ mode: z.enum(["walkthrough", "resizer", "console", "state-gallery", "manuscript"]), component: text }),
   problems: z.array(z.strictObject({ title: text, body: words(40, 80) })).min(2).max(3),
   reversals: words(60, 100), seo: z.strictObject({ title: text, description: text.min(120).max(155), ogImage: text.optional() }),
@@ -65,8 +66,9 @@ export function publicationIssues(collection: Collection, published: string[], r
     if (!project.verified) issues.push(`${id}: project is unverified`);
     if (!project.links.live) issues.push(`${id}: live URL is missing`);
     if (!project.links.repo) issues.push(`${id}: repository URL or written private-source deferral is required`);
-    // Bespoke pieces and asset/OG verification are later project-page gates.
-    if (project.media.length < 2) issues.push(`${id}: at least two figures are required with a bespoke piece`);
+    const figures = project.media.filter(media => media.kind !== "illustration");
+    const minimum = hasExperience(project.experience.component) ? 2 : 4;
+    if (figures.length < minimum) issues.push(`${id}: at least ${minimum} evidence figures are required; illustrations do not count`);
     if (!project.seo.ogImage) issues.push(`${id}: OG image is missing`);
     if (records.filter(record => record.projectSlug === id && record.verified).length < 3) issues.push(`${id}: fewer than three owner-verified decisions`);
     issues.push(...copyIssues(project).map(issue => `${id}: ${issue}`));

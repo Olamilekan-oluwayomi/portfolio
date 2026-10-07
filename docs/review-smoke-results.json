@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "route": "/",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/brief",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/work",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/experience",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/work/marginalia",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/work/space-tourism",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/work/foreign-exchange-checker",
+      "status": 200,
+      "oneH1": true
+    }
+  ],
+  "internalLinksAndAnchors": "passed",
+  "restrictedFrameHeaders": "passed",
+  "unpublishedRentIt": 404,
+  "missingRoute": 404,
+  "optimizedPreview": {
+    "status": 200,
+    "bytes": 4866
+  },
+  "browserInteraction": "unverified",
+  "screenReader": "unverified",
+  "viewports": "unverified"
+}

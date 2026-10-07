@@ -287,7 +287,7 @@ a.record-artifact:hover { text-decoration: underline; }
 .log-detail a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
 .log-plain { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 24px; min-height: 44px; padding-block: 16px; }
 .contact-page { padding-block: 32px 120px; }
-.contact-address { position: relative; display: block; width: 100%; margin-top: 24px; padding: 0 0 14px; border: 0; background: transparent; color: var(--ink); font: 400 clamp(34px, 7vw, 96px)/1.1 var(--font-display-loaded), Georgia, serif; letter-spacing: -0.02em; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
+.contact-address { position: relative; display: block; width: 100%; margin-top: 24px; padding: 0 0 14px; border: 0; background: transparent; color: var(--ink); font: 400 clamp(28px, 4.5vw, 60px)/1.1 var(--font-display-loaded), Georgia, serif; letter-spacing: -0.02em; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
 .contact-address::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform var(--dur-draw) var(--ease-out); }
 .contact-address:hover::after, .contact-address:focus-visible::after { transform: scaleX(1); }
 .contact-live { min-height: 24px; margin-top: 10px; color: var(--graphite); font: 400 13px/1.5 var(--font-mono); }

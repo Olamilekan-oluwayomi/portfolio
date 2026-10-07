@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { siteIdentity } from "@/content/identity";
-import { searchCommands, type Command } from "@/lib/palette";
+import { buildCommands, searchCommands, type Command, type PaletteDecision } from "@/lib/palette";
 import { toggleTheme } from "./theme-toggle";
 import { useDialog } from "./use-dialog";
 
@@ -10,20 +10,28 @@ import { useDialog } from "./use-dialog";
 type PaletteProps = {
   open: boolean;
   onClose: () => void;
-  commands: Command[];
+  decisions: PaletteDecision[];
+  shortcutsOn: boolean;
+  decisionOn: boolean;
+  inspectOn: boolean;
+  motion: "full" | "reduced" | "lite";
   announce: (message: string) => void;
   onToggleShortcuts: () => void;
   onToggleDecisions: () => void;
   onOpenSheet: () => void;
+  onToggleInspect: () => void;
+  onToggleLite: () => void;
+  onToggleReduce: () => void;
 };
 
-export default function Palette({ open, onClose, commands, announce, onToggleShortcuts, onToggleDecisions, onOpenSheet }: PaletteProps) {
+export default function Palette({ open, onClose, decisions, shortcutsOn, decisionOn, inspectOn, motion, announce, onToggleShortcuts, onToggleDecisions, onToggleInspect, onToggleLite, onToggleReduce, onOpenSheet }: PaletteProps) {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const dialog = useDialog(open, onClose);
+  const commands = useMemo(() => buildCommands(decisions, shortcutsOn, decisionOn, inspectOn, motion), [decisions, shortcutsOn, decisionOn, inspectOn, motion]);
   const results = useMemo(() => searchCommands(commands, query), [commands, query]);
 
   useEffect(() => { setActive(0); }, [query]);
@@ -62,6 +70,12 @@ export default function Palette({ open, onClose, commands, announce, onToggleSho
     } else if (action.kind === "decisions") {
       onToggleDecisions();
       onClose();
+    } else if (action.kind === "inspect") {
+      onClose(); onToggleInspect();
+    } else if (action.kind === "lite") {
+      onToggleLite(); onClose();
+    } else if (action.kind === "reduce-motion") {
+      onToggleReduce(); onClose();
     } else if (action.kind === "sheet") {
       onClose();
       onOpenSheet();

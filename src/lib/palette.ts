@@ -11,7 +11,10 @@ export type CommandAction =
   | { kind: "theme" }
   | { kind: "shortcuts" }
   | { kind: "decisions" }
-  | { kind: "sheet" };
+  | { kind: "sheet" }
+  | { kind: "inspect" }
+  | { kind: "lite" }
+  | { kind: "reduce-motion" };
 
 export type Command = {
   id: string;
@@ -39,7 +42,7 @@ const viewCommands: Command[] = [
   { id: "view-sheet", group: "View", label: "Show shortcuts", keywords: "help keys", action: { kind: "sheet" } },
 ];
 
-export function buildCommands(decisions: PaletteDecision[], shortcutsOn: boolean, decisionModeOn: boolean): Command[] {
+export function buildCommands(decisions: PaletteDecision[], shortcutsOn: boolean, decisionModeOn: boolean, inspectOn = false, motion: "full" | "reduced" | "lite" = "full"): Command[] {
   const projects = workIndex.map(project => {
     const published = publishedProjectSlugs.includes(project.slug);
     const commands: Command[] = [];
@@ -55,13 +58,13 @@ export function buildCommands(decisions: PaletteDecision[], shortcutsOn: boolean
     { id: "open-linkedin", group: "Open", label: "LinkedIn", action: { kind: "external", href: siteIdentity.links.linkedin } },
   ];
   if (siteIdentity.cv) profile.push({ id: "open-cv", group: "Open", label: "Curriculum vitae", keywords: "cv resume pdf", action: { kind: "external", href: siteIdentity.cv } });
-  const decisionCommands: Command[] = decisions.map(decision => ({
+  const decisionCommands: Command[] = decisions.filter(decision => publishedProjectSlugs.includes(decision.projectSlug)).map(decision => ({
     id: `decision-${decision.id}`,
     group: "Search decisions",
     label: decision.title,
     hint: `${decision.theme} / ${decision.projectSlug}`,
     keywords: `${decision.theme} ${decision.projectSlug} ${decision.title}`,
-    action: { kind: "href", href: publishedProjectSlugs.includes(decision.projectSlug) ? `/work/${decision.projectSlug}#decisions` : "/about" },
+    action: { kind: "href", href: `/work/${decision.projectSlug}#${decision.id}-heading` },
   }));
   return [
     ...routeCommands,
@@ -69,6 +72,9 @@ export function buildCommands(decisions: PaletteDecision[], shortcutsOn: boolean
     ...profile,
     { id: "copy-email", group: "Copy", label: "Copy email", hint: siteIdentity.email, action: { kind: "copy-email" } },
     ...viewCommands,
+    { id: "view-inspect", group: "View", label: `Inspect: ${inspectOn ? "on" : "off"}`, keywords: "measurements vitals notes", action: { kind: "inspect" } },
+    { id: "view-lite", group: "View", label: `Lite mode: ${motion === "lite" ? "on" : "off"}`, action: { kind: "lite" } },
+    { id: "view-reduce-motion", group: "View", label: `Reduce motion: ${motion !== "full" ? "on" : "off"}`, action: { kind: "reduce-motion" } },
     { id: "view-shortcuts-toggle", group: "View", label: `Shortcuts: ${shortcutsOn ? "on" : "off"}`, keywords: "single character keys disable wcag", action: { kind: "shortcuts" } },
     { id: "view-decision-mode", group: "View", label: `Decision mode: ${decisionModeOn ? "on" : "off"}`, keywords: "annotation notes annotate margin", action: { kind: "decisions" } },
     ...decisionCommands,

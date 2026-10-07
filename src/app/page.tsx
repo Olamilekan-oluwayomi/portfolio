@@ -5,14 +5,18 @@ import { loadContent } from "@/lib/content";
 import { HeroConcepts, SiteNote } from "@/components/annotations";
 import { ProjectPanel } from "@/components/work/project-panel";
 import { WorkDirectory } from "@/components/work-directory";
+import { publishedProjectSlugs } from "@/content/release";
 
 export default function Home() {
   const [firstName, ...lastName] = siteIdentity.name.split(" ");
   const { projects } = loadContent();
   const previews = workIndex.map(item => {
-    const media = projects.find(project => project.slug === item.slug)?.media.find(entry => entry.kind === "screenshot");
-    return { slug: item.slug, title: item.title, src: media?.src ?? "", width: media?.width ?? 1200, height: media?.height ?? 800 };
-  }).filter(item => item.src !== "");
+    const media = publishedProjectSlugs.includes(item.slug) ? projects.find(project => project.slug === item.slug)?.media.find(entry => entry.kind === "screenshot") : undefined;
+    // Server-authored optimizer URLs avoid shipping the image component to this page.
+    const optimized = (width: number) => media ? "/_next/image?url=" + encodeURIComponent(media.src) + "&w=" + width + "&q=75" : "";
+    const props = media ? { src: optimized(640), srcSet: [640, 960, 1440, 1920].map(width => optimized(width) + " " + width + "w").join(", "), sizes: "(min-width: 1440px) 480px, (min-width: 1024px) 40vw, 100vw" } : undefined;
+    return { slug: item.slug, title: item.title, src: props?.src ?? "", srcSet: props?.srcSet, sizes: props?.sizes, width: media?.width ?? 1200, height: media?.height ?? 800 };
+  });
   return <>
     <section className="hero" aria-labelledby="name">
       <div className="hero-topline">
@@ -22,18 +26,19 @@ export default function Home() {
       <div className="identity-poster">
         <div className="identity-preface"><p className="hero-intro">Hello, I’m</p></div>
         <div className="name-composition">
-          <h1 id="name"><span className="name-first">{firstName}</span><span className="name-frame"><span>{lastName.join(" ")}</span><i className="handle handle-tl" aria-hidden="true" /><i className="handle handle-tr" aria-hidden="true" /><i className="handle handle-bl" aria-hidden="true" /><i className="handle handle-br" aria-hidden="true" /></span></h1>
+          <h1 data-inspect="Home" data-inspect-type="typeof siteIdentity" data-inspect-spacing="--hero-name-size" id="name"><span className="name-first">{firstName}</span><span className="name-frame"><span>{lastName.join(" ")}</span><i className="handle handle-tl" aria-hidden="true" /><i className="handle handle-tr" aria-hidden="true" /><i className="handle handle-bl" aria-hidden="true" /><i className="handle handle-br" aria-hidden="true" /></span></h1>
           <p className="role-label">{siteIdentity.role}</p>
         </div>
         <div className="identity-caption"><span className="eyebrow">Interfaces. And what goes into them.</span><span className="poster-mark" aria-hidden="true">[↗]</span></div>
       </div>
       <div className="hero-context">
-        <div className="hero-lead"><p className="hero-statement">Every interface<br />is a set of <em>decisions.</em></p><HeroConcepts notes={conceptNotes} /></div>
+        <div className="hero-lead"><p className="hero-statement">Every interface<br />is a set of <em>decisions.</em></p></div>
         <div className="hero-facts"><p className="employment-label"><span className="eyebrow">Currently at</span><span>{siteIdentity.employer}</span></p><ul className="hero-stack" aria-label="Technology stack">{siteIdentity.stackLine.split("·").map(skill => <li key={skill.trim()}>{skill.trim()}</li>)}</ul></div>
         <div className="hero-actions"><a className="primary-link" href="#work">Explore the work <span aria-hidden="true">↘</span></a><a className="brief-link" href="/brief">The 30-second brief <span aria-hidden="true">↗</span></a></div>
       </div>
       <SiteNote note={siteNotes["static-dot"]} />
       <div className="hero-bottomline"><p className="availability"><span className="availability-mark" aria-hidden="true" />{siteIdentity.availability}</p><a href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
+      <div className="hero-concept-band"><span className="eyebrow">Explore the thinking</span><HeroConcepts notes={conceptNotes} /></div>
     </section>
 
     <section className="selected-work" id="work" aria-labelledby="work-title">

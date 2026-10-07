@@ -1547,3 +1547,29 @@ Added on 2026-10-06 on the owner's approval of the interactive brief recorded in
 - The homepage contact eyebrow may read "Have something worth building?" (owner copy from the brief) while the heading stays "Let's talk." The contact page keeps section 20 unchanged (`PRD.md:566` to `PRD.md:572`).
 - The availability status dot stays static, with no pulse (`PRD.md:288`).
 - The brief's case-study restructure is rejected: the eight-block spine stands (`PRD.md:425` to `PRD.md:434`).
+
+## Appendix D. Design and interaction review implementation
+
+The owner's instruction to implement the review recommendations is recorded in `docs/implementation-status.md`. The implementation decision draft is `docs/review-improvements.json`, outside the published collection with `verified: false`. Sections 16.2, 25, 35 and 38 and Appendices B and C remain binding.
+
+The homepage concept anchors now follow the recruiter information and availability in a dedicated band rather than taking width inside the statement column (`src/app/page.tsx`, `src/styles/globals.css`). This preserves the recruiter information hierarchy; current viewport fit is unverified. The four existing concept notes and their interaction rules remain.
+
+Desktop Decision Mode notes use anchored markers and opacity-only popovers; wide screens have a margin rail. Touch retains bottom sheets and inline disclosures. These are the same note records and optional depth, not an additional signature moment (`src/components/annotations.tsx`).
+
+Project interactions are implemented with supplied captures and source-backed recreations. Missing responsive captures and a numerical FX history series remain explicit evidence gaps, so no false three-width screenshot set or fabricated sparkline is shipped (`docs/implementation-status.md`, `src/components/experiences.tsx`). RentIt remains outside publication (`src/content/release.ts`).
+
+Inspect distinguishes document-scoped Web Vitals from client-side navigation. A route without its own document-load measurement shows "not yet measured" and offers a reload link rather than copying another route's numbers. Resource totals describe the document visit, including client navigation, and exclude the HTML document request (`src/lib/measurements.ts`, `src/components/inspect.tsx`). This is an explicit measurement-scope clarification of section 26, not permission to invent route metrics.
+
+## Appendix E. RentIt walkthrough and figure crops
+
+The owner supplied five additional RentIt captures and explicitly authorized local-script browser-chrome cropping across the case studies on 2026-10-07 (`docs/evidence/rentit/README.md`). Crops extract existing pixels only, with source hashes, bounds and decoded-pixel comparisons recorded in `docs/figure-crops.json`; capture CSS viewport, original capture date and pixel density remain unverified. Other published case-study figures already exclude tabs and address bars; their remaining scrollbars, status overlays and capture boundaries are cropped without regenerating content (`scripts/crop-case-study-figures.mjs`).
+
+RentIt now has the lazy five-step walkthrough and a server-rendered sequence of its supplied figures (`src/components/rentit-walkthrough.tsx`, `src/components/work/case-study.tsx`). Profile fields and owner booking rows support the request chapter but do not establish renter submission, so the publication check requires an actual request screenshot (`src/lib/schemas.ts`). The source-backed implementation decision is `docs/rentit-walkthrough-decision.json`, outside the published collection with `verified: false`. RentIt remains excluded from publication; no owner verification flag was changed (`src/content/release.ts`). Section 38 and the owner's full-evidence gate remain binding.
+
+## Appendix F. RentIt case-study access
+
+On 2026-10-07 the owner instructed: "DEAL WITH THE PREVIEW AND ADD CASE STUDY LINK TO RENTIT LIKE OTHERS HAVE". The current implementation exposes the supplied RentIt case study on the normal route and links it from the homepage cover, project links, Work list, palette and project sequence (`src/content/release.ts`, `src/components/work/project-panel.tsx`, `src/app/work/page.tsx`, `src/lib/palette.ts`, `src/components/shell.tsx`). The homepage index and cover use the real browse capture; preview source sets use the configured widths (`src/app/page.tsx`, `next.config.ts`). The old property-marketplace label is corrected to the owner-confirmed item-rental purpose (`src/content/work-index.ts`, `docs/rentit-case-study.md`).
+
+This supersedes Appendix E's review-only checkpoint and its additional exact-request-image gate for this supplied case study. Eight supplied figures, the implemented experience and three existing owner-verified decisions satisfy the canonical figure/count checks. Missing renter date selection/submission, the completion prompt, successful visibility mutation/restore and capture density remain documented deferrals, with explicit boundaries beside the affected figures (`docs/evidence/rentit/README.md`, `src/content/rentit-journey.ts`). No missing application state, 2x provenance, successful deployed permission or delivery result is claimed. The extra gate is removed; schema validation, evidence requirements and owner-only verification remain intact (`src/lib/schemas.ts`).
+
+The implementation decision is `docs/rentit-publication.json`, outside the published collection with `verified: false`. No existing verification flag is changed. Release stays R1 until the separate portfolio-wide R2 requirements are met (`src/content/release.ts`, section 16.2).

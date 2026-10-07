@@ -1,0 +1,246 @@
+typecheck
+
+> annotated-portfolio@0.0.0 typecheck
+> tsc --noEmit
+
+
+exit code: 0
+
+lint
+
+> annotated-portfolio@0.0.0 lint
+> eslint .
+
+
+exit code: 0
+
+tests
+
+> annotated-portfolio@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.3 C:/Users/hp/Desktop/Portfolio
+
+
+ Test Files  5 passed (5)
+      Tests  33 passed (33)
+   Start at  20:50:37
+   Duration  1.12s (import 51%, transform 40%, tests 5%, worker 3%)
+
+
+exit code: 0
+
+content
+
+> annotated-portfolio@0.0.0 check:content
+> tsx scripts/check-content.ts
+
+Content gate passed: 3 published project pages (R1).
+
+exit code: 0
+
+contrast
+Palette hexes against the PRD
+  paper  8 tokens, 0 mismatched
+  night  8 tokens, 0 mismatched
+
+Contrast, recomputed with WCAG 2.x relative luminance
+  paper theme
+    ink on paper                          16.05:1  pass at 4.5:1
+    graphite on paper                      6.24:1  pass at 4.5:1
+    redline-text on paper                  5.53:1  pass at 4.5:1
+    redline on paper (marks)               3.98:1  pass at 3.0:1
+    graphite on paper (control borders)    6.24:1  pass at 3.0:1
+    ink on paper-raised                   17.07:1  pass at 4.5:1
+    rule on paper (dividers only)          1.30:1  no requirement, dividers only
+  night theme
+    ink on paper                          15.17:1  pass at 4.5:1
+    graphite on paper                      7.51:1  pass at 4.5:1
+    redline-text on paper                  7.36:1  pass at 4.5:1
+    redline on paper (marks)               7.36:1  pass at 3.0:1
+    graphite on paper (control borders)    7.51:1  pass at 3.0:1
+    ink on paper-raised                   13.99:1  pass at 4.5:1
+    rule on paper (dividers only)          1.46:1  no requirement, dividers only
+
+Active homepage contrast
+  paper  body text                       15.31:1
+  paper  secondary text and controls      6.80:1
+  paper  raised surface text             16.13:1
+  paper  selection and focus              4.61:1
+  paper  selected identity text          13.93:1
+  paper  annotation and action text       5.96:1
+  paper  note text on canvas              5.65:1
+  paper  note text on raised surface      5.96:1
+  paper  blue cover text                  9.50:1
+  paper  mint cover text                 11.37:1
+  paper  yellow cover text               11.06:1
+  paper  pink cover text                  9.60:1
+  paper  space cover text                14.04:1
+  night  body text                       15.86:1
+  night  secondary text and controls      9.11:1
+  night  raised surface text             13.96:1
+  night  selection and focus             10.18:1
+  night  selected identity text          13.93:1
+  night  annotation and action text       5.96:1
+  night  note text on canvas             10.18:1
+  night  note text on raised surface      8.97:1
+  night  blue cover text                  9.50:1
+  night  mint cover text                 11.37:1
+  night  yellow cover text               11.06:1
+  night  pink cover text                  9.60:1
+  night  space cover text                14.04:1
+
+OK: historical palette matches the PRD; historical and active contrast pairs pass
+
+exit code: 0
+
+
+Final tests after figure correction
+
+> annotated-portfolio@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.3 C:/Users/hp/Desktop/Portfolio
+
+
+ Test Files  6 passed (6)
+      Tests  36 passed (36)
+   Start at  21:42:08
+   Duration  1.72s (import 54%, transform 28%, worker 15%, tests 4%)
+
+exit code: 0
+
+Final lint
+
+> annotated-portfolio@0.0.0 lint
+> eslint .
+
+completion recorded below
+
+Final lint completion
+exit code: 0
+
+Final HTTP smoke check
+{
+  "checks": [
+    {
+      "route": "/",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/brief",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/work",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/experience",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/work/marginalia",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/work/space-tourism",
+      "status": 200,
+      "oneH1": true
+    },
+    {
+      "route": "/work/foreign-exchange-checker",
+      "status": 200,
+      "oneH1": true
+    }
+  ],
+  "internalLinksAndAnchors": "passed",
+  "restrictedFrameHeaders": "passed",
+  "unpublishedRentIt": 404,
+  "missingRoute": 404,
+  "optimizedPreview": {
+    "status": 200,
+    "bytes": 4866
+  },
+  "browserInteraction": "unverified",
+  "screenReader": "unverified",
+  "viewports": "unverified"
+}
+exit code: 0
+
+Final production build
+
+> annotated-portfolio@0.0.0 build
+> tsx scripts/check-content.ts && next build --webpack && node scripts/check-budgets.mjs
+
+Content gate passed: 3 published project pages (R1).
+▲ Next.js 16.3.8 (webpack)
+✓ Running next.config.ts took 57ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.8s
+  Running TypeScript ...
+  Finished TypeScript in 4.3s ...
+  Collecting page data using 10 workers ...
+  Generating static pages using 10 workers (0/11) ...
+⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+  Generating static pages using 10 workers (2/11)
+  Generating static pages using 10 workers (5/11)
+  Generating static pages using 10 workers (8/11)
+✓ Generating static pages using 10 workers (11/11) in 2.4s
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ○ /brief
+├ ○ /contact
+├ ○ /experience
+├ ○ /work
+└   /work/[slug]
+  ├ ● /work/marginalia
+  ├ ● /work/space-tourism
+  └ ● /work/foreign-exchange-checker
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+
+.next\server\app\about.html: 142709 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\brief.html: 140976 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\contact.html: 141899 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\experience.html: 140976 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\index.html: 143061 gzip bytes of first-load JavaScript (limit 143360)
+.next\server\app\work\foreign-exchange-checker.html: 148530 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\marginalia.html: 148530 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\space-tourism.html: 148530 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work.html: 142721 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\_global-error.html: 140976 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\_not-found.html: 140976 gzip bytes of first-load JavaScript (limit 174080)
+Fonts: 95688 bytes (limit 153600)
+Inspect: 2193 gzip bytes of feature code (limit 40960)
+Palette: 2850 gzip bytes of feature code (limit 25600)
+Project experiences: 4843 gzip bytes of feature code (limit 61440)
+exit code: 0
+
+Dependency size
+node_modules/web-vitals/dist/web-vitals.js: 5867 bytes; 2399 gzip bytes.

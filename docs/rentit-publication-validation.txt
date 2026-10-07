@@ -1,0 +1,16 @@
+﻿RentIt preview and case-study links, 2026-10-07
+
+Lint passed. 39 tests passed across 7 files.
+Production build and typecheck passed with four case-study routes, including /work/rentit.
+Content gate passed: 4 published project pages, release R1.
+Homepage first-load JavaScript: 143083 gzip bytes, budget 143360.
+RentIt walkthrough feature code: 2398 gzip bytes, budget 61440.
+HTTP checks: 10 routes returned 200, one H1 each, all internal routes/anchors resolved.
+RentIt cover and Case study link open /work/rentit; page has no draft banner and retains missing-state boundaries.
+All 16 homepage preview source-set candidates returned 200 at the configured widths.
+All 22 cropped figures passed the 1440px optimizer and 120 KiB checks.
+See docs/review-smoke-results.json and docs/rentit-smoke-results.json.
+Existing owner verification flags unchanged. Deferrals and current instruction: PRD.md Appendix F.
+Browser interactions, viewport geometry and screen readers remain unverified.
+The earlier docs/rentit-validation.txt records the superseded review-only checkpoint.
+

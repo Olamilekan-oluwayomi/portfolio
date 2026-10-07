@@ -27,6 +27,7 @@ export function useDialog(open: boolean, onClose: () => void) {
     return () => {
       dialog.removeEventListener("close", handle);
       dialog.removeEventListener("click", handleOutside);
+      if (dialog.open) dialog.close();
     };
   }, []);
   return ref;

@@ -1,0 +1,13 @@
+{
+  "id": "site-link-supplied-rentit-case-study",
+  "projectSlug": "site",
+  "title": "Link the supplied RentIt case study alongside the others",
+  "context": "The owner requested: DEAL WITH THE PREVIEW AND ADD CASE STUDY LINK TO RENTIT LIKE OTHERS HAVE. RentIt already has eight real figures, an implemented walkthrough and existing owner-verified content records.",
+  "options": ["Keep RentIt accessible only as a review draft", "Publish the supplied source-backed case study with explicit capture limits"],
+  "choice": "Enable the normal case-study route and links, use the real browse capture for its preview and cover, and retain every capture boundary on the page.",
+  "tradeoff": "A renter submission and capture density remain unverified; the page does not present supporting screens as that evidence.",
+  "status": "kept",
+  "theme": "ux",
+  "evidence": [{"label": "Current publication instruction and deferrals", "ref": "PRD.md Appendix F"}, {"label": "Existing owner verification flags and supplied figures", "ref": "src/content/projects/rentit.mdx; src/content/decisions/rentit-*.mdx; docs/figure-crops.json"}, {"label": "Release and preview destinations", "ref": "src/content/release.ts; src/app/page.tsx; src/components/work/project-panel.tsx"}],
+  "verified": false
+}

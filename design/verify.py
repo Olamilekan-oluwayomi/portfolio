@@ -122,6 +122,8 @@ def main():
         ("selection and focus", "--selection", "--paper", 3.0),
         ("selected identity text", "--card-ink", "--identity-highlight", 4.5),
         ("annotation and action text", "--annotation-ink", "--annotation-accent", 4.5),
+        ("note text on canvas", "--note-ink", "--paper", 4.5),
+        ("note text on raised surface", "--note-ink", "--paper-raised", 4.5),
     ]
     active_pairs += [(color + " cover text", "--card-ink", "--" + color, 4.5)
                      for color in ("blue", "mint", "yellow", "pink")]

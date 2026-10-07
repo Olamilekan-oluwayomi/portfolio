@@ -1,0 +1,120 @@
+﻿RentIt walkthrough and figure crops, 2026-10-07
+
+Lint: passed.
+Typecheck: passed; also included in production and review builds.
+Tests: 39 passed across 7 files, including the request-evidence publication boundary and keyboard navigation.
+Content gate: passed, 3 published projects, R1.
+Crop verification: 22 figures, decoded retained pixels identical to original rectangles. See docs/figure-crops.json.
+Review HTTP/image checks: passed; see docs/rentit-smoke-results.json. All 22 optimized 1440px figures are below 120 KiB.
+No dependency added. Crop tool uses sharp already installed through Next.js.
+No owner verification flag changed. RentIt remains absent from release.ts.
+Browser interaction, viewport geometry, screen readers, original capture density and real devices: unverified. Browser-control inventory had no surfaces.
+Existing metadataBase warning remains because src/content/identity.ts has no production host.
+
+Final production build (RentIt omitted from generated routes):
+
+> annotated-portfolio@0.0.0 build
+> tsx scripts/check-content.ts && next build --webpack && node scripts/check-budgets.mjs
+
+Content gate passed: 3 published project pages (R1).
+▲ Next.js 16.3.8 (webpack)
+✓ Running next.config.ts took 54ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.7s
+  Running TypeScript ...
+  Finished TypeScript in 3.6s ...
+  Collecting page data using 10 workers ...
+  Generating static pages using 10 workers (0/11) ...
+⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+  Generating static pages using 10 workers (2/11) 
+  Generating static pages using 10 workers (5/11) 
+  Generating static pages using 10 workers (8/11) 
+✓ Generating static pages using 10 workers (11/11) in 2.1s
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ○ /brief
+├ ○ /contact
+├ ○ /experience
+├ ○ /work
+└   /work/[slug]
+  ├ ● /work/marginalia
+  ├ ● /work/space-tourism
+  └ ● /work/foreign-exchange-checker
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+
+.next\server\app\about.html: 142725 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\brief.html: 140992 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\contact.html: 141915 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\experience.html: 140992 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\index.html: 143077 gzip bytes of first-load JavaScript (limit 143360)
+.next\server\app\work\foreign-exchange-checker.html: 148632 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\marginalia.html: 148632 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\space-tourism.html: 148632 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work.html: 142737 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\_global-error.html: 140992 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\_not-found.html: 140992 gzip bytes of first-load JavaScript (limit 174080)
+Fonts: 95688 bytes (limit 153600)
+Inspect: 2193 gzip bytes of feature code (limit 40960)
+Palette: 2850 gzip bytes of feature code (limit 25600)
+Project experiences: 4838 gzip bytes of feature code (limit 61440)
+RentIt walkthrough: 2398 gzip bytes of feature code (limit 61440)
+
+Final review build (marked RentIt draft included):
+✓ Compiled successfully in 10.7s
+  Running TypeScript ...
+  Finished TypeScript in 3.9s ...
+  Collecting page data using 10 workers ...
+  Generating static pages using 10 workers (0/12) ...
+⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+  Generating static pages using 10 workers (3/12) 
+  Generating static pages using 10 workers (6/12) 
+  Generating static pages using 10 workers (9/12) 
+✓ Generating static pages using 10 workers (12/12) in 2.3s
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ○ /brief
+├ ○ /contact
+├ ○ /experience
+├ ○ /work
+└   /work/[slug]
+  ├ ● /work/rentit
+  ├ ● /work/marginalia
+  ├ ● /work/space-tourism
+  └ ● /work/foreign-exchange-checker
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+
+.next\server\app\about.html: 142725 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\brief.html: 140992 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\contact.html: 141915 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\experience.html: 140992 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\index.html: 143077 gzip bytes of first-load JavaScript (limit 143360)
+.next\server\app\work\foreign-exchange-checker.html: 148632 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\marginalia.html: 148632 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\rentit.html: 148632 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\space-tourism.html: 148632 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work.html: 142737 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\_global-error.html: 140992 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\_not-found.html: 140992 gzip bytes of first-load JavaScript (limit 174080)
+Fonts: 95688 bytes (limit 153600)
+Inspect: 2193 gzip bytes of feature code (limit 40960)
+Palette: 2850 gzip bytes of feature code (limit 25600)
+Project experiences: 4838 gzip bytes of feature code (limit 61440)
+RentIt walkthrough: 2398 gzip bytes of feature code (limit 61440)
+

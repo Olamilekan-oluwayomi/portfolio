@@ -1,0 +1,379 @@
+{
+  "method": "Lossless extraction only; no scaling, retouching or generated pixels. RentIt dashboard crops also exclude the sidebar account footer. Capture CSS viewport and pixel density remain unverified.",
+  "records": [
+    {
+      "target": "public/figures/rentit/rentit-browse.png",
+      "originalPath": "artifacts/case-study-originals/rentit/browse.png",
+      "originalSize": [
+        1920,
+        1080
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 122,
+        "width": 1897,
+        "height": 958
+      },
+      "originalSha256": "a59bcb277e68dafecfb2c5988bb61e58aacd150f49ec005dba8fc9152ad50776",
+      "outputSha256": "8a3ca06215a3437b7d6befec1e9925c647c19dda5e642377bc19e20eb4560ce7",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/rentit/rentit-new-listing.png",
+      "originalPath": "artifacts/case-study-originals/rentit/new-listing.png",
+      "originalSize": [
+        1920,
+        1080
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 122,
+        "width": 1897,
+        "height": 958
+      },
+      "originalSha256": "38ebf8dba4ce50575d65edc0051334410294abcc8d34abfea604adcd62e568f8",
+      "outputSha256": "b3755079fd0840074dc11b260080812ad0da2c7a6095af92dbda95a269b90ff4",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/rentit/rentit-profile.png",
+      "originalPath": "artifacts/case-study-originals/rentit/profile.png",
+      "originalSize": [
+        1920,
+        1080
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 122,
+        "width": 1897,
+        "height": 958
+      },
+      "originalSha256": "774fea20a33c6f4b1c865887a6dfc0f5fdff97be2521bd97691f63d62f5c98c7",
+      "outputSha256": "f675a07e2dd6129dbbf6785ccf0c0b67fede09a7a6d3ac005edeb518d6ddb07b",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/rentit/rentit-dashboard.png",
+      "originalPath": "artifacts/case-study-originals/rentit/dashboard.png",
+      "originalSize": [
+        1920,
+        1080
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 122,
+        "width": 1897,
+        "height": 868
+      },
+      "originalSha256": "677b4366f54d3e184b44630475246acd145e765440bd5b4bd00d205928d1b3e1",
+      "outputSha256": "bf0d054a8c851c34f20418f7ab75c5847d35fd33022ea13131ddd01ff5424c2a",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/rentit/rentit-owner-bookings.png",
+      "originalPath": "artifacts/case-study-originals/rentit/owner-bookings.png",
+      "originalSize": [
+        1920,
+        1080
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 122,
+        "width": 1897,
+        "height": 868
+      },
+      "originalSha256": "1f2a0343e23a10a15d3b5989e5d636ec2dd6b6208b58b66a5340238e05c661d3",
+      "outputSha256": "ac8ce3b47226103c26fc9278b43a6c00a553539434769db2c760d6d7904225f3",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/rentit/rentit-listing.png",
+      "originalPath": "artifacts/case-study-originals/rentit/listing.png",
+      "originalSize": [
+        1920,
+        1080
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 122,
+        "width": 1897,
+        "height": 958
+      },
+      "originalSha256": "d92dc7b1c65cf10a0732bb608243a09b5e877c05fee975fef741f5695c1e9e99",
+      "outputSha256": "ae98b5b0bc63052e1720520c3a8c634c1b462282236150a45a4daef8d1499acb",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/rentit/rentit-conversation.png",
+      "originalPath": "artifacts/case-study-originals/rentit/conversation.png",
+      "originalSize": [
+        1920,
+        1080
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 182,
+        "width": 1920,
+        "height": 898
+      },
+      "originalSha256": "29579aef0a73dc1f25feceef07ef70a61fccb847de0e3b65a13c8fcdd53cd97d",
+      "outputSha256": "941d590d05506df6fe5ad70514fc970bc8c70687f7244f905a16ada5adef1fe6",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/rentit/rentit-management.png",
+      "originalPath": "artifacts/case-study-originals/rentit/management.png",
+      "originalSize": [
+        1920,
+        1080
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 122,
+        "width": 1897,
+        "height": 868
+      },
+      "originalSha256": "136d9bafa7dff0436e3a660d5aeea4fb061f8a6c7a58821475c2abdeae8a8666",
+      "outputSha256": "9115c4a6edb9f5c0b18ed32319d14ed81a60ffa5c2f7a109d2c1b4db241ceaac",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/marginalia/marginalia-2026-10-06.png",
+      "originalPath": "artifacts\\case-study-originals\\marginalia\\marginalia-2026-10-06.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "7685945511ce7a7d59e710b9aacc87197bbb34d6519a9327d10f97ede3a492a5",
+      "outputSha256": "73963e5144c402f460cdaaf9b980eeaff751443d38e0202029607667f2f73360",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/marginalia/marginalia-2026-10-06-134149.png",
+      "originalPath": "artifacts\\case-study-originals\\marginalia\\marginalia-2026-10-06-134149.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 922
+      },
+      "originalSha256": "6b395373018b285a6122129ff690277ff9a4339c2c4c7789f7314d3f3d8f10da",
+      "outputSha256": "da080c4f938f6d54116c1e825e860db1d0497a83f5c794aa063d8ce7900ebbab",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/marginalia/marginalia-2026-10-06-134203.png",
+      "originalPath": "artifacts\\case-study-originals\\marginalia\\marginalia-2026-10-06-134203.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "4fdc3ae700d067ccd24f8b7625d10793b892357e80485b6e61e0962209afcd05",
+      "outputSha256": "bae6334171825214f165b431506b879c2ace173595d4dfe826d820759c455d95",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/marginalia/marginalia-2026-10-06-134215.png",
+      "originalPath": "artifacts\\case-study-originals\\marginalia\\marginalia-2026-10-06-134215.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "ee3d9c115b71a91cc1024e294e3aa163464a114d1216f4d38486cbc8b762785c",
+      "outputSha256": "e8a5e6d5cf32003bd57e02c0154381c3930a561f87535ecac650039436ac0015",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/space-tourism/space-tourism-2026-10-06.png",
+      "originalPath": "artifacts\\case-study-originals\\space-tourism\\space-tourism-2026-10-06.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "5eda4f0c80038c4a9d2f66158f8969f66450ade2ba406954bc1ed3fa52ea5c31",
+      "outputSha256": "68af1b8ccc3077fb01205a3104ffdb4c53c45dece1b41f81b9b58f246c7f9329",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/space-tourism/space-tourism-2026-10-06-134326.png",
+      "originalPath": "artifacts\\case-study-originals\\space-tourism\\space-tourism-2026-10-06-134326.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 922
+      },
+      "originalSha256": "e127a8cc89480aafba7813385e286cf54b7a91047767f69425f361670b2e20da",
+      "outputSha256": "c5a16ddbe81ee56a63e6eb6c7947d3af61e949366cb43c1abc4b56136ca74a93",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/space-tourism/space-tourism-2026-10-06-134336.png",
+      "originalPath": "artifacts\\case-study-originals\\space-tourism\\space-tourism-2026-10-06-134336.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "228f779374fa15da996eaa3e36cf68a2f2877818710db44b8bbc847c97c47cc5",
+      "outputSha256": "e4aa6eb9e6428634267a8c6b119ade6a97339d565ab04923aa9df4695c5b0db0",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/space-tourism/space-tourism-2026-10-06-134347.png",
+      "originalPath": "artifacts\\case-study-originals\\space-tourism\\space-tourism-2026-10-06-134347.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "d84bf61005bd937be19e437c4061ba493d7c648d3b10d7464eb6126a33bf3177",
+      "outputSha256": "2ec15d292d2e0802c68e47975c7f97e537ee309aafd6482a3f9c03bebc70bf69",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/space-tourism/space-tourism-2026-10-06-134355.png",
+      "originalPath": "artifacts\\case-study-originals\\space-tourism\\space-tourism-2026-10-06-134355.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "3cf739aa93a8e75abc5be19b06b67d7de04373f9399f3e6e9ad749d2be0bff3a",
+      "outputSha256": "c01f0cb8281181a6e01b55e6aef7b72067ee1631ee1d306443a2b8913efec454",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/foreign-exchange-checker/fx-2026-10-06.png",
+      "originalPath": "artifacts\\case-study-originals\\foreign-exchange-checker\\fx-2026-10-06.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "efdfc8658a80a4a663d92f9cde5ceeb31891848b95e9d57a7331d46fff93822a",
+      "outputSha256": "3ee9cb4995a67a13b0e0209301b3e448e9caa53818e57a5c57c2a5000b8de82b",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/foreign-exchange-checker/fx-2026-10-06-134550.png",
+      "originalPath": "artifacts\\case-study-originals\\foreign-exchange-checker\\fx-2026-10-06-134550.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "e37b8d5a6c2062199914d2753026f5824066726201878d1c29e8afd7cd5f9edc",
+      "outputSha256": "b12072ae5d20b2a4fe85dc232ee517e8b8210b609171b748dcadd705e556979a",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/foreign-exchange-checker/fx-2026-10-06-134601.png",
+      "originalPath": "artifacts\\case-study-originals\\foreign-exchange-checker\\fx-2026-10-06-134601.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "70652620dffebc99841de0ee8394d6c38284dc33ef26b3483e823ed4b18c3be1",
+      "outputSha256": "d03429764b7d54f410ee1b98d32f9000431c4ed3695b13cdcdb45d3aeabfda29",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/foreign-exchange-checker/fx-2026-10-06-134610.png",
+      "originalPath": "artifacts\\case-study-originals\\foreign-exchange-checker\\fx-2026-10-06-134610.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "c299f14e623ab1889ff73fbd0ee8cbe353cb647956b362cb8cb18f229e475d4e",
+      "outputSha256": "2311bf4b3bd765b3fe3590f4e19e69b838df54f2adfe2e1c62c0b7e67a888caa",
+      "retainedPixelsIdentical": true
+    },
+    {
+      "target": "public/figures/foreign-exchange-checker/fx-2026-10-06-134617.png",
+      "originalPath": "artifacts\\case-study-originals\\foreign-exchange-checker\\fx-2026-10-06-134617.png",
+      "originalSize": [
+        1920,
+        955
+      ],
+      "rectangle": {
+        "left": 0,
+        "top": 0,
+        "width": 1897,
+        "height": 954
+      },
+      "originalSha256": "e780f7e047734dbbcc3e82ddcdf91a44e43a9e3274ee0070521c0e4fadc6ad6a",
+      "outputSha256": "5bd0c9600aa48edb3406c3db147803ba29f44fb5926709fbaa34be67ab25b5a3",
+      "retainedPixelsIdentical": true
+    }
+  ]
+}

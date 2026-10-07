@@ -34,6 +34,11 @@
   --text-meta: 12px;
   --dur-fast: 150ms;
   --dur-draw: 240ms;
+  --dur-base: 240ms;
+  --dur-slow: 400ms;
+  --dur-scene: 700ms;
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --note-ink: #244bff;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: light;
 }
@@ -41,6 +46,7 @@
   --paper: #191b1c; --paper-raised: #232628; --ink: #f7f5ef;
   --graphite: #bbbdb6; --rule: #535859; --grid-line: #ffffff08; --grid-major: #ffffff14;
   --selection: #90cff0; --focus: #90cff0;
+  --note-ink: #90cff0;
   color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -48,6 +54,7 @@
     --paper: #191b1c; --paper-raised: #232628; --ink: #f7f5ef;
     --graphite: #bbbdb6; --rule: #535859; --grid-line: #ffffff08; --grid-major: #ffffff14;
     --selection: #90cff0; --focus: #90cff0;
+    --note-ink: #90cff0;
     color-scheme: dark;
   }
 }
@@ -56,3 +63,4 @@
 }
 @media (prefers-reduced-motion: reduce) { :root { --dur-fast: 0ms; --dur-draw: 0ms; } }
 :root[data-lite="true"] { --dur-fast: 0ms; --dur-draw: 0ms; }
+:root[data-motion="reduced"], :root[data-motion="lite"] { --dur-fast: 0ms; --dur-draw: 0ms; --dur-base: 0ms; --dur-slow: 0ms; --dur-scene: 0ms; }

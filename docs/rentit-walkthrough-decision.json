@@ -1,0 +1,13 @@
+{
+  "id": "site-distinguish-rental-request-evidence",
+  "projectSlug": "site",
+  "title": "Keep supporting owner screens distinct from renter submission",
+  "context": "The supplied captures include profile fields and pending owner bookings, but no renter submission state.",
+  "options": ["Treat the supporting screens as the request capture", "Show them with an explicit boundary and retain the publication gate"],
+  "choice": "Use the supporting screens in the walkthrough and require an actual request screenshot for publication.",
+  "tradeoff": "The implemented walkthrough remains a review preview until the missing journey evidence exists.",
+  "status": "kept",
+  "theme": "ux",
+  "evidence": [{"label": "Supplied capture inventory", "ref": "docs/evidence/rentit/README.md"}, {"label": "Journey mapping and publication guard", "ref": "src/content/rentit-journey.ts; src/lib/schemas.ts"}],
+  "verified": false
+}

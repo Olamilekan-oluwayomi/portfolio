@@ -1,0 +1,120 @@
+{
+  "results": [
+    {
+      "path": "/work/rentit",
+      "status": 200
+    },
+    {
+      "path": "/figures/rentit/rentit-browse.png",
+      "optimizerStatus": 200,
+      "bytes": 23188
+    },
+    {
+      "path": "/figures/rentit/rentit-new-listing.png",
+      "optimizerStatus": 200,
+      "bytes": 15535
+    },
+    {
+      "path": "/figures/rentit/rentit-profile.png",
+      "optimizerStatus": 200,
+      "bytes": 11672
+    },
+    {
+      "path": "/figures/rentit/rentit-dashboard.png",
+      "optimizerStatus": 200,
+      "bytes": 24663
+    },
+    {
+      "path": "/figures/rentit/rentit-owner-bookings.png",
+      "optimizerStatus": 200,
+      "bytes": 25094
+    },
+    {
+      "path": "/figures/rentit/rentit-listing.png",
+      "optimizerStatus": 200,
+      "bytes": 29179
+    },
+    {
+      "path": "/figures/rentit/rentit-conversation.png",
+      "optimizerStatus": 200,
+      "bytes": 9977
+    },
+    {
+      "path": "/figures/rentit/rentit-management.png",
+      "optimizerStatus": 200,
+      "bytes": 20531
+    },
+    {
+      "path": "/figures/marginalia/marginalia-2026-10-06.png",
+      "optimizerStatus": 200,
+      "bytes": 14639
+    },
+    {
+      "path": "/figures/marginalia/marginalia-2026-10-06-134149.png",
+      "optimizerStatus": 200,
+      "bytes": 13773
+    },
+    {
+      "path": "/figures/marginalia/marginalia-2026-10-06-134203.png",
+      "optimizerStatus": 200,
+      "bytes": 14362
+    },
+    {
+      "path": "/figures/marginalia/marginalia-2026-10-06-134215.png",
+      "optimizerStatus": 200,
+      "bytes": 13287
+    },
+    {
+      "path": "/figures/space-tourism/space-tourism-2026-10-06.png",
+      "optimizerStatus": 200,
+      "bytes": 31620
+    },
+    {
+      "path": "/figures/space-tourism/space-tourism-2026-10-06-134326.png",
+      "optimizerStatus": 200,
+      "bytes": 36345
+    },
+    {
+      "path": "/figures/space-tourism/space-tourism-2026-10-06-134336.png",
+      "optimizerStatus": 200,
+      "bytes": 35451
+    },
+    {
+      "path": "/figures/space-tourism/space-tourism-2026-10-06-134347.png",
+      "optimizerStatus": 200,
+      "bytes": 33123
+    },
+    {
+      "path": "/figures/space-tourism/space-tourism-2026-10-06-134355.png",
+      "optimizerStatus": 200,
+      "bytes": 32815
+    },
+    {
+      "path": "/figures/foreign-exchange-checker/fx-2026-10-06.png",
+      "optimizerStatus": 200,
+      "bytes": 20464
+    },
+    {
+      "path": "/figures/foreign-exchange-checker/fx-2026-10-06-134550.png",
+      "optimizerStatus": 200,
+      "bytes": 21965
+    },
+    {
+      "path": "/figures/foreign-exchange-checker/fx-2026-10-06-134601.png",
+      "optimizerStatus": 200,
+      "bytes": 21040
+    },
+    {
+      "path": "/figures/foreign-exchange-checker/fx-2026-10-06-134610.png",
+      "optimizerStatus": 200,
+      "bytes": 15950
+    },
+    {
+      "path": "/figures/foreign-exchange-checker/fx-2026-10-06-134617.png",
+      "optimizerStatus": 200,
+      "bytes": 15041
+    }
+  ],
+  "staticReadingPath": "one H1, five journey anchors, six chapter anchors, eight supplied figures and draft publication status present in returned HTML",
+  "limits": "HTTP and image checks only. Browser interaction, viewport fit, screen readers, animation frame time and real devices remain unverified."
+}

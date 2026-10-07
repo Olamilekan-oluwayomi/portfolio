@@ -52,6 +52,7 @@ for (const feature of [
   { label: "Inspect", marker: "Page measurements", limit: 40 * 1024 },
   { label: "Palette", marker: "Command palette", limit: 25 * 1024 },
   { label: "Project experiences", marker: "Recreated states / capture dated", limit: 60 * 1024 },
+  { label: "RentIt walkthrough", marker: "Booking walkthrough steps", limit: 60 * 1024 },
 ]) {
   const chunks = lazyCode.filter(chunk => chunk.code.includes(feature.marker));
   const bytes = chunks.reduce((sum, chunk) => sum + gzipSync(chunk.code).length, 0);

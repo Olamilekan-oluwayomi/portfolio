@@ -6,10 +6,11 @@ import { ProjectExperience } from "../project-experience";
 import { figureStory } from "@/content/figure-stories";
 import { workIndex } from "@/content/work-index";
 import { publishedProjectSlugs } from "@/content/release";
+import { rentitJourney } from "@/content/rentit-journey";
 
 // Chapter titles and intros per project, authored from PRD.md section 16.3.
 const experienceChapters: Record<string, { title: string; intro: string }> = {
-  rentit: { title: "Follow a booking", intro: "The exchange, from choosing an item to managing its listing. This static reading path works without JavaScript." },
+  rentit: { title: "Follow a booking", intro: "Follow the source-backed journey through the supplied screens. Each step separates visible interface evidence from behavior established in code. The complete reading path below works without JavaScript." },
   marginalia: { title: "Read it with the sources visible", intro: "Read claims beside the captures and repository evidence that support them. Open a numbered source or show all sources inline. The figures below remain readable without the source reader." },
   "space-tourism": { title: "Resize the viewport", intro: "Explore the source-backed breakpoint choices, then load the live site to resize its actual viewport. The supplied desktop captures below remain the static reading path." },
   "foreign-exchange-checker": { title: "State gallery", intro: "Compare the interface states documented in the source. The gallery labels its recreations and uses a captured conversion example rather than current rates. The original captures follow below." },
@@ -37,15 +38,6 @@ function chapterList(slug: string): [string, string][] {
   ];
 }
 
-// Authored from docs/rentit-case-study.md and its source references, not a simulated app.
-const rentitSteps = [
-  { id: "browse", title: "Browse", text: "Search and filter listings before choosing an item.", ref: "rentit:src/shared/lib/constants.js", captured: "The supplied landing page shows search and category links. Browse results were not captured." },
-  { id: "listing", title: "Inspect the listing", text: "Read the listing details and select dates. Availability and booking require sign-in.", ref: "rentit:src/features/bookings/components/AvailabilityCalendar.jsx", captured: "The supplied PS5 detail view shows the description, host information and owner availability calendar. It does not show the gallery or renter date selection." },
-  { id: "request", title: "Request a booking", text: "Complete the profile requirements and submit a request. The hook checks availability again before inserting a pending booking.", ref: "rentit:src/features/bookings/hooks/useCreateBooking.js", captured: "The profile form and empty owner booking dashboard were supplied. A renter request and the profile-completion prompt were not captured." },
-  { id: "conversation", title: "Continue the conversation", text: "Message history is attached to the booking, keeping the conversation in that context.", ref: "rentit:src/features/messages/hooks/useMessages.js", captured: "The supplied booking-specific conversation shows listing context, incoming and outgoing greetings, and a message composer. The image does not establish real-time delivery." },
-  { id: "management", title: "Manage the listing", text: "The owner can edit, hide and restore an existing listing.", ref: "rentit:src/features/listings/hooks/useListing.js", captured: "The supplied owner dashboard shows an active listing with Edit, Remove from Browse and Delete controls. No completed mutation or restore state was captured." },
-];
-
 function Section({ id, index, title, children }: { id: string; index: string; title: string; children: React.ReactNode }) {
   return <section id={id} className={styles.section} aria-labelledby={`${id}-heading`}>
     <div className={styles.margin}><span>{index}</span><h2 id={`${id}-heading`}>{title}</h2></div>
@@ -66,7 +58,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
     <nav className={styles.back} aria-label="Breadcrumb"><Link href="/work">Work</Link><span aria-hidden="true">/</span><span>{project.title}</span></nav>
     {draft && <aside className={styles.preview} aria-label="Publication review status">
       <strong>Review preview. Not published.</strong>
-      <p>Purpose, contribution, decision reasoning, stack reasons and reflection confirmed. Supplied screenshots are documented; publication figures and owner-edited verification flags remain incomplete.</p>
+      <p>The supplied screens support this walkthrough. A renter request, the completion prompt and capture pixel-density evidence remain incomplete. This preview does not authorize publication.</p>
       <details><summary>Publication requirements</summary><ul>{issues.map(issue => <li key={issue}>{issue}</li>)}</ul></details>
     </aside>}
     <header data-inspect="CaseStudy" data-inspect-type="Project" data-inspect-color={project.slug === "space-tourism" ? "--space-ink" : "--card-ink"} className={`${styles.hero}${heroColorClass[project.slug] ? ` ${heroColorClass[project.slug]}` : ""}`}>
@@ -89,13 +81,16 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
         <div className={styles.stepLabel}><span>{String(index + 1).padStart(2, "0")}</span><h3>{figureStory(item.src)?.title ?? item.caption}</h3></div>
         <figure id={`figure-${item.id}`} data-inspect="CaseStudy" data-inspect-type={'Project["media"][number]'}><Image src={item.src} width={item.width} height={item.height} alt={item.alt} sizes="(max-width: 767px) 100vw, 70vw" /><figcaption>{item.caption} {figureStory(item.src)?.decision && <a href={`#${figureStory(item.src)?.decision}-heading`}>Read the related decision</a>}</figcaption></figure>
       </li>)}</ol>}
-      {project.slug === "rentit" && <ol className={styles.walkthrough}>{rentitSteps.map((step, index) => {
-        const media = project.media.find(item => item.id === step.id && item.kind === "screenshot");
-        return <li key={step.id}><div className={styles.stepLabel}><span>{String(index + 1).padStart(2, "0")}</span><h3>{step.title}</h3></div><p>{step.text}</p>
-          {media ? <figure><Image src={media.src} width={media.width} height={media.height} alt={media.alt} sizes="(max-width: 767px) 100vw, 70vw" /><figcaption>{media.caption}</figcaption></figure> : draft && <details className={styles.evidence}><summary>Capture evidence / review only</summary><p>{step.captured}</p><p className={styles.sourceRef}>Evidence: docs/evidence/rentit/README.md, owner-supplied screenshots. Originals remain outside publication assets.</p></details>}
+      {project.slug === "rentit" && <ol className={styles.walkthrough}>{rentitJourney.map((step, index) => {
+        const figures = project.media.filter(item => (step.mediaIds as readonly string[]).includes(item.id) && item.kind === "screenshot");
+        return <li id={`rentit-step-${step.id}`} key={step.id}><div className={styles.stepLabel}><span>{String(index + 1).padStart(2, "0")}</span><h3>{step.title}</h3></div><p>{step.text}</p>
+          {figures.map(media => <figure id={`figure-${media.id}`} key={media.id}><Image src={media.src} width={media.width} height={media.height} alt={media.alt} sizes="(max-width: 767px) 100vw, 70vw" /><figcaption>{media.caption}</figcaption></figure>)}
+          <aside className={styles.captureLimit} aria-label="Capture evidence boundary"><p>{step.limit}</p></aside>
+          {"decision" in step && <a href={`#${step.decision}-heading`}>Read the listing-update decision</a>}
           <p className={styles.sourceRef}>Source: {step.ref}</p>
         </li>;
       })}</ol>}
+      {project.slug === "rentit" && <div className={styles.supporting}><h3>Creating and overseeing listings</h3><p>Supporting owner views, separate from the renter's request flow.</p>{project.media.filter(item => ["new-listing", "dashboard"].includes(item.id)).map(media => <figure id={`figure-${media.id}`} key={media.id}><Image src={media.src} width={media.width} height={media.height} alt={media.alt} sizes="(max-width: 767px) 100vw, 70vw" /><figcaption>{media.caption}</figcaption></figure>)}</div>}
       {project.slug === "rentit" && <div className={styles.permissions}>
         <h3>Permission map</h3>
         <p>Source behavior and migration intent, not a certification of the deployed database.</p>

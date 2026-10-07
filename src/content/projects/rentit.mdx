@@ -46,21 +46,75 @@
   "media": [
     {
       "id": "browse",
-      "kind": "illustration",
-      "src": "/images/rentit-browse.svg",
-      "alt": "Editorial illustration of a RentIt browse layout with search, filters and listing cards.",
-      "caption": "Editorial illustration, not an application screenshot. Browse screen illustrating the item search and filtering experience.",
-      "width": 1200,
-      "height": 800
+      "kind": "screenshot",
+      "src": "/figures/rentit/rentit-browse.png",
+      "alt": "RentIt browse results with location and price filters, sort control and three item cards.",
+      "caption": "Browse results with location and price filters and three available items. The laptop card has no visible photo in this capture.",
+      "width": 1897,
+      "height": 958
     },
     {
-      "id": "booking",
-      "kind": "illustration",
-      "src": "/images/rentit-booking.svg",
-      "alt": "Editorial illustration of a RentIt booking detail showing the listing, date selection and booking request.",
-      "caption": "Editorial illustration, not an application screenshot. Listing detail and booking flow for the requested rental window.",
-      "width": 1200,
-      "height": 800
+      "id": "new-listing",
+      "kind": "screenshot",
+      "src": "/figures/rentit/rentit-new-listing.png",
+      "alt": "RentIt New Listing form with title, description, category and daily-price fields.",
+      "caption": "Upper portion of the New Listing form. An empty creation form does not show submission or editing an existing listing.",
+      "width": 1897,
+      "height": 958
+    },
+    {
+      "id": "profile",
+      "kind": "screenshot",
+      "src": "/figures/rentit/rentit-profile.png",
+      "alt": "RentIt profile form with photo controls, full name, location and bio fields.",
+      "caption": "Profile fields and photo controls. This capture does not show a save result or the profile-completion prompt.",
+      "width": 1897,
+      "height": 958
+    },
+    {
+      "id": "dashboard",
+      "kind": "screenshot",
+      "src": "/figures/rentit/rentit-dashboard.png",
+      "alt": "RentIt owner dashboard with listing, booking and request summaries and recent bookings.",
+      "caption": "Owner dashboard with recent bookings and a notification opt-in prompt. Captured counts are interface state, not portfolio outcome metrics. Earnings are labeled Coming soon.",
+      "width": 1897,
+      "height": 868
+    },
+    {
+      "id": "owner-bookings",
+      "kind": "screenshot",
+      "src": "/figures/rentit/rentit-owner-bookings.png",
+      "alt": "RentIt Lending booking list with status filters and pending rows offering Approve and Decline.",
+      "caption": "Owner-side booking management with Lending and Renting controls, status filters, and pending requests. It does not show renter submission or an approval outcome.",
+      "width": 1897,
+      "height": 868
+    },
+    {
+      "id": "listing",
+      "kind": "screenshot",
+      "src": "/figures/rentit/rentit-listing.png",
+      "alt": "RentIt PS5 listing description and host information beside an owner Manage Availability calendar.",
+      "caption": "Listing detail in the owner's availability view. The gallery and renter date-selection controls are not in this capture.",
+      "width": 1897,
+      "height": 958
+    },
+    {
+      "id": "conversation",
+      "kind": "screenshot",
+      "src": "/figures/rentit/rentit-conversation.png",
+      "alt": "RentIt booking conversation with PS5 listing context, incoming and outgoing greetings and a message composer.",
+      "caption": "Booking-specific conversation with greetings and a composer. Broken image placeholders remain visible. A still does not establish real-time delivery.",
+      "width": 1920,
+      "height": 898
+    },
+    {
+      "id": "management",
+      "kind": "screenshot",
+      "src": "/figures/rentit/rentit-management.png",
+      "alt": "RentIt My Listings view with an active PS5 listing and Edit, Remove from Browse and Delete controls.",
+      "caption": "Existing-listing management with Edit, Remove from Browse and Delete controls. Completed mutations and the restore state were not captured.",
+      "width": 1897,
+      "height": 868
     }
   ],
   "experience": {
@@ -85,7 +139,7 @@
   "seo": {
     "title": "RentIt: a peer-to-peer item rental platform",
     "description": "An item rental platform where owners list things they are not using and renters request temporary access, with bookings and messaging.",
-    "ogImage": "/og/rentit-case-study.svg"
+    "ogImage": "/og/rentit-case-study.png"
   },
   "evidence": [
     {
@@ -111,12 +165,15 @@
     {
       "label": "Live evidence checkpoint; figures still incomplete",
       "ref": "docs/evidence/rentit/README.md"
+    },
+    {
+      "label": "Owner-supplied captures, crop bounds and pixel-preservation checks",
+      "ref": "docs/figure-crops.json"
     }
   ],
   "verified": true
 }
 ---
-
 This case study records the RentIt build from an owner-led review. It follows the published route and the review path used in the project evidence.
 
 ## My contribution

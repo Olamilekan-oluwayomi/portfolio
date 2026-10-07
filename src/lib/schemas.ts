@@ -69,6 +69,11 @@ export function publicationIssues(collection: Collection, published: string[], r
     const figures = project.media.filter(media => media.kind !== "illustration");
     const minimum = hasExperience(project.experience.component) ? 2 : 4;
     if (figures.length < minimum) issues.push(`${id}: at least ${minimum} evidence figures are required; illustrations do not count`);
+    if (id === "rentit") {
+      for (const step of ["browse", "listing", "request", "conversation", "management"]) {
+        if (!figures.some(figure => figure.id === step && figure.kind === "screenshot")) issues.push(`rentit: ${step} journey screenshot is required; supporting screens do not substitute for that step`);
+      }
+    }
     if (!project.seo.ogImage) issues.push(`${id}: OG image is missing`);
     if (records.filter(record => record.projectSlug === id && record.verified).length < 3) issues.push(`${id}: fewer than three owner-verified decisions`);
     issues.push(...copyIssues(project).map(issue => `${id}: ${issue}`));

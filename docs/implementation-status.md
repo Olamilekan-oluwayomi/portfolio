@@ -32,3 +32,13 @@ Scope: the owner's instruction to implement the eight recommendations from the P
 ## Validation
 
 The final command outputs are recorded in `docs/review-validation.txt`. The HTTP route/link/image results are recorded in `docs/review-smoke-results.json`. These checks are implementation checks, not R3, WCAG AA or publication approval. Release remains R1 (`src/content/release.ts`, `PRD.md`, sections 40 and 43).
+
+## RentIt and crop follow-up, 2026-10-07
+
+RentIt now has an action-loaded five-step walkthrough and eight cropped supplied figures in its static reading path (`src/components/rentit-walkthrough.tsx`, `src/components/work/case-study.tsx`, `src/content/projects/rentit.mdx`). Keyboard controls, screenshot notes, opacity-only swaps and reduced-motion/lite fallbacks are implemented. Publication remains blocked by the actual renter-request capture; owner booking rows and profile fields do not substitute for it (`src/lib/schemas.ts`). Remaining journey and capture-provenance limits are recorded in `docs/evidence/rentit/README.md`. No owner verification flag or release slug changed.
+
+The owner requested local-script crops across all case studies. RentIt's browser chrome and account footers are excluded. The other case-study files already lacked tabs/address bars, so only remaining scrollbars, status overlays and capture boundaries were removed. Decoded application pixels in all 22 crops match their source rectangles exactly; originals remain under ignored `artifacts/case-study-originals/` (`scripts/crop-case-study-figures.mjs`, `docs/figure-crops.json`). An existing desktop screenshot notification remains visible in the FX comparison capture and is still described in its caption.
+
+Current browser behavior remains unverified: computer-use returned no available browser surfaces. Validation for this follow-up is recorded separately in `docs/rentit-validation.txt` and `docs/rentit-smoke-results.json`.
+
+The crop smoke check found that the optimizer rejected the PRD's 1440px figure width. Its configured widths now follow the four figure widths in section 33: 640, 960, 1440 and 1920px (`next.config.ts`, `scripts/rentit-review-smoke.mjs`). This supports the existing 1440px image budget rather than adding a new media requirement.

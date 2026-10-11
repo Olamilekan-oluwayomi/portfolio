@@ -14,7 +14,7 @@ export function WorkDirectory({ projects }: { projects: PreviewProject[] }) {
     <p className="eyebrow">Index <span>({String(projects.length).padStart(2, "0")})</span></p>
     <ol>
       {projects.map((project, index) => <li key={project.slug} onMouseEnter={() => setActive(index)} onFocus={() => setActive(index)}>
-        <a href={`#project-${project.slug}`}><span>{String(index + 1).padStart(2, "0")}</span>{project.title}<span aria-hidden="true">↘</span></a>
+        <a href={`#project-${project.slug}`}><span>{String(index + 1).padStart(2, "0")}</span><span className="work-directory-title">{project.title}</span><span aria-hidden="true">↘</span></a>
       </li>)}
     </ol>
     <div className="work-preview" aria-hidden="true">

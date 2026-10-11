@@ -72,11 +72,15 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
         {project.links.repo && <a href={project.links.repo} target="_blank" rel="noopener noreferrer">Source ↗<span className="sr-only"> (opens in new tab)</span></a>}
       </div></div>
     </header>
-    <nav className={styles.contents} aria-label="Case-study chapters">{chapterList(project.slug).map(([id, title], index) => <a key={id} href={`#${id}`}><span>{String(index + 1).padStart(2, "0")}</span>{title}</a>)}</nav>
+    <nav id="case-study-chapters" className={styles.contents} aria-label="Case-study chapters">{chapterList(project.slug).map(([id, title], index) => <a key={id} href={`#${id}`}><span>{String(index + 1).padStart(2, "0")}</span>{title}</a>)}</nav>
     <Section id="premise" index="01" title="The premise"><p className={styles.lead}>{project.premise}</p></Section>
     <Section id="experience" index="02" title={(experienceChapters[project.slug] ?? defaultExperienceChapter).title}>
       <p className={styles.intro}>{(experienceChapters[project.slug] ?? defaultExperienceChapter).intro}</p>
       <ProjectExperience project={project} decisions={decisions} />
+      {project.media.length > 0 && <details className={styles.figureIndex}>
+        <summary>Jump to a figure</summary>
+        <nav aria-label="Case-study figures"><ol>{project.media.map((media, index) => <li key={media.id}><a href={`#figure-${media.id}`}><span>{String(index + 1).padStart(2, "0")}</span>{figureStory(media.src)?.title ?? media.caption}</a></li>)}</ol></nav>
+      </details>}
       {project.slug !== "rentit" && project.media.length > 0 && <ol className={styles.walkthrough}>{project.media.map((item, index) => <li key={item.id}>
         <div className={styles.stepLabel}><span>{String(index + 1).padStart(2, "0")}</span><h3>{figureStory(item.src)?.title ?? item.caption}</h3></div>
         <figure id={`figure-${item.id}`} data-inspect="CaseStudy" data-inspect-type={'Project["media"][number]'}><Image src={item.src} width={item.width} height={item.height} alt={item.alt} sizes="(max-width: 767px) 100vw, 70vw" /><figcaption>{item.caption} {figureStory(item.src)?.decision && <a href={`#${figureStory(item.src)?.decision}-heading`}>Read the related decision</a>}</figcaption></figure>
@@ -115,6 +119,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
       {rejected.map(decision => <article key={decision.id} className={styles.rejectedEntry}>
         <p className={styles.rejectedTop}><span className={styles.rejectedStatus}>{decision.status}</span>{decision.title}</p>
         <p>{decision.context}</p>
+        <a href={`#${decision.id}-heading`}>Read the full decision</a>
       </article>)}
     </div>}</Section>
     <footer className={styles.exit}><p>Read the reasoning. Try the product.</p><div className={styles.links}><Link href="/work">Back to Work</Link>{next && <Link href={`/work/${next.slug}`}>Next: {next.title}</Link>}{project.links.repo && <a href={project.links.repo} target="_blank" rel="noopener noreferrer">Source<span className="sr-only"> (opens in new tab)</span></a>}{project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer">Open {project.title} ↗<span className="sr-only"> (opens in new tab)</span></a>}</div></footer>

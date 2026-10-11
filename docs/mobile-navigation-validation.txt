@@ -4,18 +4,18 @@
 
 Content gate passed: 4 published project pages (R1).
 ▲ Next.js 16.3.8 (webpack)
-✓ Running next.config.ts took 64ms
+✓ Running next.config.ts took 59ms
 
   Creating an optimized production build ...
-✓ Compiled successfully in 4.9s
+✓ Compiled successfully in 5.1s
   Running TypeScript ...
-  Finished TypeScript in 3.7s ...
+  Finished TypeScript in 5.2s ...
   Collecting page data using 10 workers ...
   Generating static pages using 10 workers (0/12) ...
   Generating static pages using 10 workers (3/12) 
   Generating static pages using 10 workers (6/12) 
   Generating static pages using 10 workers (9/12) 
-✓ Generating static pages using 10 workers (12/12) in 2.3s
+✓ Generating static pages using 10 workers (12/12) in 2.4s
   Finalizing page optimization ...
   Collecting build traces ...
 
@@ -37,18 +37,18 @@ Route (app)
 ○  (Static)  prerendered as static content
 ●  (SSG)     prerendered as static HTML (uses generateStaticParams)
 
-.next\server\app\about.html: 142466 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\brief.html: 140550 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\contact.html: 141473 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\experience.html: 140550 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\index.html: 142824 gzip bytes of first-load JavaScript (limit 143360)
-.next\server\app\work\foreign-exchange-checker.html: 148206 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\work\marginalia.html: 148206 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\work\rentit.html: 148206 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\work\space-tourism.html: 148206 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\work.html: 142482 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\_global-error.html: 140550 gzip bytes of first-load JavaScript (limit 174080)
-.next\server\app\_not-found.html: 140550 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\about.html: 142469 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\brief.html: 140553 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\contact.html: 141476 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\experience.html: 140553 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\index.html: 142827 gzip bytes of first-load JavaScript (limit 143360)
+.next\server\app\work\foreign-exchange-checker.html: 148209 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\marginalia.html: 148209 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\rentit.html: 148209 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work\space-tourism.html: 148209 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\work.html: 142485 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\_global-error.html: 140553 gzip bytes of first-load JavaScript (limit 174080)
+.next\server\app\_not-found.html: 140553 gzip bytes of first-load JavaScript (limit 174080)
 Fonts: 95688 bytes (limit 153600)
 Inspect: 2193 gzip bytes of feature code (limit 40960)
 Palette: 3038 gzip bytes of feature code (limit 25600)

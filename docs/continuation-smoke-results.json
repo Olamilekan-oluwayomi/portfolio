@@ -1,0 +1,55 @@
+{
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "resolvedFragments": 6
+    },
+    {
+      "route": "/brief",
+      "status": 200,
+      "resolvedFragments": 1
+    },
+    {
+      "route": "/work",
+      "status": 200,
+      "resolvedFragments": 1
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "resolvedFragments": 1
+    },
+    {
+      "route": "/experience",
+      "status": 200,
+      "resolvedFragments": 1
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "resolvedFragments": 1
+    },
+    {
+      "route": "/work/rentit",
+      "status": 200,
+      "resolvedFragments": 17
+    },
+    {
+      "route": "/work/marginalia",
+      "status": 200,
+      "resolvedFragments": 15
+    },
+    {
+      "route": "/work/space-tourism",
+      "status": 200,
+      "resolvedFragments": 15
+    },
+    {
+      "route": "/work/foreign-exchange-checker",
+      "status": 200,
+      "resolvedFragments": 15
+    }
+  ],
+  "limits": "HTTP and server-rendered HTML only. Browser geometry, live interactions, screen readers and physical devices remain unverified."
+}

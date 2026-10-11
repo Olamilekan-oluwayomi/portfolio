@@ -69,7 +69,7 @@ export function SpaceResizer({ project }: { project: Project }) {
     {touch ? <p>The supplied figures below are desktop captures. They remain the static reading path; captures at the three preset widths are pending.</p> : <>
       <label className="resizer-label">Viewport width: {width}px<input aria-label="Live preview viewport width" type="range" min="375" max="1280" step="1" value={width} onChange={event => setWidth(Number(event.target.value))} /></label>
       <div className="experience-tabs" role="group" aria-label="Live preview section">{["", "destination", "crew", "technology"].map(section => <button type="button" key={section} aria-pressed={route === section} onClick={() => { setRoute(section); setReady(false); setFailed(false); }}>{section || "home"}</button>)}</div>
-      <div className="resizer-scroll" ref={frame}>
+      <div className="resizer-scroll" ref={frame} role="region" aria-label="Scrollable Space Tourism preview" tabIndex={0}>
         <div className="resizer-frame" style={{ width }}>
           {loaded && !failed ? <><iframe title="Space Tourism live preview" src={new URL(route || "/", project.links.live).href} sandbox="allow-scripts allow-same-origin" referrerPolicy="no-referrer" onLoad={() => setReady(true)} onError={() => setFailed(true)} />{!ready && <p className="preview-loading" role="status">Loading live preview</p>}</> : <><Image src={project.media[0].src} width={project.media[0].width} height={project.media[0].height} alt={project.media[0].alt} sizes="(max-width: 767px) 100vw, 70vw" /><button className="load-preview" type="button" onClick={() => { setFailed(false); setReady(false); setLoaded(true); }}>{failed ? "Retry live preview" : "Load live preview"}</button></>}
         </div>

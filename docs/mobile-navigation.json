@@ -1,0 +1,18 @@
+{
+  "id": "redesign-mobile-navigation",
+  "projectSlug": "site",
+  "title": "Make mobile navigation a full-screen editorial index",
+  "context": "The owner rejected the mobile navigation, requested a redesign with animation, then required full viewport width and height.",
+  "options": ["Restyle the existing compact link list", "Use a full-screen numbered index with grouped controls"],
+  "choice": "Use large numbered links, an explicit current-route marker, grouped view controls and a contact footer in a native dialog. Lazy-load the menu and animate its surface with a short CSS fade and 8px translation.",
+  "tradeoff": "The menu requires its chunk on first use. Entry and exit animation depend on modern CSS support; navigation falls back to the native dialog behavior.",
+  "status": "kept",
+  "theme": "ux",
+  "evidence": [
+    { "label": "Owner instruction and implementation boundaries", "ref": "docs/mobile-navigation.md" },
+    { "label": "Menu implementation", "ref": "src/components/mobile-menu.tsx" },
+    { "label": "Menu styling and animation", "ref": "src/styles/globals.css" },
+    { "label": "Lazy loading and dialog integration", "ref": "src/components/shell.tsx" }
+  ],
+  "verified": false
+}

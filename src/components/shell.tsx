@@ -1,22 +1,22 @@
 "use client";
 import dynamic from "next/dynamic";
 import { MotionSetup, motionPreference, useMotionPreference, toggleMotionSetting } from "@/lib/motion";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { siteIdentity } from "@/content/identity";
 import { publishedProjectSlugs } from "@/content/release";
 import { workIndex } from "@/content/work-index";
 import type { PaletteDecision } from "@/lib/palette";
-import { useDialog } from "./use-dialog";
 
 const Palette = dynamic(() => import("./palette"), { ssr: false });
 const ShortcutSheet = dynamic(() => import("./shortcut-sheet"), { ssr: false });
 const Inspect = dynamic(() => import("./inspect"), { ssr: false });
+const MobileMenu = dynamic(() => import("./mobile-menu"), { ssr: false });
 
 type ShellContextValue = {
   openPalette: () => void;
   openMenu: () => void;
+  menuOpen: boolean;
   announce: (message: string) => void;
   shortcutsOn: boolean;
   toggleShortcuts: () => void;
@@ -49,6 +49,7 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
   const [paletteMounted, setPaletteMounted] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuMounted, setMenuMounted] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [shortcutsOn, setShortcutsOn] = useState(true);
   const [decisionOn, setDecisionOn] = useState(false);
@@ -59,7 +60,6 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
   const pending = useRef<string | null>(null);
   const pendingTimer = useRef<number | undefined>(undefined);
   const statusTimer = useRef<number | undefined>(undefined);
-  const menuDialog = useDialog(menuOpen, () => setMenuOpen(false));
 
   const announce = useCallback((message: string) => {
     setStatus(message);
@@ -79,6 +79,7 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
   const openMenu = useCallback(() => {
     pending.current = null;
     window.clearTimeout(pendingTimer.current);
+    setMenuMounted(true);
     setMenuOpen(true);
   }, []);
 
@@ -193,7 +194,7 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [shortcutsOn, menuOpen, sheetOpen, paletteOpen, router, toggleDecisions, inspectOn, toggleInspect]);
 
-  const value = useMemo<ShellContextValue>(() => ({ openPalette, openMenu, announce, shortcutsOn, toggleShortcuts, decisionOn, toggleDecisions, inspectOn, toggleInspect }), [openPalette, openMenu, announce, shortcutsOn, toggleShortcuts, decisionOn, toggleDecisions, inspectOn, toggleInspect]);
+  const value = useMemo<ShellContextValue>(() => ({ openPalette, openMenu, menuOpen, announce, shortcutsOn, toggleShortcuts, decisionOn, toggleDecisions, inspectOn, toggleInspect }), [openPalette, openMenu, menuOpen, announce, shortcutsOn, toggleShortcuts, decisionOn, toggleDecisions, inspectOn, toggleInspect]);
 
   return <ShellContext.Provider value={value}>
     <MotionSetup />
@@ -201,23 +202,7 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
     {inspectOn && <Inspect route={pathname} decisions={decisions} onClose={toggleInspect} />}
     <div className="shell-status sr-only" role="status" aria-live="polite">{status}</div>
     {paletteMounted && <Palette open={paletteOpen} onClose={() => setPaletteOpen(false)} decisions={decisions} shortcutsOn={shortcutsOn} decisionOn={decisionOn} inspectOn={inspectOn} motion={motion} announce={announce} onToggleShortcuts={toggleShortcuts} onToggleDecisions={toggleDecisions} onToggleInspect={toggleInspect} onToggleLite={() => announce(toggleMotionSetting("lite") ? "Lite mode on" : "Lite mode off")} onToggleReduce={() => announce(toggleMotionSetting("reduce-motion") ? "Reduced motion on" : "System motion preference")} onOpenSheet={() => { setPaletteOpen(false); setSheetOpen(true); }} />}
-    <dialog className="mobile-menu" ref={menuDialog} aria-label="Menu">
-      <div className="mobile-menu-head"><span className="eyebrow">Menu</span><button type="button" className="dialog-close" onClick={() => menuDialog.current?.close()}>Close</button></div>
-      <nav aria-label="Mobile navigation">
-        <Link href="/work" onClick={() => menuDialog.current?.close()}>Work</Link>
-        <Link href="/about" onClick={() => menuDialog.current?.close()}>About</Link>
-        <Link href="/experience" onClick={() => menuDialog.current?.close()}>Experience</Link>
-        <Link href="/contact" onClick={() => menuDialog.current?.close()}>Contact</Link>
-      </nav>
-      <button type="button" className="menu-jump" onClick={openPalette}>Jump to <span aria-hidden="true">⌘K</span></button>
-      <button type="button" className="menu-decisions" aria-pressed={decisionOn} onClick={toggleDecisions}>Decision mode: {decisionOn ? "on" : "off"} <span aria-hidden="true">D</span></button>
-      <div className="menu-external">
-        <button type="button" className="menu-decisions" aria-pressed={inspectOn} onClick={() => { setMenuOpen(false); toggleInspect(); }}>Inspect: {inspectOn ? "on" : "off"}</button>
-        <a href={siteIdentity.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗<span className="sr-only"> (opens in new tab)</span></a>
-        <a href={siteIdentity.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗<span className="sr-only"> (opens in new tab)</span></a>
-        <a href={`mailto:${siteIdentity.email}`}>Email</a>
-      </div>
-    </dialog>
+    {menuMounted && <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />}
     {sheetOpen && <ShortcutSheet open={sheetOpen} onClose={() => setSheetOpen(false)} />}
     {!pathname.startsWith("/work/") && <a className="mobile-email" href={`mailto:${siteIdentity.email}`}>Email <span aria-hidden="true">↗</span></a>}
     <div className={pathname.startsWith("/work/") ? "spacer-live" : "spacer-pill"} aria-hidden="true" />

@@ -117,8 +117,6 @@ export function Shell({ decisions, children }: { decisions: PaletteDecision[]; c
       void transition.finished.catch(() => {});
     } else void update();
   }, [inspectOn]);
-  useEffect(() => { void import("@/lib/measurements").then(module => module.startMeasurements()); }, []);
-
   // Decision Mode and shortcut settings persist across visits and sync across tabs (PRD.md section 14, Appendix C).
   useEffect(() => {
     try {

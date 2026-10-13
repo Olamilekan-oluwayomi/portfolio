@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { useMeasurements, summarizeResources } from "@/lib/measurements";
+import { startMeasurements, useMeasurements, summarizeResources } from "@/lib/measurements";
 import type { PaletteDecision } from "@/lib/palette";
 import { useMotionPreference } from "@/lib/motion";
 
@@ -13,6 +13,7 @@ export default function Inspect({ route, decisions, onClose }: { route: string; 
   const [authored, setAuthored] = useState<Authored[]>([]);
   const [resources, setResources] = useState<ReturnType<typeof summarizeResources>>({ javascript: null, fonts: null, requests: 0 });
   const close = useRef<HTMLButtonElement>(null);
+  useEffect(() => { startMeasurements(); }, []);
   useEffect(() => {
     let frame = 0;
     const measure = () => {

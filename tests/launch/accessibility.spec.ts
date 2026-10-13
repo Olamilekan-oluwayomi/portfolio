@@ -34,3 +34,9 @@ test("Contact: clipboard contains the complete email", async ({ page, context })
   await expect(page.getByRole("status").filter({ hasText: "Copied" })).toBeVisible();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(label?.slice(5));
 });
+
+test("Inspect measures page-load LCP when opened after navigation", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /^Inspect/ }).click();
+  await expect(page.locator(".inspect-values > div").nth(0).locator("dd")).toHaveText(/^\d+ ms$/);
+});

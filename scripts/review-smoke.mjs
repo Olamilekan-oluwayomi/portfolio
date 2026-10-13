@@ -76,6 +76,27 @@ for (const route of routes.filter(route => route.startsWith("/work/"))) {
 assert(pages.get("/work/space-tourism").includes("Explore viewport widths"));
 assert(pages.get("/work/foreign-exchange-checker").includes("Explore the interface states"));
 assert(pages.get("/work/marginalia").includes("Read with sources visible"));
+const contact = pages.get("/contact");
+const experience = pages.get("/experience");
+assert.equal([...experience.matchAll(/class="log-entry"/g)].length, 5, "Experience retains five public entries");
+assert.equal([...experience.matchAll(/<details>/g)].length, 3, "Only the three entries with approved summaries expand");
+assert.equal([...experience.matchAll(/class="log-expand">View details/g)].length, 3, "Expandable entries have explicit action labels");
+assert(experience.includes('class="log-org">PitchMatter</span>'), "Experience retains the approved employer");
+const email = contact.match(/href="mailto:([^"]+)"/)?.[1];
+assert(email, "Contact provides a direct email alternative");
+const copy = contact.match(/<button\b[^>]*class="contact-address"[^>]*>([\s\S]*?)<\/button>/);
+assert(copy, "Contact has an email copy button");
+assert.equal(copy[1].replace(/<[^>]*>/g, ""), email, "Wrapped copy-button text contains the complete email only");
+assert(copy[0].includes('aria-label="Copy ' + email + '"'), "Copy button has an explicit action and address name");
+const about = pages.get("/about");
+const total = Number(about.match(/<p class="record-total"><span>(\d+)<\/span>/)?.[1]);
+assert(Number.isFinite(total), "About has a recorded-decision total");
+const themes = [...about.matchAll(/<div class="theme-count-label"><span>[^<]+<\/span><span>(\d+)/g)].map(match => Number(match[1]));
+assert.equal(themes.reduce((sum, count) => sum + count, 0), total, "Theme counts sum to the displayed total");
+const shares = [...about.matchAll(/<span class="theme-track" aria-hidden="true"><span style="width:([\d.]+)%"/g)].map(match => Number(match[1]));
+assert.equal(shares.length, themes.length, "Each theme has one proportional bar");
+assert(shares.every(share => share >= 0 && share <= 100), "Theme shares stay within their track");
+assert(Math.abs(shares.reduce((sum, share) => sum + share, 0) - (total ? 100 : 0)) < 0.001, "Theme shares cover the recorded total");
 const rental = pages.get("/work/rentit");
 assert(!rental.includes("Review preview. Not published."), "RentIt uses its published case-study presentation");
 assert(rental.includes("do not show a renter submitting a request"), "Missing request capture remains explicit");
@@ -105,6 +126,6 @@ if (canonical) {
   assert(policy.includes("Allow: /"), "Production allows crawling");
   assert(policy.includes("Sitemap: " + new URL("/sitemap.xml", canonical).href), "Robots references canonical sitemap");
 }
-const report = { checks, internalLinksAndAnchors: "passed", restrictedFrameHeaders: "passed", rentitCaseStudy: "published route and preview links passed", previewSourceSetCandidates: { count: candidates.size, status: "all 200" }, publicDocuments: Object.fromEntries(documents), ...(canonical ? { canonicalHost: canonical, canonicalRoutesAndSocialImages: "passed", sitemapAndRobots: "passed" } : {}), missingRoute: missing.status, optimizedPreview: { status: imageResponse.status, bytes: imageBytes }, browserInteraction: "unverified", screenReader: "unverified", viewports: "unverified" };
+const report = { checkedBase: base, checks, internalLinksAndAnchors: "passed", restrictedFrameHeaders: "passed", rentitCaseStudy: "published route and preview links passed", experienceNativeDisclosures: "passed", aboutThemeCountConsistency: "passed", contactEmailMarkup: "passed", previewSourceSetCandidates: { count: candidates.size, status: "all 200" }, publicDocuments: Object.fromEntries(documents), ...(canonical ? { canonicalHost: canonical, canonicalRoutesAndSocialImages: "passed", sitemapAndRobots: "passed" } : {}), missingRoute: missing.status, optimizedPreview: { status: imageResponse.status, bytes: imageBytes }, browserInteraction: "unverified", screenReader: "unverified", viewports: "unverified" };
 writeFileSync("docs/review-smoke-results.json", JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report, null, 2));

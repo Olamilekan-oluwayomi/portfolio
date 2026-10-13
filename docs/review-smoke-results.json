@@ -1,4 +1,5 @@
 {
+  "checkedBase": "http://127.0.0.1:3000",
   "checks": [
     {
       "route": "/",
@@ -54,6 +55,8 @@
   "internalLinksAndAnchors": "passed",
   "restrictedFrameHeaders": "passed",
   "rentitCaseStudy": "published route and preview links passed",
+  "aboutThemeCountConsistency": "passed",
+  "contactEmailMarkup": "passed",
   "previewSourceSetCandidates": {
     "count": 16,
     "status": "all 200"
@@ -64,9 +67,6 @@
       "sha256": "b04fd039883be417f8ceb83b6becd9d1f92a95f8802b30fc416b124149a6d0fe"
     }
   },
-  "canonicalHost": "https://portfolio-omega-snowy-medsu1hh4w.vercel.app",
-  "canonicalRoutesAndSocialImages": "passed",
-  "sitemapAndRobots": "passed",
   "missingRoute": 404,
   "optimizedPreview": {
     "status": 200,

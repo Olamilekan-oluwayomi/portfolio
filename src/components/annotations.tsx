@@ -38,10 +38,9 @@ export function HeroConcepts({ notes }: { notes: ({ id: ConceptId } & NoteRecord
   }, [open, dialog]);
   useEffect(() => {
     const clamp = () => {
-      if (!list.current || touch || !open) return;
+      if (!list.current || touch) return;
       for (const item of Array.from(list.current.children)) {
         const anchor = item.querySelector("button");
-        if (anchor?.getAttribute("aria-expanded") !== "true") continue;
         const note = item.querySelector(".concept-note");
         if (!(anchor instanceof HTMLElement) || !(note instanceof HTMLElement)) continue;
         note.style.transform = "";

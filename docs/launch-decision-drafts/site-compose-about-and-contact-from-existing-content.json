@@ -1,0 +1,37 @@
+{
+  "id": "site-compose-about-and-contact-from-existing-content",
+  "projectSlug": "site",
+  "title": "Recompose About, Contact and Experience with existing content",
+  "context": "The owner requested stronger About and Contact design, then included Experience.",
+  "options": [
+    "Keep the existing plain lists.",
+    "Recompose existing content using the homepage typography and color tokens."
+  ],
+  "choice": "Use static layouts for identity, chronology and contact actions, retaining native Experience disclosures.",
+  "tradeoff": "The arrangement needs more CSS and browser checks of wrapping, focus and reflow. It adds no motion or dependency.",
+  "status": "kept",
+  "theme": "ux",
+  "evidence": [
+    {
+      "label": "About composition and computed themes",
+      "ref": "src/app/about/page.tsx"
+    },
+    {
+      "label": "Contact composition",
+      "ref": "src/app/contact/page.tsx"
+    },
+    {
+      "label": "Email action",
+      "ref": "src/components/copy-email.tsx"
+    },
+    {
+      "label": "Responsive and focus rules",
+      "ref": "src/styles/globals.css"
+    },
+    {
+      "label": "Native experience timeline",
+      "ref": "src/app/experience/page.tsx"
+    }
+  ],
+  "verified": false
+}

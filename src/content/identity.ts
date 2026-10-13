@@ -17,5 +17,5 @@ export const siteIdentity = {
     twitter: "https://x.com/Adelizzle_",
   },
   cv: "/olamilekan-ilesanmi-cv.pdf",
-  domain: "https://portfolio-omega-snowy-medsu1hh4w.vercel.app",
+  domain: "https://lizzle.vercel.app",
 } as const;

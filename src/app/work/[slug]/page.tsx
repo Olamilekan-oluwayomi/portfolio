@@ -1,3 +1,4 @@
+import { StructuredData } from "@/components/structured-data";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { loadContent } from "@/lib/content";
@@ -50,5 +51,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProjectPage({ params }: Props) {
   const page = getPage((await params).slug);
   if (!page) notFound();
-  return <CaseStudy {...page} />;
+  return <><StructuredData items={[{ "@type": "CreativeWork", name: page.project.title, description: page.project.summary, url: new URL(page.project.links.caseStudy, siteIdentity.domain).href, creator: { "@id": `${siteIdentity.domain}/#person` } }, { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Work", item: `${siteIdentity.domain}/work` }, { "@type": "ListItem", position: 2, name: page.project.title, item: new URL(page.project.links.caseStudy, siteIdentity.domain).href }] }]} /><CaseStudy {...page} /></>;
 }

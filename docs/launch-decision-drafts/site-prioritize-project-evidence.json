@@ -1,0 +1,25 @@
+{
+  "id": "site-prioritize-project-evidence",
+  "projectSlug": "site",
+  "title": "Lead visitors from the index into project evidence",
+  "context": "The homepage index depended on preview availability and large covers opened the external product, bypassing its case study.",
+  "options": [
+    "Keep preview availability coupled to index membership and covers linked to live products",
+    "Keep every listing and route published covers to their case study"
+  ],
+  "choice": "Separate index membership from preview availability, link published covers to the case study, and load deeper tools on action.",
+  "tradeoff": "Missing previews need an explicit placeholder; live products remain a separate link.",
+  "status": "kept",
+  "theme": "ux",
+  "evidence": [
+    {
+      "label": "Owner implementation request and scope record",
+      "ref": "docs/implementation-status.md"
+    },
+    {
+      "label": "Index and project destinations",
+      "ref": "src/app/page.tsx; src/components/work-directory.tsx; src/components/work/project-panel.tsx"
+    }
+  ],
+  "verified": false
+}

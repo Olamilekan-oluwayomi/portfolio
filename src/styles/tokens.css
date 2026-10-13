@@ -1,6 +1,10 @@
 /* Active system: PRD.md October 4 amendment and docs/homepage-direction.md.
  * Historical paper/red tokens remain in design/tokens.css only. */
 :root {
+  --font-ui-loaded: "Portfolio UI", "Portfolio UI Fallback", sans-serif;
+  --font-mono-loaded: "Portfolio Mono", ui-monospace, monospace;
+  --font-display-loaded: "Portfolio Serif", "Portfolio Serif Fallback", serif;
+  --font-italic-loaded: "Portfolio Italic", "Portfolio Italic Fallback", serif;
   --font-ui: var(--font-ui-loaded), system-ui, sans-serif;
   --font-mono: var(--font-mono-loaded), ui-monospace, monospace;
   --font-accent: var(--font-italic-loaded), Georgia, serif;

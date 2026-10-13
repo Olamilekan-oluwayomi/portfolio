@@ -1,3 +1,4 @@
+import { StructuredData, personData } from "@/components/structured-data";
 import type { Metadata } from "next";
 import { siteIdentity } from "@/content/identity";
 import { timeline } from "@/content/timeline";
@@ -19,6 +20,7 @@ export default function AboutPage() {
   for (const decision of decisions) themeCounts.set(decision.theme, (themeCounts.get(decision.theme) ?? 0) + 1);
   const counts = [...themeCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
   return <article className="record-page">
+    <StructuredData items={[personData]} />
     <div className="record-intro">
       <div className="record-title-block">
         <p className="eyebrow">About</p>

@@ -1,3 +1,4 @@
+import { StructuredData, personData } from "@/components/structured-data";
 import { siteIdentity } from "@/content/identity";
 import { workIndex } from "@/content/work-index";
 import { conceptNotes, siteNotes } from "@/content/annotations";
@@ -10,7 +11,7 @@ import { publishedProjectSlugs } from "@/content/release";
 export const metadata = {
   description: `${siteIdentity.role} building React, Next.js and TypeScript interfaces. ${publishedProjectSlugs.length} projects, with the decisions behind each build.`,
   alternates: { canonical: "/" },
-  openGraph: { url: "/", type: "website" },
+  openGraph: { url: "/", type: "website", title: `${siteIdentity.name}, ${siteIdentity.role}`, description: `${siteIdentity.role}. ${publishedProjectSlugs.length} published case studies.`, siteName: siteIdentity.name, locale: "en_NG", images: [{ url: "/social-card.png", width: 1200, height: 630 }] },
 };
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
     return { slug: item.slug, title: item.title, src: props?.src ?? "", srcSet: props?.srcSet, sizes: props?.sizes, width: media?.width ?? 1200, height: media?.height ?? 800 };
   });
   return <>
+    <StructuredData items={[personData, { "@type": "WebSite", name: siteIdentity.name, url: siteIdentity.domain }]} />
     <section className="hero" aria-labelledby="name">
       <div className="hero-topline">
         <p className="eyebrow"><span className="registration-mark" aria-hidden="true" />Annotated <span className="muted">/ An annotated build</span></p>

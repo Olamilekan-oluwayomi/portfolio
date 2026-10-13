@@ -1,0 +1,31 @@
+{
+  "currentRelease": "R1",
+  "assessedRelease": "R2",
+  "source": "src/lib/schemas.ts; PRD.md sections 16.2, 35 and 38",
+  "verifiedRecords": 12,
+  "reversedOrOpen": 1,
+  "projects": [
+    {
+      "slug": "rentit",
+      "verifiedDecisions": 3
+    },
+    {
+      "slug": "marginalia",
+      "verifiedDecisions": 3
+    },
+    {
+      "slug": "space-tourism",
+      "verifiedDecisions": 3
+    },
+    {
+      "slug": "foreign-exchange-checker",
+      "verifiedDecisions": 3
+    }
+  ],
+  "issues": [
+    "Portfolio has fewer than 15 owner-verified decisions",
+    "Portfolio has fewer than two owner-verified reversed or open decisions"
+  ],
+  "status": "blocked",
+  "verificationFlagsChanged": false
+}

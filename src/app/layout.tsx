@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import Link from "next/link";
 import { siteIdentity } from "@/content/identity";
 import { loadContent } from "@/lib/content";
@@ -9,14 +8,11 @@ import { Shell } from "@/components/shell";
 import { ThemeToggle } from "@/components/theme-toggle";
 import "@/styles/globals.css";
 
-const display = localFont({ src: "../../design/fonts/instrument-serif-regular.woff2", variable: "--font-display-loaded", display: "swap", weight: "400", preload: false, adjustFontFallback: "Times New Roman" });
-const italic = localFont({ src: "../../design/fonts/instrument-serif-italic.woff2", variable: "--font-italic-loaded", display: "swap", weight: "400", style: "italic", preload: false, adjustFontFallback: "Times New Roman" });
-const ui = localFont({ src: "../../design/fonts/geist-var.woff2", variable: "--font-ui-loaded", display: "swap", weight: "400 500" });
-const mono = localFont({ src: "../../design/fonts/geist-mono-var.woff2", variable: "--font-mono-loaded", display: "swap", weight: "400 500" });
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteIdentity.domain),
   title: `${siteIdentity.name}, ${siteIdentity.role}`,
+  openGraph: { title: `${siteIdentity.name}, ${siteIdentity.role}`, siteName: siteIdentity.name, locale: "en_NG", type: "website", images: [{ url: "/social-card.png", width: 1200, height: 630 }] },
+  twitter: { card: "summary_large_image", images: ["/social-card.png"] },
   robots: { index: process.env.VERCEL_ENV !== "preview", follow: process.env.VERCEL_ENV !== "preview" },
 };
 
@@ -24,7 +20,8 @@ export const metadata: Metadata = {
 // routes that exist in this release; Lab waits for /lab.
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const decisions = loadContent().decisions.filter(decision => publishedProjectSlugs.includes(decision.projectSlug)).map(decision => ({ id: decision.id, title: decision.title, theme: decision.theme, projectSlug: decision.projectSlug }));
-  return <html lang="en" className={`${display.variable} ${italic.variable} ${ui.variable} ${mono.variable}`}>
+  return <html lang="en">
+    <head>{["geist-var", "geist-mono-var", "instrument-serif-regular"].map(font => <link key={font} rel="preload" href={`/fonts/${font}.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />)}</head>
     <body>
       <Shell decisions={decisions}>
         <a className="skip-link" href="#main">Skip to content</a>

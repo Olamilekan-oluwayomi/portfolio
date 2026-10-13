@@ -4,6 +4,9 @@ import type { NextConfig } from "next";
 const config: NextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
   images: { formats: ["image/avif", "image/webp"], deviceSizes: [640, 960, 1440, 1920], minimumCacheTTL: 31536000 },
+  async redirects() {
+    return [{ source: "/:path*", has: [{ type: "host", value: "portfolio-omega-snowy-medsu1hh4w.vercel.app" }], destination: "https://lizzle.vercel.app/:path*", permanent: true }];
+  },
   async headers() {
     return [{ source: "/(.*)", headers: [
       { key: "Content-Security-Policy", value: "frame-src https://space-tourismx.vercel.app; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'" },

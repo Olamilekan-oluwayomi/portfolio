@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @import "./tokens.css";
 
+/* Explicit local font URLs and three preloads avoid the empty Next font manifest.
+   Fallback metrics below come from the previous next/font output, recorded in docs/launch-audit.md. */
+@font-face { font-family: "Portfolio UI"; src: url("/fonts/geist-var.woff2") format("woff2"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "Portfolio UI Fallback"; src: local("Arial"); ascent-override: 94.56%; descent-override: 27.76%; line-gap-override: 0%; size-adjust: 106.28%; }
+@font-face { font-family: "Portfolio Mono"; src: url("/fonts/geist-mono-var.woff2") format("woff2"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "Portfolio Serif"; src: url("/fonts/instrument-serif-regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Portfolio Serif Fallback"; src: local("Times New Roman"); ascent-override: 117.87%; descent-override: 36.91%; line-gap-override: 0%; size-adjust: 83.99%; }
+@font-face { font-family: "Portfolio Italic"; src: url("/fonts/instrument-serif-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Portfolio Italic Fallback"; src: local("Times New Roman"); ascent-override: 111.52%; descent-override: 34.92%; line-gap-override: 0%; size-adjust: 88.77%; }
+
 @theme inline {
   --color-paper: var(--paper);
   --color-ink: var(--ink);
@@ -275,9 +285,9 @@ dialog::backdrop { background: color-mix(in srgb, var(--ink) 55%, transparent); 
 .hero-concepts li { position: relative; }
 .concept-anchor { min-height: 44px; padding: 10px 14px; border: 1px solid var(--rule); border-radius: 2px; background: transparent; color: var(--graphite); cursor: pointer; font: 400 13px/1.4 var(--font-mono); }
 .concept-anchor:hover, .concept-anchor[aria-expanded="true"] { border-color: var(--annotation-accent); color: var(--ink); }
-.concept-note { position: absolute; top: calc(100% + 10px); left: 0; z-index: 6; width: min(320px, calc(100vw - 64px)); padding: 14px 16px; border: 1px solid var(--ink); background: var(--paper-raised); opacity: 0; pointer-events: none; transition: opacity var(--dur-fast) var(--ease-out); }
+.concept-note { position: absolute; top: calc(100% + 10px); left: 0; z-index: 6; width: min(320px, calc(100vw - 64px)); padding: 14px 16px; border: 1px solid var(--ink); background: var(--paper-raised); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity var(--dur-fast) var(--ease-out); }
 .concept-note::before { content: ""; position: absolute; top: -11px; left: var(--leader-x, 28px); width: 1px; height: 10px; background: var(--annotation-accent); }
-.concept-note[data-open="true"] { opacity: 1; pointer-events: auto; }
+.concept-note[data-open="true"] { opacity: 1; visibility: visible; pointer-events: auto; }
 .site-note { max-width: 360px; margin: 20px 0 0 auto; padding: 14px 16px; border: 1px solid var(--rule); border-left: 3px solid var(--annotation-accent); background: var(--paper-raised); }
 .note-label { display: block; margin-bottom: 6px; color: var(--annotation-accent); font: 400 12px/1.5 var(--font-mono); letter-spacing: 0.04em; }
 .site-note p, .concept-note p { font-size: 14px; line-height: 1.55; }
@@ -300,15 +310,38 @@ dialog::backdrop { background: color-mix(in srgb, var(--ink) 55%, transparent); 
 /* Section 12 routes: /work, /about, /experience, /contact and the 404. */
 .work-page, .record-page, .log-page, .contact-page, .not-found { max-width: 960px; margin-inline: auto; padding-block: 24px 96px; }
 .work-list, .record-list, .log-list { list-style: none; margin: 32px 0 0; padding: 0; }
-.work-list > li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 24px; padding-block: 28px; border-top: 1px solid var(--rule); }
-.work-number { color: var(--selection); font: 400 13px/1.8 var(--font-mono); }
+.work-page { max-width: 1120px; padding-block: 40px 96px; }
+.work-intro { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; padding-bottom: 40px; }
+.work-intro .record-title { font-size: clamp(64px, 8.5vw, 116px); }
+.work-intro-caption { max-width: 25ch; color: var(--graphite); font: 400 12px/1.8 var(--font-mono); }
+.work-list > li { display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 0.95fr); gap: 24px 32px; align-items: center; padding-block: 40px; border-top: 1px solid var(--rule); }
+.work-list > li:first-child { border-top: 2px solid var(--note-ink); }
+.work-number { align-self: start; padding-top: 4px; color: var(--note-ink); font: 400 16px/1.8 var(--font-mono); }
+.work-entry { min-width: 0; }
 .work-meta { color: var(--graphite); font: 400 12px/1.5 var(--font-mono); }
-.work-entry h2 { margin-block: 8px 12px; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.05; font-weight: 500; letter-spacing: -0.05em; }
+.work-entry h2 { margin-block: 12px 16px; font-size: clamp(32px, 3.5vw, 48px); line-height: 1.05; font-weight: 500; letter-spacing: -0.05em; overflow-wrap: anywhere; }
 .work-entry h2 a { text-decoration: none; }
-.work-entry h2 a:hover { text-decoration: underline; }
-.work-entry > p { max-width: 58ch; }
-.work-entry .stack-tags { margin-top: 14px; }
-.work-entry .project-links { margin-top: 12px; flex-wrap: wrap; }
+.work-entry h2 a:hover { color: var(--note-ink); text-decoration: underline; }
+.work-entry > p { max-width: 42ch; }
+.work-entry .stack-tags { margin-top: 20px; }
+.work-entry .project-links { margin-top: 24px; flex-wrap: wrap; }
+.work-capture { position: relative; display: block; min-width: 0; padding: 20px; border: 1px solid var(--graphite); background: var(--blue); }
+.work-row:nth-child(2) .work-capture { background: var(--pink); }
+.work-row:nth-child(3) .work-capture { background: var(--mint); }
+.work-row:nth-child(4) .work-capture { background: var(--yellow); }
+.work-capture img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
+.work-capture-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; margin-top: 12px; padding: 8px 12px; border: 1px solid var(--card-ink); background: var(--paper-raised); color: var(--ink); font: 400 12px/1.5 var(--font-mono); }
+.work-capture:hover .work-capture-label { text-decoration: underline; }
+@media (max-width: 767px) {
+  .work-page { padding-block: 24px 64px; }
+  .work-intro { display: block; padding-bottom: 24px; }
+  .work-intro .record-title { font-size: clamp(60px, 17vw, 104px); }
+  .work-intro-caption { margin-top: 24px; }
+  .work-list > li { grid-template-columns: 28px minmax(0, 1fr); gap: 20px 12px; padding-block: 28px; }
+  .work-number { font-size: 12px; }
+  .work-capture { grid-column: 2; padding: 12px; }
+  .work-entry h2 { font-size: 32px; }
+}
 .record-page, .contact-page { max-width: 1120px; padding-block: 40px 96px; }
 .record-intro { display: grid; grid-template-columns: 0.95fr 1fr; align-items: center; gap: 48px; }
 .record-title { margin-top: 24px; font-size: clamp(76px, 10.8vw, 148px); line-height: 0.9; font-weight: 500; letter-spacing: -0.075em; }

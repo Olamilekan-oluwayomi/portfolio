@@ -2,7 +2,10 @@ import { siteIdentity } from "@/content/identity";
 import { workIndex } from "@/content/work-index";
 import { log, formatLogDates } from "@/content/log";
 
-export const metadata = { title: `The brief | ${siteIdentity.name}` };
+export const metadata = {
+  title: `The brief | ${siteIdentity.name}`,
+  alternates: { canonical: "/brief" },
+};
 export default function Brief() {
   return <article className="brief-page">
     <p className="eyebrow">The 30-second brief</p>

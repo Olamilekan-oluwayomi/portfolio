@@ -7,6 +7,12 @@ import { ProjectPanel } from "@/components/work/project-panel";
 import { WorkDirectory } from "@/components/work-directory";
 import { publishedProjectSlugs } from "@/content/release";
 
+export const metadata = {
+  description: `${siteIdentity.role} building React, Next.js and TypeScript interfaces. ${publishedProjectSlugs.length} projects, with the decisions behind each build.`,
+  alternates: { canonical: "/" },
+  openGraph: { url: "/", type: "website" },
+};
+
 export default function Home() {
   const [firstName, ...lastName] = siteIdentity.name.split(" ");
   const { projects } = loadContent();

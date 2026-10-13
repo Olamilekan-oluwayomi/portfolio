@@ -27,8 +27,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${page.draft ? "Review preview: " : ""}${page.project.seo.title} | ${siteIdentity.name}`,
     description: page.project.seo.description,
+    ...(!page.draft ? { alternates: { canonical: page.project.links.caseStudy } } : {}),
     ...(page.draft ? { robots: { index: false, follow: false } } : {}),
-    ...(page.project.seo.ogImage && !page.draft ? { openGraph: { images: [{ url: page.project.seo.ogImage }] } } : {}),
+    ...(!page.draft ? {
+      openGraph: {
+        title: page.project.seo.title,
+        description: page.project.seo.description,
+        type: "article",
+        url: page.project.links.caseStudy,
+        ...(page.project.seo.ogImage ? { images: [{ url: page.project.seo.ogImage }] } : {}),
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: page.project.seo.title,
+        description: page.project.seo.description,
+        ...(page.project.seo.ogImage ? { images: [page.project.seo.ogImage] } : {}),
+      },
+    } : {}),
   };
 }
 

@@ -53,6 +53,9 @@ export default function Palette({ open, onClose, decisions, shortcutsOn, decisio
     } else if (action.kind === "external") {
       onClose();
       window.open(action.href, "_blank", "noopener,noreferrer");
+    } else if (action.kind === "document") {
+      onClose();
+      window.location.assign(action.href);
     } else if (action.kind === "copy-email") {
       onClose();
       const copied = navigator.clipboard?.writeText(siteIdentity.email);

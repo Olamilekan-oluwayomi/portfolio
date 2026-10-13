@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+coverage/
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+.vercel/
+.git/
+artifacts/
+docs/Olamilekan_Ilesanmi_CV_Web_Developer.pdf

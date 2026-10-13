@@ -1,0 +1,20 @@
+{
+  "id": "site-omit-untracked-modification-dates",
+  "projectSlug": "site",
+  "title": "Omit sitemap dates until content records their modification time",
+  "context": "The project model records a portfolio year but has no modification-date field. The newly enabled sitemap needs to describe public content without treating a rebuild as a content edit.",
+  "options": [
+    "Fill lastModified with the build time.",
+    "Omit lastModified until an accurate content timestamp is recorded."
+  ],
+  "choice": "Include the current public URLs and defer lastModified until the content model supplies a reliable timestamp.",
+  "tradeoff": "Search engines receive no per-route freshness hint. Section 30's lastModified requirement remains a written deferral.",
+  "status": "open",
+  "theme": "data",
+  "evidence": [
+    { "label": "Project schema", "ref": "src/lib/schemas.ts" },
+    { "label": "Public-route sitemap", "ref": "src/app/sitemap.ts" },
+    { "label": "SEO requirements and deferral", "ref": "PRD.md section 30 and Appendix H" }
+  ],
+  "verified": false
+}

@@ -1,11 +1,16 @@
 import assert from "node:assert/strict";
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { resolve, sep } from "node:path";
 
 // HTTP and initial-HTML checks only. Browser interactions are not inferred.
 const base = process.argv[2];
+// Supply the canonical host as an optional third argument for production SEO checks.
+const canonical = process.argv[3];
 assert(base, "Supply the local server URL");
 const routes = ["/", "/brief", "/work", "/about", "/experience", "/contact", "/work/rentit", "/work/marginalia", "/work/space-tourism", "/work/foreign-exchange-checker"];
 const pages = new Map();
+const documents = new Map();
 const checks = [];
 for (const route of routes) {
   const response = await fetch(new URL(route, base));
@@ -13,6 +18,17 @@ for (const route of routes) {
   assert(response.headers.get("content-security-policy")?.includes("frame-src https://space-tourismx.vercel.app"), route + ": restricted frame policy");
   const html = await response.text();
   pages.set(route, html);
+  if (canonical) {
+    const link = html.match(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/);
+    assert(link, route + ": canonical link exists");
+    assert.equal(link[1].replace(/\/$/, ""), new URL(route, canonical).href.replace(/\/$/, ""), route + ": canonical host and path");
+    assert(!html.includes('name="robots" content="noindex'), route + ": public route is indexable");
+    if (route.startsWith("/work/")) {
+      const image = html.match(/<meta\b[^>]*property="og:image"[^>]*content="([^"]+)"/);
+      assert(image, route + ": social image exists");
+      assert.equal(new URL(image[1]).origin, new URL(canonical).origin, route + ": social image uses canonical host");
+    }
+  }
   assert.equal([...html.matchAll(/<h1\b/g)].length, 1, route + ": one H1");
   checks.push({ route, status: response.status, oneH1: true });
 }
@@ -21,6 +37,23 @@ for (const [route, html] of pages) {
     const href = match[1].replaceAll("&amp;", "&");
     if (!href.startsWith("/") && !href.startsWith("#")) continue;
     const target = new URL(href, new URL(route, base));
+    if (target.pathname.endsWith(".pdf")) {
+      assert(!/\btarget="_blank"/.test(match[0]), route + ": CV opens in the same tab");
+      if (!documents.has(target.pathname)) {
+        const response = await fetch(target);
+        assert.equal(response.status, 200, route + ": PDF is available");
+        assert(response.headers.get("content-type")?.startsWith("application/pdf"), "PDF content type");
+        const bytes = Buffer.from(await response.arrayBuffer());
+        assert.equal(bytes.subarray(0, 5).toString(), "%PDF-", "PDF signature");
+        const publicRoot = resolve("public");
+        const file = resolve(publicRoot, target.pathname.slice(1));
+        assert(file.startsWith(publicRoot + sep), "PDF stays inside public assets");
+        const hash = data => createHash("sha256").update(data).digest("hex");
+        assert.equal(hash(bytes), hash(readFileSync(file)), "Served PDF matches the public file exactly");
+        documents.set(target.pathname, { bytes: bytes.length, sha256: hash(bytes) });
+      }
+      continue;
+    }
     const destination = pages.get(target.pathname);
     assert(destination, route + ": internal route exists: " + href);
     if (target.hash) assert(destination.includes('id="' + decodeURIComponent(target.hash.slice(1)) + '"'), route + ": anchor exists: " + href);
@@ -60,6 +93,18 @@ for (const candidate of candidates) {
   assert.equal(response.status, 200, "Preview source-set candidate: " + candidate);
   await response.arrayBuffer();
 }
-const report = { checks, internalLinksAndAnchors: "passed", restrictedFrameHeaders: "passed", rentitCaseStudy: "published route and preview links passed", previewSourceSetCandidates: { count: candidates.size, status: "all 200" }, missingRoute: missing.status, optimizedPreview: { status: imageResponse.status, bytes: imageBytes }, browserInteraction: "unverified", screenReader: "unverified", viewports: "unverified" };
+if (canonical) {
+  const sitemap = await fetch(new URL("/sitemap.xml", base));
+  assert.equal(sitemap.status, 200, "Sitemap available");
+  const xml = await sitemap.text();
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]).sort();
+  assert.deepEqual(urls, routes.map(route => new URL(route, canonical).href).sort(), "Sitemap contains exactly the public canonical routes");
+  const robots = await fetch(new URL("/robots.txt", base));
+  assert.equal(robots.status, 200, "Robots available");
+  const policy = await robots.text();
+  assert(policy.includes("Allow: /"), "Production allows crawling");
+  assert(policy.includes("Sitemap: " + new URL("/sitemap.xml", canonical).href), "Robots references canonical sitemap");
+}
+const report = { checks, internalLinksAndAnchors: "passed", restrictedFrameHeaders: "passed", rentitCaseStudy: "published route and preview links passed", previewSourceSetCandidates: { count: candidates.size, status: "all 200" }, publicDocuments: Object.fromEntries(documents), ...(canonical ? { canonicalHost: canonical, canonicalRoutesAndSocialImages: "passed", sitemapAndRobots: "passed" } : {}), missingRoute: missing.status, optimizedPreview: { status: imageResponse.status, bytes: imageBytes }, browserInteraction: "unverified", screenReader: "unverified", viewports: "unverified" };
 writeFileSync("docs/review-smoke-results.json", JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report, null, 2));

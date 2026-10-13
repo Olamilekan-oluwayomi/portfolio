@@ -1,5 +1,5 @@
 // Owner choices: docs/phase-1-exit.md, Appendix A items 1, 2, 10 and 11.
-// Links and name: PRD.md section 35. CV and deployment host are deferred.
+// Links and name: PRD.md section 35. CV and current host: docs/deployment-identity.md.
 export const siteIdentity = {
   name: "Olamilekan Ilesanmi",
   nameAbb: "OI",
@@ -16,6 +16,6 @@ export const siteIdentity = {
     whatsapp: "https://wa.me/2347069924563",
     twitter: "https://x.com/Adelizzle_",
   },
-  cv: null,
-  domain: null,
+  cv: "/olamilekan-ilesanmi-cv.pdf",
+  domain: "https://portfolio-omega-snowy-medsu1hh4w.vercel.app",
 } as const;

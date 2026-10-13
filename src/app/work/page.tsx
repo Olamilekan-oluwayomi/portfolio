@@ -10,6 +10,7 @@ import { loadContent } from "@/lib/content";
 export const metadata: Metadata = {
   title: `Work | ${siteIdentity.name}`,
   description: "Published case studies with status, stack and links to the live products.",
+  alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {

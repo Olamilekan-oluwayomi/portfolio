@@ -7,6 +7,7 @@ import { formatLogDates, log } from "@/content/log";
 export const metadata: Metadata = {
   title: `Experience | ${siteIdentity.name}`,
   description: "The Log: work history, service and education, reverse chronological.",
+  alternates: { canonical: "/experience" },
 };
 
 export default function ExperiencePage() {

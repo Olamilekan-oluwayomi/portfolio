@@ -15,8 +15,9 @@ const ui = localFont({ src: "../../design/fonts/geist-var.woff2", variable: "--f
 const mono = localFont({ src: "../../design/fonts/geist-mono-var.woff2", variable: "--font-mono-loaded", display: "swap", weight: "400 500" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteIdentity.domain),
   title: `${siteIdentity.name}, ${siteIdentity.role}`,
-  robots: { index: false, follow: false },
+  robots: { index: process.env.VERCEL_ENV !== "preview", follow: process.env.VERCEL_ENV !== "preview" },
 };
 
 // Persistent frame contract: PRD.md sections 14 and 36. Navigation lists only

@@ -58,6 +58,15 @@
     "count": 16,
     "status": "all 200"
   },
+  "publicDocuments": {
+    "/olamilekan-ilesanmi-cv.pdf": {
+      "bytes": 12323,
+      "sha256": "b04fd039883be417f8ceb83b6becd9d1f92a95f8802b30fc416b124149a6d0fe"
+    }
+  },
+  "canonicalHost": "https://portfolio-omega-snowy-medsu1hh4w.vercel.app",
+  "canonicalRoutesAndSocialImages": "passed",
+  "sitemapAndRobots": "passed",
   "missingRoute": 404,
   "optimizedPreview": {
     "status": 200,

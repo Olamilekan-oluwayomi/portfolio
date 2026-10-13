@@ -6,6 +6,7 @@ import { CopyEmail } from "@/components/copy-email";
 export const metadata: Metadata = {
   title: `Contact | ${siteIdentity.name}`,
   description: `${siteIdentity.availability} Email ${siteIdentity.email}.`,
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

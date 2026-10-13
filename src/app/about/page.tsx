@@ -9,6 +9,7 @@ import { loadContent } from "@/lib/content";
 export const metadata: Metadata = {
   title: `About | ${siteIdentity.name}`,
   description: "The Record: 2023 to 2026, and a decision count by theme instead of adjectives.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

@@ -17,3 +17,9 @@ This update changes no owner verification flags or release level (`src/content/r
 `npm.cmd test` passed all 44 tests across eight files, including the same-tab CV palette action (`src/lib/palette.test.ts`). `npm.cmd run lint` passed. `npm.cmd run build` passed its content gate, compilation, TypeScript and all resource budgets, and emitted no missing-metadataBase warning (`package.json`, `scripts/check-budgets.mjs`).
 
 The production-build HTTP check validates all ten public routes, internal links, figures, image candidates, PDF signature/content type/hash, route canonical URLs, absolute project social-image URLs, sitemap coverage and robots policy (`scripts/review-smoke.mjs`). Browser interaction, physical devices and screen readers remain unverified; these HTTP checks do not establish those results.
+
+## Production deployment
+
+Source commit `3d274cd` was deployed to the linked `portfolio` production project as `dpl_DoNy1eaB25DJhwTU8dxPrRMQq7vi`. Vercel reported READY and assigned the supplied canonical alias `https://portfolio-omega-snowy-medsu1hh4w.vercel.app`. Its remote build passed the same content and resource gates (`package.json`, `scripts/check-budgets.mjs`).
+
+The HTTP smoke script passed against that public alias with the canonical host supplied as its third argument. The served public CV matched SHA256 `b04fd039883be417f8ceb83b6becd9d1f92a95f8802b30fc416b124149a6d0fe`. A separate request for `/docs/Olamilekan_Ilesanmi_CV_Web_Developer.pdf` returned 404, confirming that the original source has no public route (`scripts/review-smoke.mjs`, `docs/review-smoke-results.json`, `.vercelignore`).

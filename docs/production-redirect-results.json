@@ -1,0 +1,34 @@
+{
+  "merge": "7ad3d108a9a9a2a8b72a6fc4aa66cc73ef89ed0c",
+  "deployment": "dpl_BaYkzvddCBYx276nJXUiGEu8cLdL",
+  "checks": [
+    {
+      "path": "/",
+      "redirect": 308,
+      "location": "https://lizzle.vercel.app/",
+      "anonymousStatus": 200,
+      "finalUrl": "https://lizzle.vercel.app/"
+    },
+    {
+      "path": "/work",
+      "redirect": 308,
+      "location": "https://lizzle.vercel.app/work",
+      "anonymousStatus": 200,
+      "finalUrl": "https://lizzle.vercel.app/work"
+    },
+    {
+      "path": "/work/rentit",
+      "redirect": 308,
+      "location": "https://lizzle.vercel.app/work/rentit",
+      "anonymousStatus": 200,
+      "finalUrl": "https://lizzle.vercel.app/work/rentit"
+    },
+    {
+      "path": "/contact",
+      "redirect": 308,
+      "location": "https://lizzle.vercel.app/contact",
+      "anonymousStatus": 200,
+      "finalUrl": "https://lizzle.vercel.app/contact"
+    }
+  ]
+}

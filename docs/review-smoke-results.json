@@ -1,5 +1,5 @@
 {
-  "checkedBase": "http://127.0.0.1:3003",
+  "checkedBase": "https://lizzle.vercel.app",
   "checks": [
     {
       "route": "/",

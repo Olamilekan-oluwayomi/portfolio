@@ -1,5 +1,5 @@
 {
-  "checkedBase": "https://portfolio-omega-snowy-medsu1hh4w.vercel.app",
+  "checkedBase": "http://127.0.0.1:3003",
   "checks": [
     {
       "route": "/",
@@ -50,6 +50,16 @@
       "route": "/work/foreign-exchange-checker",
       "status": 200,
       "oneH1": true
+    },
+    {
+      "route": "/icon.svg",
+      "status": 200
+    },
+    {
+      "route": "/social-card.png",
+      "status": 200,
+      "width": 1200,
+      "height": 630
     }
   ],
   "internalLinksAndAnchors": "passed",
@@ -59,7 +69,7 @@
   "aboutThemeCountConsistency": "passed",
   "contactEmailMarkup": "passed",
   "previewSourceSetCandidates": {
-    "count": 16,
+    "count": 4,
     "status": "all 200"
   },
   "publicDocuments": {
@@ -68,7 +78,7 @@
       "sha256": "b04fd039883be417f8ceb83b6becd9d1f92a95f8802b30fc416b124149a6d0fe"
     }
   },
-  "canonicalHost": "https://portfolio-omega-snowy-medsu1hh4w.vercel.app",
+  "canonicalHost": "https://lizzle.vercel.app",
   "canonicalRoutesAndSocialImages": "passed",
   "sitemapAndRobots": "passed",
   "missingRoute": 404,

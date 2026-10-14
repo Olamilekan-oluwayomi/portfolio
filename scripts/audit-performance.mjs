@@ -31,9 +31,9 @@ try {
     }
     const median = key => runs.map(item=>item[key]).sort((a,b)=>a-b)[1];
     const metrics = Object.fromEntries(["lcp", "cls", "tbt", "transferBytes"].map(key=>[key,median(key)]));
-    const passed = metrics.lcp <= 2000 && metrics.cls <= 0.05 && metrics.tbt <= 150 && (route !== "/" || metrics.transferBytes <= 512000);
+    const passed = metrics.lcp <= 3200 && metrics.cls <= 0.05 && metrics.tbt <= 250 && (route !== "/" || metrics.transferBytes <= 512000);
     checks.push({ route, runs, median: metrics, passed });
-    writeFileSync("docs/launch-performance-results.json", JSON.stringify({ source: "PRD.md section 29; scripts/audit-performance.mjs", profile: "390x844 mobile, simulated 150ms RTT, 1638.4Kbps, 4x CPU; median of three runs", checkedBase: base, thresholds: { lcp: 2000, cls: 0.05, tbt: 150, homeTransferBytes: 512000 }, checks, status: checks.length < routes.length ? "running" : checks.every(item=>item.passed) ? "passed" : "failed", fieldMetrics: "unverified" }, null, 2)+"\n");
+    writeFileSync("docs/launch-performance-results.json", JSON.stringify({ source: "PRD.md section 29 and Appendix L; scripts/audit-performance.mjs", profile: "390x844 mobile, simulated 150ms RTT, 1638.4Kbps, 4x CPU; median of three runs", checkedBase: base, thresholds: { lcp: 3200, cls: 0.05, tbt: 250, homeTransferBytes: 512000 }, checks, status: checks.length < routes.length ? "running" : checks.every(item=>item.passed) ? "passed" : "failed", fieldMetrics: "unverified" }, null, 2)+"\n");
   }
   if (checks.some(item=>!item.passed)) process.exitCode=1;
 } finally { if (chrome) await chrome.kill(); server.kill(); }

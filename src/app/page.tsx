@@ -52,7 +52,7 @@ export default function Home() {
     </section>
 
     <section className="selected-work" id="work" aria-labelledby="work-title">
-      <div className="section-heading"><div><p className="eyebrow">Selected work / {workIndex[0].year}</p><h2 id="work-title">Built.<br /><span className="accent">Considered.</span></h2></div><Suspense fallback={null}><WorkDirectory projects={previews} /></Suspense></div>
+      <div className="section-heading"><div><p className="eyebrow">Selected work / {workIndex[0].year}</p><h2 id="work-title">Built.<br /><span className="accent">Considered.</span></h2></div><WorkDirectory projects={previews} /></div>
       <Suspense fallback={null}><SiteNote note={siteNotes["grid-gap"]} /></Suspense>
       <ol className="project-grid">{workIndex.map((project, index) => <ProjectPanel key={project.slug} project={project} index={index} />)}</ol>
       <Suspense fallback={null}><SiteNote note={siteNotes["no-card-border"]} /></Suspense>

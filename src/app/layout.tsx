@@ -32,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <div className="header-actions"><Suspense fallback={null}><HeaderActions /></Suspense><Suspense fallback={null}><ThemeToggle /></Suspense><a className="contact-link" href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
           </div>
         </header>
-        <main data-inspect="RootLayout" data-inspect-spacing="--pad-x" id="main" className="frame" tabIndex={-1}><Suspense fallback={null}>{children}</Suspense></main>
+        <main data-inspect="RootLayout" data-inspect-spacing="--pad-x" id="main" className="frame" tabIndex={-1}>{children}</main>
         <footer className="site-footer frame">
           <span className="footer-name">{siteIdentity.name}</span>
           <a href={siteIdentity.links.github} target="_blank" rel="noopener noreferrer">GitHub <span className="sr-only">(opens in new tab)</span></a>

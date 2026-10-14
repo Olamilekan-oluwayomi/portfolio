@@ -18,6 +18,11 @@ for (const route of routes) {
   assert(response.headers.get("content-security-policy")?.includes("frame-src https://space-tourismx.vercel.app"), route + ": restricted frame policy");
   const html = await response.text();
   pages.set(route, html);
+  assert(/<link\b[^>]*rel="icon"[^>]*href="\/icon\.svg/.test(html), route + ": favicon is installed");
+  if (route === "/" || route === "/about" || route.startsWith("/work/")) {
+    const blocks = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map(match => JSON.parse(match[1]));
+    assert(blocks.some(block => block["@context"] === "https://schema.org" && Array.isArray(block["@graph"])), route + ": parseable structured data");
+  }
   if (canonical) {
     const link = html.match(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/);
     assert(link, route + ": canonical link exists");
@@ -102,6 +107,16 @@ assert(!rental.includes("Review preview. Not published."), "RentIt uses its publ
 assert(rental.includes("do not show a renter submitting a request"), "Missing request capture remains explicit");
 const missing = await fetch(new URL("/missing-review-route", base));
 assert.equal(missing.status, 404);
+const iconResponse = await fetch(new URL("/icon.svg", base));
+assert.equal(iconResponse.status, 200, "Public favicon available");
+assert((await iconResponse.text()).includes("<svg"), "Favicon SVG signature");
+const socialResponse = await fetch(new URL("/social-card.png", base));
+assert.equal(socialResponse.status, 200, "Generic social image available");
+const socialBytes = Buffer.from(await socialResponse.arrayBuffer());
+assert.equal(socialBytes.subarray(1, 4).toString(), "PNG", "Social image PNG signature");
+assert.equal(socialBytes.readUInt32BE(16), 1200, "Social image width");
+assert.equal(socialBytes.readUInt32BE(20), 630, "Social image height");
+checks.push({ route: "/icon.svg", status: iconResponse.status }, { route: "/social-card.png", status: socialResponse.status, width: 1200, height: 630 });
 const image = [...home.matchAll(/<img\b[^>]*src="([^"]+)"/g)].find(match => match[1].startsWith("/_next/image"));
 assert(image, "Optimized preview exists");
 const imageResponse = await fetch(new URL(image[1].replaceAll("&amp;", "&"), base), { headers: { Accept: "image/webp" } });

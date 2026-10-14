@@ -10,16 +10,21 @@ export type PreviewProject = { slug: string; title: string; src: string; srcSet?
 
 export function WorkDirectory({ projects }: { projects: PreviewProject[] }) {
   const [active, setActive] = useState(0);
+  const [loaded, setLoaded] = useState(() => new Set([0]));
+  function select(index: number) {
+    setActive(index);
+    setLoaded(current => current.has(index) ? current : new Set([...current, index]));
+  }
   return <div className="work-directory">
     <p className="eyebrow">Index <span>({String(projects.length).padStart(2, "0")})</span></p>
     <ol>
-      {projects.map((project, index) => <li key={project.slug} onMouseEnter={() => setActive(index)} onFocus={() => setActive(index)}>
+      {projects.map((project, index) => <li key={project.slug} onMouseEnter={() => select(index)} onFocus={() => select(index)}>
         <a href={`#project-${project.slug}`}><span>{String(index + 1).padStart(2, "0")}</span><span className="work-directory-title">{project.title}</span><span aria-hidden="true">↘</span></a>
       </li>)}
     </ol>
     <div className="work-preview" aria-hidden="true">
       {projects.map((project, index) => <div key={project.slug} className="work-preview-frame" data-active={index === active ? "true" : "false"}>
-        {project.src ? <img src={project.src} srcSet={project.srcSet} sizes={project.sizes} alt="" width={project.width} height={project.height} loading="lazy" decoding="async" /> : <p className="preview-unavailable">{project.title}<span>Preview pending evidence</span></p>}
+        {project.src ? loaded.has(index) && <img src={project.src} srcSet={project.srcSet} sizes={project.sizes} alt="" width={project.width} height={project.height} loading="lazy" decoding="async" /> : <p className="preview-unavailable">{project.title}<span>Preview pending evidence</span></p>}
       </div>)}
       <span className="preview-chip">{projects[active]?.title}</span>
     </div>

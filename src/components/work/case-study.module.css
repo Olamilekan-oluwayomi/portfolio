@@ -129,3 +129,6 @@
 .rejectedTop { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; font-size: 16px; }
 .rejectedStatus { flex: none; padding: 2px 8px; border: 1px solid var(--graphite); font: 400 12px/1.5 var(--font-mono); }
 .rejectedTop + p { margin-top: 6px; color: var(--graphite); font-size: 15px; }
+
+@supports (content-visibility: auto) { .section { content-visibility: auto; contain-intrinsic-size: auto 650px; } }
+@media print { .section { content-visibility: visible; contain-intrinsic-size: none; } }

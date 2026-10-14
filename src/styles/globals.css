@@ -766,3 +766,13 @@ a.record-artifact:hover { text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) { .rentit-capture { animation: none; } }
 @media (max-width: 639px) { .rentit-steps { grid-template-columns: 1fr; }.rentit-steps button { display: flex; align-items: center; gap: 12px; }.rentit-steps button span { margin: 0; }.rentit-panel h3 { font-size: 20px; } }
 @media print { .rentit-widget { display: none; } }
+
+/* Keep offscreen editorial sections out of the initial layout and paint work.
+   Native anchors and find-in-page still reveal their original DOM content. */
+@supports (content-visibility: auto) {
+  .project-panel { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+  .about-home, .contact-home { content-visibility: auto; contain-intrinsic-size: auto 500px; }
+  .work-list > li { content-visibility: auto; contain-intrinsic-size: auto 500px; }
+  .record-history { content-visibility: auto; contain-intrinsic-size: auto 650px; }
+}
+@media print { .project-panel, .about-home, .contact-home, .work-list > li, .record-history { content-visibility: visible; contain-intrinsic-size: none; } }

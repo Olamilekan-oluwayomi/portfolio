@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Decision, Project } from "@/lib/schemas";
 import styles from "./case-study.module.css";
 import { ProjectExperience } from "../project-experience";
@@ -55,7 +54,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
   const published = workIndex.filter(item => publishedProjectSlugs.includes(item.slug));
   const next = published[(published.findIndex(item => item.slug === project.slug) + 1) % published.length];
   return <article className={styles.page}>
-    <nav className={styles.back} aria-label="Breadcrumb"><Link href="/work">Work</Link><span aria-hidden="true">/</span><span>{project.title}</span></nav>
+    <nav className={styles.back} aria-label="Breadcrumb"><a href="/work">Work</a><span aria-hidden="true">/</span><span>{project.title}</span></nav>
     {draft && <aside className={styles.preview} aria-label="Publication review status">
       <strong>Review preview. Not published.</strong>
       <p>The supplied screens support this walkthrough. A renter request, the completion prompt and capture pixel-density evidence remain incomplete. This preview does not authorize publication.</p>
@@ -122,7 +121,7 @@ export function CaseStudy({ project, decisions, draft, issues }: { project: Proj
         <a href={`#${decision.id}-heading`}>Read the full decision</a>
       </article>)}
     </div>}</Section>
-    <footer className={styles.exit}><p>Read the reasoning. Try the product.</p><div className={styles.links}><Link href="/work">Back to Work</Link>{next && <Link href={`/work/${next.slug}`}>Next: {next.title}</Link>}{project.links.repo && <a href={project.links.repo} target="_blank" rel="noopener noreferrer">Source<span className="sr-only"> (opens in new tab)</span></a>}{project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer">Open {project.title} ↗<span className="sr-only"> (opens in new tab)</span></a>}</div></footer>
+    <footer className={styles.exit}><p>Read the reasoning. Try the product.</p><div className={styles.links}><a href="/work">Back to Work</a>{next && <a href={`/work/${next.slug}`}>Next: {next.title}</a>}{project.links.repo && <a href={project.links.repo} target="_blank" rel="noopener noreferrer">Source<span className="sr-only"> (opens in new tab)</span></a>}{project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer">Open {project.title} ↗<span className="sr-only"> (opens in new tab)</span></a>}</div></footer>
     {project.links.live && <div className={styles.mobileLive}><a href={project.links.live} target="_blank" rel="noopener noreferrer">Open {project.title} ↗<span className="sr-only"> (opens in new tab)</span></a><a href="#decisions">Read decisions</a></div>}
   </article>;
 }

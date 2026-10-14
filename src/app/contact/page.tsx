@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return <article className="contact-page">
+    <link rel="preload" href="/fonts/instrument-serif-regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
     <header className="contact-intro">
       <p className="eyebrow">Contact</p>
       <h1 className="contact-title">Let’s <em>talk.</em></h1>

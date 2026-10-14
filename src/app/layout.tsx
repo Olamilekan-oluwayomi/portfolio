@@ -1,5 +1,5 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { siteIdentity } from "@/content/identity";
 import { loadContent } from "@/lib/content";
 import { publishedProjectSlugs } from "@/content/release";
@@ -21,18 +21,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const decisions = loadContent().decisions.filter(decision => publishedProjectSlugs.includes(decision.projectSlug)).map(decision => ({ id: decision.id, title: decision.title, theme: decision.theme, projectSlug: decision.projectSlug }));
   return <html lang="en">
-    <head>{["geist-var", "geist-mono-var", "instrument-serif-regular"].map(font => <link key={font} rel="preload" href={`/fonts/${font}.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />)}</head>
+    <head>{["geist-var", "geist-mono-var"].map(font => <link key={font} rel="preload" href={`/fonts/${font}.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />)}</head>
     <body>
       <Shell decisions={decisions}>
         <a className="skip-link" href="#main">Skip to content</a>
         <header className="site-header">
           <div className="header-inner frame">
-            <Link className="wordmark" href="/" aria-label={`${siteIdentity.name}, home`}>{siteIdentity.name.split(" ").map(part => part[0]).join("")}<span aria-hidden="true">.</span></Link>
-            <nav className="main-nav" aria-label="Main navigation"><Link href="/work">Work</Link><Link href="/about">About</Link><Link href="/experience">Experience</Link><Link href="/contact">Contact</Link></nav>
-            <div className="header-actions"><HeaderActions /><ThemeToggle /><a className="contact-link" href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
+            <a className="wordmark" href="/" aria-label={`${siteIdentity.name}, home`}>{siteIdentity.name.split(" ").map(part => part[0]).join("")}<span aria-hidden="true">.</span></a>
+            <nav className="main-nav" aria-label="Main navigation"><a href="/work">Work</a><a href="/about">About</a><a href="/experience">Experience</a><a href="/contact">Contact</a></nav>
+            <div className="header-actions"><Suspense fallback={null}><HeaderActions /></Suspense><Suspense fallback={null}><ThemeToggle /></Suspense><a className="contact-link" href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
           </div>
         </header>
-        <main data-inspect="RootLayout" data-inspect-spacing="--pad-x" id="main" className="frame" tabIndex={-1}>{children}</main>
+        <main data-inspect="RootLayout" data-inspect-spacing="--pad-x" id="main" className="frame" tabIndex={-1}><Suspense fallback={null}>{children}</Suspense></main>
         <footer className="site-footer frame">
           <span className="footer-name">{siteIdentity.name}</span>
           <a href={siteIdentity.links.github} target="_blank" rel="noopener noreferrer">GitHub <span className="sr-only">(opens in new tab)</span></a>

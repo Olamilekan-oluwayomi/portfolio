@@ -20,6 +20,7 @@ export default function AboutPage() {
   for (const decision of decisions) themeCounts.set(decision.theme, (themeCounts.get(decision.theme) ?? 0) + 1);
   const counts = [...themeCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
   return <article className="record-page">
+    <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
     <StructuredData items={[personData]} />
     <div className="record-intro">
       <div className="record-title-block">

@@ -40,3 +40,13 @@ test("Inspect measures page-load LCP when opened after navigation", async ({ pag
   await page.getByRole("button", { name: /^Inspect/ }).click();
   await expect(page.locator(".inspect-values > div").nth(0).locator("dd")).toHaveText(/^\d+ ms$/);
 });
+
+test("Homepage preview loads additional captures on keyboard intent", async ({ page }) => {
+  await page.goto("/");
+  await page.waitForFunction(() => Boolean(document.documentElement.dataset.motion));
+  await expect(page.locator(".work-preview-frame img")).toHaveCount(1);
+  await page.locator(".work-directory ol a").nth(1).focus();
+  await expect(page.locator(".work-preview-frame img")).toHaveCount(2);
+  await expect(page.locator(".preview-chip")).toHaveText("Marginalia");
+  await expect(page.locator('.work-preview-frame[data-active="true"] img')).toBeVisible();
+});

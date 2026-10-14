@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 export default function ExperiencePage() {
   const entries = log.filter(entry => entry.public);
   return <article className="log-page">
+    <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
     <header className="log-intro">
       <div><p className="eyebrow">Experience</p><h1 className="record-title">The <em>Log</em></h1></div>
       <p className="log-caption">Work, service and education.<br />Most recent first.</p>

@@ -8,3 +8,9 @@ coverage/
 next-env.d.ts
 .vercel/
 artifacts/
+# Owner-supplied source CV includes employment details excluded from public copy.
+docs/Olamilekan_Ilesanmi_CV_Web_Developer.pdf
+
+.lighthouseci/
+playwright-report/
+test-results/

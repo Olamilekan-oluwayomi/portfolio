@@ -93,7 +93,7 @@
 .exit { display: flex; align-items: center; justify-content: space-between; gap: 32px; border-top: 1px solid var(--rule); padding-top: 32px; }
 .exit > p { max-width: 24ch; font: 400 24px/1.25 var(--font-mono); letter-spacing: -.04em; }
 .mobileLive { display: none; }
-.problems code { font-family: var(--font-mono); font-size: .9em; }
+.problems code { font-family: var(--font-mono); font-size: .9em; overflow-wrap: anywhere; }
 @media (max-width: 900px) {
   .heroGrid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .role { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 8px 24px; }
@@ -129,3 +129,6 @@
 .rejectedTop { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; font-size: 16px; }
 .rejectedStatus { flex: none; padding: 2px 8px; border: 1px solid var(--graphite); font: 400 12px/1.5 var(--font-mono); }
 .rejectedTop + p { margin-top: 6px; color: var(--graphite); font-size: 15px; }
+
+@supports (content-visibility: auto) { .section { content-visibility: auto; contain-intrinsic-size: auto 650px; } }
+@media print { .section { content-visibility: visible; contain-intrinsic-size: none; } }

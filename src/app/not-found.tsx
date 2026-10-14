@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { publishedProjectSlugs } from "@/content/release";
 import { workIndex } from "@/content/work-index";
 
@@ -10,9 +9,9 @@ export default function NotFound() {
     <nav aria-label="Contents">
       <p className="eyebrow">Contents</p>
       <ul>{published.map(project => <li key={project.slug}>
-        <Link href={`/work/${project.slug}`}><span>{project.title}</span><span aria-hidden="true">{project.year}</span></Link>
+        <a href={`/work/${project.slug}`}><span>{project.title}</span><span aria-hidden="true">{project.year}</span></a>
       </li>)}</ul>
     </nav>
-    <p><Link href="/">Return home</Link></p>
+    <p><a href="/">Return home</a></p>
   </section>;
 }

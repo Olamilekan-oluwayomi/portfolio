@@ -1,0 +1,315 @@
+{
+  "source": "PRD.md section 29; scripts/audit-performance.mjs",
+  "profile": "390x844 mobile, simulated 150ms RTT, 1638.4Kbps, 4x CPU; median of three runs",
+  "checkedBase": "http://127.0.0.1:58024",
+  "thresholds": {
+    "lcp": 2000,
+    "cls": 0.05,
+    "tbt": 150,
+    "homeTransferBytes": 512000
+  },
+  "checks": [
+    {
+      "route": "/",
+      "runs": [
+        {
+          "lcp": 3024.3630000000003,
+          "cls": 0,
+          "tbt": 596.9395000000001,
+          "transferBytes": 260557
+        },
+        {
+          "lcp": 3000.7272000000003,
+          "cls": 0,
+          "tbt": 514.2576,
+          "transferBytes": 260557
+        },
+        {
+          "lcp": 2915.0746,
+          "cls": 0,
+          "tbt": 565.6418000000001,
+          "transferBytes": 260557
+        }
+      ],
+      "median": {
+        "lcp": 3000.7272000000003,
+        "cls": 0,
+        "tbt": 565.6418000000001,
+        "transferBytes": 260557
+      },
+      "passed": false
+    },
+    {
+      "route": "/brief",
+      "runs": [
+        {
+          "lcp": 2790.9440999999997,
+          "cls": 0,
+          "tbt": 536,
+          "transferBytes": 219713
+        },
+        {
+          "lcp": 2858.3079000000002,
+          "cls": 0,
+          "tbt": 585.34605,
+          "transferBytes": 219713
+        },
+        {
+          "lcp": 2781.3143999999998,
+          "cls": 0,
+          "tbt": 501,
+          "transferBytes": 219713
+        }
+      ],
+      "median": {
+        "lcp": 2790.9440999999997,
+        "cls": 0,
+        "tbt": 536,
+        "transferBytes": 219713
+      },
+      "passed": false
+    },
+    {
+      "route": "/work",
+      "runs": [
+        {
+          "lcp": 3238.6805000000004,
+          "cls": 0,
+          "tbt": 614.1065000000001,
+          "transferBytes": 280477
+        },
+        {
+          "lcp": 3021.5954,
+          "cls": 0,
+          "tbt": 363.4682,
+          "transferBytes": 280477
+        },
+        {
+          "lcp": 2960.65985,
+          "cls": 0,
+          "tbt": 260.3900250000004,
+          "transferBytes": 280477
+        }
+      ],
+      "median": {
+        "lcp": 3021.5954,
+        "cls": 0,
+        "tbt": 363.4682,
+        "transferBytes": 280477
+      },
+      "passed": false
+    },
+    {
+      "route": "/about",
+      "runs": [
+        {
+          "lcp": 2876.8154999999997,
+          "cls": 0,
+          "tbt": 445.0615,
+          "transferBytes": 245969
+        },
+        {
+          "lcp": 2844.33525,
+          "cls": 0,
+          "tbt": 464.38824999999997,
+          "transferBytes": 245969
+        },
+        {
+          "lcp": 2967.5620500000005,
+          "cls": 0,
+          "tbt": 629.8126500000001,
+          "transferBytes": 245969
+        }
+      ],
+      "median": {
+        "lcp": 2876.8154999999997,
+        "cls": 0,
+        "tbt": 464.38824999999997,
+        "transferBytes": 245969
+      },
+      "passed": false
+    },
+    {
+      "route": "/experience",
+      "runs": [
+        {
+          "lcp": 3020.0353999999998,
+          "cls": 0,
+          "tbt": 579.5,
+          "transferBytes": 242153
+        },
+        {
+          "lcp": 3032.8397999999997,
+          "cls": 0,
+          "tbt": 595,
+          "transferBytes": 242153
+        },
+        {
+          "lcp": 2959.73995,
+          "cls": 0,
+          "tbt": 532,
+          "transferBytes": 242153
+        }
+      ],
+      "median": {
+        "lcp": 3020.0353999999998,
+        "cls": 0,
+        "tbt": 579.5,
+        "transferBytes": 242153
+      },
+      "passed": false
+    },
+    {
+      "route": "/contact",
+      "runs": [
+        {
+          "lcp": 3045.51085,
+          "cls": 0,
+          "tbt": 460,
+          "transferBytes": 265397
+        },
+        {
+          "lcp": 2919.6519,
+          "cls": 0,
+          "tbt": 394,
+          "transferBytes": 265397
+        },
+        {
+          "lcp": 3135.7404,
+          "cls": 0,
+          "tbt": 500,
+          "transferBytes": 265397
+        }
+      ],
+      "median": {
+        "lcp": 3045.51085,
+        "cls": 0,
+        "tbt": 460,
+        "transferBytes": 265397
+      },
+      "passed": false
+    },
+    {
+      "route": "/work/rentit",
+      "runs": [
+        {
+          "lcp": 2956.6296,
+          "cls": 0,
+          "tbt": 259.5344,
+          "transferBytes": 277021
+        },
+        {
+          "lcp": 2932.0028250000005,
+          "cls": 0,
+          "tbt": 232.99999999999977,
+          "transferBytes": 277021
+        },
+        {
+          "lcp": 2976.1919749999997,
+          "cls": 0,
+          "tbt": 280,
+          "transferBytes": 277021
+        }
+      ],
+      "median": {
+        "lcp": 2956.6296,
+        "cls": 0,
+        "tbt": 259.5344,
+        "transferBytes": 277021
+      },
+      "passed": false
+    },
+    {
+      "route": "/work/marginalia",
+      "runs": [
+        {
+          "lcp": 3122.2210999999998,
+          "cls": 0,
+          "tbt": 329.0000000000002,
+          "transferBytes": 263944
+        },
+        {
+          "lcp": 3030.02455,
+          "cls": 0,
+          "tbt": 210,
+          "transferBytes": 263944
+        },
+        {
+          "lcp": 2145.46325,
+          "cls": 0,
+          "tbt": 209.99999999999955,
+          "transferBytes": 263944
+        }
+      ],
+      "median": {
+        "lcp": 3030.02455,
+        "cls": 0,
+        "tbt": 210,
+        "transferBytes": 263944
+      },
+      "passed": false
+    },
+    {
+      "route": "/work/space-tourism",
+      "runs": [
+        {
+          "lcp": 3144.6738499999997,
+          "cls": 0,
+          "tbt": 198.5,
+          "transferBytes": 296413
+        },
+        {
+          "lcp": 3222.0787,
+          "cls": 0,
+          "tbt": 228,
+          "transferBytes": 296413
+        },
+        {
+          "lcp": 3283.407,
+          "cls": 0,
+          "tbt": 349.53099999999995,
+          "transferBytes": 296413
+        }
+      ],
+      "median": {
+        "lcp": 3222.0787,
+        "cls": 0,
+        "tbt": 228,
+        "transferBytes": 296413
+      },
+      "passed": false
+    },
+    {
+      "route": "/work/foreign-exchange-checker",
+      "runs": [
+        {
+          "lcp": 3083.0379000000003,
+          "cls": 0,
+          "tbt": 310,
+          "transferBytes": 276594
+        },
+        {
+          "lcp": 3083.5901,
+          "cls": 0,
+          "tbt": 305.30330000000004,
+          "transferBytes": 276594
+        },
+        {
+          "lcp": 3131.8437000000004,
+          "cls": 0,
+          "tbt": 317.9999999999998,
+          "transferBytes": 276594
+        }
+      ],
+      "median": {
+        "lcp": 3083.5901,
+        "cls": 0,
+        "tbt": 310,
+        "transferBytes": 276594
+      },
+      "passed": false
+    }
+  ],
+  "status": "failed",
+  "fieldMetrics": "unverified"
+}

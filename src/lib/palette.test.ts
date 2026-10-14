@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildCommands, searchCommands, type Command } from "./palette";
+import { siteIdentity } from "@/content/identity";
 
 const sample: Command[] = [
   { id: "work", group: "Navigate", label: "Work", action: { kind: "href", href: "/work" } },
@@ -82,5 +83,10 @@ describe("buildCommands", () => {
     const off = buildCommands([], false, true);
     expect(off.find(command => command.id === "view-shortcuts-toggle")?.label).toBe("Shortcuts: off");
     expect(off.find(command => command.id === "view-decision-mode")?.label).toBe("Decision mode: on");
+  });
+
+  it("opens the supplied CV as a same-tab document instead of an external profile", () => {
+    expect(commands.find(command => command.id === "open-cv")?.action).toEqual({ kind: "document", href: siteIdentity.cv });
+    expect(searchCommands(commands, "resume").map(command => command.id)).toContain("open-cv");
   });
 });

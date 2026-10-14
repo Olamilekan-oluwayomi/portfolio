@@ -53,7 +53,7 @@ export function HeroConcepts({ notes }: { notes: ({ id: ConceptId } & NoteRecord
     };
     clamp(); window.addEventListener("resize", clamp);
     return () => window.removeEventListener("resize", clamp);
-  }, [touch]);
+  }, [touch, open]);
   const selected = notes.find(note => note.id === open);
   return <>
     <ul className="hero-concepts" aria-label="Concepts" ref={list}>

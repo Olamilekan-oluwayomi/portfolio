@@ -7,6 +7,7 @@ export type CommandGroup = "Navigate" | "Open" | "Copy" | "View" | "Search decis
 export type CommandAction =
   | { kind: "href"; href: string }
   | { kind: "external"; href: string }
+  | { kind: "document"; href: string }
   | { kind: "copy-email" }
   | { kind: "theme" }
   | { kind: "shortcuts" }
@@ -57,7 +58,7 @@ export function buildCommands(decisions: PaletteDecision[], shortcutsOn: boolean
     { id: "open-github", group: "Open", label: "GitHub", action: { kind: "external", href: siteIdentity.links.github } },
     { id: "open-linkedin", group: "Open", label: "LinkedIn", action: { kind: "external", href: siteIdentity.links.linkedin } },
   ];
-  if (siteIdentity.cv) profile.push({ id: "open-cv", group: "Open", label: "Curriculum vitae", keywords: "cv resume pdf", action: { kind: "external", href: siteIdentity.cv } });
+  if (siteIdentity.cv) profile.push({ id: "open-cv", group: "Open", label: "Curriculum vitae", keywords: "cv resume pdf", action: { kind: "document", href: siteIdentity.cv } });
   const decisionCommands: Command[] = decisions.filter(decision => publishedProjectSlugs.includes(decision.projectSlug)).map(decision => ({
     id: `decision-${decision.id}`,
     group: "Search decisions",

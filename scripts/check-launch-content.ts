@@ -1,0 +1,11 @@
+import { writeFileSync } from "node:fs";
+import { loadContent } from "../src/lib/content";
+import { publicationIssues } from "../src/lib/schemas";
+import { publishedProjectSlugs, release } from "../src/content/release";
+const collection = loadContent();
+const records = collection.decisions.filter(item => item.projectSlug === "site" || publishedProjectSlugs.includes(item.projectSlug));
+const issues = publicationIssues(collection, publishedProjectSlugs, "R2");
+const report = { currentRelease: release, assessedRelease: "R2", source: "src/lib/schemas.ts; PRD.md sections 16.2, 35 and 38", verifiedRecords: records.filter(item => item.verified).length, reversedOrOpen: records.filter(item => item.verified && item.status !== "kept").length, projects: publishedProjectSlugs.map(slug => ({ slug, verifiedDecisions: records.filter(item => item.verified && item.projectSlug === slug).length })), issues, status: issues.length ? "blocked" : "passed", verificationFlagsChanged: false };
+writeFileSync("docs/launch-content-results.json", JSON.stringify(report, null, 2) + "\n");
+console.log(JSON.stringify(report, null, 2));
+if (issues.length) process.exitCode = 1;

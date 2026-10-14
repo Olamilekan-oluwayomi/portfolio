@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { StructuredData, personData } from "@/components/structured-data";
 import { siteIdentity } from "@/content/identity";
 import { workIndex } from "@/content/work-index";
 import { conceptNotes, siteNotes } from "@/content/annotations";
@@ -6,6 +8,12 @@ import { HeroConcepts, SiteNote } from "@/components/annotations";
 import { ProjectPanel } from "@/components/work/project-panel";
 import { WorkDirectory } from "@/components/work-directory";
 import { publishedProjectSlugs } from "@/content/release";
+
+export const metadata = {
+  description: `${siteIdentity.role} building React, Next.js and TypeScript interfaces. ${publishedProjectSlugs.length} projects, with the decisions behind each build.`,
+  alternates: { canonical: "/" },
+  openGraph: { url: "/", type: "website", title: `${siteIdentity.name}, ${siteIdentity.role}`, description: `${siteIdentity.role}. ${publishedProjectSlugs.length} published case studies.`, siteName: siteIdentity.name, locale: "en_NG", images: [{ url: "/social-card.png", width: 1200, height: 630 }] },
+};
 
 export default function Home() {
   const [firstName, ...lastName] = siteIdentity.name.split(" ");
@@ -18,6 +26,8 @@ export default function Home() {
     return { slug: item.slug, title: item.title, src: props?.src ?? "", srcSet: props?.srcSet, sizes: props?.sizes, width: media?.width ?? 1200, height: media?.height ?? 800 };
   });
   return <>
+    <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+    <StructuredData items={[personData, { "@type": "WebSite", name: siteIdentity.name, url: siteIdentity.domain }]} />
     <section className="hero" aria-labelledby="name">
       <div className="hero-topline">
         <p className="eyebrow"><span className="registration-mark" aria-hidden="true" />Annotated <span className="muted">/ An annotated build</span></p>
@@ -36,16 +46,16 @@ export default function Home() {
         <div className="hero-facts"><p className="employment-label"><span className="eyebrow">Currently at</span><span>{siteIdentity.employer}</span></p><ul className="hero-stack" aria-label="Technology stack">{siteIdentity.stackLine.split("·").map(skill => <li key={skill.trim()}>{skill.trim()}</li>)}</ul></div>
         <div className="hero-actions"><a className="primary-link" href="#work">Explore the work <span aria-hidden="true">↘</span></a><a className="brief-link" href="/brief">The 30-second brief <span aria-hidden="true">↗</span></a></div>
       </div>
-      <SiteNote note={siteNotes["static-dot"]} />
+      <Suspense fallback={null}><SiteNote note={siteNotes["static-dot"]} /></Suspense>
       <div className="hero-bottomline"><p className="availability"><span className="availability-mark" aria-hidden="true" />{siteIdentity.availability}</p><a href={`mailto:${siteIdentity.email}`}>Let’s talk <span aria-hidden="true">↗</span></a></div>
-      <div className="hero-concept-band"><span className="eyebrow">Explore the thinking</span><HeroConcepts notes={conceptNotes} /></div>
+      <div className="hero-concept-band"><span className="eyebrow">Explore the thinking</span><Suspense fallback={null}><HeroConcepts notes={conceptNotes} /></Suspense></div>
     </section>
 
     <section className="selected-work" id="work" aria-labelledby="work-title">
       <div className="section-heading"><div><p className="eyebrow">Selected work / {workIndex[0].year}</p><h2 id="work-title">Built.<br /><span className="accent">Considered.</span></h2></div><WorkDirectory projects={previews} /></div>
-      <SiteNote note={siteNotes["grid-gap"]} />
+      <Suspense fallback={null}><SiteNote note={siteNotes["grid-gap"]} /></Suspense>
       <ol className="project-grid">{workIndex.map((project, index) => <ProjectPanel key={project.slug} project={project} index={index} />)}</ol>
-      <SiteNote note={siteNotes["no-card-border"]} />
+      <Suspense fallback={null}><SiteNote note={siteNotes["no-card-border"]} /></Suspense>
     </section>
 
     <section className="about-home" id="about" aria-labelledby="about-title">

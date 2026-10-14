@@ -4,6 +4,7 @@ import { siteIdentity } from "@/content/identity";
 
 // Copy feedback contract: PRD.md sections 20 and 26.
 export function CopyEmail() {
+  const [mailbox, host] = siteIdentity.email.split("@");
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   const addressRef = useRef<HTMLButtonElement>(null);
   const timer = useRef<number | undefined>(undefined);
@@ -36,9 +37,9 @@ export function CopyEmail() {
   }
 
   return <>
-    <button type="button" className="contact-address" ref={addressRef} onClick={copy}>
-      {siteIdentity.email}
+    <button type="button" className="contact-address" ref={addressRef} onClick={copy} aria-label={`Copy ${siteIdentity.email}`}>
+      {mailbox}<wbr />@{host}
     </button>
-    <p className="contact-live" role="status" aria-live="polite">{state === "copied" ? "Copied" : state === "failed" ? "Press Ctrl C to copy." : ""}</p>
+    <p className="contact-live" role="status" aria-live="polite">{state === "copied" ? "Copied" : state === "failed" ? "Press Ctrl C to copy." : "Click to copy"}</p>
   </>;
 }

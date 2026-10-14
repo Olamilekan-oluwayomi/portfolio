@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { siteIdentity } from "@/content/identity";
@@ -67,14 +66,14 @@ export default function MobileMenu({ open, onClose }: { open: boolean; onClose: 
   return <dialog ref={dialog} className="mobile-menu" aria-label="Menu" onCancel={event => { event.preventDefault(); dismiss(); }}>
     <div ref={layout} className="mobile-menu-layout">
       <header className="mobile-menu-head">
-        <Link className="menu-home" href="/" onClick={event => navigate(event, "/")} aria-label={`${siteIdentity.name}, home`}>[{siteIdentity.name.split(" ").map(part => part[0]).join("")}]<span className="eyebrow">Annotated</span></Link>
+        <a className="menu-home" href="/" onClick={event => navigate(event, "/")} aria-label={`${siteIdentity.name}, home`}>[{siteIdentity.name.split(" ").map(part => part[0]).join("")}]<span className="eyebrow">Annotated</span></a>
         <button type="button" className="dialog-close" onClick={() => dismiss()} autoFocus>Close <span aria-hidden="true">×</span></button>
       </header>
       <div className="menu-body">
         <p className="eyebrow menu-label"><span>Navigation</span><span>({String(routes.length).padStart(2, "0")})</span></p>
         <nav aria-label="Mobile navigation"><ol>{routes.map((route, index) => {
           const current = pathname === route.href || pathname.startsWith(route.href + "/");
-          return <li key={route.href}><Link href={route.href} aria-current={current ? "page" : undefined} onClick={event => navigate(event, route.href)}><span className="menu-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><span className={`menu-title${route.label.length > 8 ? " menu-title-long" : ""}`}>{route.label}</span><span className="menu-route-mark" aria-hidden="true">{current ? "●" : "↗"}</span></Link></li>;
+          return <li key={route.href}><a href={route.href} aria-current={current ? "page" : undefined} onClick={event => navigate(event, route.href)}><span className="menu-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><span className={`menu-title${route.label.length > 8 ? " menu-title-long" : ""}`}>{route.label}</span><span className="menu-route-mark" aria-hidden="true">{current ? "●" : "↗"}</span></a></li>;
         })}</ol></nav>
       </div>
       <footer className="menu-footer">
@@ -89,7 +88,7 @@ export default function MobileMenu({ open, onClose }: { open: boolean; onClose: 
         <div className="menu-external">
           <a href={siteIdentity.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗<span className="sr-only"> (opens in new tab)</span></a>
           <a href={siteIdentity.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗<span className="sr-only"> (opens in new tab)</span></a>
-          <Link href="/brief" onClick={event => navigate(event, "/brief")}>The brief ↗</Link>
+          <a href="/brief" onClick={event => navigate(event, "/brief")}>The brief ↗</a>
         </div>
       </footer>
     </div>

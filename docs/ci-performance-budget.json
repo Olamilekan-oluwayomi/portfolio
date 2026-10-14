@@ -1,0 +1,18 @@
+{
+  "id": "site-calibrate-ci-performance-budgets",
+  "projectSlug": "site",
+  "title": "Use explicit CI budgets after measuring the mobile profile",
+  "context": "PR 16 CI missed the original 2000ms LCP and 150ms TBT targets. Startup repairs passed size and accessibility checks but did not establish those timing targets.",
+  "options": ["Continue optimizing against the original limits.", "Approve 3200ms LCP and 250ms TBT for this CI profile."],
+  "choice": "The owner approved 3200ms LCP and 250ms TBT on October 14, 2026, with every required check still enforced.",
+  "tradeoff": "CI accepts slower simulated paint and more blocking. This does not establish good field performance; tighter field targets remain.",
+  "status": "kept",
+  "theme": "performance",
+  "evidence": [
+    {"label": "Original failing CI", "ref": "https://github.com/Olamilekan-oluwayomi/portfolio/actions/runs/38459234782"},
+    {"label": "Candidate measurements", "ref": "3d14804; docs/launch-performance-results.json"},
+    {"label": "Owner approval and binding amendment", "ref": "PRD.md Appendix L"},
+    {"label": "Enforced runner", "ref": "scripts/audit-performance.mjs"}
+  ],
+  "verified": false
+}

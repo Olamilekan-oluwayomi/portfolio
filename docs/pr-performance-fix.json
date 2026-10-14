@@ -1,0 +1,25 @@
+{
+  "id": "site-limit-startup-work",
+  "projectSlug": "site",
+  "title": "Load preview captures on intent and limit startup work",
+  "context": "PR 16 failed the mobile LCP and blocking-time gates; all four homepage preview captures were initially rendered.",
+  "options": [
+    "Render every capture and prefetch navigation routes.",
+    "Load additional captures on focus or hover and navigate through native links."
+  ],
+  "choice": "Retain font swap, preload route-specific faces, load inactive captures on intent, and contain offscreen layout with hydration boundaries.",
+  "tradeoff": "Native links reload the document and reset transient layer state. Additional previews may briefly wait for their first image request.",
+  "status": "kept",
+  "theme": "performance",
+  "evidence": [
+    {
+      "label": "Failed CI measurements",
+      "ref": "https://github.com/Olamilekan-oluwayomi/portfolio/actions/runs/38459234782"
+    },
+    {
+      "label": "Loading and fallback rules",
+      "ref": "src/styles/globals.css; src/styles/tokens.css; src/app/layout.tsx"
+    }
+  ],
+  "verified": false
+}

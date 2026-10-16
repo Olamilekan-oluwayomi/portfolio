@@ -1,0 +1,13 @@
+{
+  "id": "site-plain-background",
+  "projectSlug": "site",
+  "title": "Remove the decorative background grid",
+  "context": "The owner requested that the grid lines be turned off. The page background used four CSS gradients to draw a graph-paper pattern.",
+  "options": ["Keep the graph-paper background", "Remove the background gradients"],
+  "choice": "Remove the body background-image and background-size declarations, leaving the existing paper color.",
+  "tradeoff": "The page loses its decorative graph-paper texture.",
+  "status": "kept",
+  "theme": "ux",
+  "evidence": [{ "label": "Global body background", "ref": "src/styles/globals.css:23" }, { "label": "Owner direction amendment", "ref": "PRD.md#appendix-m-plain-page-background" }],
+  "verified": false
+}

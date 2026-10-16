@@ -67,6 +67,16 @@ nav a:hover { text-decoration: underline; }
 .hero-intro { font: italic 30px/1.2 var(--font-accent); }
 .name-composition { position: relative; }
 .role-label { position: absolute; top: calc(var(--hero-name-size) * var(--hero-name-leading) + 8px); right: 4%; z-index: 1; padding: 7px 12px; border: 1px solid var(--annotation-accent); background: var(--annotation-accent); color: var(--annotation-ink); font: 400 13px/1.4 var(--font-mono); transform: rotate(2deg); }
+/* Owner-approved looping label motion: PRD.md Appendix N. */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-motion="full"] .role-label { transform-origin: top right; animation: role-label-swing 5s ease-in-out infinite; }
+}
+@keyframes role-label-swing {
+  0%, 100% { transform: rotate(2deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(4deg); }
+}
+@media print { .role-label { animation: none !important; } }
 .identity-poster h1 { font: 500 var(--hero-name-size)/var(--hero-name-leading) var(--font-mono); letter-spacing: -0.065em; text-transform: uppercase; text-wrap: initial; }
 .name-first { display: block; }
 .name-frame { display: block; position: relative; width: fit-content; margin: 48px 4% 0 auto; padding: 0 0.22em 0.08em 0.12em; border: 1px solid var(--annotation-accent); color: var(--card-ink); background: var(--identity-highlight); }

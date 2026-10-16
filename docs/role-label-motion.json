@@ -1,0 +1,17 @@
+{
+  "id": "site-role-label-motion",
+  "projectSlug": "site",
+  "title": "Swing the hanging role label",
+  "context": "The owner requested an infinite animation for the role label and approved the recommended gentle pendulum swing.",
+  "options": ["Keep the existing static tilt", "Loop a small rotation around the top-right corner"],
+  "choice": "Use a five-second CSS rotation loop between -3 and 4 degrees, starting at the existing 2-degree tilt. Enable it only in full motion mode with no system reduced-motion preference.",
+  "tradeoff": "The label introduces continuous decorative motion as an explicit exception to the quiet-by-default rules. Reduced-motion, lite mode and print retain the static label.",
+  "status": "kept",
+  "theme": "motion",
+  "evidence": [
+    { "label": "Role label markup", "ref": "src/app/page.tsx:40" },
+    { "label": "Label animation and motion gates", "ref": "src/styles/globals.css" },
+    { "label": "Owner-approved motion exception", "ref": "PRD.md#appendix-n-hanging-role-label-animation" }
+  ],
+  "verified": false
+}
